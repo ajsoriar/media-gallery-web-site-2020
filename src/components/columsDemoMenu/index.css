@@ -1,0 +1,40 @@
+.columsMenu{
+    display: block;
+    width: 150px;
+    background-color: #ffeb3b6e;
+    height: 300px;
+    position: absolute;
+    left: 10px;
+    top: 40%;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+    border: 1px solid orange;
+}
+
+.listOfColumTypes{
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 5px 7px;
+    text-align: left;
+    border: 1px solid red;
+    background-color: #89ff00;
+}
+
+.listOfColumTypes li{
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 5px 7px;
+    text-align: left;
+    border: 1px solid red;
+    background-color: #FFEB3B;
+    cursor: pointer;
+    font-family: 'Yantramanav', sans-serif;
+    font-weight: 700;
+}
+
+.listOfColumTypes li:hover{
+    background-color: cyan;
+}

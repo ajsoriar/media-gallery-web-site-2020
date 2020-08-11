@@ -1,0 +1,17 @@
+/*
+'./assets/fonts/Yantramanav/Yantramanav-Black.ttf'
+'./assets/fonts/Yantramanav/Yantramanav-Bold.ttf'
+'./assets/fonts/Yantramanav/Yantramanav-Light.ttf'
+'./assets/fonts/Yantramanav//Yantramanav-Medium.ttf'
+'./assets/fonts/Yantramanav/Yantramanav-Regular.ttf'
+'./assets/fonts/Yantramanav/Yantramanav-Thin.ttf'
+*/
+
+/*
+@font-face {
+  font-family: 'Yantramanav';
+  src: url('./assets/fonts/Yantramanav//Yantramanav-Medium.ttf')
+}
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap');

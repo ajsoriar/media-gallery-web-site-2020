@@ -1,7 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css'
-import Form from "./js/components/Form";
+import './index.css';
+import './nav.css';
+import './fonts.css';
+import App from './App';
 
-const wrapper = document.getElementById("container");
-wrapper ? ReactDOM.render(<Form />, wrapper) : false;
+ReactDOM.render(
+    <React.StrictMode>
+        <div id="gradient" className="gradient"></div>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+);

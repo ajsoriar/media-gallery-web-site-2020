@@ -1,0 +1,8 @@
+.endOfContentItem{
+    background-color: blueviolet;
+    color: chartreuse;
+    line-height: 40px;
+    max-width: 150px;
+    margin: 20px auto;
+    border-radius: 100px;
+}

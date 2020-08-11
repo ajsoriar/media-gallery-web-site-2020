@@ -1,0 +1,41 @@
+.columsContainer {
+    position: absolute;
+    top: 0;
+    width: 90%;
+    min-width: 320px;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    height: 100%;
+    margin: auto;
+    display: block;
+    background-repeat: repeat;
+}
+
+.debug {
+    width: 300px;
+    height: auto;
+    position: fixed;
+    display: block;
+    bottom: 60px;
+    right: 0;
+    color: black;
+    text-align: left;
+    z-index: 100;
+    background-color: rgb(255 231 66 / 70%);
+    font-family: monospace;
+    font-size: 14px;
+    padding: 7px;
+}
+
+.debugColumn {
+    min-width: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 10px;
+    background-color: red;
+    outline: 1px solid blue;
+    display: block;
+    height: 100%;
+    opacity: 0.4;
+}
