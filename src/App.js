@@ -7,6 +7,7 @@ import ColumnsDemoMenu from './components/columnsDemoMenu';
 import MainMenu from './components/mainMenu';
 import EndOfContent from './components/items/endOfContentItem';
 import Range from './components/range';
+import AboutInfo from './components/aboutInfo';
 
 class App extends Component {
 
@@ -84,6 +85,7 @@ class App extends Component {
                 <Range label={'Side margins'} min="0" max="200" step="10" defaultValue={sideMargin} value={sideMargin} onChange={(event)=> this.updateRange(event ,'sideMargin')} />
                 {/* <Range label={'Items v. margin'} min="0" max="200" step="10" defaultValue={vmargin} value={vmargin} onChange={(event)=> this.updateRange(event ,'vmargin')} /> */}
             </div>
+            <AboutInfo/>
         </>
     }
 }

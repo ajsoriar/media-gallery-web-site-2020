@@ -6,9 +6,8 @@
     text-align: center;
     font-size: 18px;
     line-height: 18px;
-    z-index: 999;
     height: 50px;
-    background-color: #9C27B0;
+    background-color: #9b27b0c2;
     color: white;
 }
 
@@ -45,7 +44,7 @@
     list-style: none;
     margin: 0 17px;
     border: 1px solid #FFEB3B;
-    background-color: #E91E63;
+    background-color: #e91e62c4;
 }
 
 @media (max-width: 768px) {
