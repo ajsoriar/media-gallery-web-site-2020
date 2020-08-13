@@ -1,4 +1,4 @@
-.columsContainer {
+.ColumnsContainer {
     position: absolute;
     top: 0;
     width: 90%;
@@ -38,4 +38,5 @@
     display: block;
     height: 100%;
     opacity: 0.4;
+    outline: 1px solid #ffe500 !important;
 }

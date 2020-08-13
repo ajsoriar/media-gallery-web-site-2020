@@ -2,18 +2,11 @@ import React from 'react'
 import './index.css'
 import { Component } from 'react'
 
-class ColumsDemoMenu extends Component {
-
-    constructor() {
-        super();
-    }
+class ColumnsDemoMenu extends Component {
 
     render() {
         const {onChangeCallback} = this.props;
-
-        console.log(onChangeCallback);
-
-        return <div className="columsMenu">
+        return <div className="ColumnsMenu">
             <ul className="listOfColumTypes">
                 <li onClick={()=>onChangeCallback("uno")}>Uno</li>
                 <li onClick={()=>onChangeCallback(2)}>Dos</li>
@@ -26,4 +19,4 @@ class ColumsDemoMenu extends Component {
     }
 }
 
-export default ColumsDemoMenu;
+export default ColumnsDemoMenu;

@@ -1,11 +1,11 @@
-.columsMenu{
+.ColumnsMenu{
     display: block;
     width: 150px;
     background-color: #ffeb3b6e;
     height: 300px;
     position: absolute;
     left: 10px;
-    top: 40%;
+    top: 22%;
     margin: 0;
     padding: 0;
     z-index: 100;
