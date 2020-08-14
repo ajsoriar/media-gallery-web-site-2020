@@ -18,7 +18,7 @@ class Columns extends Component {
 
         for (let i = 1; i <= calc.current_Columns_num; i++) columns.push(columnHtml(i));
 
-        var strHtml = <div className="ColumnsContainer" style={{ width: calc.container_width, left: calc.container_side_margin }}>
+        var strHtml = <div className="columnsContainer" style={{ width: calc.container_width, left: calc.container_side_margin }}>
             { this.props.debug && <DisplayColumsDebug calc={calc} inputs={this.props} />}
             {columns}
         </div>;

@@ -6,7 +6,7 @@ class ColumnsDemoMenu extends Component {
 
     render() {
         const {onChangeCallback} = this.props;
-        return <div className="ColumnsMenu">
+        return <div className="columnsMenu">
             <ul className="listOfColumTypes">
                 <li onClick={()=>onChangeCallback("uno")}>Uno</li>
                 <li onClick={()=>onChangeCallback(2)}>Dos</li>

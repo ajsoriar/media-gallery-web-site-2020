@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component } from 'react'
+import { Component } from 'react';
 import './App.css';
 import './bgMediaQueries.css';
 import Columns from './components/containers/columns';
@@ -8,6 +8,7 @@ import MainMenu from './components/mainMenu';
 import EndOfContent from './components/items/endOfContentItem';
 import Range from './components/range';
 import AboutInfo from './components/aboutInfo';
+import LandingGrid from './components/landingGrid';
 
 class App extends Component {
 
@@ -24,7 +25,17 @@ class App extends Component {
         minColumWidth:190, 
         vmargin:10,
         sideMargin:180,
-        hmargin:15
+        hmargin:15,
+        
+        showMediaViewer: false,
+        columnsNum:5,
+        columnWidth:200,
+        columnMargin:10,
+        showFooter: true,
+        footerOverlap: true,
+        headerOverlap: true,
+        showChildrenItems: true,
+        picture: null
     }
 
     updateRange = (event, target) => {
@@ -53,7 +64,7 @@ class App extends Component {
     updateDimensions() {
         this.setState({ 
             browser_width: window.innerWidth, 
-            browser_height: window.innerHeight,
+            browser_height: window.innerHeight
         });
     };
 
@@ -85,6 +96,19 @@ class App extends Component {
                 <Range label={'Side margins'} min="0" max="200" step="10" defaultValue={sideMargin} value={sideMargin} onChange={(event)=> this.updateRange(event ,'sideMargin')} />
                 {/* <Range label={'Items v. margin'} min="0" max="200" step="10" defaultValue={vmargin} value={vmargin} onChange={(event)=> this.updateRange(event ,'vmargin')} /> */}
             </div>
+            <LandingGrid 
+                columnsNum={this.state.columnsNum *1}
+                columnWidth={this.state.columnWidth *1}
+                columnMargin={this.state.columnMargin *1}
+                headerOverlap={this.state.headerOverlap}
+                footerOverlap={this.state.footerOverlap}
+                showFooter={this.state.showFooter}
+                showChildrenItems={this.state.showChildrenItems}
+                className={'landingGridStyle'} 
+                clickFunc={ ( pic ) => {
+                    console.log("pic:", pic );
+                    this.opencloseViewer( pic );
+                } }/>
             <AboutInfo/>
         </>
     }

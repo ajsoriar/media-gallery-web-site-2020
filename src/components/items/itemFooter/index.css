@@ -1,0 +1,41 @@
+.itemFooter {
+    background-color: thistle;
+    position: absolute;
+    top: 110px;
+    _width: 200px;
+    height: 150px;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.itemFooter .title {
+    color: blueviolet;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 24px;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    background-color: aliceblue;
+    height: 24px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100px;
+}
+
+.itemFooter .date {
+    color: blue;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    background-color: aliceblue;
+    height: 18px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100px;
+}

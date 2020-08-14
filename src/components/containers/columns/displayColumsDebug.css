@@ -1,0 +1,15 @@
+.displayColumsDebug {
+    width: 300px;
+    height: auto;
+    position: fixed;
+    display: block;
+    bottom: 60px;
+    right: 0;
+    color: black;
+    text-align: left;
+    z-index: 100;
+    background-color: rgba(255, 231, 66, 0.7);
+    font-family: monospace;
+    font-size: 14px;
+    padding: 7px;
+}

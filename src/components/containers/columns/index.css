@@ -1,4 +1,4 @@
-.ColumnsContainer {
+.columnsContainer {
     position: absolute;
     top: 0;
     width: 90%;
@@ -9,22 +9,6 @@
     margin: auto;
     display: block;
     background-repeat: repeat;
-}
-
-.debug {
-    width: 300px;
-    height: auto;
-    position: fixed;
-    display: block;
-    bottom: 60px;
-    right: 0;
-    color: black;
-    text-align: left;
-    z-index: 100;
-    background-color: rgb(255 231 66 / 70%);
-    font-family: monospace;
-    font-size: 14px;
-    padding: 7px;
 }
 
 .debugColumn {

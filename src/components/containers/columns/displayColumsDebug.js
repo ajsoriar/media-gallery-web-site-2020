@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import './index.css';
+import './displayColumsDebug.css';
 
 class DisplayColumsDebug extends Component {
     render() {
         var _i = this.props.inputs;
         var _c = this.props.calc;
         return (
-            <div className="debug">
+            <div className="displayColumsDebug">
                 
                 <b>Input</b><br/>
 
