@@ -16,9 +16,7 @@
 
 .frameString{
     display: inline-block;
-    margin-top: 350px;
     position: relative;
     background-color: crimson;
     outline: 2px solid green;
-    left: 15%;
 }

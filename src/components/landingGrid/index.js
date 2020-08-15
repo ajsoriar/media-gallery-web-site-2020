@@ -7,13 +7,6 @@ import GridItem from './../items/gridtem'
 
 class LandingGrid extends Component { // includes crop functionality
 
-    constructor() {
-        super();
-        this.state = {
-            items: []
-        }
-    }
-
     render () {
 
         // TODO: Remove all this stuff from render ASAP!
@@ -52,7 +45,7 @@ class LandingGrid extends Component { // includes crop functionality
             debug = { Landingdata.galleryConfig.debug }
         />);
 
-        return <div className='frameString'>
+        return <div className='frameString' style={{"top": this.props.top, "left": this.props.left }}>
             {/* { !this.state.loaded && <div class="pictureLoading">Loading ...</div> } */}
             {/* { !this.state.loaded && <LoadingLayer/> } */}
             { listItems }

@@ -22,10 +22,16 @@
 
 .designer {
     display: block;
-    position: absolute;
-    top: 150px;
+    position: fixed;
+    top: 0px;
     right: 0;
     z-index: 1000;
     padding: 10px;
     background-color: rgb(250 235 215 / 69%);
+    position: fixed;
+}
+
+.designer.gallery {
+    top: 150px;
+    background-color: rgb(255 127 218 / 80%);
 }
