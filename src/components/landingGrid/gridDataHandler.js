@@ -66,23 +66,14 @@ GridDataHandler.getImageData = function (imageData, parameter, reversed) {
 };
 
 GridDataHandler.getFrameHeightFromWidth = function (imgW, imgH, columnWidth) {
-
-    var calculatedHeigh = 100;
-
-    // imageData.target.size.w ---> columnWidth
-    // imageData.target.size.h ---> X
-    // X = columnWidth x imgH / imgW
-
-    calculatedHeigh = columnWidth * imgH / imgW;
-
+    var calculatedHeigh = columnWidth * imgH / imgW;
     if (calculatedHeigh > imgH) calculatedHeigh = imgH;
-
     return calculatedHeigh
 };
 
-GridDataHandler.calculateGrid = function (imagesData, numOfColums, columnWidth, columnMargin, showFooter, footerOverlap, headerOverlap) {
+GridDataHandler.calculateGrid = function (imagesData, numOfColums, columnWidth, columnMargin, vMargin, showFooter, footerOverlap, headerOverlap) {
 
-    var ITEM_TOP_MARGIN = columnMargin;
+    var ITEM_TOP_MARGIN = vMargin; //columnMargin;
     var COLUMS_MARGIN = columnMargin;
 
     //console.log("[GridDataHandler.calculateGrid] imagesData: ", imagesData );
@@ -183,22 +174,18 @@ GridDataHandler.removeInfoItems = function (itemsArr) {
 };
 
 GridDataHandler.generateMediaViewerData = function (itemsArr) {
-
     itemsArr = this.removeInfoItems(itemsArr);
     return itemsArr
 };
 
 GridDataHandler.getPositionInArrOfGalleryItemsById = function (itemsArr, shearchId) {
-
-    console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] itemsArr: ", itemsArr);
-    console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] shearchId: ", shearchId);
-
+    //console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] itemsArr: ", itemsArr);
+    //console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] shearchId: ", shearchId);
     var lon = itemsArr.length;
     if (lon === 0) return [];
     for (var i = 0; i < lon; i++) {
         if (itemsArr[i].id === shearchId) return i
     }
-
     return null
 };
 

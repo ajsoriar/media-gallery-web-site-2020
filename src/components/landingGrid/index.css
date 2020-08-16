@@ -14,8 +14,8 @@
     left: 0;
 }
 
-.frameString{
-    display: inline-block;
+.galleryGrid{
+    display: block;
     position: relative;
     background-color: crimson;
     outline: 2px solid green;

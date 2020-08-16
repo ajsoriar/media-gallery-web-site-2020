@@ -5,7 +5,7 @@ import GridDataHandler from './gridDataHandler.js'
 import './index.css'
 import GridItem from './../items/gridtem'
 
-class LandingGrid extends Component { // includes crop functionality
+class LandingGrid extends Component {
 
     render () {
 
@@ -20,16 +20,16 @@ class LandingGrid extends Component { // includes crop functionality
             "items": GridDataHandler.generateMediaViewerData( Landingdata.items )
         };
         
-
         if ( this.props.showChildrenItems !== true ) {
             data = GridDataHandler.removeChildrenItems( data ); // Clear children items
         }
 
-        data = GridDataHandler.calculateGrid(  // This generates al the coordinates of the gallery
+        data = GridDataHandler.calculateGrid(
             data, 
             this.props.columnsNum, 
             this.props.columnWidth, 
             this.props.columnMargin, 
+            this.props.vMargin,
             this.props.showFooter, 
             this.props.footerOverlap,
             this.props.headerOverlap  
@@ -45,7 +45,7 @@ class LandingGrid extends Component { // includes crop functionality
             debug = { Landingdata.galleryConfig.debug }
         />);
 
-        return <div className='frameString' style={{"top": this.props.top, "left": this.props.left }}>
+        return <div className='galleryGrid' style={{"top": this.props.top +'px', "left": this.props.left }}>
             {/* { !this.state.loaded && <div class="pictureLoading">Loading ...</div> } */}
             {/* { !this.state.loaded && <LoadingLayer/> } */}
             { listItems }

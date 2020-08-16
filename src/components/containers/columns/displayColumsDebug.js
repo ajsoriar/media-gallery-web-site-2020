@@ -16,7 +16,7 @@ class DisplayColumsDebug extends Component {
                 browserWidth: {_i.browserWidth}<br/>
                 browserHeight: {_i.browserHeight}<br/>
                 minColumWidth: {_i.minColumWidth}<br/>
-                vmargin: {_i.vmargin}<br/>
+                vMargin: {_i.vMargin}<br/>
                 sideMargin: {_i.sideMargin}<br/>
                 hmargin: {_i.hmargin}<br/>
                 <br/>

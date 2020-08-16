@@ -9,7 +9,7 @@ ColumnsDataHandler.calculateColums = function ( props ) {
     var maxWidth = parseInt(props.maxContainerWidth);
     var hmargin = parseInt(props.hmargin);
     var sideMargin = parseInt(props.sideMargin);
-    //var vmargin = parseInt(props.vmargin);
+    //var vMargin = parseInt(props.vMargin);
     
     var calc =  {
         current_Columns_num: null,
