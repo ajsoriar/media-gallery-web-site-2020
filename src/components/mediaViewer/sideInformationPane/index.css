@@ -1,0 +1,8 @@
+.informationPane{
+    width: 300px;
+    position: absolute;
+    height: 100%;
+    background-color: darkgray;
+    right: 0;
+    top: 0;
+}

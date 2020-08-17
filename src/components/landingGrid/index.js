@@ -1,9 +1,9 @@
-import React from 'react'
-import { Component } from 'react'
-import Landingdata from './../../demo/landing-data.json'
-import GridDataHandler from './gridDataHandler.js'
-import './index.css'
-import GridItem from './../items/gridtem'
+import React from 'react';
+import { Component } from 'react';
+import Landingdata from './../../demo/landing-data.json';
+import GridDataHandler from './gridDataHandler.js';
+import './index.css';
+import GridItem from './../items/gridtem';
 
 class LandingGrid extends Component {
 
@@ -16,7 +16,7 @@ class LandingGrid extends Component {
         data = GridDataHandler.removeInfoItems( Landingdata.items ); // Clear visual guides / INFO
 
         window.MEDIA_VIEWER_DATA = {
-            "galleryConfig": GridDataHandler.galleryConfig,
+            "galleryConfig": Landingdata.galleryConfig,
             "items": GridDataHandler.generateMediaViewerData( Landingdata.items )
         };
         

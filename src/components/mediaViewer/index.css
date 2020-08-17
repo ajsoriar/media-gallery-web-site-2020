@@ -1,0 +1,104 @@
+.mediaViewer.bg {
+    background-color: #53009fe3;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.mediaViewer .btn {
+    background-color: transparent;
+    width: 70px;
+    height: 70px;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+    line-height: 70px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.mediaViewer .btn:hover {
+    background-color: cyan;
+}
+
+.mediaViewer .btn.next {
+    position: absolute;
+    top: calc(50% - 35px);
+    right: 0;
+}
+
+.mediaViewer .btn.previous {
+    position: absolute;
+    top: calc(50% - 35px);
+    left: 0;
+}
+
+.mediaViewer .btn-picture.next {
+    position: absolute;
+    top: calc(50% + 35px);
+    right: 0;
+}
+
+.mediaViewer .btn-picture.previous {
+    position: absolute;
+    top: calc(50% + 35px);
+    left: 0;
+}
+
+.debug {
+    font-size: 14px;
+    color: #8BC34A;
+    line-height: 20px;
+    top: 0;
+    position: absolute;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    right: 0;
+}
+
+.debug b {
+    color: orange;
+}
+
+.pixelated {
+    image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED */
+    image-rendering: -moz-crisp-edges; /* Firefox */
+    image-rendering: -o-crisp-edges; /* Opera */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated; /* Chrome */
+    image-rendering: optimize-contrast; /* CSS3 Proposed */
+    -ms-interpolation-mode: nearest-neighbor; /* IE8+ */
+}
+
+.mediaViewer .title {
+    position: absolute;
+    color: azure;
+    text-shadow: 0 1px 0 black;
+}
+
+.mediaViewer .info {
+    position: absolute;
+    color: white;
+    text-shadow: 0 1px 0 black;
+}
+
+.mediaViewer.error {
+    width: 300px;
+    height: 200px;
+    background-color: black;
+    line-height: 200px;
+    text-align: center;
+    color: red;
+    display: block;
+    z-index: 1000;
+    position: fixed;
+    top: calc(50% - 100px);
+    left: calc(50% - 150px);
+    border: 2px solid white;
+}

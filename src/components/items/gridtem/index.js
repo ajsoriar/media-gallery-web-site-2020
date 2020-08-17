@@ -17,8 +17,8 @@ class GridItem extends Component {
         return <div 
             key={imgDat.name} 
             className={'gridItem'} 
-            // onClick={ this.props.clickFunc? () => this.props.clickFunc(imgDat) : (()=>{ console.log("CLICK ON ELEMENT!")})}
-            onClick={ ()=>{ console.log("CLICK ON ELEMENT!")} }
+            onClick={ this.props.clickFunc? () => this.props.clickFunc(imgDat) : (()=>{ console.log("CLICK ON ELEMENT!")})}
+            //onClick={ ()=>{ console.log("CLICK ON ELEMENT!")} }
             style={{
                 "width": itemCal.frmW + 0 + "px", 
                 "height": itemCal.totalComponetH +"px", 

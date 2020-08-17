@@ -9,6 +9,7 @@ import EndOfContent from './components/items/endOfContentItem';
 import Range from './components/range';
 import AboutInfo from './components/aboutInfo';
 import AndresCheckBox from './components/checkBox';
+import MediaViewer from './components/mediaViewer';
 
 class App extends Component {
 
@@ -29,7 +30,6 @@ class App extends Component {
         hmargin:15,
       
         // Configuration of the gallery
-        showMediaViewer: false,
         showChildrenItems: true,
         galleryTop: 35,
         vMargin:10,
@@ -40,7 +40,8 @@ class App extends Component {
         headerOverlap: true,
        
         // Picture viewer
-        //picture: null,
+        showMediaViewer: false,
+        picture: 0
     }
 
     updateRange = (event, target) => {
@@ -69,7 +70,7 @@ class App extends Component {
         }
     }
 
-    //opencloseViewer = (pic) => { this.setState({showMediaViewer: !this.state.showMediaViewer, picture: pic}); }
+    opencloseViewer = (pic) => { this.setState({showMediaViewer: !this.state.showMediaViewer, picture: pic}); }
     headerOverlap = () => { this.setState({headerOverlap: !this.state.headerOverlap}); }
     footerOverlap = () => { this.setState({footerOverlap: !this.state.footerOverlap}); }
     swichFooter = () => { this.setState({showFooter: !this.state.showFooter}); }
@@ -113,6 +114,7 @@ class App extends Component {
                     "showFooter": this.state.showFooter,
                     "showChildrenItems": this.state.showChildrenItems
                 }}
+                opencloseViewer={(pic) => { this.setState({showMediaViewer: true, picture: pic}); }}
             />
 
             {/*<MainMenu /> */}
@@ -134,6 +136,12 @@ class App extends Component {
                 <AndresCheckBox label="Show children items" callback={this.swichChildren} checked={this.state.showChildrenItems}></AndresCheckBox>
             </div>
             <AboutInfo/>
+            { this.state.showMediaViewer && <MediaViewer 
+                items={[]} 
+                picture={this.state.picture}
+                closeFunction={this.opencloseViewer}
+                gallery={window.MEDIA_VIEWER_DATA}
+            />}
         </>
     }
 }

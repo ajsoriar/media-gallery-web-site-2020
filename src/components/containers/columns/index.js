@@ -58,7 +58,7 @@ class Columns extends Component {
                 className={'landingGridStyle'} 
                 clickFunc={ ( pic ) => {
                     console.log("pic:", pic );
-                    //this.opencloseViewer( pic );
+                    this.props.opencloseViewer( pic );
                 } }/>
         </>
     }

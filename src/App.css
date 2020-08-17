@@ -27,7 +27,8 @@
     z-index: 1000;
     padding: 10px;
     /* background-color: rgb(255 235 59 / 86%); */
-    background-color: rgb(59 255 83 / 86%);
+    /* background-color: rgb(59 255 83 / 86%); */
+    background-color: rgb(59 255 201 / 86%);
     position: fixed;
     outline: 0px solid red;
 }

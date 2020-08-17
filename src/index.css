@@ -1,9 +1,7 @@
 * {
-    max-width: 100%;
     vertical-align: middle;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
-    /* outline: 0 !important; */
 }
 
 body {
