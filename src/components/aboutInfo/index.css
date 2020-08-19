@@ -1,7 +1,7 @@
 /* Top */
 
 * {
-    outline: 1px solid red;;
+    _outline: 1px solid red;
 }
 
 .blur {
@@ -55,7 +55,6 @@
     font-size: 24px !important;
     cursor: pointer;
     font-weight: 700;
-    line-height: 45px;
 }
 
 .bigFont {
@@ -84,6 +83,9 @@
     z-index: 9999;
     bottom: 0;
     left: 0;
+    width: 100%;
+    background-color: rgb(112, 255, 93);
+    padding-top: 10px;
 }
 
 .informationGroup{
@@ -104,9 +106,21 @@
 
 .informationSection p {
     margin: 0;
-    margin-bottom: px;
 }
 
 .aboutInfoContainer div{
     outline: 1px solid rgb(0, 4, 255);
+}
+
+.aboutInfo .pictureFrame {
+    display: block;
+    top: 85px;
+    width: 100%;
+    background-color: tomato;
+    height: 530px;
+    overflow: hidden;
+}
+
+.aboutInfo .pictureFrame video {
+    width: 100%;
 }

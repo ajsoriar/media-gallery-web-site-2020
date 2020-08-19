@@ -1,10 +1,11 @@
-import React from 'react'
-import './index.css'
-import { Component } from 'react'
-import Icon from './../icon'
-import VideoBackGround from './videoBackGround'
-import ImageItem from './imageItem'
-import GridDataHandler from './../landingGrid/gridDataHandler'
+import React from 'react';
+import './index.css';
+import { Component } from 'react';
+import Icon from './../icon';
+import VideoBackGround from '../backgrounds/videoBackGround';
+import ImageItem from './imageItem';
+import GridDataHandler from './../landingGrid/gridDataHandler';
+import ImageBackGround from '../backgrounds/imageBackground';
 
 class MediaViewer extends Component {
 
@@ -74,6 +75,8 @@ class MediaViewer extends Component {
 
                 <VideoBackGround src={'https:/www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4'} loop={true} realWidth={640} realHeight={480}></VideoBackGround>
 
+                <ImageBackGround src={''} realWidth={640} realHeight={480}></ImageBackGround> 
+
                 {/* IN THE CASE OF AN IMAGE */}
                 ( <ImageItem 
                     frameSize={{w: this.state.browser_width, h: this.state.browser_height }}
@@ -82,7 +85,6 @@ class MediaViewer extends Component {
                     antialiasing={i.antialiasing} // + "?lol="+ Date.now() 
                     cropStrategy={cs || 'DEFAULT'} 
                     loadingLayer={true}
-                    debug={true}
                 /> 
                 {/* IN THE CASE OF AN IMAGE */}
 
@@ -97,14 +99,21 @@ class MediaViewer extends Component {
                     */}
                 {/* IN THE CASE OF A VIDEO */}
 
-                <div className="btn close" onClick={closeFunction}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
-                <div className="title">{/* {gallery.galleryConfig.id} | {gallery.galleryConfig.name} - {gallery.galleryConfig.title} ({gallery.items.length} items)<br/> */}</div>
-                <div className="info">{arrPos +1} / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>
+
+                {/* LAYER PICTURE */}
+                <div className="layer-next" onClick={()=>{ this.getNextPictureNum(1); }}></div>
+                <div className="layer-previous" onClick={()=>{ this.getNextPictureNum(-1); }}></div>
+                {/* LAYER PICTURE */}  
+
 
                 {/* BTN PICTURE */}
                 <div className="btn-picture next"><Icon width={70} name={'arrow-right'} clickFunc={()=>{ this.getNextPictureNum(1); }}/></div>
                 <div className="btn-picture previous"><Icon width={70} name={'arrow-left'} clickFunc={()=>{ this.getNextPictureNum(-1); }}/></div>
-                {/* BTN PICTURE */}           
+                {/* BTN PICTURE */}  
+
+                <div className="btn close" onClick={closeFunction}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
+                <div className="title">{/* {gallery.galleryConfig.id} | {gallery.galleryConfig.name} - {gallery.galleryConfig.title} ({gallery.items.length} items)<br/> */}</div>
+                <div className="info">{arrPos +1} / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>                         
                         
                 {/* <SideInformationPane/> */}
         </div>;

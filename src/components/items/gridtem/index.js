@@ -5,6 +5,8 @@ import GridDataHandler from '../../landingGrid/gridDataHandler';
 import ImageItem from './../../mediaViewer/imageItem';
 import ItemFooter from './../itemFooter';
 import ItemOverlapDetail from './../itemOverlapDetail';
+import FooterDataHandler from './../itemFooter/dataHandler';
+import ForeverBrandBanner from './../../banners/foreverBrandBanner';
 
 class GridItem extends Component {
 
@@ -25,7 +27,6 @@ class GridItem extends Component {
                 "backgroundColor": itemCal.imgBgColor || "gray", 
                 "position": "absolute",
                 "top": itemCal.top +"px",
-
                 "left": itemCal.left +"px"
             }}
         >
@@ -37,6 +38,13 @@ class GridItem extends Component {
                 debug={false}
                 cropStrategy={GridDataHandler.getImageData(imgDat, "cropStrategy") || 'DEFAULT'}>
             </ImageItem>
+
+            <ForeverBrandBanner className="brandBanner" src="josesoriarodriguez.svg" paneSize={{ w: itemCal.frmW, h: itemCal.frmH - FooterDataHandler.getFooterHeight(imgDat.footer) }} 
+                top={ itemCal.totalComponetH / 2 - 53 / 2}  
+                w={513}
+                h={53} 
+            />
+
         { this.props.debug && <><div className={"arrIndex"}>{imgDat.index}</div><div className={"debug " + (imgDat.parent?' is-children':'')}>{imgDat.id}<br/>
             {imgDat.type}{imgDat.children && <><br/><div className="debug children">{imgDat.children.map((id) => <div key={id} className="id">{id}</div>)}</div></>}</div></>}
             { (itemCal.headerOverlap && imgDat.header) && <ItemOverlapDetail position={'TOP'} itemData={imgDat.header} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} />}

@@ -43,7 +43,7 @@ class Columns extends Component {
         };
 
         return <>
-            {strHtml}
+            {window.AJSR_DEBUG && strHtml}
             <LandingGrid 
                 top={grid.galleryTop}
                 left={grid.galleryLeft}

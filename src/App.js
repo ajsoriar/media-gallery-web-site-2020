@@ -10,6 +10,7 @@ import Range from './components/range';
 import AboutInfo from './components/aboutInfo';
 import AndresCheckBox from './components/checkBox';
 import MediaViewer from './components/mediaViewer';
+import GoToTop from './components/scroll/goToTop';
 
 class App extends Component {
 
@@ -119,7 +120,8 @@ class App extends Component {
 
             {/*<MainMenu /> */}
 
-            <div className="designer">
+            {window.AJSR_DEBUG && <div className="designer">
+                <div className="debug-btn-close">close</div>
                 <b>Gallery Columns</b>
                 <Range label={'Max container width'} min="550" max="1600" step="50" defaultValue={maxContainerWidth} value={maxContainerWidth} onChange={(event)=> this.updateRange(event ,'maxContainerWidth')} />
                 <Range label={'Max num. of columns'} min="1" max="20" step="1" defaultValue={maxNumOfColumns} value={maxNumOfColumns} onChange={(event)=> this.updateRange(event ,'maxNumOfColumns')} />
@@ -134,7 +136,7 @@ class App extends Component {
                 <AndresCheckBox label="Overlap details" callback={this.footerOverlap} checked={this.state.footerOverlap}></AndresCheckBox>
                 <AndresCheckBox label="Show footer" callback={this.swichFooter} checked={this.state.showFooter}></AndresCheckBox>
                 <AndresCheckBox label="Show children items" callback={this.swichChildren} checked={this.state.showChildrenItems}></AndresCheckBox>
-            </div>
+            </div>}
             <AboutInfo/>
             { this.state.showMediaViewer && <MediaViewer 
                 items={[]} 
@@ -142,6 +144,7 @@ class App extends Component {
                 closeFunction={this.opencloseViewer}
                 gallery={window.MEDIA_VIEWER_DATA}
             />}
+            <GoToTop />
         </>
     }
 }

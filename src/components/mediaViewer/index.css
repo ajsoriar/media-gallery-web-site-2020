@@ -50,6 +50,23 @@
     left: 0;
 }
 
+.layer-next{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    _background-color: #f0f8ff82;
+}
+
+.layer-previous{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    _background-color: #ddd69682;
+    left: 50%;
+}
+
 .debug {
     font-size: 14px;
     color: #8BC34A;
@@ -84,8 +101,11 @@
 
 .mediaViewer .info {
     position: absolute;
-    color: white;
+    color: #FFC107;
     text-shadow: 0 1px 0 black;
+    font-size: 24px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.3);
 }
 
 .mediaViewer.error {

@@ -1,0 +1,48 @@
+.bb2.foreverBrandBanner {
+  background-color: black;
+  width: 100%;
+  height: 55px;
+  display: block;
+  z-index: 1000;
+  top: 0;
+  top: calc( 50% - 27.5px );
+  position: absolute;
+  overflow: hidden;
+  transition: all;
+  transition-duration: 1s;
+  opacity: 0;
+  opacity: 1;
+  background-image: url(./../../../assets/ajsr/josesoriarodriguez-light-gray.svg);
+  opacity: 0;
+} 
+
+@-webkit-keyframes about-move-bg-keyframes {
+  from {
+      background-position: 0 0;
+  }
+  to { 
+      background-position: 10px;
+  }
+}
+
+@keyframes about-move-bg-keyframes {
+  from {
+      background-position: 0 0x;
+  }
+  to { 
+      background-position: -512px 0px;
+  }
+}
+
+.about-move-bg{
+ animation-name: about-move-bg-keyframes;
+ animation-duration: 1s;
+ animation-timing-function: linear;
+ animation-iteration-count: infinite;
+ animation: about-move-bg-keyframes 1s linear infinite;
+ -webkit-animation-name: about-move-bg-keyframes;
+ -webkit-animation-duration: 3s;
+ -webkit-animation-timing-function: linear;
+ -webkit-animation-iteration-count: infinite;
+ -webkit-animation: about-move-bg-keyframes 3s linear infinite;
+}

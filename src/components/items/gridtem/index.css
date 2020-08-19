@@ -15,6 +15,16 @@
     z-index: 100;
 }
 
+.gridItem:hover img{
+    opacity: 0.5;
+}
+
+.gridItem:hover .foreverBrandBanner,
+.gridItem:hover .brandBanner,
+.gridItem:hover .brandBanner .animation{
+    display: block;
+    opacity: 1;
+}
 
 .gridItem .debug {
     color: yellow;

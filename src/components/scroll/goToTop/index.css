@@ -1,0 +1,22 @@
+.goToTopbutton {
+    display: block;
+    width: 70px;
+    height: 70px;
+    background-color: #FFEB3B;
+    color: #3F51B5;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 24px;
+    border-radius: 100px;
+    line-height: 70px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.goToTopbutton:hover {
+    background-color: #ffa33b;
+}
