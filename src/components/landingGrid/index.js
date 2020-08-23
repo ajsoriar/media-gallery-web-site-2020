@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import Landingdata from './../../demo/landing-data.json';
+//import LandingData from './../../demo/landing-data.json';
 import GridDataHandler from './gridDataHandler.js';
 import './index.css';
 import GridItem from './../items/gridtem';
@@ -11,13 +11,17 @@ class LandingGrid extends Component {
 
         // TODO: Remove all this stuff from render ASAP!
 
+        var LandingData = this.props.imagesData || null;
+
+        if (LandingData === null ) return null;
+
         var data;
 
-        data = GridDataHandler.removeInfoItems( Landingdata.items ); // Clear visual guides / INFO
+        data = GridDataHandler.removeInfoItems( LandingData.items ); // Clear visual guides / INFO
 
         window.MEDIA_VIEWER_DATA = {
-            "galleryConfig": Landingdata.galleryConfig,
-            "items": GridDataHandler.generateMediaViewerData( Landingdata.items )
+            "galleryConfig": LandingData.galleryConfig,
+            "items": GridDataHandler.generateMediaViewerData( LandingData.items )
         };
         
         if ( this.props.showChildrenItems !== true ) {
@@ -42,7 +46,7 @@ class LandingGrid extends Component {
             index = { index }
             imgDat = { imgDat }
             clickFunc = { this.props.clickFunc }
-            debug = { Landingdata.galleryConfig.debug }
+            debug = { LandingData.galleryConfig.debug }
         />);
 
         return <div className='galleryGrid' style={{"top": this.props.top +'px', "left": this.props.left }}>

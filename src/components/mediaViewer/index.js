@@ -85,6 +85,7 @@ class MediaViewer extends Component {
                     antialiasing={i.antialiasing} // + "?lol="+ Date.now() 
                     cropStrategy={cs || 'DEFAULT'} 
                     loadingLayer={true}
+                    debug={window.WEB_DEBUG.viewerImages}
                 /> 
                 {/* IN THE CASE OF AN IMAGE */}
 

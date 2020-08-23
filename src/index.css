@@ -2,6 +2,7 @@
     vertical-align: middle;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
+    user-select: none;
 }
 
 body {

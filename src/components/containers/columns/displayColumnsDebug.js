@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import './displayColumsDebug.css';
+import './displayColumnsDebug.css';
 
-class DisplayColumsDebug extends Component {
+class DisplayColumnsDebug extends Component {
     render() {
         var _i = this.props.inputs;
         var _c = this.props.calc;
         return (
-            <div className="displayColumsDebug">
+            <div className="displayColumnsDebug">
                 
                 <b>Input</b><br/>
 
@@ -37,4 +37,4 @@ class DisplayColumsDebug extends Component {
     }
 }
 
-export default DisplayColumsDebug;
+export default DisplayColumnsDebug;

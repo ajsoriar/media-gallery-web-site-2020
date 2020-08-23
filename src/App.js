@@ -3,7 +3,6 @@ import { Component } from 'react';
 import './App.css';
 import './bgMediaQueries.css';
 import Columns from './components/containers/columns';
-import ColumnsDemoMenu from './components/columnsDemoMenu';
 import MainMenu from './components/mainMenu';
 import EndOfContent from './components/items/endOfContentItem';
 import Range from './components/range';
@@ -11,6 +10,7 @@ import AboutInfo from './components/aboutInfo';
 import AndresCheckBox from './components/checkBox';
 import MediaViewer from './components/mediaViewer';
 import GoToTop from './components/scroll/goToTop';
+import PresetsMenu from './components/presetsMenu';
 
 class App extends Component {
 
@@ -20,26 +20,23 @@ class App extends Component {
     }
 
     state = {
-
+        imagesData: null,
         // Configuration of the columns
         browser_width: window.innerWidth, 
         browser_height: window.innerHeight,
-        maxContainerWidth:1440,
-        maxNumOfColumns:5,
-        minColumWidth:190, 
-        sideMargin:180,
-        hmargin:15,
-      
+        maxContainerWidth: window.WEB_CONFIG.columnsGrid.maxContainerWidth,
+        maxNumOfColumns: window.WEB_CONFIG.columnsGrid.maxNumOfColumns,
+        minColumWidth: window.WEB_CONFIG.columnsGrid.minColumWidth,
+        sideMargin: window.WEB_CONFIG.columnsGrid.sideMargin,
+        hmargin: window.WEB_CONFIG.columnsGrid.hmargin,
         // Configuration of the gallery
-        showChildrenItems: true,
-        galleryTop: 35,
-        vMargin:10,
-
+        showChildrenItems: window.WEB_CONFIG.columnsGrid.showChildrenItems,
+        galleryTop: window.WEB_CONFIG.columnsGrid.galleryTop,
+        vMargin: window.WEB_CONFIG.columnsGrid.vMargin,
         // Configuration of gallery items
-        showFooter: true,
-        footerOverlap: true,
-        headerOverlap: true,
-       
+        showFooter: window.WEB_CONFIG.columnsGrid.showFooter,
+        footerOverlap: window.WEB_CONFIG.columnsGrid.footerOverlap,
+        headerOverlap: window.WEB_CONFIG.columnsGrid.headerOverlap,
         // Picture viewer
         showMediaViewer: false,
         picture: 0
@@ -77,6 +74,46 @@ class App extends Component {
     swichFooter = () => { this.setState({showFooter: !this.state.showFooter}); }
     swichChildren = () => { this.setState({showChildrenItems: !this.state.showChildrenItems}); }
 
+    chooseColumnsData(id) {
+        var newConfig = window.WEB_DEBUG_DATA.columnsGrid[ id ];
+        this.setState({ 
+            maxContainerWidth: newConfig.maxContainerWidth,
+            maxNumOfColumns: newConfig.maxNumOfColumns,
+            minColumWidth: newConfig.minColumWidth,
+            sideMargin: newConfig.sideMargin,
+            hmargin: newConfig.hmargin,
+            showChildrenItems: newConfig.showChildrenItems,
+            galleryTop: newConfig.galleryTop,
+            vMargin: newConfig.vMargin,
+            showFooter: newConfig.showFooter,
+            footerOverlap: newConfig.footerOverlap,
+            headerOverlap: newConfig.headerOverlap,
+        });
+    };
+
+    chooseStylesData(themeName) {
+        console.log("PresetsMenu -> click, themeName: ", themeName ); 
+        let previousTheme = document.documentElement.getAttribute('data-theme');
+        document.querySelector('body').classList.remove(previousTheme);
+        document.documentElement.setAttribute('data-theme', themeName);
+        document.querySelector('body').classList.add(themeName);
+    };
+
+    chooseSourceData(src) {
+        console.log("PresetsMenu -> click, src: ", src ); 
+        var that = this;
+
+        fetch("./"+ src)
+        .then(response => response.json())
+        .then(data => {
+            console.log("response: ",data);
+            that.setState({ 
+                imagesData: data
+            });
+        })
+        .catch(console.error);
+    };
+
     updateDimensions() {
         this.setState({ 
             browser_width: window.innerWidth, 
@@ -87,6 +124,9 @@ class App extends Component {
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
         this.updateDimensions();
+        this.chooseSourceData('landing-data.json');
+        this.chooseStylesData(window.WEB_DEBUG_DATA.mixMenu[1].paramArr[0]);
+        this.chooseColumnsData(window.WEB_DEBUG_DATA.mixMenu[1].paramArr[1]); 
     }
     
     componentWillUnmount() {
@@ -96,10 +136,9 @@ class App extends Component {
     render () {
         var { maxContainerWidth, maxNumOfColumns, minColumWidth, vMargin, sideMargin, hmargin, browser_width, browser_height, galleryTop} = this.state;
         return  <>
-            <Columns 
+            { this.state.imagesData && <Columns 
                 browserWidth={browser_width}
                 browserHeight={browser_height}
-                debug={true}
                 maxNumOfColumns={maxNumOfColumns}
                 minNumOfCoumns={1}
                 minColumWidth={minColumWidth}
@@ -115,15 +154,18 @@ class App extends Component {
                     "showFooter": this.state.showFooter,
                     "showChildrenItems": this.state.showChildrenItems
                 }}
-                opencloseViewer={(pic) => { this.setState({showMediaViewer: true, picture: pic}); }}
-            />
+                opencloseViewer={(pic) => {
+                    this.setState({showMediaViewer: true, picture: pic}); 
+                }}
+                imagesData={this.state.imagesData }
+            />}
 
-            {/*<MainMenu /> */}
+            {/* <MainMenu /> */}
 
-            {window.AJSR_DEBUG && <div className="designer">
+            {window.WEB_DEBUG.columnsDesigner && <div className="designer">
                 <div className="debug-btn-close">close</div>
                 <b>Gallery Columns</b>
-                <Range label={'Max container width'} min="550" max="1600" step="50" defaultValue={maxContainerWidth} value={maxContainerWidth} onChange={(event)=> this.updateRange(event ,'maxContainerWidth')} />
+                <Range label={'Max container width'} min="550" max="2600" step="50" defaultValue={maxContainerWidth} value={maxContainerWidth} onChange={(event)=> this.updateRange(event ,'maxContainerWidth')} />
                 <Range label={'Max num. of columns'} min="1" max="20" step="1" defaultValue={maxNumOfColumns} value={maxNumOfColumns} onChange={(event)=> this.updateRange(event ,'maxNumOfColumns')} />
                 <Range label={'Min column width'} min="120" max="300" step="10" defaultValue={minColumWidth} value={minColumWidth} onChange={(event)=> this.updateRange(event ,'minColumWidth')} />
                 <Range label={'Columns margin'} min="0" max="100" step="5" defaultValue={hmargin} value={hmargin} onChange={(event)=> this.updateRange(event ,'hmargin')} />
@@ -137,13 +179,40 @@ class App extends Component {
                 <AndresCheckBox label="Show footer" callback={this.swichFooter} checked={this.state.showFooter}></AndresCheckBox>
                 <AndresCheckBox label="Show children items" callback={this.swichChildren} checked={this.state.showChildrenItems}></AndresCheckBox>
             </div>}
+
             <AboutInfo/>
+
             { this.state.showMediaViewer && <MediaViewer 
                 items={[]} 
                 picture={this.state.picture}
                 closeFunction={this.opencloseViewer}
                 gallery={window.MEDIA_VIEWER_DATA}
             />}
+
+            <div className="controls-presets">
+                <PresetsMenu title={'Columns & Style'}
+                    mnuData={ window.WEB_DEBUG_DATA.mixMenu }
+                    clickFunction={ (i) => { 
+                        console.log("i:", i );
+                        this.chooseStylesData(i.paramArr[0]);
+                        this.chooseColumnsData(i.paramArr[1]); 
+                    }} />
+
+                <PresetsMenu title={'Columns'}
+                    mnuData={ window.WEB_DEBUG_DATA.columnsMenu }
+                    clickFunction={ (i) => { this.chooseColumnsData(i.id); }} />
+
+                <PresetsMenu title={'Styles'}
+                    mnuData={ window.WEB_DEBUG_DATA.stylesMenu }
+                    clickFunction={ (i) => { this.chooseStylesData(i.themeName) }} />
+
+                <PresetsMenu 
+                    mnuData={ window.WEB_DEBUG_DATA.sourcesMenu }
+                    clickFunction={ (i) => { this.chooseSourceData(i.fileName) }}
+                    title={'Sources'}/>
+
+            </div>
+
             <GoToTop />
         </>
     }

@@ -71,16 +71,16 @@ GridDataHandler.getFrameHeightFromWidth = function (imgW, imgH, columnWidth) {
     return calculatedHeigh
 };
 
-GridDataHandler.calculateGrid = function (imagesData, numOfColums, columnWidth, columnMargin, vMargin, showFooter, footerOverlap, headerOverlap) {
+GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth, columnMargin, vMargin, showFooter, footerOverlap, headerOverlap) {
 
     var ITEM_TOP_MARGIN = vMargin; //columnMargin;
     var COLUMS_MARGIN = columnMargin;
 
     //console.log("[GridDataHandler.calculateGrid] imagesData: ", imagesData );
-    //console.log("[GridDataHandler.calculateGrid] numOfColums: ", numOfColums );
+    //console.log("[GridDataHandler.calculateGrid] numOfColumns: ", numOfColumns );
     //console.log("[GridDataHandler.calculateGrid] columnWidth: ", columnWidth );
 
-    var arrOfTops = Array(numOfColums).fill(0); //[0,0,0,0];
+    var arrOfTops = Array(numOfColumns).fill(0); //[0,0,0,0];
 
     var getTargetColum = function (temp) { // Smallest number in array and its position
         temp = arrOfTops;
@@ -95,7 +95,7 @@ GridDataHandler.calculateGrid = function (imagesData, numOfColums, columnWidth, 
         return index;
     };
 
-    var getCurrentTopAndCalculateANewOneUpdatingColumsRegistry = function (colNum, newItemHeight) {
+    var getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry = function (colNum, newItemHeight) {
         var currentTop = arrOfTops[colNum];
         var newTop = currentTop + newItemHeight + ITEM_TOP_MARGIN;
         arrOfTops[colNum] = newTop;
@@ -136,7 +136,7 @@ GridDataHandler.calculateGrid = function (imagesData, numOfColums, columnWidth, 
         arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
         var targetColum = getTargetColum();
         arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
-        arr[i].calculated.top = getCurrentTopAndCalculateANewOneUpdatingColumsRegistry(targetColum, arr[i].calculated.totalComponetH);
+        arr[i].calculated.top = getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH);
     }
 
     return arr

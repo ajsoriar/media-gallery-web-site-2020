@@ -1,6 +1,12 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   module: {
     rules: [
       {
@@ -36,6 +42,15 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: './src/dataSource/landing-data.json', to: '' },
+        { from: './src/dataSource/landing-data.2.json', to: '' }
+      ],
+      options: {
+        concurrency: 100,
+      },
     })
   ]
 };

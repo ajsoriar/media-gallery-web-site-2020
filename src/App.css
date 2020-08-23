@@ -50,3 +50,13 @@
 .designer input{
     outline: 0px solid red;
 }
+
+.controls-presets{
+    border: 1px solid #FFEB3B;
+    background-color: #000000a6;
+    z-index: 1000;
+    display: block;
+    width: fit-content;
+    position: relative;
+    margin-top: 50px;
+}

@@ -5,7 +5,9 @@ import './nav.css';
 import './fonts.css';
 import App from './App';
 import 'loading-layer';
-import 'loading-layer/dist/loading-layer.min.css'
+import 'loading-layer/dist/loading-layer.min.css';
+import './themes/dark.css';
+import './themes/light.css';
 
 ReactDOM.render(
     <React.StrictMode>

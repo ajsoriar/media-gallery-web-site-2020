@@ -2,14 +2,14 @@ import React from 'react';
 import './index.css';
 import { Component } from 'react';
 import ColumnsDataHandler from './columnsDatahandler';
-import DisplayColumsDebug from './displayColumsDebug';
+import DisplayColumnsDebug from './displayColumnsDebug';
 import LandingGrid from './../../landingGrid/index';
 
 class Columns extends Component {
 
     render() {
 
-        var calc = ColumnsDataHandler.calculateColums(this.props), 
+        var calc = ColumnsDataHandler.calculateColumns(this.props), 
             columns = [];
 
         var columnHtml = (colNum) => <div key={colNum} className="debugColumn" style={{
@@ -20,7 +20,7 @@ class Columns extends Component {
         for (let i = 1; i <= calc.current_Columns_num; i++) columns.push(columnHtml(i));
 
         var strHtml = <div className="columnsContainer" style={{ width: calc.container_width, left: calc.container_side_margin }}>
-            {this.props.debug && <DisplayColumsDebug calc={calc} inputs={this.props} />}
+            <DisplayColumnsDebug calc={calc} inputs={this.props} />
             {columns}
         </div>;
 
@@ -43,7 +43,7 @@ class Columns extends Component {
         };
 
         return <>
-            {window.AJSR_DEBUG && strHtml}
+            {window.WEB_DEBUG.gridAlgorithm && strHtml}
             <LandingGrid 
                 top={grid.galleryTop}
                 left={grid.galleryLeft}
@@ -59,7 +59,9 @@ class Columns extends Component {
                 clickFunc={ ( pic ) => {
                     console.log("pic:", pic );
                     this.props.opencloseViewer( pic );
-                } }/>
+                } }
+                imagesData={this.props.imagesData}
+                />
         </>
     }
 }

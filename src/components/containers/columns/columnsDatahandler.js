@@ -1,6 +1,6 @@
 const ColumnsDataHandler = {};
 
-ColumnsDataHandler.calculateColums = function ( props ) {
+ColumnsDataHandler.calculateColumns = function ( props ) {
 
     var browser_width = parseInt(props.browserWidth);
     //var screen_height = parseInt(props.browserHeight);

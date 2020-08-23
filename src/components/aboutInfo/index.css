@@ -1,16 +1,9 @@
-/* Top */
-
-* {
-    _outline: 1px solid red;
-}
-
 .blur {
     -webkit-filter: blur(0.25vh) contrast(100%) brightness(150%);
     filter: blur(0.25vh) contrast(100%) brightness(150%);
 }
 
 .aboutInfoSmall{
-    _background-color: rgb(244 7 7 / 80%);
     color: rgb(0, 0, 0);
     top: 0;
     width: 90%;
@@ -59,7 +52,7 @@
 
 .bigFont {
     font-size: 57px;
-    font-weight: 700;
+    _font-weight: 700;
 }
 
 .authorName .right {
@@ -96,6 +89,7 @@
     font-weight: 600;
     display: inline-block;
     margin-right: 30px;
+    vertical-align: top;
 }
 
 .informationSection .title{
@@ -107,11 +101,11 @@
 .informationSection p {
     margin: 0;
 }
-
+/*
 .aboutInfoContainer div{
     outline: 1px solid rgb(0, 4, 255);
 }
-
+*/
 .aboutInfo .pictureFrame {
     display: block;
     top: 85px;

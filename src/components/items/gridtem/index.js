@@ -35,7 +35,7 @@ class GridItem extends Component {
                 imageSize={{ w: itemCal.imgW, h: itemCal.imgH }}
                 imageSource={GridDataHandler.getImageData(imgDat, "SOURCE")}
                 antialiasing={true}
-                debug={false}
+                debug={window.WEB_DEBUG.gridImages}
                 cropStrategy={GridDataHandler.getImageData(imgDat, "cropStrategy") || 'DEFAULT'}>
             </ImageItem>
 
@@ -45,7 +45,7 @@ class GridItem extends Component {
                 h={53} 
             />
 
-        { this.props.debug && <><div className={"arrIndex"}>{imgDat.index}</div><div className={"debug " + (imgDat.parent?' is-children':'')}>{imgDat.id}<br/>
+        { window.WEB_DEBUG.imageIndexes && <><div className={"arrIndex"}>{imgDat.index}</div><div className={"debug " + (imgDat.parent?' is-children':'')}>{imgDat.id}<br/>
             {imgDat.type}{imgDat.children && <><br/><div className="debug children">{imgDat.children.map((id) => <div key={id} className="id">{id}</div>)}</div></>}</div></>}
             { (itemCal.headerOverlap && imgDat.header) && <ItemOverlapDetail position={'TOP'} itemData={imgDat.header} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} />}
             { (itemCal.footerOverlap && imgDat.footer) && <ItemOverlapDetail position={'BOTTOM'} itemData={imgDat.footer} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} />}

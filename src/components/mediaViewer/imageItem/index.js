@@ -154,7 +154,7 @@ class ImageItem extends Component { // includes crop functionality
 
             <img id={props.id} style={cssContentString} className={classNameString} src={props.imageSource} alt={props.id} width={cw} height={ch} onLoad={ () => this.setLoaded() } onError={ () => this.setLoaded() } />
 
-            { window.AJSR_DEBUG && <div className="debug">
+            { props.debug && <div className="image-debug">
                 antialiasing: { (props.antialiasing === false) ? "NO": "YES" }<br/>
                 cropStrategy: { props.cropStrategy }<br/>
                 aspectRatio: { aspectRatio}<br/>
