@@ -11,6 +11,8 @@ import AndresCheckBox from './components/checkBox';
 import MediaViewer from './components/mediaViewer';
 import GoToTop from './components/scroll/goToTop';
 import PresetsMenu from './components/presetsMenu';
+import ListOfTags from './components/tagsList';
+import IframeContent from './components/iframeContent';
 
 class App extends Component {
 
@@ -39,7 +41,10 @@ class App extends Component {
         headerOverlap: window.WEB_CONFIG.columnsGrid.headerOverlap,
         // Picture viewer
         showMediaViewer: false,
-        picture: 0
+        picture: 0,
+        // Iframe
+        showIframeContent: true,
+        iframeSrc: null
     }
 
     updateRange = (event, target) => {
@@ -68,7 +73,16 @@ class App extends Component {
         }
     }
 
-    opencloseViewer = (pic) => { this.setState({showMediaViewer: !this.state.showMediaViewer, picture: pic}); }
+    openCloseViewer = (pic) => { this.setState({showMediaViewer: !this.state.showMediaViewer, picture: pic}); }
+    openCloseIframe = (page) => { 
+        console.log("[App] openCloseIframe(), page: ", page);
+        if (!page) {
+            this.setState({showIframeContent: false}); 
+            return
+        }
+        this.setState({showIframeContent: true, iframeSrc: page}); 
+    }
+
     headerOverlap = () => { this.setState({headerOverlap: !this.state.headerOverlap}); }
     footerOverlap = () => { this.setState({footerOverlap: !this.state.footerOverlap}); }
     swichFooter = () => { this.setState({showFooter: !this.state.showFooter}); }
@@ -92,7 +106,7 @@ class App extends Component {
     };
 
     chooseStylesData(themeName) {
-        console.log("PresetsMenu -> click, themeName: ", themeName ); 
+        console.log("PresetsMenu -> click, themeName: ", themeName); 
         let previousTheme = document.documentElement.getAttribute('data-theme');
         document.querySelector('body').classList.remove(previousTheme);
         document.documentElement.setAttribute('data-theme', themeName);
@@ -113,6 +127,10 @@ class App extends Component {
         })
         .catch(console.error);
     };
+
+    filterImagesByTag = (tagName) => {
+        console.log("[App] filterImagesByTag(), tagName: ", tagName );
+    }
 
     updateDimensions() {
         this.setState({ 
@@ -154,13 +172,31 @@ class App extends Component {
                     "showFooter": this.state.showFooter,
                     "showChildrenItems": this.state.showChildrenItems
                 }}
-                opencloseViewer={(pic) => {
+                openCloseViewer={(pic) => {
                     this.setState({showMediaViewer: true, picture: pic}); 
                 }}
                 imagesData={this.state.imagesData }
             />}
 
-            {/* <MainMenu /> */}
+            <MainMenu onClickFunction={(item)=> { 
+                console.log(item);
+                if ( item.type === 'TAG_FILTER' ) {
+                    if (this.state.showIframeContent) this.openCloseIframe();
+
+                    this.filterImagesByTag( item.tagName );
+
+                } else if ( item.type === 'LINK' ) {
+                    if (item.target="blank") {
+                        window.open(item.url, '_blank');
+                    } else {
+                        window.open(item.url);
+                    }
+                } else if ( item.type === 'IFRAME_CONTENT' ) {
+                    this.openCloseIframe( item.url );
+                } else if ( item.type === 'ROUTE' ) {
+                    // root/gallery:GALLERY_ID/item:ITEM_ID?
+                }
+            }} />
 
             {window.WEB_DEBUG.columnsDesigner && <div className="designer">
                 <div className="debug-btn-close">close</div>
@@ -182,12 +218,17 @@ class App extends Component {
 
             <AboutInfo/>
 
+            <ListOfTags listOfTags={window.WEB_TAGS} onClickFunction={(param)=>this.filterImagesByTag(param)}/>
+
             { this.state.showMediaViewer && <MediaViewer 
                 items={[]} 
                 picture={this.state.picture}
-                closeFunction={this.opencloseViewer}
-                gallery={window.MEDIA_VIEWER_DATA}
-            />}
+                closeFunction={this.openCloseViewer}
+                gallery={window.MEDIA_VIEWER_DATA} />}
+
+            { this.state.showIframeContent && <IframeContent 
+                configParams={{showHeader: true, showCloseButton:true, title:'Default title', url: this.state.iframeSrc }} 
+                closeFunction={this.openCloseIframe} />}
 
             <div className="controls-presets">
                 <PresetsMenu title={'Columns & Style'}
@@ -210,7 +251,6 @@ class App extends Component {
                     mnuData={ window.WEB_DEBUG_DATA.sourcesMenu }
                     clickFunction={ (i) => { this.chooseSourceData(i.fileName) }}
                     title={'Sources'}/>
-
             </div>
 
             <GoToTop />

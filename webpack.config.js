@@ -46,7 +46,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: './src/dataSource/landing-data.json', to: '' },
-        { from: './src/dataSource/landing-data.2.json', to: '' }
+        { from: './src/dataSource/landing-data.2.json', to: '' },
+        { from: './src/empty.html'}
       ],
       options: {
         concurrency: 100,

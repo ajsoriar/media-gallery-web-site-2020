@@ -1,0 +1,18 @@
+.spinner {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    position: fixed;
+    top: calc( 50% - 30px);
+    left: calc( 50% - 30px);
+    border-radius: 100px;
+    border: 2px solid yellow;
+    border-bottom: 2px solid black;
+    animation: spinner .6s linear infinite;
+}
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+
+  }

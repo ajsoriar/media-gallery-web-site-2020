@@ -1,0 +1,48 @@
+.app-menu-container{
+
+}
+
+.app-menu{
+    background: linear-gradient(rgb(115 0 255 / 55%), rgb(0 255 44 / 73%));
+}
+
+.top-menu{
+    margin: 0;
+    padding: 0;
+    z-index: 2000;
+    width: 50%;
+    position: absolute;
+    right: 80px;
+    top: 30px;
+    text-align: right;
+}
+
+.bottom-menu{
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 2000;
+    text-align: center;
+}
+
+.menu-item{
+    border: 1px solid yellow;
+    list-style: none;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    color: #ffe500;
+    padding: 0 14px;
+    margin: 3px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    text-shadow: 0 2px 3px black;
+    background: linear-gradient(rgb(115, 0, 255), rgb(0, 255, 44));
+}
+
+.menu-item:hover{
+    background: linear-gradient(rgb(255, 0, 191), rgb(255, 217, 0));
+}

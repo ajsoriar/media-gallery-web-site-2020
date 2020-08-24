@@ -1,25 +1,3 @@
-.App {
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
 #root {
     top:0;
     left: 0;
@@ -33,12 +11,10 @@
 
 .designer {
     display: block;
-    bottom: 0px;
+    bottom: 30px;
     left: 0;
-    z-index: 1000;
+    z-index: 3000;
     padding: 10px;
-    /* background-color: rgb(255 235 59 / 86%); */
-    /* background-color: rgb(59 255 83 / 86%); */
     background-color: rgb(59 255 201 / 86%);
     position: fixed;
     outline: 0px solid red;

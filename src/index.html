@@ -8,11 +8,11 @@
     <script>
 
         window.WEB_DEBUG = {
-            columnsDesigner: false,
-            gridAlgorithm: false,
-            gridImages: false,
-            imageIndexes: false,
-            viewerImages: false
+            columnsDesigner: true,
+            gridAlgorithm: true,
+            gridImages: true,
+            imageIndexes: true,
+            viewerImages: true
         };
 
         window.WEB_CONFIG = {
@@ -106,6 +106,36 @@
         window.WEB_DEBUG_DATA.sourcesMenu = [
             {id: 0, title: 'Source 1', fileName: 'landing-data.json'},
             {id: 1, title: 'Source 2', fileName: 'landing-data.2.json'}]
+        
+        window.WEB_TAGS = [
+            {id: 'PROFESIONAL', label: 'Profesional'},
+            {id: 'DIY', label: 'Do it yourself'},
+            {id: 'HOME', label: 'Home'},
+            {id: 'WORK', label: 'Work'},
+            {id: 'EDITORIAL', label: 'Editorial'},
+            {id: 'COMERCIAL', label: 'Commercial'},
+            {id: 'FILM', label: 'Film'},
+            {id: 'PERSONAL', label: 'Personal'},
+            {id: 'CLIENTS', label: 'Clients'}
+        ]
+
+        window.WEB_MENU = {
+            showTopMenu: true,
+            showBotomMenu: true,
+            topOptions: [
+                {id: "MNU_EDITORIAL",   label: "Editorial",   type: "TAG_FILTER", tagName: "TAG-NAME"},
+                {id: "MNU_1",           label: "Comercial",   type: "TAG_FILTER", tagName: "TAG-NAME"},
+                {id: "MNU_2",           label: "Film",        type: "IFRAME_CONTENT",   url: "./ext/iframe_film.html" },
+                {id: "MNU_3",           label: "Personal",    type: "TAG_FILTER", tagName: "TAG-NAME"},
+                {id: "MNU_4",           label: "Cover",    type: "TAG_FILTER", tagName: "TAG-NAME"},
+            ],
+            bottomOptions: [
+                {id: "MNU_ABOUT",   label: "About",   type: "IFRAME_CONTENT",   url: "http://www.subidote.com" },
+                {id: "MNU_ABOUT_2", label: "About blank!",  type: "LINK", target: "blank", url: "http://www.subidote.com" },
+                {id: "MNU_CLIENTS", label: "Clients",   type: "IFRAME_CONTENT",   url: "http://www.subidote.com/tv/crazy-waves/" },
+                {id: "MNU_CONTACT", label: "Contact",    type: "IFRAME_CONTENT",   url: "./empty.html" }
+            ]
+        }
 
     </script>
 </head>
