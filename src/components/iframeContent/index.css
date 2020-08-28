@@ -5,7 +5,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: bisque;
+    background-color: #FFEB3B;
+    z-index: 2000;
 }
 
 .contentIframe{
@@ -16,4 +17,19 @@
     background-color: tomato;
     position: fixed;
     left: 0;
+}
+
+.iframeViewer .btn.close{
+    float: right;
+    margin: 15px;
+}
+
+.iframeViewer .title{
+    display: block;
+    position: absolute;
+    padding: 10px 20px 10px 15px;
+    font-size: 54px;
+    top: 0;
+    font-weight: 300;
+    letter-spacing: -1px;
 }

@@ -47,7 +47,7 @@ module.exports = {
       patterns: [
         { from: './src/dataSource/landing-data.json', to: '' },
         { from: './src/dataSource/landing-data.2.json', to: '' },
-        { from: './src/empty.html'}
+        { from: './src/static/empty.html', to: 'static/' }
       ],
       options: {
         concurrency: 100,

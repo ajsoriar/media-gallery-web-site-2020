@@ -1,9 +1,13 @@
-.app-menu-container{
+.app-horizontal-menu-container{
 
 }
 
-.app-menu{
+.app-horizontal-menu{
     background: linear-gradient(rgb(115 0 255 / 55%), rgb(0 255 44 / 73%));
+}
+
+.app-hamburger-menu{
+    display: none;
 }
 
 .top-menu{
@@ -45,4 +49,78 @@
 
 .menu-item:hover{
     background: linear-gradient(rgb(255, 0, 191), rgb(255, 217, 0));
+}
+
+/* Larger than Desktop HD */
+@media (max-width: 1024px) {
+    .app-horizontal-menu{
+        display: none !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .app-hamburger-menu{
+        display: block;
+    }
+    .menu-item{
+        _background: linear-gradient( rgb(229, 255, 0), rgb(0, 81, 255));
+        width: 100%;
+        text-align: center;
+        font-size: 54px;
+        height: auto;
+        line-height: unset;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        letter-spacing: 0em;
+        text-transform: uppercase;
+    }
+    .top-menu {
+        width: 100%;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
+
+}
+
+.hamburger-icon {
+    background-color: #ff6347b3;
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    right: 80px;
+    top: 0px;
+    z-index: 2000;
+}
+
+.hamburger-icon .btn-hamburger{
+    cursor: pointer;
+    top: 10px;
+    right: 1px;
+    position: absolute;
+}
+
+.hamburger-content{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 100vh;
+    height: 100vh;
+    max-width: 100vw;
+    width: 100vw;
+    box-sizing: border-box;
+    z-index: 1000;
+    padding: 0;
+    background-color: rgba(17,17,17,.92);
+    overflow: scroll;
+    z-index: 3000;
+}
+
+.hamburger-content .btn-close{
+    float: right;
+    margin: 15px;
 }

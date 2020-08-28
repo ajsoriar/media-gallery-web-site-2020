@@ -102,6 +102,10 @@ body.light-theme {
     background-color: white;
 }
 
+/* .light-theme .aboutInfo .authorName:hover{
+    background-color: white;
+} */
+
 .light-theme .informationSection {
     background-color: white;
 }
@@ -124,4 +128,89 @@ body.light-theme {
 /* --- Picture Viewer --- end --- */
 
 /* --- MENU --- ini --- */
+
+.light-theme .top-menu {
+    padding: 0;
+    z-index: 2000;
+    width: fit-content;
+    position: relative;
+    right: 0;
+    top: 10px;
+    text-align: right;
+    margin: auto;
+    background-color: transparent;
+    background: transparent;
+}
+
+.light-theme .bottom-menu {
+    background: white;
+}
+
+.light-theme .aboutInfoSmall .authorName .right:hover{
+    font-weight: 900;
+    right: -1px;
+}
+
+.light-theme .aboutInfoSmall .authorName .left:hover{
+    font-weight: 900;
+    right: 1px;
+}
+
+.light-theme .menu-item{
+    background: transparent;
+    border: 0;
+    color: #525252;
+    text-shadow: unset;
+    font-weight: 500;
+    padding: 0 7px;
+    line-height: 33px;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 3px;
+    border-bottom: 1px solid transparent;
+}
+
+.light-theme .menu-item:hover{
+    font-weight: 900;
+    color: black;
+}
+
+.light-theme .hamburger-content {
+    background-color: rgb(255 255 255 / 94%);
+}
+
+.light-theme .hamburger-icon {
+    height: 40px;
+    line-height: 40px;
+    background-color: transparent;
+    right: -45px;
+}
+
+.light-theme .hamburger-icon .btn-hamburger {
+    width: 40px !important;
+    height: 40px !important;
+    background-size: 40px !important;
+    float: left;
+    position: relative;
+    top: 0;
+}
+
+@media (max-width: 1024px) {
+
+    .light-theme .menu-item {
+        font-weight: 300;
+        line-height: 55px;
+        font-size: 35px;
+        border-bottom: 1px solid #d7d7d7;
+    }
+
+    .light-theme .menu-item:hover {
+        font-weight: 400;
+        background: white;
+        transform: scale(1.3);
+        transition: all;
+        transition-duration: 0.2s;
+        border-top: 1px solid #d7d7d7;
+    }
+}
 /* --- MENU --- fin --- */

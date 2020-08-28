@@ -189,4 +189,25 @@ GridDataHandler.getPositionInArrOfGalleryItemsById = function (itemsArr, shearch
     return null
 };
 
+GridDataHandler.getTags = function ( items, selectedTag ) {
+    if ( selectedTag ==  null) return items;
+    var arr = [];
+    var i_1 = 0, 
+        lon_1 = items.length;
+    for (var i_1; i_1 < lon_1; i_1++) { // items
+        var i_2 = 0; 
+        if (!items[i_1].tags) continue;
+        var lon_2 = items[i_1].tags.length || 0;
+        for (var i_2; i_2 < lon_2; i_2++) { // tags
+            var a = selectedTag;
+            var b = items[i_1].tags[i_2]
+            if ( a === b ){
+                arr.push( items[i_1] );
+                break; // breaks out of the loop
+            } 
+        }
+    }
+    return arr
+}
+
 export default GridDataHandler;

@@ -24,7 +24,7 @@
     height: 100%;
     position: fixed;
     overflow: hidden;
-    z-index: 200;
+    z-index: 3000;
 }
 
 .aboutInfoContainer{
@@ -33,7 +33,7 @@
     width: 90%;
     height: 100%;
     margin: 0 auto;
-    overflow: hidden;
+    _overflow: hidden;
     _background-color: beige;
 }
 
@@ -52,7 +52,7 @@
 
 .bigFont {
     font-size: 57px;
-    _font-weight: 700;
+    letter-spacing: 11px;
 }
 
 .authorName .right {
@@ -101,11 +101,7 @@
 .informationSection p {
     margin: 0;
 }
-/*
-.aboutInfoContainer div{
-    outline: 1px solid rgb(0, 4, 255);
-}
-*/
+
 .aboutInfo .pictureFrame {
     display: block;
     top: 85px;
@@ -113,8 +109,10 @@
     background-color: tomato;
     height: 530px;
     overflow: hidden;
+    outline: 2px solid rgb(0, 153, 255) !important;
 }
 
 .aboutInfo .pictureFrame video {
     width: 100%;
+    position: absolute;
 }

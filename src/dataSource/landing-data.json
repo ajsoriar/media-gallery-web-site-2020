@@ -39,7 +39,7 @@
             "audio": null
         },
         "tags": [
-            { "id": 1, "label": "Play Ground", "info": null, "atachToList": true },
+            { "id": null, "label": "All"},
             { "id": 2, "label": "Smart TV", "info": null, "atachToList": true },
             { "id": 3, "label": "WEB", "info": null, "atachToList": true },
             { "id": 4, "label": "Demo", "info": null, "atachToList": true },
@@ -206,7 +206,6 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
             "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
             "filename": "bg-chess_640x1024.png",
             "size":{

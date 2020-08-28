@@ -9,10 +9,13 @@
 
         window.WEB_DEBUG = {
             columnsDesigner: true,
-            gridAlgorithm: true,
-            gridImages: true,
+            columnsAlgorithm: false,
+            columns: false,
+            gridImages: false,
+            gridImagesTags: true,
             imageIndexes: true,
-            viewerImages: true
+            viewerImages: true,
+            themesDesigner: true
         };
 
         window.WEB_CONFIG = {
@@ -107,33 +110,25 @@
             {id: 0, title: 'Source 1', fileName: 'landing-data.json'},
             {id: 1, title: 'Source 2', fileName: 'landing-data.2.json'}]
         
-        window.WEB_TAGS = [
-            {id: 'PROFESIONAL', label: 'Profesional'},
-            {id: 'DIY', label: 'Do it yourself'},
-            {id: 'HOME', label: 'Home'},
-            {id: 'WORK', label: 'Work'},
-            {id: 'EDITORIAL', label: 'Editorial'},
-            {id: 'COMERCIAL', label: 'Commercial'},
-            {id: 'FILM', label: 'Film'},
-            {id: 'PERSONAL', label: 'Personal'},
-            {id: 'CLIENTS', label: 'Clients'}
-        ]
+        window.WEB_TAGS = {
+            curretSelectedTag: null
+        };
 
         window.WEB_MENU = {
             showTopMenu: true,
             showBotomMenu: true,
             topOptions: [
-                {id: "MNU_EDITORIAL",   label: "Editorial",   type: "TAG_FILTER", tagName: "TAG-NAME"},
-                {id: "MNU_1",           label: "Comercial",   type: "TAG_FILTER", tagName: "TAG-NAME"},
-                {id: "MNU_2",           label: "Film",        type: "IFRAME_CONTENT",   url: "./ext/iframe_film.html" },
-                {id: "MNU_3",           label: "Personal",    type: "TAG_FILTER", tagName: "TAG-NAME"},
-                {id: "MNU_4",           label: "Cover",    type: "TAG_FILTER", tagName: "TAG-NAME"},
+                {id: "MNU_EDITORIAL",   label: "Editorial",   type: "TAG_FILTER", tagName: "EDITORIAL"},
+                {id: "MNU_1",           label: "Comercial",   type: "TAG_FILTER", tagName: "COMERCIAL"},
+                {id: "MNU_2",           label: "Film",        type: "IFRAME_CONTENT",   url: "./static/empty.html" },
+                {id: "MNU_3",           label: "Personal",    type: "TAG_FILTER", tagName: "PERSONAL"},
+                {id: "MNU_4",           label: "Vacation",    type: "TAG_FILTER", tagName: "VACATION"},
             ],
             bottomOptions: [
                 {id: "MNU_ABOUT",   label: "About",   type: "IFRAME_CONTENT",   url: "http://www.subidote.com" },
                 {id: "MNU_ABOUT_2", label: "About blank!",  type: "LINK", target: "blank", url: "http://www.subidote.com" },
                 {id: "MNU_CLIENTS", label: "Clients",   type: "IFRAME_CONTENT",   url: "http://www.subidote.com/tv/crazy-waves/" },
-                {id: "MNU_CONTACT", label: "Contact",    type: "IFRAME_CONTENT",   url: "./empty.html" }
+                {id: "MNU_CONTACT", label: "Contact",    type: "IFRAME_CONTENT",   url: "./static/empty.html" }
             ]
         }
 
@@ -142,7 +137,7 @@
 <body class="default-theme">
     <div id="root"></div>    
     <script>
-        document.documentElement.setAttribute('data-theme', 'default-theme');
+        //document.documentElement.setAttribute('data-theme', 'default-theme');
     </script>
 </body>
 </html>

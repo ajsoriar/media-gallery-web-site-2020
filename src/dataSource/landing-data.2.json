@@ -39,7 +39,7 @@
             "audio": null
         },
         "tags": [
-            { "id": 1, "label": "Play Ground", "info": null, "atachToList": true },
+            { "id": null, "label": "All"},
             { "id": 2, "label": "Smart TV", "info": null, "atachToList": true },
             { "id": 3, "label": "WEB", "info": null, "atachToList": true },
             { "id": 4, "label": "Demo", "info": null, "atachToList": true },
@@ -49,7 +49,17 @@
             { "id": 8, "label": "React", "info": null, "atachToList": true },
             { "id": 9, "label": "javascript", "info": null, "atachToList": true },
             { "id": 10, "label": "Ionic", "info": null, "atachToList": true },
-            { "id": 11, "label": "Plugin", "info": null, "atachToList": true }
+            { "id": 11, "label": "Plugin", "info": null, "atachToList": true },
+            { "id": "PROFESIONAL", "label": "Profesional"},
+            { "id": "DIY", "label": "Do it yourself"},
+            { "id": "HOME", "label": "Home"},
+            { "id": "WORK", "label": "Work"},
+            { "id": "EDITORIAL", "label": "Editorial"},
+            { "id": "COMERCIAL", "label": "Commercial"},
+            { "id": "FILM", "label": "Film"},
+            { "id": "VACATION", "label": "Vacation"},
+            { "id": "PERSONAL", "label": "Personal"},
+            { "id": "CLIENTS", "label": "Clients"}
         ],
         "itemTypes": ["IMAGE", "VIDEO", "AUDIO", "FOLDER", "GALLERY", "GALLERY-PREVIEW"],
         "debug": true
@@ -57,11 +67,7 @@
     "items": [
         
         
-        
-        
-        
-        
-        
+  
         {
             "id": 20,
             "type": "GALLERY",
@@ -70,7 +76,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "target": {
                 "size":{
                     "w": 600,
@@ -93,7 +99,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": [],
             "target": {
                 "size":{
                     "w": 600,
@@ -116,7 +122,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": null,
             "target": {
                 "size":{
                     "w": 600,
@@ -139,7 +145,6 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
             "target": {
                 "size":{
                     "w": 600,
@@ -161,7 +166,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["WORK"],
             "target": {
                 "size":{
                     "w": 600,
@@ -184,7 +189,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["WORK","PROFESIONAL"],
             "target": {
                 "size":{
                     "w": 600,
@@ -207,7 +212,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["WORK","PROFESIONAL","EDITORIAL"],
             "target": {
                 "size":{
                     "w": 600,
@@ -230,7 +235,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["WORK","PROFESIONAL"],
             "target": {
                 "size":{
                     "w": 600,
@@ -252,7 +257,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["WORK","PROFESIONAL"],
             "target": {
                 "size":{
                     "w": 600,
@@ -275,7 +280,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["WORK"],
             "target": {
                 "size":{
                     "w": 600,
@@ -298,7 +303,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["WORK"],
             "target": {
                 "size":{
                     "w": 600,
@@ -321,7 +326,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["WORK"],
             "target": {
                 "size":{
                     "w": 600,
@@ -343,7 +348,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "target": {
                 "size":{
                     "w": 600,
@@ -366,7 +371,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["VACATION", "PERSONAL"],
             "target": {
                 "size":{
                     "w": 600,
@@ -389,7 +394,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["VACATION", "PERSONAL","WORK", "HOME", "DIY"],
             "target": {
                 "size":{
                     "w": 600,
@@ -412,7 +417,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["VACATION", "CLIENTS"],
             "target": {
                 "size":{
                     "w": 600,
@@ -435,16 +440,7 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+         
         
         {
             "id": 2,
@@ -454,7 +450,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["VACATION"],
             "target": {
                 "size":{
                     "w": 600,
@@ -485,7 +481,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["VACATION"],
             "src": "http://www.riabop.com/demo/images/column_200x250.gif",
             "filename": "bg-chess_640x1024.png",
             "size":{
@@ -512,7 +508,7 @@
                                     "zoom": null,
                                     "name": "bg-chess_640x1024.png",
                                     "title": "bg-chess_640x1024.png",
-                                    "tags": ["WORK","LIFE", "VACATION"],
+                                    "tags": ["VACATION"],
                                     "src": "http://www.riabop.com/demo/images/background-100x100.png",
                                     "filename": "bg-chess_640x1024.png",
                                     "size":{
@@ -529,7 +525,7 @@
                                     "zoom": null,
                                     "name": "bg-chess_640x1024.png",
                                     "title": "bg-chess_640x1024.png",
-                                    "tags": ["WORK","LIFE", "VACATION"],
+                                    "tags": ["VACATION"],
                                     "src": "http://www.riabop.com/demo/images/bridge_800x1000.png",
                                     "filename": "bg-chess_640x1024.png",
                                     "size":{
@@ -548,7 +544,7 @@
                                     "zoom": null,
                                     "name": "bg-chess_640x1024.png",
                                     "title": "bg-chess_640x1024.png",
-                                    "tags": ["WORK","LIFE", "VACATION"],
+                                    "tags": ["VACATION"],
                                     "src": "http://www.riabop.com/demo/images/flipa_1498x1498.jpg",
                                     "filename": "bg-chess_640x1024.png",
                                     "size":{
@@ -571,7 +567,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["VACATION"],
             "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
             "filename": "bg-chess_640x1024.png",
             "size":{
@@ -589,7 +585,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "thumbnail": {
                 "size":{
                     "w": 200,
@@ -643,7 +639,7 @@
             "zoom": null,
             "name": "background a pescar.bmp",
             "title": "background a pescar.bmp",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "thumbnail": {
                 "size":{
                     "w": 427,
@@ -674,7 +670,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "target": {
                 "size":{
                     "w": 500,
@@ -691,7 +687,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "src": "http://www.riabop.com/demo/images/river-water_600x532.jpg",
             "filename": "bg-chess_640x1024.png",
             "size":{
@@ -707,7 +703,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "src": "http://www.riabop.com/demo/images/small-box_50x50.jpg",
             "filename": "bg-chess_640x1024.png",
             "size":{
@@ -725,7 +721,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "thumbnail": {
                 "size":{
                     "w": 800,
@@ -751,7 +747,7 @@
             "zoom": null,
             "name": "background a pescar.bmp",
             "title": "background a pescar.bmp",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "thumbnail": {
                 "size":{
                     "w": 4480,
@@ -782,7 +778,7 @@
             "zoom": null,
             "name": "mmm",
             "title": "mmm",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "target": {
                 "size":{
                     "w": 240,
@@ -799,7 +795,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "src": "http://www.riabop.com/demo/images/diamond_300x240.jpg",
             "filename": "bg-chess_640x1024.png",
             "size":{
@@ -815,7 +811,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE"],
             "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
             "filename": "bg-chess_640x1024.png",
             "size":{
@@ -833,7 +829,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE", "COMERCIAL","PROFESIONAL"],
             "thumbnail": {
                 "size":{
                     "w": 115,
@@ -863,7 +859,7 @@
             "zoom": null,
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
-            "tags": ["WORK","LIFE", "VACATION"],
+            "tags": ["LIFE", "COMERCIAL"],
             "thumbnail": {
                 "size":{
                     "w": 115,

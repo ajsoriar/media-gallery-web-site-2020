@@ -36,7 +36,6 @@
     background-color: rgba(0, 0, 0, 0.7);
     padding: 5px;
     right: 0;
-    z-index: 1000;
 }
 
 .gridItem .image-debug {
@@ -69,6 +68,7 @@
 .gridItem .debug .children .id {
     position: relative;
     margin-right: 2px;
+    _background-color: #4c8e00;
     background-color: #F44336;
     display: inline-block;
     border-radius: 100px;
@@ -76,7 +76,6 @@
     outline: 0;
     font-size: 8px;
     line-height: 16px;
-    color: white;
 }
 
 .gridItem .arrIndex {
@@ -90,21 +89,4 @@
     font-weight: bold;
     background-color: blue;
     padding: 1px 5px;
-}
-
-.tagsDebug{
-    color: #FFEB3B;
-    line-height: 13px;
-    bottom: 0;
-    position: absolute;
-    margin: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 5px;
-    right: 0;
-    font-size: 12px;
-    outline: 1px solid cyan;
-}
-
-.tagsDebug.noTags{
-    background-color: rgb(255 3 3 / 70%);
 }

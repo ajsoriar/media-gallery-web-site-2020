@@ -1,27 +1,24 @@
 import React from 'react';
 import { Component } from 'react';
-//import LandingData from './../../demo/landing-data.json';
 import GridDataHandler from './gridDataHandler.js';
 import './index.css';
 import GridItem from './../items/gridtem';
+import TagsDataHandler from './../tagsList/tagsDataHandler';
 
 class LandingGrid extends Component {
 
     render () {
 
-        // TODO: Remove all this stuff from render ASAP!
-
         var LandingData = this.props.imagesData || null;
+        if (LandingData === null ) return <div>NO ITEMS</div>;
+        
+        var data = GridDataHandler.removeInfoItems( LandingData.items ); // Clear visual guides / INFO
 
-        if (LandingData === null ) return null;
-
-        var data;
-
-        data = GridDataHandler.removeInfoItems( LandingData.items ); // Clear visual guides / INFO
+        data = GridDataHandler.getTags( data, TagsDataHandler.getSelectedTagID() );
 
         window.MEDIA_VIEWER_DATA = {
             "galleryConfig": LandingData.galleryConfig,
-            "items": GridDataHandler.generateMediaViewerData( LandingData.items )
+            "items": GridDataHandler.generateMediaViewerData( data )
         };
         
         if ( this.props.showChildrenItems !== true ) {

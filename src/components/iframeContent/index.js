@@ -28,7 +28,7 @@ class IframeContent extends Component {
                     style={{
                         display: this.state.loading? 'none': 'block'
                     }}
-                    src={ !configParams.url? './empty.html': configParams.url } 
+                    src={ !configParams.url? './static/empty.html': configParams.url } 
                     className="contentIframe" 
                     title="Iframe Example"
                     onLoad={this.hideSpinner}

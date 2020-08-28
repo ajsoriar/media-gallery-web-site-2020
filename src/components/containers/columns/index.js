@@ -19,8 +19,7 @@ class Columns extends Component {
 
         for (let i = 1; i <= calc.current_Columns_num; i++) columns.push(columnHtml(i));
 
-        var strHtml = <div className="columnsContainer" style={{ width: calc.container_width, left: calc.container_side_margin }}>
-            <DisplayColumnsDebug calc={calc} inputs={this.props} />
+        var strHtml = <div className="columnsContainer" style={{ width: calc.container_width, left: calc.container_side_margin }}> 
             {columns}
         </div>;
 
@@ -43,8 +42,10 @@ class Columns extends Component {
         };
 
         return <>
-            {window.WEB_DEBUG.gridAlgorithm && strHtml}
-            <LandingGrid 
+            {window.WEB_DEBUG.columns && strHtml}
+            {window.WEB_DEBUG.columnsAlgorithm && <DisplayColumnsDebug calc={calc} inputs={this.props} />}
+            <LandingGrid className={'landingGridStyle'} 
+                imagesData={this.props.imagesData}
                 top={grid.galleryTop}
                 left={grid.galleryLeft}
                 columnsNum={grid.columnsNum}
@@ -55,12 +56,11 @@ class Columns extends Component {
                 footerOverlap={grid.footerOverlap}
                 showFooter={grid.showFooter}
                 showChildrenItems={grid.showChildrenItems}
-                className={'landingGridStyle'} 
                 clickFunc={ ( pic ) => {
                     console.log("pic:", pic );
                     this.props.openCloseViewer( pic );
                 } }
-                imagesData={this.props.imagesData}
+                
             />
         </>
     }

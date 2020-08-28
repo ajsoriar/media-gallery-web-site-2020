@@ -13,6 +13,7 @@ import GoToTop from './components/scroll/goToTop';
 import PresetsMenu from './components/presetsMenu';
 import ListOfTags from './components/tagsList';
 import IframeContent from './components/iframeContent';
+import TagsDataHandler from './components/tagsList/tagsDataHandler';
 
 class App extends Component {
 
@@ -43,8 +44,11 @@ class App extends Component {
         showMediaViewer: false,
         picture: 0,
         // Iframe
-        showIframeContent: true,
-        iframeSrc: null
+        showIframeContent: false,
+        iframeSrc: null,
+        // Tags
+        webTags: [],
+        curentSelectedtagId: null
     }
 
     updateRange = (event, target) => {
@@ -122,7 +126,8 @@ class App extends Component {
         .then(data => {
             console.log("response: ",data);
             that.setState({ 
-                imagesData: data
+                imagesData: data,
+                webTags: data.galleryConfig.tags || []
             });
         })
         .catch(console.error);
@@ -130,6 +135,10 @@ class App extends Component {
 
     filterImagesByTag = (tagName) => {
         console.log("[App] filterImagesByTag(), tagName: ", tagName );
+        TagsDataHandler.setSelectedTagTo(tagName);
+        this.setState({ 
+            curentSelectedtagId: tagName,
+        });
     }
 
     updateDimensions() {
@@ -142,9 +151,9 @@ class App extends Component {
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
         this.updateDimensions();
-        this.chooseSourceData('landing-data.json');
-        this.chooseStylesData(window.WEB_DEBUG_DATA.mixMenu[1].paramArr[0]);
-        this.chooseColumnsData(window.WEB_DEBUG_DATA.mixMenu[1].paramArr[1]); 
+        this.chooseSourceData('landing-data.2.json');
+        this.chooseStylesData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[0]); // DEBUG
+        this.chooseColumnsData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[1]); // DEBUG
     }
     
     componentWillUnmount() {
@@ -182,9 +191,7 @@ class App extends Component {
                 console.log(item);
                 if ( item.type === 'TAG_FILTER' ) {
                     if (this.state.showIframeContent) this.openCloseIframe();
-
                     this.filterImagesByTag( item.tagName );
-
                 } else if ( item.type === 'LINK' ) {
                     if (item.target="blank") {
                         window.open(item.url, '_blank');
@@ -218,8 +225,8 @@ class App extends Component {
 
             <AboutInfo/>
 
-            <ListOfTags listOfTags={window.WEB_TAGS} onClickFunction={(param)=>this.filterImagesByTag(param)}/>
-
+            <ListOfTags listOfTags={this.state.webTags} onClickFunction={(param)=>this.filterImagesByTag(param)}/>
+            
             { this.state.showMediaViewer && <MediaViewer 
                 items={[]} 
                 picture={this.state.picture}
@@ -230,28 +237,24 @@ class App extends Component {
                 configParams={{showHeader: true, showCloseButton:true, title:'Default title', url: this.state.iframeSrc }} 
                 closeFunction={this.openCloseIframe} />}
 
-            <div className="controls-presets">
-                <PresetsMenu title={'Columns & Style'}
-                    mnuData={ window.WEB_DEBUG_DATA.mixMenu }
+            { window.WEB_DEBUG.themesDesigner && <div className="controls-presets">
+                <PresetsMenu title={'Columns & Style'} mnuData={ window.WEB_DEBUG_DATA.mixMenu }
                     clickFunction={ (i) => { 
                         console.log("i:", i );
                         this.chooseStylesData(i.paramArr[0]);
                         this.chooseColumnsData(i.paramArr[1]); 
                     }} />
 
-                <PresetsMenu title={'Columns'}
-                    mnuData={ window.WEB_DEBUG_DATA.columnsMenu }
+                <PresetsMenu title={'Columns'} mnuData={ window.WEB_DEBUG_DATA.columnsMenu }
                     clickFunction={ (i) => { this.chooseColumnsData(i.id); }} />
 
-                <PresetsMenu title={'Styles'}
-                    mnuData={ window.WEB_DEBUG_DATA.stylesMenu }
+                <PresetsMenu title={'Styles'} mnuData={ window.WEB_DEBUG_DATA.stylesMenu }
                     clickFunction={ (i) => { this.chooseStylesData(i.themeName) }} />
 
-                <PresetsMenu 
-                    mnuData={ window.WEB_DEBUG_DATA.sourcesMenu }
+                <PresetsMenu  mnuData={ window.WEB_DEBUG_DATA.sourcesMenu }
                     clickFunction={ (i) => { this.chooseSourceData(i.fileName) }}
                     title={'Sources'}/>
-            </div>
+            </div>}
 
             <GoToTop />
         </>

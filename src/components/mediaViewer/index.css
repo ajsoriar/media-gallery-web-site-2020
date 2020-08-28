@@ -6,7 +6,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 2000;
 }
 
 .mediaViewer .btn {
@@ -20,6 +20,12 @@
     font-size: 16px;
     text-align: center;
     font-weight: bold;
+}
+
+.mediaViewer .btn.close {
+    right: 15px;
+    position: absolute;
+    top: 15px;
 }
 
 .mediaViewer .btn:hover {
@@ -40,13 +46,13 @@
 
 .mediaViewer .btn-picture.next {
     position: absolute;
-    top: calc(50% + 35px);
+    top: calc(50% - 35px);
     right: 0;
 }
 
 .mediaViewer .btn-picture.previous {
     position: absolute;
-    top: calc(50% + 35px);
+    top: calc(50% - 35px);
     left: 0;
 }
 
@@ -55,7 +61,6 @@
     top: 0;
     width: 50%;
     height: 100%;
-    _background-color: #f0f8ff82;
 }
 
 .layer-previous{
@@ -63,30 +68,23 @@
     top: 0;
     width: 50%;
     height: 100%;
-    _background-color: #ddd69682;
     left: 50%;
 }
 
 .mediaViewer .image-debug  {
-    color: yellow;
-    background-color: black;
-    font-size: 9px;
-    padding: 0px 5px;
-    text-align: right;
-    margin: 3px;
     width: fit-content;
     float: right;
-    position: relative;
     font-size: 14px;
     color: #8BC34A;
     line-height: 20px;
-    top: 0;
+    bottom: 0;
     position: absolute;
     margin: 10px;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgb(5 35 50);
     padding: 5px;
     right: 0;
     text-align: left;
+    border: 1px solid red;
 }
 
 .mediaViewer .image-debug b {
@@ -116,6 +114,10 @@
     font-size: 24px;
     padding: 10px;
     background-color: rgba(0,0,0,0.3);
+    left: 15px;
+    top: 15px;
+    line-height: 24px;
+    border-radius: 7px;
 }
 
 .mediaViewer.error {

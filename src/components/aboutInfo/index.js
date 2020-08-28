@@ -16,6 +16,29 @@ class Aboutinfo extends Component {
         }));
     }
 
+    updateDimensions = () => {
+        //console.log("[Aboutinfo] updateDimensions!");
+        var v = document.getElementById("aboutInfoVideo");
+        var f = document.getElementById("pictureFrame");
+        var b = document.getElementById("informationSection");
+        var v_h = v.offsetHeight;
+        var b_h = b.offsetHeight;
+        var w_h = window.innerHeight;
+        var new_vf_h = w_h - b_h -200;
+        var calc = 0;
+        f.style.height = new_vf_h + "px";
+        if( v_h > new_vf_h )calc = -(v_h - new_vf_h) / 2; 
+        v.style.top = calc + "px";
+    };
+
+    componentDidMount() {
+        window.addEventListener('resize', this.updateDimensions);
+    }
+    
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateDimensions);
+    }
+
     render () {
 
         var state = this.state;
@@ -46,14 +69,16 @@ class Aboutinfo extends Component {
                         <div className="right bigFont">SORIA</div>
                     </div>
 
-                    <div className="pictureFrame">
-                        <video loop autoPlay>
+                    <div id="pictureFrame" className="pictureFrame">
+                        <video id="aboutInfoVideo" loop autoPlay onPlay={()=>{
+                            this.updateDimensions();
+                        }}>
                             <source src={videoSrc} />
                             Your browser does not support the video tag.
                         </video>
                     </div>
 
-                    <div className="informationSection">
+                    <div id="informationSection" className="informationSection">
                         <div className="informationGroup">
                             <div className="title">EUROPE</div> 
                             <p>
