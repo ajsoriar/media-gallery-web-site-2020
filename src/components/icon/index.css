@@ -4,12 +4,10 @@
     display: block;
     margin: 0;
     padding: 0;
-    _background-color: #673AB7;
     background-color: transparent;
     position: relative;
     background-size: 32px 32px;
     display: inline-block;
-    float: left;
 }
 
 .ui-ico:hover {
@@ -39,4 +37,9 @@
 .btn-hamburger{
     background-image: url(./../../assets/images/hamburger.svg);
     cursor: pointer;
+}
+
+.closeWindow{
+    background-image: url(./../../assets/images/btn-close-black.svg);
+    cursor: pointer; 
 }

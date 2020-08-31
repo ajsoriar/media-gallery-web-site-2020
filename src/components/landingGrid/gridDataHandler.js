@@ -179,8 +179,8 @@ GridDataHandler.generateMediaViewerData = function (itemsArr) {
 };
 
 GridDataHandler.getPositionInArrOfGalleryItemsById = function (itemsArr, shearchId) {
-    //console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] itemsArr: ", itemsArr);
-    //console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] shearchId: ", shearchId);
+    console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] itemsArr: ", itemsArr);
+    console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] shearchId: ", shearchId);
     var lon = itemsArr.length;
     if (lon === 0) return [];
     for (var i = 0; i < lon; i++) {

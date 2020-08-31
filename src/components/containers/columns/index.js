@@ -43,8 +43,12 @@ class Columns extends Component {
 
         return <>
             {window.WEB_DEBUG.columns && strHtml}
-            {window.WEB_DEBUG.columnsAlgorithm && <DisplayColumnsDebug calc={calc} inputs={this.props} />}
-            <LandingGrid className={'landingGridStyle'} 
+            {window.WEB_DEBUG.columnsAlgorithm && <DisplayColumnsDebug 
+                calc={calc}
+                inputs={this.props}
+                clickFunc={()=>{window.WEB_DEBUG.columnsAlgorithm=false;this.setState({})}}
+            />}
+            <LandingGrid className={'landingGridStyle'}
                 imagesData={this.props.imagesData}
                 top={grid.galleryTop}
                 left={grid.galleryLeft}

@@ -470,6 +470,9 @@
         { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
         { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
         { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
+
+        { "type": "INFO", "info": "hoverStyle: [BANNER|ZOOM|BORDER|TRANSLUCENT|OVERLAY]" },
+
         {
             "id": 3,
             "parent": null,
@@ -495,7 +498,8 @@
                 "image": null,
                 "video":null,
                 "audio": null
-            }
+            },
+            "hoverStyle":null
         },
 
                                 { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },

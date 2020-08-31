@@ -7,12 +7,12 @@ TagsDataHandler.getTags = function ( items, selectedTag ) {
 }
 
 TagsDataHandler.setSelectedTagTo = (tagId) => {
-    window.WEB_TAGScurretSelectedTag = tagId;
+    window.WEB_CONFIG.tags.curretSelectedTag = tagId;
     return tagId;
 }
 
 TagsDataHandler.getSelectedTagID = (tagId) => {
-    return window.WEB_TAGScurretSelectedTag ;
+    return window.WEB_CONFIG.tags.curretSelectedTag;
 }
 
 export default TagsDataHandler;

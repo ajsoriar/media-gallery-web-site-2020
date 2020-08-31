@@ -27,7 +27,9 @@ class MediaViewer extends Component {
     componentDidMount() {
         console.log("[MediaViewer] componentDidMount!");
         window.addEventListener('resize', this.updateDimensions);
-        this.setState({ currentPicturePositionInArray: GridDataHandler.getPositionInArrOfGalleryItemsById(this.props.gallery.items, this.props.picture.id)});
+        if (!this.props.gallery) return
+        let gItems = this.props.gallery.items;
+        this.setState({ currentPicturePositionInArray: GridDataHandler.getPositionInArrOfGalleryItemsById(gItems, this.props.picture.id)});
     }
     
     componentWillUnmount() {
@@ -56,12 +58,11 @@ class MediaViewer extends Component {
 
         //console.log("[MediaViewer] RENDER: ");
 
-        const {closeFunction} = this.props;
-        var gallery = this.props.gallery;
-        var arrPos = this.state.currentPicturePositionInArray;
+        const {closeFunction, gallery} = this.props;
 
+        if (!gallery) return <div className="mediaViewer error">No items in this gallery!</div>
+        var arrPos = this.state.currentPicturePositionInArray;  
         if (arrPos === null) return <div className="mediaViewer error">Some kind of error!</div>
-        //console.log("[MediaViewer] arrPos:", arrPos);
 
         var i = gallery.items[arrPos];
         var iw = GridDataHandler.getImageData( i, "WIDTH", true );

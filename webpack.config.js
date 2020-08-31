@@ -39,19 +39,24 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
-    }),
     new CopyPlugin({
       patterns: [
         { from: './src/dataSource/landing-data.json', to: '' },
         { from: './src/dataSource/landing-data.2.json', to: '' },
-        { from: './src/static/empty.html', to: 'static/' }
+        { from: './src/static/empty.html', to: 'static/' },
+        { from: './src/config_DEBUG.js', to: '' },
+        { from: './src/config_SITE.js', to: '' }
       ],
       options: {
         concurrency: 100,
       },
+    }),
+    new HtmlWebPackPlugin({
+      title: 'Media Gallery WEB Site 2020',
+      hash: true,
+      inject: 'body',
+      template: './src/index.ejs',
+      filename: "./index.html"
     })
   ]
 };

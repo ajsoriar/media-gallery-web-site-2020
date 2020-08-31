@@ -4,7 +4,7 @@ import './App.css';
 import './bgMediaQueries.css';
 import Columns from './components/containers/columns';
 import MainMenu from './components/mainMenu';
-import EndOfContent from './components/items/endOfContentItem';
+//import EndOfContent from './components/items/endOfContentItem';
 import Range from './components/range';
 import AboutInfo from './components/aboutInfo';
 import AndresCheckBox from './components/checkBox';
@@ -14,6 +14,7 @@ import PresetsMenu from './components/presetsMenu';
 import ListOfTags from './components/tagsList';
 import IframeContent from './components/iframeContent';
 import TagsDataHandler from './components/tagsList/tagsDataHandler';
+import WindowCloseButton from './components/windowCloseButton';
 
 class App extends Component {
 
@@ -42,16 +43,15 @@ class App extends Component {
         headerOverlap: window.WEB_CONFIG.columnsGrid.headerOverlap,
         // Picture viewer
         showMediaViewer: false,
-        picture: 0,
+        picture: null,
         // Iframe
         showIframeContent: false,
         iframeSrc: null,
         // Tags
-        webTags: [],
-        curentSelectedtagId: null
+        webTags: []
     }
 
-    updateRange = (event, target) => {
+    _DEBUG_updateRange = (event, target) => {
         switch ( target ) {
             case 'maxContainerWidth':
                 this.setState({maxContainerWidth: event.target.value});
@@ -92,7 +92,7 @@ class App extends Component {
     swichFooter = () => { this.setState({showFooter: !this.state.showFooter}); }
     swichChildren = () => { this.setState({showChildrenItems: !this.state.showChildrenItems}); }
 
-    chooseColumnsData(id) {
+    _DEBUG_chooseColumnsData(id) {
         var newConfig = window.WEB_DEBUG_DATA.columnsGrid[ id ];
         this.setState({ 
             maxContainerWidth: newConfig.maxContainerWidth,
@@ -109,7 +109,7 @@ class App extends Component {
         });
     };
 
-    chooseStylesData(themeName) {
+    _DEBUG_chooseStylesData(themeName) {
         console.log("PresetsMenu -> click, themeName: ", themeName); 
         let previousTheme = document.documentElement.getAttribute('data-theme');
         document.querySelector('body').classList.remove(previousTheme);
@@ -117,10 +117,9 @@ class App extends Component {
         document.querySelector('body').classList.add(themeName);
     };
 
-    chooseSourceData(src) {
+    chooseDataSource(src) {
         console.log("PresetsMenu -> click, src: ", src ); 
         var that = this;
-
         fetch("./"+ src)
         .then(response => response.json())
         .then(data => {
@@ -136,9 +135,34 @@ class App extends Component {
     filterImagesByTag = (tagName) => {
         console.log("[App] filterImagesByTag(), tagName: ", tagName );
         TagsDataHandler.setSelectedTagTo(tagName);
-        this.setState({ 
-            curentSelectedtagId: tagName,
-        });
+        this.setState({}); // refresh the page
+    }
+
+    choseMenuOption = (item) => {
+
+        console.log(item);
+
+        switch ( item.type ){
+
+            case 'TAG_FILTER':
+                if (this.state.showIframeContent) this.openCloseIframe();
+                this.filterImagesByTag( item.tagName );
+                break;
+
+            case 'LINK':
+                if (item.target="blank") {
+                    window.open(item.url, '_blank');
+                } else {
+                    window.open(item.url);
+                }
+                break;
+
+            case 'IFRAME_CONTENT':
+                this.openCloseIframe( item.url );
+
+            case 'ROUTE':
+                // root/gallery:GALLERY_ID/item:ITEM_ID?
+        }
     }
 
     updateDimensions() {
@@ -151,9 +175,9 @@ class App extends Component {
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
         this.updateDimensions();
-        this.chooseSourceData('landing-data.2.json');
-        this.chooseStylesData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[0]); // DEBUG
-        this.chooseColumnsData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[1]); // DEBUG
+        this.chooseDataSource('landing-data.2.json');
+        this._DEBUG_chooseStylesData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[0]);
+        this._DEBUG_chooseColumnsData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[1]);
     }
     
     componentWillUnmount() {
@@ -187,36 +211,20 @@ class App extends Component {
                 imagesData={this.state.imagesData }
             />}
 
-            <MainMenu onClickFunction={(item)=> { 
-                console.log(item);
-                if ( item.type === 'TAG_FILTER' ) {
-                    if (this.state.showIframeContent) this.openCloseIframe();
-                    this.filterImagesByTag( item.tagName );
-                } else if ( item.type === 'LINK' ) {
-                    if (item.target="blank") {
-                        window.open(item.url, '_blank');
-                    } else {
-                        window.open(item.url);
-                    }
-                } else if ( item.type === 'IFRAME_CONTENT' ) {
-                    this.openCloseIframe( item.url );
-                } else if ( item.type === 'ROUTE' ) {
-                    // root/gallery:GALLERY_ID/item:ITEM_ID?
-                }
-            }} />
+            <MainMenu onClickFunction={(item)=>this.choseMenuOption(item)} />
 
             {window.WEB_DEBUG.columnsDesigner && <div className="designer">
-                <div className="debug-btn-close">close</div>
+                <WindowCloseButton clickFunc={()=>{window.WEB_DEBUG.columnsDesigner=false;this.setState({})}}></WindowCloseButton>
                 <b>Gallery Columns</b>
-                <Range label={'Max container width'} min="550" max="2600" step="50" defaultValue={maxContainerWidth} value={maxContainerWidth} onChange={(event)=> this.updateRange(event ,'maxContainerWidth')} />
-                <Range label={'Max num. of columns'} min="1" max="20" step="1" defaultValue={maxNumOfColumns} value={maxNumOfColumns} onChange={(event)=> this.updateRange(event ,'maxNumOfColumns')} />
-                <Range label={'Min column width'} min="120" max="300" step="10" defaultValue={minColumWidth} value={minColumWidth} onChange={(event)=> this.updateRange(event ,'minColumWidth')} />
-                <Range label={'Columns margin'} min="0" max="100" step="5" defaultValue={hmargin} value={hmargin} onChange={(event)=> this.updateRange(event ,'hmargin')} />
-                <Range label={'Side margins'} min="0" max="200" step="10" defaultValue={sideMargin} value={sideMargin} onChange={(event)=> this.updateRange(event ,'sideMargin')} />
+                <Range label={'Max container width'} min="550" max="2600" step="50" defaultValue={maxContainerWidth} value={maxContainerWidth} onChange={(event)=> this._DEBUG_updateRange(event ,'maxContainerWidth')} />
+                <Range label={'Max num. of columns'} min="1" max="20" step="1" defaultValue={maxNumOfColumns} value={maxNumOfColumns} onChange={(event)=> this._DEBUG_updateRange(event ,'maxNumOfColumns')} />
+                <Range label={'Min column width'} min="120" max="300" step="10" defaultValue={minColumWidth} value={minColumWidth} onChange={(event)=> this._DEBUG_updateRange(event ,'minColumWidth')} />
+                <Range label={'Columns margin'} min="0" max="100" step="5" defaultValue={hmargin} value={hmargin} onChange={(event)=> this._DEBUG_updateRange(event ,'hmargin')} />
+                <Range label={'Side margins'} min="0" max="200" step="10" defaultValue={sideMargin} value={sideMargin} onChange={(event)=> this._DEBUG_updateRange(event ,'sideMargin')} />
                 <br/>
                 <b>Gallery Items</b>
-                <Range label={'Gallery top'} min="0" max="200" step="10" defaultValue={galleryTop} value={galleryTop} onChange={(event)=> this.updateRange(event ,'galleryTop')} />
-                <Range label={'Items v. margin'} min="0" max="100" step="5" defaultValue={vMargin} value={vMargin} onChange={(event)=> this.updateRange(event ,'vMargin')} />
+                <Range label={'Gallery top'} min="0" max="200" step="10" defaultValue={galleryTop} value={galleryTop} onChange={(event)=> this._DEBUG_updateRange(event ,'galleryTop')} />
+                <Range label={'Items v. margin'} min="0" max="100" step="5" defaultValue={vMargin} value={vMargin} onChange={(event)=> this._DEBUG_updateRange(event ,'vMargin')} />
                 <AndresCheckBox label="Overlap header" callback={this.headerOverlap} checked={this.state.headerOverlap}></AndresCheckBox>
                 <AndresCheckBox label="Overlap details" callback={this.footerOverlap} checked={this.state.footerOverlap}></AndresCheckBox>
                 <AndresCheckBox label="Show footer" callback={this.swichFooter} checked={this.state.showFooter}></AndresCheckBox>
@@ -225,7 +233,10 @@ class App extends Component {
 
             <AboutInfo/>
 
-            <ListOfTags listOfTags={this.state.webTags} onClickFunction={(param)=>this.filterImagesByTag(param)}/>
+            {window.WEB_DEBUG.tagsList && <ListOfTags 
+                clickFunc={()=>{window.WEB_DEBUG.tagsList=false;this.setState({})}}
+                listOfTags={this.state.webTags} 
+                onClickFunction={(param)=>this.filterImagesByTag(param)}/>}
             
             { this.state.showMediaViewer && <MediaViewer 
                 items={[]} 
@@ -238,21 +249,22 @@ class App extends Component {
                 closeFunction={this.openCloseIframe} />}
 
             { window.WEB_DEBUG.themesDesigner && <div className="controls-presets">
+                <WindowCloseButton clickFunc={()=>{window.WEB_DEBUG.themesDesigner=false;this.setState({})}}></WindowCloseButton>
                 <PresetsMenu title={'Columns & Style'} mnuData={ window.WEB_DEBUG_DATA.mixMenu }
                     clickFunction={ (i) => { 
                         console.log("i:", i );
-                        this.chooseStylesData(i.paramArr[0]);
-                        this.chooseColumnsData(i.paramArr[1]); 
+                        this._DEBUG_chooseStylesData(i.paramArr[0]);
+                        this._DEBUG_chooseColumnsData(i.paramArr[1]); 
                     }} />
 
                 <PresetsMenu title={'Columns'} mnuData={ window.WEB_DEBUG_DATA.columnsMenu }
-                    clickFunction={ (i) => { this.chooseColumnsData(i.id); }} />
+                    clickFunction={ (i) => { this._DEBUG_chooseColumnsData(i.id); }} />
 
                 <PresetsMenu title={'Styles'} mnuData={ window.WEB_DEBUG_DATA.stylesMenu }
-                    clickFunction={ (i) => { this.chooseStylesData(i.themeName) }} />
+                    clickFunction={ (i) => { this._DEBUG_chooseStylesData(i.themeName) }} />
 
                 <PresetsMenu  mnuData={ window.WEB_DEBUG_DATA.sourcesMenu }
-                    clickFunction={ (i) => { this.chooseSourceData(i.fileName) }}
+                    clickFunction={ (i) => { this.chooseDataSource(i.fileName) }}
                     title={'Sources'}/>
             </div>}
 

@@ -1,0 +1,18 @@
+.windowCloseButton {
+    float: right;
+    top: -12px;
+    right: -12px;
+    position: absolute;
+    background-color: transparent;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.windowCloseButton:hover {
+    background-color: red;
+    border-radius: 100px;
+}
+
+.windowCloseButton:hover .ui-ico {
+    opacity: 0.3;
+}

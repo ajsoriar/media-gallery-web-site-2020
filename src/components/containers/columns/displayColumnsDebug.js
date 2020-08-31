@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './displayColumnsDebug.css';
+import WindowCloseButton from './../../windowCloseButton';
 
 class DisplayColumnsDebug extends Component {
     render() {
@@ -7,6 +8,7 @@ class DisplayColumnsDebug extends Component {
         var _c = this.props.calc;
         return (
             <div className="displayColumnsDebug">
+                <WindowCloseButton clickFunc={this.props.clickFunc}></WindowCloseButton>
                 
                 <b>Input</b><br/>
 
