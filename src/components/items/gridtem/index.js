@@ -5,7 +5,7 @@ import GridDataHandler from '../../landingGrid/gridDataHandler';
 import ImageItem from './../../mediaViewer/imageItem';
 import ItemFooter from './../itemFooter';
 import ItemOverlapDetail from './../itemOverlapDetail';
-import FooterDataHandler from './../itemFooter/dataHandler';
+//import FooterDataHandler from './../itemFooter/dataHandler';
 import ForeverBrandBanner from './../../banners/foreverBrandBanner';
 
 class GridItem extends Component {
@@ -20,7 +20,6 @@ class GridItem extends Component {
             key={imgDat.name} 
             className={'gridItem'} 
             onClick={ this.props.clickFunc? () => this.props.clickFunc(imgDat) : (()=>{ console.log("CLICK ON ELEMENT!")})}
-            //onClick={ ()=>{ console.log("CLICK ON ELEMENT!")} }
             style={{
                 "width": itemCal.frmW + 0 + "px", 
                 "height": itemCal.totalComponetH +"px", 
@@ -39,8 +38,14 @@ class GridItem extends Component {
                 cropStrategy={GridDataHandler.getImageData(imgDat, "cropStrategy") || 'DEFAULT'}>
             </ImageItem>
 
-            <ForeverBrandBanner className="brandBanner" src="josesoriarodriguez.svg" paneSize={{ w: itemCal.frmW, h: itemCal.frmH - FooterDataHandler.getFooterHeight(imgDat.footer) }} 
-                top={ itemCal.totalComponetH / 2 - 53 / 2}  
+            <ForeverBrandBanner 
+                className="brandBanner" 
+                src="josesoriarodriguez.svg" 
+                paneSize={{ 
+                    w: itemCal.frmW, 
+                    h: itemCal.frmH - 10
+                }} 
+                top={ itemCal.imageCenter.y - 53 / 2}  
                 w={513}
                 h={53} 
             />
@@ -51,7 +56,13 @@ class GridItem extends Component {
             { (window.WEB_DEBUG.gridImagesTags && (!imgDat.tags || imgDat.tags.length == 0)) && <div className="tagsDebug noTags">No tags!</div>}
             { (itemCal.headerOverlap && imgDat.header) && <ItemOverlapDetail position={'TOP'} itemData={imgDat.header} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} />}
             { (itemCal.footerOverlap && imgDat.footer) && <ItemOverlapDetail position={'BOTTOM'} itemData={imgDat.footer} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} />}
-            { (itemCal.showFooter && imgDat.footer) && <ItemFooter footerData={imgDat.footer} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} /> }
+
+            { (itemCal.showFooter && imgDat.footer) && <ItemFooter 
+                footerData={imgDat.footer} 
+                frameData={{ w: itemCal.frmW, h: itemCal.frmH }} 
+                footerH={itemCal.myFooterHeight} //{100} 
+                // = this.props.footerH; //FooterDataHandler.getFooterHeight(footerData);
+            /> }
         </div>;
     }
 }

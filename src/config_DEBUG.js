@@ -3,7 +3,7 @@ window.WEB_DEBUG = {
     // Panels
     showDebugPalette: null,
     columnsDesigner: true,
-    themesDesigner: true,
+    themesDesigner: false,
     tagsList: true,
     // Other
     columnsAlgorithm: false,
@@ -89,3 +89,5 @@ window.WEB_DEBUG_DATA.sourcesMenu = [
     {id: 0, title: 'Source 1', fileName: 'landing-data.json'},
     {id: 1, title: 'Source 2', fileName: 'landing-data.2.json'}
 ]
+
+//window.WEB_DEBUG_DATA.defaultSource = null; // landing-data.json 

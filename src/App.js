@@ -46,7 +46,7 @@ class App extends Component {
         picture: null,
         // Iframe
         showIframeContent: false,
-        iframeSrc: null,
+        iframeData: null,
         // Tags
         webTags: []
     }
@@ -78,13 +78,13 @@ class App extends Component {
     }
 
     openCloseViewer = (pic) => { this.setState({showMediaViewer: !this.state.showMediaViewer, picture: pic}); }
-    openCloseIframe = (page) => { 
-        console.log("[App] openCloseIframe(), page: ", page);
-        if (!page) {
+    openCloseIframe = (iframeData) => { 
+        console.log("[App] openCloseIframe(), iframeData: ", iframeData);
+        if (!iframeData) {
             this.setState({showIframeContent: false}); 
             return
         }
-        this.setState({showIframeContent: true, iframeSrc: page}); 
+        this.setState({showIframeContent: true, iframeData: iframeData}); 
     }
 
     headerOverlap = () => { this.setState({headerOverlap: !this.state.headerOverlap}); }
@@ -158,7 +158,7 @@ class App extends Component {
                 break;
 
             case 'IFRAME_CONTENT':
-                this.openCloseIframe( item.url );
+                this.openCloseIframe( item );
 
             case 'ROUTE':
                 // root/gallery:GALLERY_ID/item:ITEM_ID?
@@ -245,8 +245,10 @@ class App extends Component {
                 gallery={window.MEDIA_VIEWER_DATA} />}
 
             { this.state.showIframeContent && <IframeContent 
-                configParams={{showHeader: true, showCloseButton:true, title:'Default title', url: this.state.iframeSrc }} 
-                closeFunction={this.openCloseIframe} />}
+                configParams={this.state.iframeData}
+                closeFunction={this.openCloseIframe} 
+                showCloseButton={false}
+            />}
 
             { window.WEB_DEBUG.themesDesigner && <div className="controls-presets">
                 <WindowCloseButton clickFunc={()=>{window.WEB_DEBUG.themesDesigner=false;this.setState({})}}></WindowCloseButton>

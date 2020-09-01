@@ -1,3 +1,4 @@
+
 .itemFooter {
     background-color: thistle;
     position: absolute;
@@ -5,7 +6,8 @@
     _width: 200px;
     height: 150px;
     font-size: 14px;
-    overflow: hidden;
+    _overflow: hidden;
+    _background-color: salmon !important;
 }
 
 .itemFooter .title {
@@ -16,7 +18,7 @@
     white-space: nowrap;
     padding: 0;
     margin: 0;
-    background-color: aliceblue;
+    _background-color: aliceblue;
     height: 24px;
     display: block;
     overflow: hidden;
@@ -32,10 +34,24 @@
     white-space: nowrap;
     padding: 0;
     margin: 0;
-    background-color: aliceblue;
+    _background-color: aliceblue;
     height: 18px;
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100px;
+}
+
+.footerRow{
+    height: 24px;
+    _outline: 1px solid red;
+    _background-color: aqua;
+    overflow: hidden;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.footerRow.author {
+    font-weight: 700;
 }

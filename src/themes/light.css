@@ -87,7 +87,7 @@ body.light-theme {
 .light-theme .itemFooter .date {
     background-color: transparent;
     position: relative;
-    top: -7px;
+    _top: -7px;
     color: #9E9E9E;
 }
 

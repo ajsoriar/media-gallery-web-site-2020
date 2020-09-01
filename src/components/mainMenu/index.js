@@ -43,8 +43,8 @@ class MainMenu extends Component {
             id={item.id} 
             className="menu-item">{item.label}</li>
     
-        const topLiItems = window.WEB_MENU.topOptions.map((item) => mnuOp(item));
-        const bottomItems = window.WEB_MENU.bottomOptions.map((item) => mnuOp(item));
+        const topLiItems = window.WEB_CONFIG.MAIN_MENU.topOptions.map((item) => mnuOp(item));
+        const bottomItems = window.WEB_CONFIG.MAIN_MENU.bottomOptions.map((item) => mnuOp(item));
     
         return <div className="app-menu-container">
             { showBrandLogo && <div className="brand-logo"></div> }

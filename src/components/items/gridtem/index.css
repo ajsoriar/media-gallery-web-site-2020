@@ -4,6 +4,7 @@
     background-color: cornflowerblue;
     width: 210px;
     height: 250px;
+    overflow: hidden;
 }
 
 .gridItem:hover {

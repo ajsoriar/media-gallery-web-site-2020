@@ -1,4 +1,4 @@
-import FooterGridDataHandler from "./../items/itemFooter/dataHandler";
+import FooterGridDataHandler from "../items/itemFooter/footerDataHandler";
 
 var GridDataHandler = {};
 
@@ -71,6 +71,16 @@ GridDataHandler.getFrameHeightFromWidth = function (imgW, imgH, columnWidth) {
     return calculatedHeigh
 };
 
+GridDataHandler.getFooterHeight = function( footerData ) { // this.getFooterHeight
+    //console.log("[FooterDataHandler.getFooterHeight] footerData: ", footerData );
+    if ( !footerData || footerData === false || footerData.length === 0 ) return 0;
+    var calculatedHeigh = null;
+    var rowHeight = 24;
+    var numOfRows = 2;
+    calculatedHeigh = rowHeight * numOfRows;
+    return calculatedHeigh
+};
+
 GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth, columnMargin, vMargin, showFooter, footerOverlap, headerOverlap) {
 
     var ITEM_TOP_MARGIN = vMargin; //columnMargin;
@@ -112,26 +122,33 @@ GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth,
 
         var imgW = GridDataHandler.getImageData(imgDat, "WIDTH");
         var imgH = GridDataHandler.getImageData(imgDat, "HEIGHT");
+
+        // Footer
         var footerH = 0;
         var footerTopMargin = 0;
         if (showFooter === true) {
             footerH = FooterGridDataHandler.getFooterHeight(imgDat.footer);
-            footerTopMargin = footerH > 0 ? 10 : 0;
+            footerTopMargin = footerH > 0 ? window.DEFAULTS.FOOTER_TOP_MARGIN : 0;
         }
+        var frmH = this.getFrameHeightFromWidth(imgW, imgH, columnWidth)
 
         arr[i].calculated = {
             imgW: imgW,
             imgH: imgH,
             frmW: columnWidth,
-            frmH: this.getFrameHeightFromWidth(imgW, imgH, columnWidth),
+            frmH: frmH,
             imgBgColor: this.getImageData(imgDat, "COLOR"),
             footerH: footerH,
             footerTopMargin: footerTopMargin,
             showFooter: showFooter,
             footerOverlap: footerOverlap,
-            headerOverlap: headerOverlap
-        }
+            headerOverlap: headerOverlap,
+            imageCenter: {
+                x: columnWidth/2,
+                y: frmH/2
+            }
 
+        }
         arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
         arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
         var targetColum = getTargetColum();

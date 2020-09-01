@@ -19,9 +19,19 @@
     left: 0;
 }
 
+.contentIframe.hideHeader{
+    top: 0px;
+    height: 100%;
+}
+
 .iframeViewer .btn.close{
     float: right;
     margin: 15px;
+    z-index: 1000;
+    display: block;
+    top: 0;
+    position: absolute;
+    right: 0;
 }
 
 .iframeViewer .title{

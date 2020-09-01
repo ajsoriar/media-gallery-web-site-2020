@@ -8,9 +8,9 @@ FooterDataHandler.getFooterHeight = function( footerData ) {
 
     var calculatedHeigh = null;
 
-    var rowHeight = 24;
+    var rowHeight = window.DEFAULTS.FOOTER_ROW_HEIGHT;
 
-    var numOfRows = 2;
+    var numOfRows = Object.keys(footerData).length;
 
     calculatedHeigh = rowHeight * numOfRows;
 
