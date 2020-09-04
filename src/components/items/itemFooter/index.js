@@ -18,15 +18,15 @@ class ItemFooter extends Component {
             if(key === "author") classNameString += " author";
             var str = myObject[key];
             return <div 
+                key={key}
                 className={classNameString}
                 style={{
                     "width": frameData.w + 0 + "px",
                     "height": window.DEFAULTS.FOOTER_ROW_HEIGHT + 0 + "px",
-                    "line-height": window.DEFAULTS.FOOTER_ROW_HEIGHT + 0 + "px",
+                    "lineHeight": window.DEFAULTS.FOOTER_ROW_HEIGHT + 0 + "px",
                 }}>{str}</div>
-          });
+            });
           
-
         return <div className="itemFooter" style={{
                     "top": frameData.h + 10 + "px", 
                     "height": footerH + 0 + "px", 

@@ -2,7 +2,7 @@
     "galleryConfig": {
         "id": 7,
         "type": null,
-        "zoom": null,
+        
         "name": "LANDING-GALLERY",
         "title": "Gallery about me",
         "description": "Many boring things will happen to you If you don´t love my amazing gallery and my astonishing way of life.",
@@ -12,7 +12,7 @@
                 "disabled": true,
                 "type": null,
                 "description": null,
-                "zoom": null,
+                
                 "name": "background a pescar.bmp",
                 "title": "background a pescar.bmp",
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
@@ -26,7 +26,7 @@
                 "disabled": true,
                 "type": null,
                 "description": null,
-                "zoom": null,
+                
                 "name": "video background",
                 "title": "video background",
                 "src": "http://www.riabop.com/demo/video/background.avi",
@@ -73,7 +73,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["LIFE"],
@@ -96,16 +96,16 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": [],
             "target": {
                 "size":{
-                    "w": 600,
-                    "h": 450
+                    "w": 1920,
+                    "h": 1080
                 },
-                "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
+                "src": "http://www.riabop.com/demo/images/girl-1920x1080.jpg",
                 "filename": "background a pescar.bmp",
                 "color": "red"
             },
@@ -117,16 +117,21 @@
                 "title": "Lorem Ipsum",
                 "subtitle": "The standard Lorem Ipsum passage",
                 "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-                "author": "Jose Soria",
+                "author": "José Soria",
                 "date": "2019"
+            },
+            "hover":{
+                "border": false,
+                "overlay": false
             }
         },
+
         {
             "id": 40,
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": null,
@@ -142,14 +147,24 @@
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
+            },
+
+            "hover":{
+                "border": false,
+                "zoom": false,
+                "translucent": false,
+                "overlay": false,
+                "banner": false,
+                "shadow": false,
+                "overlayText": null
             }
-        },
-        {
+
+        },{
             "id": 50,
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "target": {
@@ -161,41 +176,125 @@
                 "filename": "background a pescar.bmp",
                 "color": "red"
             },
+            "header": {
+                "title": "This is a header 2",
+                "date": "2020"
+            },
+            "hover":{
+                "border": false,
+                "zoom": false,
+                "translucent": false,
+                "overlay": true,
+                "banner": false,
+                "shadow": false,
+                "overlayText": true
+            }
+        },{
+            "id": 60,
+            "type": "VIDEO",
+            "dataFile": null,
+            "description": "Este es un video-item",
+            "name": null,
+            "title": null,
+            "tags": ["WORK", "VIDEO"],
+            "thumbnail": {
+                "development_info": "This image is the placeholder in the gallery",
+                "size":{
+                    "w": 200,
+                    "h": 250
+                },
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
+                "filename": "bg-chess_640x1024.png",
+                "cropStrategy": null,
+                "color": "blue"
+            },
+            "target": {
+                "development_info": "This image is the placeholder of the video",
+                "size":{
+                    "w": 1920,
+                    "h": 1080
+                },
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
+                "color": "pink"
+            },
+            "targetVideo": {
+                "size":{
+                    "w": 1920,
+                    "h": 1080
+                },
+                "src": "https://managementartists.s3.amazonaws.com/fullhd_5e95c879-7bf8-4aaf-8be6-04b8ac110003.mp4",
+                "type": "VIDEO",
+                "color": "purple"
+            },
+            "frame": {
+                "INFO": "Nos vale para pillar el aspect ratio y regla de 3 para adaptarlo a la columna",
+                "size":{
+                    "w": 320,
+                    "h": 240
+                }
+            },
+            "development_info": "https://managementartists.s3.amazonaws.com/fullhd_5e95c879-7bf8-4aaf-8be6-04b8ac110003.mp4",
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
             }
         },{
-            "id": 60,
-            "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
-            "description": null,
-            "zoom": null,
-            "name": "mmm",
-            "title": "mmm",
-            "tags": ["WORK"],
-            "target": {
-                "size":{
-                    "w": 600,
-                    "h": 450
-                },
-                "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
-                "color": "red"
+            "id": 65,
+            "type": "VIDEO",
+            "dataFile": null,
+            "description": "Este es un video-item",
+            "name": "Video Item",
+            "title": "Video Item",
+            "tags": ["LOL", "VIDEO"],
+            "thumbnail": {
+                "development_info": "This image is the placeholder in the gallery",
+                "size":{ "w": 250, "h": 160 },
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
+                "filename": "bg-chess_640x1024.png",
+                "development_info_2": "cropStrategies: FILL-THE-FRAME",
+                "cropStrategy": null,
+                "color": "blue"
             },
+            "target": {
+                "development_info": "This image is the placeholder of the video",
+                "size":{ "w": 1920, "h": 1080 },
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
+                "color": "pink"
+            },
+            "targetVideo": {
+                "size":{"w": 1920,"h": 1080 },
+                "src": "https:/www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
+                "type": "VIDEO",
+                "color": "purple"
+            },
+            "frame": {
+                "INFO": "Nos vale para pillar el aspect ratio y regla de 3 para adaptarlo a la columna",
+                "size":{ "w": 320, "h": 240 }
+            },
+            "development_info": "https://managementartists.s3.amazonaws.com/fullhd_5e95c879-7bf8-4aaf-8be6-04b8ac110003.mp4",
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
+            },
+            "hover":{
+                "border": false,
+                "zoom": true,
+                "translucent": false,
+                "overlay": true,
+                "banner": false,
+                "shadow": false,
+                "overlayText": false
             }
         }, 
         {
             "id": 70,
-            "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
+            "type": "PICTURE",
+            "dataFile": null,
+            
+            "name": "Video-background item",
+            "title": "Video-background",
             "description": null,
-            "zoom": null,
-            "name": "mmm",
-            "title": "mmm",
+
             "tags": ["WORK","PROFESIONAL"],
             "target": {
                 "size":{
@@ -209,17 +308,49 @@
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
+            },
+            "background": {
+                "color": null,
+                "video":{
+                    "src": "https:/www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
+                    "size":{
+                        "w": 1024,
+                        "h": 740
+                    }
+                },
+                "placeholder": null
+            },
+            "footer": {
+                "title": "Video-background item",
+                "subtitle": "Video in the background",
+                "author": "José Soria",
+                "date": "2020"
             }
         },
         {
             "id": 80,
-            "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
+            "type": "IMAGE",
+            "dataFile": "null",
+            "name": "Picture background",
+            "title": "Picture background",
             "description": null,
-            "zoom": null,
-            "name": "mmm",
-            "title": "mmm",
+
             "tags": ["WORK","PROFESIONAL","EDITORIAL"],
+
+
+            "thumbnail": {
+                "development_info": "This image is the placeholder in the gallery",
+                "size":{
+                    "w": 1641,
+                    "h": 1227
+                },
+                "src": "http://www.riabop.com/demo/images/ficha-mel-2020-05-22-1641x1227.jpg",
+                "filename": "bg-chess_640x1024.png",
+                "cropStrategy": null,
+                "color": "blue"
+            },
+
+
             "target": {
                 "size":{
                     "w": 600,
@@ -228,9 +359,26 @@
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
                 "filename": "background a pescar.bmp",
                 "color": "red"
+                
             },
             "header": {
                 "title": "This is a header 2",
+                "date": "2020"
+            },
+            "background": {
+                "color": null,
+                "image":{
+                    "src": "http://www.riabop.com/demo/images/background-100x100.png",
+                    "size":{
+                        "w": 600,
+                        "h": 450
+                    }
+                },
+                "placeholder": null
+            },
+            "footer": {
+                "title": "Picture-background item",
+                "author": "José Rodríguez",
                 "date": "2020"
             }
         },
@@ -239,7 +387,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["WORK","PROFESIONAL"],
@@ -261,7 +409,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["WORK","PROFESIONAL"],
@@ -284,7 +432,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["WORK"],
@@ -307,7 +455,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["WORK"],
@@ -330,7 +478,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["WORK"],
@@ -352,7 +500,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["LIFE"],
@@ -375,7 +523,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["VACATION", "PERSONAL"],
@@ -398,7 +546,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["VACATION", "PERSONAL","WORK", "HOME", "DIY"],
@@ -421,7 +569,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["VACATION", "CLIENTS"],
@@ -454,7 +602,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["VACATION"],
@@ -488,7 +636,7 @@
             "startOnChildren": 17,
             "action": "OPEN-VIEWER",
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["VACATION"],
@@ -516,7 +664,7 @@
                                     "parent": 3,
                                     "type": null,
                                     "description": null,
-                                    "zoom": null,
+                                    
                                     "name": "bg-chess_640x1024.png",
                                     "title": "bg-chess_640x1024.png",
                                     "tags": ["VACATION"],
@@ -533,7 +681,7 @@
                                     "parent": 3,
                                     "type": null,
                                     "description": null,
-                                    "zoom": null,
+                                    
                                     "name": "bg-chess_640x1024.png",
                                     "title": "bg-chess_640x1024.png",
                                     "tags": ["VACATION"],
@@ -552,7 +700,7 @@
                                     "parent": 3,
                                     "type": null,
                                     "description": null,
-                                    "zoom": null,
+                                    
                                     "name": "bg-chess_640x1024.png",
                                     "title": "bg-chess_640x1024.png",
                                     "tags": ["VACATION"],
@@ -575,7 +723,7 @@
             "id": 4,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["VACATION"],
@@ -593,7 +741,7 @@
             "id": 5,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
@@ -647,7 +795,7 @@
             "id": 6,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "background a pescar.bmp",
             "title": "background a pescar.bmp",
             "tags": ["LIFE"],
@@ -678,7 +826,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["LIFE"],
@@ -695,7 +843,7 @@
             "id": 8,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
@@ -711,7 +859,7 @@
             "id": 9,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
@@ -729,7 +877,7 @@
             "id": 10,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
@@ -755,7 +903,7 @@
             "id": 11,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "background a pescar.bmp",
             "title": "background a pescar.bmp",
             "tags": ["LIFE"],
@@ -786,7 +934,7 @@
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            "zoom": null,
+            
             "name": "mmm",
             "title": "mmm",
             "tags": ["LIFE"],
@@ -803,7 +951,7 @@
             "id": 13,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
@@ -819,7 +967,7 @@
             "id": 14,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
@@ -837,7 +985,7 @@
             "id": 15,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE", "COMERCIAL","PROFESIONAL"],
@@ -867,7 +1015,7 @@
             "id": 16,
             "type": null,
             "description": null,
-            "zoom": null,
+            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE", "COMERCIAL"],

@@ -11,7 +11,7 @@
 }
 
 .ui-ico:hover {
-    background-color: aqua;
+    _background-color: aqua;
 }
 
 .eye {
@@ -41,5 +41,10 @@
 
 .closeWindow{
     background-image: url(./../../assets/images/btn-close-black.svg);
+    cursor: pointer; 
+}
+
+.video-item{
+    background-image: url(./../../assets/video-item-play.svg);
     cursor: pointer; 
 }

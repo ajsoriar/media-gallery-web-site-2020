@@ -5,19 +5,63 @@
     width: 210px;
     height: 250px;
     overflow: hidden;
+    transition-duration: 0.4s;
+    transform-origin: 50% 50%;
+    cursor: pointer;   
 }
 
 .gridItem:hover {
-    outline: 1px solid yellow;
-    box-shadow: 0 0 10px 5px blue;
-    transform-origin: 50% 50%;
-    transform: scale(1.05);
-    cursor: pointer;
     z-index: 100;
 }
 
-.gridItem:hover img{
+.gridItem._show_border:hover  {
+    outline: 2px solid yellow;
+}
+
+.gridItem._show_zoom:hover {
+    transform: scale(1.05);
+}
+
+.gridItem._show_shadow:hover {
+    box-shadow: 0 0 10px 5px blue;
+}
+
+.gridItem._show_translucent:hover img {
     opacity: 0.5;
+}
+
+.gridItem._show_overlay:hover .overlay{
+    opacity: 0.5;
+}
+
+.gridItem._show_overlay_text:hover .overlayText{
+    opacity: 1;
+}
+
+.gridItem .overlay {
+    transition-duration: 0.4s;
+    opacity: 0;
+}
+
+.gridItem .overlayText {
+    background-color: transparent;
+    position: absolute;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 1px 0 black;
+    opacity: 0;
+    transition-duration: 0.4s;
+    top: 0;
+}
+
+.gridItem .overlayText span {
+    width: 12px;
+    height: 1px;
+    background-color: white;
+    margin: 4px;
+    display: inline-block;
 }
 
 .gridItem:hover .foreverBrandBanner,
@@ -91,6 +135,7 @@
     font-weight: bold;
     background-color: blue;
     padding: 1px 5px;
+    top: 0;
 }
 
 .tagsDebug{
@@ -108,4 +153,25 @@
 
 .tagsDebug.noTags{
     background-color: rgb(255 3 3 / 70%);
+}
+
+.hoverOverlay{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+}
+
+.gridItem:hover .hoverOverlay{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0.5;
+}
+
+.gridItem .videoIco{
+    position: relative;
+    top: -30px;
+    left: -30px;
+    
 }

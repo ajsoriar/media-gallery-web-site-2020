@@ -60,11 +60,33 @@ body.light-theme {
 
 .light-theme .gridItem:hover {
     outline: 0px;
-    box-shadow:none;
-    transform: scale(1.07);
     transition: all;
     transition-duration: 0.4s;
 }
+
+/* HOVER ITEM */
+.gridItem:hover {
+    z-index: 100;
+}
+
+.gridItem._show_border:hover  {
+    _outline: 2px solid yellow;
+    outline: 0px;
+}
+
+.gridItem._show_zoom:hover {
+    transform: scale(1.07);
+}
+
+.gridItem._show_shadow:hover {
+    _box-shadow: 0 0 10px 5px blue;
+    box-shadow:none;
+}
+
+.gridItem._show_translucent:hover img {
+    opacity: 0.5;
+}
+
 
 /* --- item footer --- */
 .light-theme .itemFooter {

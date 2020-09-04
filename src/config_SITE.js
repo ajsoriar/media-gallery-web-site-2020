@@ -76,5 +76,14 @@ window.WEB_CONFIG.ITEMS_HOVER = {
         isOn: true,
         h: 53,
         src: "void.png"
+    },
+    shadow: {
+        isOn: true,
+        color: null
+    },
+    overlayText: {
+        isOn: false,
+        color: null,
+        brandText: "JOSÉ RODRÍGUEZ"
     }
 }

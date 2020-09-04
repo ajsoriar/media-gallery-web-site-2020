@@ -1,102 +1,127 @@
-
 import React from 'react'
 import { Component } from 'react'
 
-class VideoBackGround extends Component {
+class ImageBackground extends Component { // includes crop functionality
 
     constructor() {
         super();
         this.state = {
-            browser_width: window.innerWidth, 
-            screen_height: window.innerHeight
+            loaded: false //,
+            //dimensions: {}
+        };
+        //this.onImgLoad = this.onImgLoad.bind(this);
+    }
+
+    setLoaded () {
+        console.log("[ImageBackground] onImgLoad! to true");
+        this.setState({"loaded": true });  
+    }
+
+    // onImgLoad({target:img}) {
+    //     this.setState({
+    //         dimensions:{
+    //             height:img.offsetHeight,
+    //             width:img.offsetWidth
+    //         }
+    //     });
+    // }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.imageSource !== this.props.imageSource) {
+            this.setState({"loaded": false });  
         }
     }
 
-    updateVideoBackGroundDimensions = () => {
-        this.setState({ 
-            browser_width: window.innerWidth, 
-            screen_height: window.innerHeight
-        });
-    };
-
-    componentDidMount() {
-        window.addEventListener('resize', this.updateVideoBackGroundDimensions);
-    }
-    
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.updateVideoBackGroundDimensions);
+    componentDidMount(props) {
+        // var img = document.createElement('img');
+        // img.src = props.imageSource;
+        // img.onload = function () { console.log('Fully loaded'); }
     }
 
-    render( props, state ) {
+    render () {
 
-        var frameSize = {
+        //const {src} = this.props;
+        //const {width, height} = this.state.dimensions;
+
+        var { frameSize, imageSize } = this.props;
+        var frm = {
             w: window.innerWidth,
             h: window.innerHeight
         }
 
+        console.log("[ImageBackground] render; this.props:", this.props );
+
+        var iw = imageSize.w,
+            ih = imageSize.h,
+            cw = null,
+            ch = null,
+            left = 0,
+            top = 0;
+
+        if ( iw > ih ) {
+            cw = iw * frm.h / ih;
+            ch = frm.h;
+            left = ( frm.w / 2 - cw / 2);
+
+            if ( frm.w / frm.h > iw / ih ) {
+                cw = frm.w;
+                ch = ih * frm.w / iw; 
+                left = 0;
+                top = ( frm.h / 2 - ch / 2);;
+            }
+        } else {
+            cw = frm.w;
+            ch = ih * frm.w / iw;
+        }
+
+        left = ( frm.w / 2 - cw / 2);
+        top = ( frm.h / 2 - ch / 2);
+
+        var cssContentString = {
+            "display": 'inline-block',
+            "width": + cw +'px',
+            "height": + ch +'px',
+            "top": top +'px',
+            "left": + left +'px',
+            "overflow": 'hidden',
+            "position": 'absolute',
+            "visibility": (!this.state.loaded) ? 'hidden' : ''
+        }
+
+        var classNameString = "";
+        classNameString += (this.state.loaded === false) ? " visible": "";
+
         var cssFrameString = {
-                                display: "inline-block",
-                                width: frameSize.w +"px",
-                                height: frameSize.h +"px",
-                                top: 0,
-                                left: 0,
-                                overflow: "hidden",
-                                position: "absolute",
-                                backgroundColor: "cyan"
-                            };
+            "display": 'inline-block',
+            "width": frm.w +'px',
+            "height": frm.h +'px',
+            "top": 0,
+            "left": 0,
+            "overflow": 'hidden',
+            "position": 'absolute'
+        }
 
-        // var iw = 1280, //frameSize.w, // TODO: Use real video dimensions here!
-        //     ih = 720, //frameSize.h, // TODO: Use real video dimensions here!
-        //     cw = null,
-        //     ch = null,
-        //     left = 0,
-        //     top = 0;
+        return <div className="imageBackground" style={cssFrameString}>
 
-        // //console.log("[VideoBackGround]: iw / ih :", iw / ih );
-        // //console.log("[VideoBackGround]: frameSize.w  / frameSize.h :", frameSize.w / frameSize.h );
+            {/* { !this.state.loaded && <div class="pictureLoading">Loading ...</div> } */}
 
-        // if (iw > ih ) { // Landscape // TODO: Compare aspect ratio of the frame and the video instead of this!
+            {/* { (props.loadingLayer && !this.state.loaded) && <LoadingLayer/> } */}
 
-        //     //console.log("[VideoBackGround]: -Landscape- !");
-        //     cw = iw * frameSize.h / ih;
-        //     ch = frameSize.h;
-        //     left = ( frameSize.w / 2 - cw / 2);
+            <img 
+                //id={props.id} 
+                style={cssContentString} 
+                className={classNameString} 
+                src={this.props.src} 
+                //alt={this.props.id} 
+                width={cw} 
+                height={ch} 
+                onLoad={ () => this.setLoaded() } 
+                onError={ () => this.setLoaded() } />
 
-        //     if ( frameSize.w / frameSize.h > iw / ih ) { // Needed Fix!!! Compare aspect ratio of the frame and the video!
-        //         cw = frameSize.w;
-        //         ch = ih * frameSize.w / iw; 
-        //         left = 0;
-        //         top = ( frameSize.h / 2 - ch / 2);;
-        //     }
-            
-        // } else if ( ih > iw ){ // Portrait
+            {/* <img onLoad={this.onImgLoad} src={props.imageSource}/> */}
 
-        //     //console.log("[VideoBackGround]: -Portrait- !");
-        //     cw = frameSize.w;
-        //     ch = ih * frameSize.w / iw;
-
-        // } else { // Squared
-
-        //     //console.log("[VideoBackGround]: -Squared- !");
-        //     ch = frameSize.h;
-        //     cw = frameSize.w;
-        // }
-
-        // var cssContentString = {
-        //                         display: 'inline-block',
-        //                         width: cw +'px',
-        //                         height: ch +'px',
-        //                         top: top +'px',
-        //                         left: left +'px',
-        //                         overflow: 'hidden',
-        //                         position: 'absolute'
-        //                     };   
-
-        const {src} = this.props;
-        return <div className="imageCropper" style={cssFrameString}>
-
-        </div>;
+        </div>
     }
 }
 
-export default VideoBackGround;
+export default ImageBackground;

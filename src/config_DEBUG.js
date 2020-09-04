@@ -3,15 +3,15 @@ window.WEB_DEBUG = {
     // Panels
     showDebugPalette: null,
     columnsDesigner: true,
-    themesDesigner: false,
+    themesDesigner: true,
     tagsList: true,
     // Other
     columnsAlgorithm: false,
     columns: false,
     gridImages: false,
     gridImagesTags: false,
-    imageIndexes: false,
-    viewerImages: false,
+    imageIndexes: true,
+    viewerImages: true, // rename to ids
 };
 
 window.WEB_DEBUG_DATA = {

@@ -7,18 +7,46 @@ import ItemFooter from './../itemFooter';
 import ItemOverlapDetail from './../itemOverlapDetail';
 //import FooterDataHandler from './../itemFooter/dataHandler';
 import ForeverBrandBanner from './../../banners/foreverBrandBanner';
+import Icon from './../../icon'
 
 class GridItem extends Component {
 
     render() {
 
-        console.log("[GridItem] RENDER: ");
         var imgDat = this.props.imgDat;
         var itemCal = imgDat.calculated;
 
+        var SHOW_BORDER = window.WEB_CONFIG.ITEMS_HOVER.border.isOn;
+        var SHOW_ZOOM = window.WEB_CONFIG.ITEMS_HOVER.zoom.isOn;
+        var SHOW_TRANSLUCENT = window.WEB_CONFIG.ITEMS_HOVER.translucent.isOn;
+        var SHOW_OVERLAY = window.WEB_CONFIG.ITEMS_HOVER.overlay.isOn;
+        var SHOW_ITEM_BANNER = window.WEB_CONFIG.ITEMS_HOVER.banner.isOn;
+        var SHOW_ITEM_SHADOW = window.WEB_CONFIG.ITEMS_HOVER.shadow.isOn;
+        var SHOW_OVERLAY_TEXT = window.WEB_CONFIG.ITEMS_HOVER.overlayText.isOn;
+
+        if (imgDat.hover != undefined && imgDat.hover.border != undefined ) SHOW_BORDER = imgDat.hover.border;
+        if (imgDat.hover != undefined && imgDat.hover.zoom != undefined ) SHOW_ZOOM = imgDat.hover.zoom;
+        if (imgDat.hover != undefined && imgDat.hover.translucent != undefined ) SHOW_TRANSLUCENT = imgDat.hover.translucent;
+        if (imgDat.hover != undefined && imgDat.hover.overlay != undefined ) SHOW_OVERLAY = imgDat.hover.overlay;
+        if (imgDat.hover != undefined && imgDat.hover.banner != undefined ) SHOW_ITEM_BANNER = imgDat.hover.banner;
+        if (imgDat.hover != undefined && imgDat.hover.shadow != undefined ) SHOW_ITEM_SHADOW = imgDat.hover.shadow;
+        if (imgDat.hover != undefined && imgDat.hover.overlayText != undefined ) SHOW_OVERLAY_TEXT = imgDat.hover.overlayText;
+
+        var classNameString = 'gridItem';
+        if ( SHOW_BORDER ) classNameString += ' _show_border';
+        if ( SHOW_ZOOM ) classNameString += ' _show_zoom';
+        if ( SHOW_OVERLAY ) classNameString += ' _show_overlay';
+        if ( SHOW_TRANSLUCENT ) classNameString += ' _show_translucent';
+        if ( SHOW_ITEM_SHADOW ) classNameString += ' _show_shadow';
+        var overlayBrandText = '';
+        if ( SHOW_OVERLAY_TEXT ) {
+            classNameString += ' _show_overlay_text';
+            var overlayBrandText = window.WEB_CONFIG.ITEMS_HOVER.overlayText.brandText || '';
+        }
+
         return <div 
             key={imgDat.name} 
-            className={'gridItem'} 
+            className={ classNameString } 
             onClick={ this.props.clickFunc? () => this.props.clickFunc(imgDat) : (()=>{ console.log("CLICK ON ELEMENT!")})}
             style={{
                 "width": itemCal.frmW + 0 + "px", 
@@ -38,7 +66,7 @@ class GridItem extends Component {
                 cropStrategy={GridDataHandler.getImageData(imgDat, "cropStrategy") || 'DEFAULT'}>
             </ImageItem>
 
-            <ForeverBrandBanner 
+            {SHOW_ITEM_BANNER && <ForeverBrandBanner 
                 className="brandBanner" 
                 src="josesoriarodriguez.svg" 
                 paneSize={{ 
@@ -48,7 +76,30 @@ class GridItem extends Component {
                 top={ itemCal.imageCenter.y - 53 / 2}  
                 w={513}
                 h={53} 
-            />
+            />}
+
+            {SHOW_OVERLAY && <div 
+                className="overlay" 
+                style={{
+                    "width": itemCal.frmW + "px",
+                    "height": itemCal.frmH +"px",
+                    "lineHeight": itemCal.frmH +"px",
+                    "backgroundColor": "black",
+                }}></div>}
+
+            {SHOW_OVERLAY_TEXT && <div 
+                className="overlayText" 
+                style={{
+                    "width": itemCal.frmW + "px",
+                    "height": itemCal.frmH +"px",
+                    "lineHeight": itemCal.frmH +"px",
+                }}>
+                    {/* {overlayBrandText}<br/> */}
+                    <span></span>view<span></span></div>}
+            
+            {imgDat.type === 'VIDEO' && <div className="center">
+                <Icon center={true} width={60} name={'video-item'}></Icon>
+            </div>}
 
             { window.WEB_DEBUG.imageIndexes && <><div className={"arrIndex"}>{imgDat.index}</div><div className={"debug " + (imgDat.parent?' is-children':'')}>{imgDat.id}<br/>
                 {imgDat.type}{imgDat.children && <><br/><div className="debug children">{imgDat.children.map((id) => <div key={id} className="id">{id}</div>)}</div></>}</div></>}
@@ -60,8 +111,7 @@ class GridItem extends Component {
             { (itemCal.showFooter && imgDat.footer) && <ItemFooter 
                 footerData={imgDat.footer} 
                 frameData={{ w: itemCal.frmW, h: itemCal.frmH }} 
-                footerH={itemCal.myFooterHeight} //{100} 
-                // = this.props.footerH; //FooterDataHandler.getFooterHeight(footerData);
+                footerH={itemCal.myFooterHeight}
             /> }
         </div>;
     }
