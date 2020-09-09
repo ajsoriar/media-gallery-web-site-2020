@@ -13,6 +13,8 @@ class GridItem extends Component {
 
     render() {
 
+        //var thumbnailError = true;
+
         var imgDat = this.props.imgDat;
         var itemCal = imgDat.calculated;
 
@@ -58,6 +60,8 @@ class GridItem extends Component {
             }}
         >
             <ImageItem 
+                loadingLayer={true}
+                // smallLoadingLayer={true}
                 frameSize={{ w: itemCal.frmW, h: itemCal.frmH }}
                 imageSize={{ w: itemCal.imgW, h: itemCal.imgH }}
                 imageSource={GridDataHandler.getImageData(imgDat, "SOURCE")}
@@ -100,6 +104,12 @@ class GridItem extends Component {
             {imgDat.type === 'VIDEO' && <div className="center">
                 <Icon center={true} width={60} name={'video-item'}></Icon>
             </div>}
+
+            {/* 
+            {thumbnailError && <div className="center">
+                <Icon center={true} width={60} name={'no-picture'}></Icon>
+            </div>} 
+            */}
 
             { window.WEB_DEBUG.imageIndexes && <><div className={"arrIndex"}>{imgDat.index}</div><div className={"debug " + (imgDat.parent?' is-children':'')}>{imgDat.id}<br/>
                 {imgDat.type}{imgDat.children && <><br/><div className="debug children">{imgDat.children.map((id) => <div key={id} className="id">{id}</div>)}</div></>}</div></>}

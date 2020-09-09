@@ -1,19 +1,27 @@
 import React from 'react'
 import { Component } from 'react'
-import LoadingLayer from '../../loadingLayer/loadingLayer';
+import LoadingLayer from '../../loadingLayer';
+import Icon from './../../icon';
+import './spinner.css';
 
 class ImageItem extends Component { // includes crop functionality
 
     constructor() {
         super();
         this.state = {
-            loaded: false
+            loaded: false,
+            imgError: false
         }
     }
 
     setLoaded () {
-        console.log("[ImageItem] setLoaded! to true");
-        this.setState({"loaded": true });  
+        if (this.props.onLoad) this.props.onLoad();
+        this.setState({"loaded": true, "imgError": false });
+    }
+
+    setError () {
+        if (this.props.onError) this.props.onError();
+        this.setState({"loaded": true, "imgError": true });  
     }
 
     componentDidUpdate(prevProps) {
@@ -141,7 +149,7 @@ class ImageItem extends Component { // includes crop functionality
                                 "left": + left +'px',
                                 "overflow": 'hidden',
                                 "position": 'absolute',
-                                "visibility": (!this.state.loaded) ? 'hidden' : ''
+                                "visibility": (!this.state.loaded || this.state.imgError) ? 'hidden' : ''
                             }  
 
         var classNameString = (props.antialiasing === false) ? "pixelated": "";
@@ -150,9 +158,26 @@ class ImageItem extends Component { // includes crop functionality
 
             {/* { !this.state.loaded && <div class="pictureLoading">Loading ...</div> } */}
 
-            { (props.loadingLayer && !this.state.loaded) && <LoadingLayer/> }
+            {/* { (props.loadingLayer && !this.state.loaded) && <LoadingLayer/> } */}
 
-            <img id={props.id} style={cssContentString} className={classNameString} src={props.imageSource} alt={props.id} width={cw} height={ch} onLoad={ () => this.setLoaded() } onError={ () => this.setLoaded() } />
+            {/* <LoadingLayer/> */}
+
+            { (props.loadingLayer && !this.state.loaded) && <div className="mLL-frame">
+                <div className="mLL-container">
+                    <div className="mLL-spinner"></div>
+                </div>    
+            </div> }
+
+            <img 
+                id={props.id} 
+                style={cssContentString} 
+                className={classNameString} 
+                src={props.imageSource} 
+                alt={props.id} 
+                width={cw} 
+                height={ch} 
+                onLoad={ () => this.setLoaded() } 
+                onError={ () => this.setError() } />
 
             { props.debug && <div className="image-debug">
                 antialiasing: { (props.antialiasing === false) ? "NO": "YES" }<br/>
@@ -168,7 +193,9 @@ class ImageItem extends Component { // includes crop functionality
                 width: { cw +'px' }<br/>
                 height: { ch +'px' }<br/>
             </div>} 
-                 
+
+            {this.state.imgError && <div className="center"><Icon center={true} width={60} name={'no-picture'}></Icon></div>}
+
         </div>
     }
 }

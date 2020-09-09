@@ -6,37 +6,45 @@ import VideoBackGround from '../backgrounds/videoBackGround';
 import ImageItem from './imageItem';
 import GridDataHandler from './../landingGrid/gridDataHandler';
 import ImageBackGround from '../backgrounds/imageBackground';
+import LoadingLayer from './../loadingLayer';
 
 class MediaViewer extends Component {
 
     state = {
-        browser_width: window.innerWidth, 
+        browser_width: window.innerWidth,
         browser_height: window.innerHeight,
         currentPicturePositionInArray: 0,
         loaded: false,
-        currentItem: null
+        currentItem: null,
+        //loading: false
     }
 
     updateDimensions = () => {
-        //console.log("[MediaViewer] updateDimensions!");
-        this.setState({ 
-            browser_width: window.innerWidth, 
+        this.setState({
+            browser_width: window.innerWidth,
             browser_height: window.innerHeight
         });
     };
 
+    // setLoaded = () => {
+    //     this.setState({"loaded": true });
+    // }
+
+    // setError = () => {
+    //     this.setState({"loaded": true });
+    // }
+
     componentDidMount() {
-        //console.log("[MediaViewer] componentDidMount!");
         window.addEventListener('resize', this.updateDimensions);
         if (!this.props.gallery) return
         let gItems = this.props.gallery.items;
         var currentPicturePositionInArray = GridDataHandler.getPositionInArrOfGalleryItemsById(gItems, this.props.picture.id);
-        this.setState({ 
+        this.setState({
             currentPicturePositionInArray: currentPicturePositionInArray,
             currentItem: gItems[ currentPicturePositionInArray ]
         });
     }
-    
+
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
     }
@@ -49,7 +57,7 @@ class MediaViewer extends Component {
                     pos = this.props.gallery.items.length - 1;
                 }else {
                     pos =this.state.currentPicturePositionInArray -1;
-                } 
+                }
             } else {
                 if (this.state.currentPicturePositionInArray === this.props.gallery.items.length - 1) {
                     pos = 0;
@@ -62,7 +70,7 @@ class MediaViewer extends Component {
                 currentItem: this.props.gallery.items[ pos ]
             });
         }
-        this.setState({ currentItem: null}, goNext );
+        this.setState({ currentItem: null, loading: true}, goNext );
     }
 
     render() {
@@ -72,8 +80,8 @@ class MediaViewer extends Component {
             if ( this.state.browser_width > this.state.currentItem.targetVideo.size.w ) {
                 top = (this.state.browser_height/2) - ( this.state.currentItem.targetVideo.size.h / 2 );
             } else {
-                var vh = this.state.currentItem.targetVideo.size.h * this.state.browser_width / this.state.currentItem.targetVideo.size.w 
-                top = (this.state.browser_height/2) - ( vh /2 );              
+                var vh = this.state.currentItem.targetVideo.size.h * this.state.browser_width / this.state.currentItem.targetVideo.size.w
+                top = (this.state.browser_height/2) - ( vh /2 );
             }
             return top +"px"
         };
@@ -91,7 +99,7 @@ class MediaViewer extends Component {
         const {closeFunction, gallery} = this.props;
 
         if (!gallery) return <div className="mediaViewer error">No items in this gallery!</div>
-        var arrPos = this.state.currentPicturePositionInArray;  
+        var arrPos = this.state.currentPicturePositionInArray;
         if (arrPos === null) return <div className="mediaViewer error">Some kind of error!</div>
 
         var i = gallery.items[arrPos];
@@ -105,7 +113,7 @@ class MediaViewer extends Component {
                 SHOW_IMAGE_BG = true;
             } else if ( i.background.color != undefined ){
                 SHOW_COLOR_BG = true;
-            } 
+            }
             // CSS3 GRADIENT
             // 3D
         }
@@ -126,16 +134,18 @@ class MediaViewer extends Component {
 
                 { SHOW_VIDEO_BG && <VideoBackGround placeholder={null} src={i.background.video.src} loop={true} realWidth={640} realHeight={480}></VideoBackGround> }
 
-                { (ITEM_TYPE === 'IMAGE') && <ImageItem 
+                { (ITEM_TYPE === 'IMAGE') && <ImageItem
                     frameSize={{w: this.state.browser_width, h: this.state.browser_height }}
                     imageSize={{w: iw, h: ih}}
                     imageSource={src }
                     antialiasing={i.antialiasing}
-                    cropStrategy={cs || 'DEFAULT'} 
+                    cropStrategy={cs || 'DEFAULT'}
                     loadingLayer={true}
                     debug={window.WEB_DEBUG.viewerImages}
+                    // onLoad={this.setLoaded}
+                    // onError={this.setLoaded}
                 />}
-             
+
                 { (ITEM_TYPE === 'VIDEO' && this.state.currentItem != null) && <div className="viewer-container" style={{
                         top: 0,
                         left: 0,
@@ -156,6 +166,9 @@ class MediaViewer extends Component {
 
                 </div> }
 
+                {/* { (props.loadingLayer && !this.state.loaded) && <LoadingLayer/> } */}
+                {/* { this.state.loading && <LoadingLayer/> } */}
+
                 <div className="layer-next" onClick={()=>{ this.getNextPictureNum(1); }}></div>
                 <div className="layer-previous" onClick={()=>{ this.getNextPictureNum(-1); }}></div>
                 <div className="btn-picture next"><Icon width={70} name={'arrow-right'} clickFunc={()=>{ this.getNextPictureNum(1); }}/></div>
@@ -163,7 +176,7 @@ class MediaViewer extends Component {
                 <div className="btn close" onClick={closeFunction}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
                 <div className="title"></div>
                 {/* {gallery.galleryConfig.id} | {gallery.galleryConfig.name} - {gallery.galleryConfig.title} ({gallery.items.length} items)<br/> */}
-                <div className="info">{arrPos +1} / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>                         
+                <div className="info">{arrPos +1} / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>
                 {/* <SideInformationPane/> */}
         </div>;
     }

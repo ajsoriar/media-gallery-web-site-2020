@@ -48,3 +48,8 @@
     background-image: url(./../../assets/video-item-play.svg);
     cursor: pointer; 
 }
+
+.no-picture{
+    background-image: url(./../../assets/images/image.svg);
+    cursor: pointer; 
+}
