@@ -6,7 +6,8 @@ import VideoBackGround from '../backgrounds/videoBackGround';
 import ImageItem from './imageItem';
 import GridDataHandler from './../landingGrid/gridDataHandler';
 import ImageBackGround from '../backgrounds/imageBackground';
-import LoadingLayer from './../loadingLayer';
+//import LoadingLayer from './../loadingLayer';
+import Utils from './../../utils'
 
 class MediaViewer extends Component {
 
@@ -102,43 +103,68 @@ class MediaViewer extends Component {
         var arrPos = this.state.currentPicturePositionInArray;
         if (arrPos === null) return <div className="mediaViewer error">Some kind of error!</div>
 
-        var i = gallery.items[arrPos];
-        var SHOW_COLOR_BG = false;
-        var SHOW_IMAGE_BG = false;
-        var SHOW_VIDEO_BG = false;
-        if ( i.background != undefined ){
-            if ( i.background.video != undefined ){
+        var gi = gallery.items[arrPos];
+
+        var SHOW_COLOR_BG = false,
+            SHOW_GRADIENT_BG = false,
+            SHOW_IMAGE_BG = false,
+            SHOW_VIDEO_BG = false;
+
+        if ( Utils.notEmpty(gi.background) ){
+            if ( Utils.notEmpty(gi.background.video) ){
                 SHOW_VIDEO_BG = true;
-            } else if ( i.background.image != undefined ){
+            } else if ( Utils.notEmpty(gi.background.image) ){
                 SHOW_IMAGE_BG = true;
-            } else if ( i.background.color != undefined ){
+            } else if ( Utils.notEmpty(gi.background.gradient) ) {
+                SHOW_GRADIENT_BG = true;
+                var c1 = gi.background.gradient.color1;
+                var c2 = gi.background.gradient.color2;
+                var mediaViewerGradientBgStyleObj = {};
+                if (c1 && c2){
+                    // mediaViewerGradientBgStyleObj = ""+
+                    //     "background: "+ c1 +";"+
+                    //     "background: -moz-linear-gradient(top,  "+ c1 +" 0%, "+ c2 +" 100%);"+
+                    //     "background: -webkit-linear-gradient(top,  "+ c1 +" 0%, "+ c2 +" 100%);"+
+                    //     "background: linear-gradient(to bottom,  "+ c1 +" 0%, "+ c2 +" 100%);"+
+                    //     "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='"+ c1 +"', endColorstr='"+ c2 +"',GradientType=0 );";
+                    // mediaViewerGradientBgStyleObj = Utils.styleStringToObj( mediaViewerGradientBgStyleObj );
+                    mediaViewerGradientBgStyleObj = {
+                        "background": "linear-gradient(to bottom,  "+ c1 +" 0%, "+ c2 +" 100%)",
+                        "filter": "progid:DXImageTransform.Microsoft.gradient( startColorstr='"+ c1 +"', endColorstr='"+ c2 +"',GradientType=0 )"
+                    };
+                }
+            } else if ( Utils.notEmpty(gi.background.color) ){
                 SHOW_COLOR_BG = true;
             }
-            // CSS3 GRADIENT
-            // 3D
         }
 
-        //console.log("ANDRES i:", i );
-        var ITEM_TYPE = (i.type != undefined && i.type === 'VIDEO' ) ? 'VIDEO' : 'IMAGE';
+        // var SHOW_COLOR_BG = Utils.get() ;
+        // var SHOW_GRADIENT_BG = Utils.get() ;
+        // var SHOW_IMAGE_BG = Utils.get() ;
+        // var SHOW_VIDEO_BG = Utils.get() ;
 
-        var iw = GridDataHandler.getImageData( i, "WIDTH", true );
-        var ih = GridDataHandler.getImageData( i, "HEIGHT", true );
-        var src = GridDataHandler.getImageData( i, "SOURCE", true );
-        var cs = GridDataHandler.getImageData( i, "cropStrategy", true );
+        var ITEM_TYPE = (gi.type != undefined && gi.type === 'VIDEO' ) ? 'VIDEO' : 'IMAGE';
+
+        var iw = GridDataHandler.getImageData( gi, "WIDTH", true );
+        var ih = GridDataHandler.getImageData( gi, "HEIGHT", true );
+        var src = GridDataHandler.getImageData( gi, "SOURCE", true );
+        var cs = GridDataHandler.getImageData( gi, "cropStrategy", true );
 
         return <div className="mediaViewer bg">
 
-                { SHOW_COLOR_BG && <div id="gradient" className="gradient"></div> }
+                { SHOW_COLOR_BG && <div id="mediaViewerBgColor" className="mediaViewerBgColor" style={{ backgroundColor: gi.background.color}}></div> } 
 
-                { SHOW_IMAGE_BG && <ImageBackGround src={i.background.image.src} imageSize={{w: i.background.image.size.w, h: i.background.image.size.h}}></ImageBackGround> }
+                { SHOW_GRADIENT_BG && <div id="mediaViewerGradientBg" className="mediaViewerGradientBg" style={mediaViewerGradientBgStyleObj}></div> } 
 
-                { SHOW_VIDEO_BG && <VideoBackGround placeholder={null} src={i.background.video.src} loop={true} realWidth={640} realHeight={480}></VideoBackGround> }
+                { SHOW_IMAGE_BG && <ImageBackGround src={gi.background.image.src} imageSize={{w: gi.background.image.size.w, h: gi.background.image.size.h}}></ImageBackGround> }
+
+                { SHOW_VIDEO_BG && <VideoBackGround placeholder={null} src={gi.background.video.src} loop={true} realWidth={640} realHeight={480}></VideoBackGround> }
 
                 { (ITEM_TYPE === 'IMAGE') && <ImageItem
                     frameSize={{w: this.state.browser_width, h: this.state.browser_height }}
                     imageSize={{w: iw, h: ih}}
                     imageSource={src }
-                    antialiasing={i.antialiasing}
+                    antialiasing={gi.antialiasing}
                     cropStrategy={cs || 'DEFAULT'}
                     loadingLayer={true}
                     debug={window.WEB_DEBUG.viewerImages}

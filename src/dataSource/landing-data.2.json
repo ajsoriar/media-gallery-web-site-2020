@@ -242,9 +242,9 @@
             "id": 65,
             "type": "VIDEO",
             "dataFile": null,
-            "description": "Este es un video-item",
-            "name": "Video Item",
-            "title": "Video Item",
+            "description": "This is the description text of this VideoItem",
+            "name": "Video item",
+            "title": "Video item",
             "tags": ["LOL", "VIDEO"],
             "thumbnail": {
                 "development_info": "This image is the placeholder in the gallery",
@@ -292,16 +292,16 @@
             "dataFile": null,
             
             "name": "Video-background item",
-            "title": "Video-background",
+            "title": "Video-background item",
             "description": null,
 
             "tags": ["WORK","PROFESIONAL"],
             "target": {
                 "size":{
-                    "w": 600,
-                    "h": 450
+                    "w": 800,
+                    "h": 179
                 },
-                "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
+                "src": "http://www.riabop.com/demo/images/new-york-skyline_800x179.jpg",
                 "filename": "background a pescar.bmp",
                 "color": "red"
             },
@@ -334,10 +334,7 @@
             "name": "Picture background",
             "title": "Picture background",
             "description": null,
-
             "tags": ["WORK","PROFESIONAL","EDITORIAL"],
-
-
             "thumbnail": {
                 "development_info": "This image is the placeholder in the gallery",
                 "size":{
@@ -345,12 +342,10 @@
                     "h": 1227
                 },
                 "src": "http://www.riabop.com/demo/images/ficha-mel-2020-05-22-1641x1227.jpg",
-                "filename": "bg-chess_640x1024.png",
+                "filename": "xxxx.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
-
-
             "target": {
                 "size":{
                     "w": 600,
@@ -388,8 +383,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": "Color background: cyan",
+            "title": "Color background: cyan",
             "tags": ["WORK","PROFESIONAL"],
             "target": {
                 "size":{
@@ -397,12 +392,17 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
-                "color": "red"
+                "filename": null,
+                "color": "red",
+                "brandColor": null,
+                "textColor": null
             },
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
+            },
+            "background": {
+                "color": "cyan"
             }
         },{
             "id": 100,
@@ -410,8 +410,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": "Image error and red background (name)",
+            "title": "Image error and red background (title)",
             "tags": ["WORK","PROFESIONAL"],
             "target": {
                 "size":{
@@ -419,12 +419,14 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/xxx-error-01-xxx.jpg",
-                "filename": "background a pescar.bmp",
-                "color": "red"
+                "filename": "background a pescar.bmp"
             },
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
+            },
+            "background": {
+                "color": "red"
             }
         }, 
         {
@@ -456,8 +458,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": "Default gradient background (name)",
+            "title": "Default gradient background (title)",
             "tags": ["WORK"],
             "target": {
                 "size":{
@@ -471,6 +473,10 @@
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
+            },
+            "background": {
+                "color": "red",
+                "gradient": true
             }
         },
         {
@@ -479,8 +485,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": "mmm2",
+            "title": "mmm2",
             "tags": ["WORK"],
             "target": {
                 "size":{
@@ -494,6 +500,13 @@
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
+            },
+            "background": {
+                "gradient": {
+                    "color1": "blue",
+                    "color2": "red",
+                    "angle": null
+                }
             }
         },{
             "id": 140,
