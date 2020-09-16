@@ -1,20 +1,23 @@
-import React from 'react';
-import { Component } from 'react';
-import './App.css';
-import './bgMediaQueries.css';
-import Columns from './components/containers/columns';
-import MainMenu from './components/mainMenu';
-//import EndOfContent from './components/items/endOfContentItem';
-import Range from './components/range';
-import AboutInfo from './components/aboutInfo';
-import AndresCheckBox from './components/checkBox';
-import MediaViewer from './components/mediaViewer';
-import GoToTop from './components/scroll/goToTop';
-import PresetsMenu from './components/presetsMenu';
-import ListOfTags from './components/tagsList';
-import IframeContent from './components/iframeContent';
-import TagsDataHandler from './components/tagsList/tagsDataHandler';
-import WindowCloseButton from './components/windowCloseButton';
+import React from 'react'
+import { Component } from 'react'
+import './css/App.css'
+import './css/bgMediaQueries.css'
+import Columns from './components/containers/columns'
+import MainMenu from './components/mainMenu'
+//import EndOfContent from './components/items/endOfContentItem'
+import Range from './components/range'
+import AboutInfo from './components/aboutInfo'
+import AndresCheckBox from './components/checkBox'
+import MediaViewer from './components/mediaViewer'
+import GoToTop from './components/scroll/goToTop'
+import PresetsMenu from './components/presetsMenu'
+import ListOfTags from './components/tagsList'
+import IframeContent from './components/iframeContent'
+import TagsDataHandler from './components/tagsList/tagsDataHandler'
+import WindowCloseButton from './components/windowCloseButton'
+import Router from './router'
+import BackButton from './components/buttons/backButton'
+import ContentWidthFollower from './components/containers/contentWidthFollower'
 
 class App extends Component {
 
@@ -107,7 +110,7 @@ class App extends Component {
             footerOverlap: newConfig.footerOverlap,
             headerOverlap: newConfig.headerOverlap,
         });
-    };
+    }
 
     _DEBUG_chooseStylesData(themeName) {
         console.log("PresetsMenu -> click, themeName: ", themeName); 
@@ -115,12 +118,13 @@ class App extends Component {
         document.querySelector('body').classList.remove(previousTheme);
         document.documentElement.setAttribute('data-theme', themeName);
         document.querySelector('body').classList.add(themeName);
-    };
+    }
 
-    chooseDataSource(src) {
-        console.log("PresetsMenu -> click, src: ", src ); 
+    chooseDataSource(fileName) {
+        if ( !fileName ) return
+        console.log("PresetsMenu -> click, fileName: ", fileName ); 
         var that = this;
-        fetch("./"+ src)
+        fetch(window.WEB_CONFIG.dataPath + fileName)
         .then(response => response.json())
         .then(data => {
             console.log("response: ",data);
@@ -130,7 +134,7 @@ class App extends Component {
             });
         })
         .catch(console.error);
-    };
+    }
 
     filterImagesByTag = (tagName) => {
         console.log("[App] filterImagesByTag(), tagName: ", tagName );
@@ -170,14 +174,14 @@ class App extends Component {
             browser_width: window.innerWidth, 
             browser_height: window.innerHeight
         });
-    };
+    }
 
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
         this.updateDimensions();
-        this.chooseDataSource('landing-data.2.json');
-        this._DEBUG_chooseStylesData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[0]);
-        this._DEBUG_chooseColumnsData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[1]);
+        this.chooseDataSource( window.WEB_CONFIG.rootDataFile );
+        if ( window.WEB_DEBUG.initialize ) this._DEBUG_chooseStylesData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[0]);
+        if ( window.WEB_DEBUG.initialize ) this._DEBUG_chooseColumnsData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[1]);
     }
     
     componentWillUnmount() {
@@ -205,13 +209,36 @@ class App extends Component {
                     "showFooter": this.state.showFooter,
                     "showChildrenItems": this.state.showChildrenItems
                 }}
-                openCloseViewer={(pic) => {
-                    this.setState({showMediaViewer: true, picture: pic}); 
+                clickOnGalleryItem={(item) => {
+                    if ( item.target && item.target.galleryFile ) {
+                        Router.navigationTree.add({
+                            galleryFile: item.target.galleryFile,
+                            selectedItemID: null
+                        })
+                        this.chooseDataSource( item.target.galleryFile );
+                    } else {
+                        this.setState({
+                            showMediaViewer: true, 
+                            picture: item
+                        }); 
+                    }  
                 }}
                 imagesData={this.state.imagesData }
             />}
 
             <MainMenu onClickFunction={(item)=>this.choseMenuOption(item)} />
+
+            <ContentWidthFollower
+                browserWidth={browser_width}
+                minColumWidth={minColumWidth}
+                maxContainerWidth={maxContainerWidth}
+                sideMargin={sideMargin}
+            >
+                <BackButton clickFunc={()=>{
+                    this.chooseDataSource(Router.navigationTree.down());
+                }} ></BackButton>                
+            </ContentWidthFollower>
+
 
             {window.WEB_DEBUG.columnsDesigner && <div className="designer">
                 <WindowCloseButton clickFunc={()=>{window.WEB_DEBUG.columnsDesigner=false;this.setState({})}}></WindowCloseButton>

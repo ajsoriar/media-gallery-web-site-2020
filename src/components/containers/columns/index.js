@@ -60,9 +60,9 @@ class Columns extends Component {
                 footerOverlap={grid.footerOverlap}
                 showFooter={grid.showFooter}
                 showChildrenItems={grid.showChildrenItems}
-                clickFunc={ ( pic ) => {
-                    console.log("pic:", pic );
-                    this.props.openCloseViewer( pic );
+                clickFunc={ ( galleryItem ) => {
+                    console.log("galleryItem:", galleryItem );
+                    this.props.clickOnGalleryItem( galleryItem );
                 } }
                 
             />

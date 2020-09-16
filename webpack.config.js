@@ -33,6 +33,9 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
+            options: {
+              outputPath: 'images',
+            },
           },
         ],
       }
@@ -41,11 +44,11 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: './src/dataSource/landing-data.json', to: '' },
-        { from: './src/dataSource/landing-data.2.json', to: '' },
+        { from: './src/data/', to: 'data' },
         { from: './src/static/empty.html', to: 'static/' },
-        { from: './src/config_DEBUG.js', to: '' },
-        { from: './src/config_SITE.js', to: '' }
+        { from: './src/config/config_DEBUG.js', to: '' },
+        { from: './src/config/config_SITE.js', to: '' },
+        { from: './src/custom.css', to: '' }
       ],
       options: {
         concurrency: 100,

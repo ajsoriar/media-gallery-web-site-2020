@@ -1,0 +1,19 @@
+.backButton {
+    line-height: 40px;
+    display: inline-block;
+    background-color: black;
+    color: white;
+    width: auto;
+    padding: 0 15px 0 0;
+    font-size: 20px;
+    height: 40px;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.backButton:hover {
+    background-color: red;
+}

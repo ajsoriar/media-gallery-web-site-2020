@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import './nav.css';
-import './fonts.css';
-import App from './App';
-import 'loading-layer';
 import 'loading-layer/dist/loading-layer.min.css';
-import './themes/dark.css';
-import './themes/light.css';
+import 'loading-layer';
+import './css/index.css';
+import './css/nav.css';
+import './css/fonts.css';
+import './css/themes/dark.css';
+import './css/themes/light.css';
+import App from './App';
 
 ReactDOM.render(
     <React.StrictMode>

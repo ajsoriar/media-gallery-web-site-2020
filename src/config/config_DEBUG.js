@@ -1,5 +1,7 @@
+window.
 
 window.WEB_DEBUG = {
+    initialize: false,
     // Panels
     showDebugPalette: null,
     columnsDesigner: true,
@@ -86,8 +88,8 @@ window.WEB_DEBUG_DATA.columnsMenu = [
 ]
 
 window.WEB_DEBUG_DATA.sourcesMenu = [
-    {id: 0, title: 'Source 1', fileName: 'landing-data.json'},
-    {id: 1, title: 'Source 2', fileName: 'landing-data.2.json'}
+    {id: 0, title: 'Source 1', fileName: 'landing-data.1.json'},
+    {id: 1, title: 'Source 2', fileName: 'landing-data.2.json'},
+    {id: 0, title: 'Gallery Root', fileName: 'landing-data.3.json'},
+    {id: 1, title: 'Gallery Folder. level 1', fileName: 'landing-data.4.json'}
 ]
-
-//window.WEB_DEBUG_DATA.defaultSource = null; // landing-data.json 

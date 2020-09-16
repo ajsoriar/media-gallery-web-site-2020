@@ -17,11 +17,13 @@ window.WEB_CONFIG = {
     },
     tags:{
         curretSelectedTag: null //"COMERCIAL"
-    } //,
+    },
     //defaultsource: null
+    dataPath: './data/',
+    rootDataFile: 'landing-data.3.root.json'
 };
 
-window.DEFAULTS ={
+window.DEFAULTS = {
     FOOTER_TOP_MARGIN: 200,
     FOOTER_ROW_HEIGHT:19    
 }
