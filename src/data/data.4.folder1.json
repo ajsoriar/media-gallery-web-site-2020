@@ -3,9 +3,9 @@
         "id": 7,
         "type": null,
         "zoom": null,
-        "name": "LANDING-GALLERY",
-        "title": "Gallery about me",
-        "description": "Many boring things will happen to you If you don´t love my amazing gallery and my astonishing way of life.",
+        "name": null,
+        "title": null,
+        "description": "If you don´t love my amazing gallery and my astonishing way of life many boring things will happen to you.",
         "background": {
             "color": "red",
             "image": {
@@ -112,8 +112,39 @@
                 "title": "This is a header 2",
                 "date": "2020"
             }
-        },{
-            "id": 3,
+        },
+        {
+            "id": 25,
+            "type": "FOLDER",
+            "dataFile": null,
+            "description": null,
+            "name": null,
+            "title": null,
+            "tags": null,
+            "target": {
+                "galleryFile": "data.5.folder2.json",
+                "size":{
+                    "w": 200,
+                    "h": 250
+                },
+                "src": "http://www.riabop.com/demo/images/xxxcolumn_200x250.gif"
+            }
+        }, 
+        {
+            "id": 31,
+            "type": "FOLDER",
+            "dataFile": null,
+            "description": "This folder is about blue stuff",
+            "name": "Error folder",
+            "title": null,
+            "tags": ["EDITORIAL"],
+            "target": {
+                "galleryFile": "error.json"
+            },
+            "color": "#0000ff"
+        }, 
+        {
+            "id": 100,
             "parent": null,
             "type": "GALLERY",
             "children": [17,18,19], 
@@ -139,7 +170,6 @@
                 "audio": null
             }
         },
-
         { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
                   
                                 {

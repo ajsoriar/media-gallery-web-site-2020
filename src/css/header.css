@@ -1,0 +1,23 @@
+.header.title {
+    margin: 15px 0 0 0;
+    font-size: 36px;
+    color: yellow;
+    text-shadow: 0 2px 1px black;
+}
+
+.header.description {
+    position: relative;
+    font-size: 30px;
+    width: 100%;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 36px;
+    margin-bottom: 24px;
+    text-shadow: 1px 1px 3px black;
+    letter-spacing: -1px;
+    font-size: 24px;
+}

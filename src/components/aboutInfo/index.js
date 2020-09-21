@@ -1,6 +1,7 @@
-import React from 'react';
-import { Component } from 'react';
+import React from 'react'
+import { Component } from 'react'
 import './index.css'
+import BrandLogo from './../brandLogo'
 
 class Aboutinfo extends Component {
 
@@ -10,11 +11,14 @@ class Aboutinfo extends Component {
         showRight: true
     }
 
+    /*
     aboutinfoOnClick = () => {
-        this.setState( prev => ({
-            show: !prev.show
-        }));
+        // this.setState( prev => ({
+        //     show: !prev.show
+        // }));
+        this.props.onClick();
     }
+    */
 
     updateDimensions = () => {
         //console.log("[Aboutinfo] updateDimensions!");
@@ -33,41 +37,29 @@ class Aboutinfo extends Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
+        document.body.classList.add("overflow-y-hidden");
     }
     
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
+        document.body.classList.remove("overflow-y-hidden"); 
     }
 
     render () {
 
-        var state = this.state;
-
-        if (!state.show) {
-            
-            document.body.classList.remove("overflow-y-hidden"); 
-
-            return (
-                <div className="aboutInfoSmall">
-                    <div className="authorName" onClick={this.aboutinfoOnClick}>
-                        {state.showLeft && <div className="left ">JOSÉ</div>}
-                        {state.showRight && <div className="right ">SORIA</div>}
-                    </div>
-                </div>
-            );            
-        }
-
-        document.body.classList.add("overflow-y-hidden");
-
-        var videoSrc = 'https:/www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4';
+        var videoSrc = window.WEB_CONFIG.aboutInfoVideoSrc;
         
-        return  <>
-            state.show && <div className="aboutInfo" onClick={this.aboutinfoOnClick}>
+        return (
+            <div className="aboutInfo" onClick={()=>{
+                    this.props.clickFunc();
+                }}>
                 <div className="aboutInfoContainer">
-                    <div className="authorName">
-                        <div className="left bigFont">JOSÉ</div>
-                        <div className="right bigFont">SORIA</div>
-                    </div>
+
+                    <BrandLogo 
+                        text={ window.WEB_CONFIG.brandLogo.brandText } 
+                        brandLogoSrc={ window.WEB_CONFIG.brandLogo.src } 
+                        clickFunc={()=>{ }}>    
+                    </BrandLogo>
 
                     <div id="pictureFrame" className="pictureFrame">
                         <video id="aboutInfoVideo" loop autoPlay onPlay={()=>{
@@ -110,8 +102,7 @@ class Aboutinfo extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
+            </div>)
     }
 }
 

@@ -1,0 +1,114 @@
+.folderItem{
+    position: relative;
+    display: inline-table;
+    background-color: cornflowerblue;
+    width: 210px;
+    height: 250px;
+    overflow: hidden;
+    transition-duration: 0.4s;
+    transform-origin: 50% 50%;
+    cursor: pointer;   
+}
+
+.folderItem:hover {
+    z-index: 100;
+}
+
+
+.folderItem._show_zoom:hover {
+    transform: scale(1.05);
+}
+
+.folderItem .debug {
+    font-size: 14px;
+    color: #8BC34A;
+    line-height: 20px;
+    top: 0;
+    position: absolute;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    right: 0;
+    z-index: 1000;
+}
+
+.folderItem .image-debug {
+    color: yellow;
+    background-color: #031160;
+    font-size: 11px;
+    padding: 0px 5px;
+    text-align: right;
+    width: fit-content;
+    float: right;
+    position: absolute;
+    line-height: 12px;
+    bottom: 0;
+    margin: 0;
+}
+
+.folderItem .arrIndex {
+    display: block;
+    z-index: 300;
+    position: absolute;
+    left: 0;
+    width: auto;
+    color: yellow;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: blue;
+    padding: 1px 5px;
+    top: 0;
+}
+
+.folderItem .tagsDebug{
+    color: #FFEB3B;
+    line-height: 13px;
+    bottom: 0;
+    position: absolute;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    right: 0;
+    font-size: 12px;
+    outline: 1px solid cyan;
+}
+
+.folderItem .tagsDebug.noTags{
+    background-color: rgb(255 3 3 / 70%);
+}
+
+.folderNameContainer{
+    _background-color: orange;
+    padding: 0;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    height: 16px;
+    margin: auto;
+    _bottom: 50px;
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    z-index: 200;
+    text-shadow: 1px 1px 3px black;
+    color: white;
+}
+
+.folderName{
+    _background-color: red;
+    border-radius: 100px;
+    padding: 3px 7px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    height: 16px;
+    margin: auto;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+    text-align: center;
+}

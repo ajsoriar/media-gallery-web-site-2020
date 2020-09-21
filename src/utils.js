@@ -1,5 +1,4 @@
 var Utils = {
-
     get: function ( value ) {
         try{
             return value;
@@ -28,13 +27,7 @@ var Utils = {
     },
     notEmpty: function ( value ) {
         return (!this.isEmpty(value))
-    }//,
-    // styleStringToObj: function (styleString ){
-    //     var obj = {};
-    //     console.log("styleString:", styleString );
-
-    //     return obj
-    // }
+    }
 }
 
 export default Utils;

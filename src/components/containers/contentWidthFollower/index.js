@@ -51,7 +51,7 @@ class ContentWidthFollower extends Component {
         var styleObj = {
             width: calc.container_width,
             left: calc.container_side_margin,
-            top: '60px'
+            top: this.props.top || 0
         };
 
         return <>

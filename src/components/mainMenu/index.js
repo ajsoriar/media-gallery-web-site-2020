@@ -5,11 +5,6 @@ import Icon from './../icon';
 
 class MainMenu extends Component {
 
-    constructor() {
-        super();
-        //this.updateDimensions = this.updateDimensions.bind(this);
-    }
-
     state = {
         showMenu: false
     }
@@ -27,19 +22,14 @@ class MainMenu extends Component {
     };
 
     render () {
-
-        //var { maxContainerWidth, maxNumOfColumns, minColumWidth, vMargin, sideMargin, hmargin, browser_width, browser_height, galleryTop} = this.state;
-        
         var showBrandLogo = false;
         const mnuOp = (item) => <li 
             key={item.id} 
-            onClick={ 
-                () => {
-                    this.props.onClickFunction(item);
-                     this.closeMenu();
+            onClick={() => {
+                    this.props.clickFunc(item);
+                    this.closeMenu();
                 }
-            } 
-            
+            }
             id={item.id} 
             className="menu-item">{item.label}</li>
     

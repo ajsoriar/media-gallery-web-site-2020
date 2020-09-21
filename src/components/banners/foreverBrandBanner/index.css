@@ -12,7 +12,7 @@
   transition-duration: 1s;
   opacity: 0;
   opacity: 1;
-  background-image: url(./../../../assets/ajsr/josesoriarodriguez-light-gray.svg);
+  /* _background-image: url(./../../../assets/ajsr/josesoriarodriguez-light-gray.svg); */
   opacity: 0;
 } 
 

@@ -33,8 +33,6 @@
     width: 90%;
     height: 100%;
     margin: 0 auto;
-    _overflow: hidden;
-    _background-color: beige;
 }
 
 .authorName {
@@ -48,6 +46,7 @@
     font-size: 24px !important;
     cursor: pointer;
     font-weight: 700;
+    letter-spacing: -2px;
 }
 
 .bigFont {

@@ -1192,6 +1192,11 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
+ajsr-notify@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/ajsr-notify/-/ajsr-notify-0.0.1.tgz#81946eeef2fa6fcf04654188696d072b5cf3ec58"
+  integrity sha1-gZRu7vL6b88EZUGIaW0HK1zz7Fg=
+
 ajv-errors@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"

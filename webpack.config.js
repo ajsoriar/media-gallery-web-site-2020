@@ -45,10 +45,11 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: './src/data/', to: 'data' },
-        { from: './src/static/empty.html', to: 'static/' },
+        { from: './src/static/empty.html', to: 'static' },
         { from: './src/config/config_DEBUG.js', to: '' },
         { from: './src/config/config_SITE.js', to: '' },
-        { from: './src/custom.css', to: '' }
+        { from: './src/custom.css', to: '' },
+        { from: './src/assets/images/brand/', to: 'images/brand/' }
       ],
       options: {
         concurrency: 100,

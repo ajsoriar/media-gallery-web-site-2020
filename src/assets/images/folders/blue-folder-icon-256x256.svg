@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="256px" height="256px" viewBox="0 0 256 256" enable-background="new 0 0 256 256" xml:space="preserve">
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="128.0005" y1="247.041" x2="128.0005" y2="205.8574">
+		<stop  offset="0" style="stop-color:#2D7ABF;stop-opacity:0"/>
+		<stop  offset="1" style="stop-color:#3C4652;stop-opacity:0.56"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M248.187,253.999l-3.222-48.146c-0.15-2.272-2.117-4.115-4.391-4.115h-3.768H19.195h-3.769
+		c-2.272,0-4.239,1.843-4.391,4.115l-3.222,48.146H248.187z"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="127.9995" y1="-111.3784" x2="127.9995" y2="127.2586">
+		<stop  offset="0" style="stop-color:#2D7ABF"/>
+		<stop  offset="1" style="stop-color:#3C4652"/>
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M238.687,21.685H94.427L83.811,6.114c-1.549-2.272-4.645-4.113-6.916-4.113H17.522
+		c-2.271,0-4.114,1.841-4.117,4.113l-0.197,129.339c0,0.103,0.022,0.197,0.029,0.298l-0.029,19.388
+		c-0.003,2.271,1.834,4.111,4.105,4.111h221.164c2.271,0,4.115-1.841,4.117-4.111l0.197-129.341
+		C242.795,23.525,240.958,21.685,238.687,21.685z"/>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="128" y1="61.8442" x2="128" y2="308.3727">
+		<stop  offset="0" style="stop-color:#2D7ABF"/>
+		<stop  offset="1" style="stop-color:#2E3192"/>
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M249.789,64.642h-22.196H28.409H6.213c-2.274,0-3.993,1.844-3.84,4.117l8.663,129.469
+		c0.152,2.273,2.119,4.115,4.391,4.115h3.769h217.611h3.767c2.272,0,4.239-1.842,4.392-4.115l8.662-129.469
+		C253.78,66.485,252.061,64.642,249.789,64.642z"/>
+</g>
+</svg>

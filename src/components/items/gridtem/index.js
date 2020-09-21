@@ -13,8 +13,6 @@ class GridItem extends Component {
 
     render() {
 
-        //var thumbnailError = true;
-
         var imgDat = this.props.imgDat;
         var itemCal = imgDat.calculated;
 
@@ -46,6 +44,8 @@ class GridItem extends Component {
             var overlayBrandText = window.WEB_CONFIG.ITEMS_HOVER.overlayText.brandText || '';
         }
 
+        var imageSrc = GridDataHandler.getImageData(imgDat, "SOURCE");
+
         return <div 
             key={imgDat.name} 
             className={ classNameString } 
@@ -59,27 +59,28 @@ class GridItem extends Component {
                 "left": itemCal.left +"px"
             }}
         >
-            <ImageItem 
+            
+            {(imgDat.type != 'FOLDER') && <ImageItem 
                 loadingLayer={true}
                 // smallLoadingLayer={true}
                 frameSize={{ w: itemCal.frmW, h: itemCal.frmH }}
                 imageSize={{ w: itemCal.imgW, h: itemCal.imgH }}
-                imageSource={GridDataHandler.getImageData(imgDat, "SOURCE")}
+                imageSource={imageSrc}
                 antialiasing={true}
                 debug={window.WEB_DEBUG.gridImages}
                 cropStrategy={GridDataHandler.getImageData(imgDat, "cropStrategy") || 'DEFAULT'}>
-            </ImageItem>
+            </ImageItem>}
 
             {SHOW_ITEM_BANNER && <ForeverBrandBanner 
                 className="brandBanner" 
-                src="josesoriarodriguez.svg" 
+                src={"josesoriarodriguez.svg"}
                 paneSize={{ 
                     w: itemCal.frmW, 
                     h: itemCal.frmH - 10
                 }} 
-                top={ itemCal.imageCenter.y - 53 / 2}  
-                w={513}
-                h={53} 
+                top={ itemCal.imageCenter.y - window.WEB_CONFIG.brandLogo.size.h / 2}  
+                w={window.WEB_CONFIG.brandLogo.size.w}
+                h={window.WEB_CONFIG.brandLogo.size.h} 
             />}
 
             {SHOW_OVERLAY && <div 
@@ -103,6 +104,10 @@ class GridItem extends Component {
             
             {imgDat.type === 'VIDEO' && <div className="center">
                 <Icon center={true} width={60} name={'video-item'}></Icon>
+            </div>}
+
+            {imgDat.type === 'FOLDER' && <div className="center">
+                <Icon center={true} width={itemCal.frmW} name={'folder-item'}></Icon>
             </div>}
 
             {/* 

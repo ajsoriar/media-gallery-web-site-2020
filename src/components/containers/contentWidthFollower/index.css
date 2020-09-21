@@ -2,15 +2,9 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    _width: 90%;
-    _min-width: 320px;
     background-color: #ffeb3b4f;
-    _opacity: 1;
-    _height: 100%;
-    _margin: auto;
     display: block;
-    _background-repeat: repeat;
     outline: 1px solid cyan;
-    height: 100px;
+    _height: 100px;
     width: 50%;
 }

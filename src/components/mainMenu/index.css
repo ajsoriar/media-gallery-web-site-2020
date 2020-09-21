@@ -14,9 +14,8 @@
     margin: 0;
     padding: 0;
     z-index: 2000;
-    width: 50%;
     position: absolute;
-    right: 80px;
+    right: 0;
     top: 30px;
     text-align: right;
 }
@@ -29,6 +28,7 @@
     width: 100%;
     z-index: 2000;
     text-align: center;
+    left: 0;
 }
 
 .menu-item{
@@ -82,15 +82,13 @@
         right: 0px;
         top: 0px;
     }
-
 }
 
 .hamburger-icon {
-    background-color: #ff6347b3;
     width: 90px;
     height: 90px;
     position: absolute;
-    right: 80px;
+    right: -22px;
     top: 0px;
     z-index: 2000;
 }

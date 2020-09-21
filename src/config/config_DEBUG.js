@@ -88,8 +88,8 @@ window.WEB_DEBUG_DATA.columnsMenu = [
 ]
 
 window.WEB_DEBUG_DATA.sourcesMenu = [
-    {id: 0, title: 'Source 1', fileName: 'landing-data.1.json'},
-    {id: 1, title: 'Source 2', fileName: 'landing-data.2.json'},
-    {id: 0, title: 'Gallery Root', fileName: 'landing-data.3.json'},
-    {id: 1, title: 'Gallery Folder. level 1', fileName: 'landing-data.4.json'}
+    {id: 0, title: 'Source 1', fileName: 'data.1.json'},
+    {id: 1, title: 'Source 2', fileName: 'data.2.json'},
+    {id: 0, title: 'Gallery Root', fileName: 'data.3.root.json'},
+    {id: 1, title: 'Gallery Folder. level 1', fileName: 'data.4.folder1.json'}
 ]

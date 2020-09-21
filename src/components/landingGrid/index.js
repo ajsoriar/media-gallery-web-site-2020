@@ -1,9 +1,34 @@
-import React from 'react';
-import { Component } from 'react';
-import GridDataHandler from './gridDataHandler.js';
-import './index.css';
-import GridItem from './../items/gridtem';
-import TagsDataHandler from './../tagsList/tagsDataHandler';
+import React from 'react'
+import { Component } from 'react'
+import GridDataHandler from './gridDataHandler.js'
+import './index.css'
+import GridItem from './../items/gridtem'
+import FolderItem from './../items/folderItem'
+import TagsDataHandler from './../tagsList/tagsDataHandler'
+
+const GetItemByType = function( itemData, clickFunc, i, debug ) {
+
+    console.log("[GetItemByType] itemData: ", itemData );
+    switch (itemData.type) {
+        case "FOLDER":
+            return <FolderItem
+                key={ i }
+                index = { i }
+                imgDat = { itemData }
+                clickFunc = { clickFunc }
+                debug = { debug }
+            />
+
+        default:
+            return <GridItem
+                key={ i }
+                index = { i }
+                imgDat = { itemData }
+                clickFunc = { clickFunc }
+                debug = { debug }
+            />
+    }
+}
 
 class LandingGrid extends Component {
 
@@ -21,9 +46,7 @@ class LandingGrid extends Component {
             "items": GridDataHandler.generateMediaViewerData( data )
         };
         
-        if ( this.props.showChildrenItems !== true ) {
-            data = GridDataHandler.removeChildrenItems( data ); // Clear children items
-        }
+        if ( !this.props.showChildrenItems ) data = GridDataHandler.removeChildrenItems( data ); // Clear children items
 
         data = GridDataHandler.calculateGrid(
             data, 
@@ -35,21 +58,9 @@ class LandingGrid extends Component {
             this.props.footerOverlap,
             this.props.headerOverlap  
         );
- 
-        console.log('[LandingGrid] data:', data );        
-
-        const listItems = data.map((imgDat, index) => <GridItem
-            key={index}
-            index = { index }
-            imgDat = { imgDat }
-            clickFunc = { this.props.clickFunc }
-            debug = { LandingData.galleryConfig.debug }
-        />);
 
         return <div className='galleryGrid' style={{"top": this.props.top +'px', "left": this.props.left }}>
-            {/* { !this.state.loaded && <div class="pictureLoading">Loading ...</div> } */}
-            {/* { !this.state.loaded && <LoadingLayer/> } */}
-            { listItems }
+            { data && data.map((imgDat, i) => GetItemByType( imgDat, this.props.clickFunc, i, LandingData.galleryConfig.debug )) }
         </div>
     }
 }

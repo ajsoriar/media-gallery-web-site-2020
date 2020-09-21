@@ -8,7 +8,7 @@
     font-size: 20px;
     height: 40px;
     margin: 0;
-    position: absolute;
+    _position: absolute;
     top: 0;
     left: 0;
     cursor: pointer;

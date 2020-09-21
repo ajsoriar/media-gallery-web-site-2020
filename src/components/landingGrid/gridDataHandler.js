@@ -81,19 +81,10 @@ GridDataHandler.getFooterHeight = function( footerData ) { // this.getFooterHeig
     return calculatedHeigh
 };
 
-GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth, columnMargin, vMargin, showFooter, footerOverlap, headerOverlap) {
-
-    var ITEM_TOP_MARGIN = vMargin; //columnMargin;
-    var COLUMS_MARGIN = columnMargin;
-
-    //console.log("[GridDataHandler.calculateGrid] imagesData: ", imagesData );
-    //console.log("[GridDataHandler.calculateGrid] numOfColumns: ", numOfColumns );
-    //console.log("[GridDataHandler.calculateGrid] columnWidth: ", columnWidth );
-
-    var arrOfTops = Array(numOfColumns).fill(0); //[0,0,0,0];
-
-    var getTargetColum = function (temp) { // Smallest number in array and its position
-        temp = arrOfTops;
+GridDataHandler.utils = {
+    arrOfTops : null,
+    getTargetColum : function (temp) { // Smallest number in array and its position
+        temp = GridDataHandler.utils.arrOfTops;
         var index = 0;
         var value = temp[0];
         for (var i = 1; i < temp.length; i++) {
@@ -103,14 +94,26 @@ GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth,
             }
         }
         return index;
-    };
-
-    var getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry = function (colNum, newItemHeight) {
-        var currentTop = arrOfTops[colNum];
+    },
+    getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry : function (colNum, newItemHeight, ITEM_TOP_MARGIN) {
+        var temp = GridDataHandler.utils.arrOfTops;
+        var currentTop = temp[colNum];
         var newTop = currentTop + newItemHeight + ITEM_TOP_MARGIN;
-        arrOfTops[colNum] = newTop;
+        temp[colNum] = newTop;
         return currentTop;
-    };
+    }
+};
+
+GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth, columnMargin, vMargin, showFooter, footerOverlap, headerOverlap) {
+
+    var ITEM_TOP_MARGIN = vMargin; //columnMargin;
+    var COLUMS_MARGIN = columnMargin;
+
+    //console.log("[GridDataHandler.calculateGrid] imagesData: ", imagesData );
+    //console.log("[GridDataHandler.calculateGrid] numOfColumns: ", numOfColumns );
+    //console.log("[GridDataHandler.calculateGrid] columnWidth: ", columnWidth );
+
+    GridDataHandler.utils.arrOfTops = Array(numOfColumns).fill(0); //[0,0,0,0];
 
     var lon = imagesData.length;
     if (lon === 0) return [];
@@ -120,8 +123,13 @@ GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth,
         var imgDat = imagesData[i];
         arr.push(imgDat);
 
-        var imgW = GridDataHandler.getImageData(imgDat, "WIDTH");
-        var imgH = GridDataHandler.getImageData(imgDat, "HEIGHT");
+        var imgW = 256;
+        var imgH = 256;
+
+        if (imgDat.type != "FOLDER") {
+            imgW = GridDataHandler.getImageData(imgDat, "WIDTH");
+            imgH = GridDataHandler.getImageData(imgDat, "HEIGHT");
+        }
 
         // Footer
         var footerH = 0;
@@ -130,14 +138,17 @@ GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth,
             footerH = FooterGridDataHandler.getFooterHeight(imgDat.footer);
             footerTopMargin = footerH > 0 ? window.DEFAULTS.FOOTER_TOP_MARGIN : 0;
         }
-        var frmH = this.getFrameHeightFromWidth(imgW, imgH, columnWidth)
+
+        var frmH = this.getFrameHeightFromWidth(imgW, imgH, columnWidth);
+
+        //console.log("[GridDataHandler.calculateGrid] columnWidth, frmH: ", columnWidth, ", ",frmH );
 
         arr[i].calculated = {
             imgW: imgW,
             imgH: imgH,
             frmW: columnWidth,
             frmH: frmH,
-            imgBgColor: this.getImageData(imgDat, "COLOR"),
+            imgBgColor: imgDat.type != "FOLDER"? this.getImageData(imgDat, "COLOR"): 'transparent',
             footerH: footerH,
             footerTopMargin: footerTopMargin,
             showFooter: showFooter,
@@ -147,14 +158,16 @@ GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth,
                 x: columnWidth/2,
                 y: frmH/2
             }
-
         }
+
         arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
         arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
-        var targetColum = getTargetColum();
+        var targetColum = GridDataHandler.utils.getTargetColum();
         arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
-        arr[i].calculated.top = getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH);
+        arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
     }
+
+    console.log("[GridDataHandler.calculateGrid] arr: ", arr );
 
     return arr
 };
@@ -173,14 +186,39 @@ GridDataHandler.removeChildrenItems = function (itemsArr) {
     return arr
 };
 
+// imgDat.type
+// removeItemsWithNoGalleryPicture
+
 GridDataHandler.removeInfoItems = function (itemsArr) {
+
+    /*
     var lon = itemsArr.length;
     if (lon === 0) return [];
     var arr = [];
     var cont = 0;
     for (var i = 0; i < lon; i++) {
         var imgDat = itemsArr[i];
-        if (imgDat.type === "INFO") {
+        if (imgDat.type === "INFO") { // || imgDat.type === "FOLDER") {
+            continue;
+        } else {
+            imgDat.index = cont++;
+            arr.push(imgDat);
+        }
+    }
+    return arr
+    */
+
+    return this.removeItemsByType(itemsArr, "INFO");
+};
+
+GridDataHandler.removeItemsByType = function (itemsArr, itemType) { // itemType: INFO, FOLDER, ...
+    var lon = itemsArr.length;
+    if (lon === 0) return [];
+    var arr = [];
+    var cont = 0;
+    for (var i = 0; i < lon; i++) {
+        var imgDat = itemsArr[i];
+        if (imgDat.type === itemType) {
             continue;
         } else {
             imgDat.index = cont++;
@@ -192,6 +230,7 @@ GridDataHandler.removeInfoItems = function (itemsArr) {
 
 GridDataHandler.generateMediaViewerData = function (itemsArr) {
     itemsArr = this.removeInfoItems(itemsArr);
+    itemsArr = this.removeItemsByType(itemsArr, "FOLDER");
     return itemsArr
 };
 

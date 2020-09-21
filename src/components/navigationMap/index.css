@@ -1,0 +1,33 @@
+.navigationMap{
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #ffeb3b4f;
+    display: inline-block;
+    outline: 1px solid cyan;
+    height: auto;  
+}
+
+.navigationMap .navItem{
+    line-height: 40px;
+    display: inline-block;
+    color: white;
+    width: auto;
+    padding: 0 15px 0 15px;
+    padding: 0;
+    font-size: 20px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+    background-color: #ffeb3b4f;
+    display: inline-block;
+    outline: 1px solid red;
+    height: auto;  
+    margin: 0px 10px;
+    cursor: pointer;
+    text-shadow: 1px 1px 3px black;
+}
+
+.navigationMap .navItem:hover{
+    background-color: orange;
+}

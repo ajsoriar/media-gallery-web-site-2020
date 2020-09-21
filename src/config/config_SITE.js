@@ -9,18 +9,26 @@ window.WEB_CONFIG = {
         sideMargin:40,
         hmargin:15,
         showChildrenItems: true,
-        galleryTop: 130,
+        galleryTop: 250,
         vMargin:15,
-        showFooter: false,
+        showFooter: true,
         footerOverlap: false,
         headerOverlap: false
     },
     tags:{
         curretSelectedTag: null //"COMERCIAL"
     },
-    //defaultsource: null
     dataPath: './data/',
-    rootDataFile: 'landing-data.3.root.json'
+    rootDataFile: 'data.3.root.json', //'my-home-data_root.json',
+    aboutInfoVideoSrc: 'https:/www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4',
+    brandLogo: {
+        src: './images/brand/brand-logo.svg',
+        brandText: 'JOSÉ SORIA LOL',
+        size:{
+            w: 513,
+            h: 53
+        }
+    }
 };
 
 window.DEFAULTS = {

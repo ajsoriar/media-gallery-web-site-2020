@@ -4,8 +4,8 @@
         "type": null,
         
         "name": "LANDING-GALLERY",
-        "title": "Gallery about me",
-        "description": "Many boring things will happen to you If you don´t love my amazing gallery and my astonishing way of life.",
+        "title": "Demo gallery",
+        "description": "If you don´t love my amazing gallery and my astonishing way of life many boring things will happen to you.",
         "background": {
             "color": "red",
             "image": {
@@ -58,24 +58,19 @@
             { "id": "COMERCIAL", "label": "Commercial"},
             { "id": "FILM", "label": "Film"},
             { "id": "VACATION", "label": "Vacation"},
-            { "id": "PERSONAL", "label": "Personal"},
-            { "id": "CLIENTS", "label": "Clients"}
+            { "id": "PERSONAL", "label": "Personal"}
         ],
         "itemTypes": ["IMAGE", "VIDEO", "AUDIO", "FOLDER", "GALLERY", "GALLERY-PREVIEW"],
         "debug": true
     },
     "items": [
-        
-        
-  
         {
             "id": 20,
-            "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
+            "type": "PICTURE",
+            "dataFile": null,
             "description": null,
-            
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": ["LIFE"],
             "target": {
                 "size":{
@@ -92,13 +87,42 @@
             }
         }, 
         {
-            "id": 30,
-            "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
+            "id": 25,
+            "type": "FOLDER",
+            "dataFile": null,
             "description": null,
-            
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
+            "tags": null,
+            "target": {
+                "galleryFile": "data.4.folder1.json",
+                "size":{
+                    "w": 200,
+                    "h": 250
+                },
+                "src": "http://www.riabop.com/demo/images/xxxcolumn_200x250.gif"
+            }
+        }, 
+        {
+            "id": 26,
+            "type": "FOLDER",
+            "dataFile": null,
+            "description": "This folder is about red stuff",
+            "name": "Red stuff",
+            "title": null,
+            "tags": ["EDITORIAL"],
+            "target": {
+                "galleryFile": "error.json"
+            },
+            "color": "#ff0000"
+        }, 
+        {
+            "id": 30,
+            "type": "PICTURE",
+            "dataFile": null,
+            "description": null,
+            "name": null,
+            "title": null,
             "tags": [],
             "target": {
                 "size":{
@@ -124,16 +148,25 @@
                 "border": false,
                 "overlay": false
             }
-        },
-
-        {
+        },{
+            "id": 31,
+            "type": "FOLDER",
+            "dataFile": null,
+            "description": "This folder is about blue stuff",
+            "name": "Blue stuff",
+            "title": null,
+            "tags": ["EDITORIAL"],
+            "target": {
+                "galleryFile": "error.json"
+            },
+            "color": "#0000ff"
+        },{
             "id": 40,
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
-            
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": null,
             "target": {
                 "size":{
@@ -148,7 +181,6 @@
                 "title": "This is a header 2",
                 "date": "2020"
             },
-
             "hover":{
                 "border": false,
                 "zoom": false,
@@ -158,15 +190,14 @@
                 "shadow": false,
                 "overlayText": null
             }
-
         },{
             "id": 50,
             "type": "GALLERY",
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "target": {
                 "size":{
                     "w": 600,
@@ -435,8 +466,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": ["WORK"],
             "target": {
                 "size":{
@@ -514,8 +545,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": ["LIFE"],
             "target": {
                 "size":{
@@ -537,8 +568,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": ["VACATION", "PERSONAL"],
             "target": {
                 "size":{
@@ -560,8 +591,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": ["VACATION", "PERSONAL","WORK", "HOME", "DIY"],
             "target": {
                 "size":{
@@ -583,8 +614,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": ["VACATION", "CLIENTS"],
             "target": {
                 "size":{
@@ -616,8 +647,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": ["VACATION"],
             "target": {
                 "size":{
@@ -840,8 +871,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": ["LIFE"],
             "target": {
                 "size":{
@@ -948,8 +979,8 @@
             "dataFile": "gallery-data.v3.json",
             "description": null,
             
-            "name": "mmm",
-            "title": "mmm",
+            "name": null,
+            "title": null,
             "tags": ["LIFE"],
             "target": {
                 "size":{

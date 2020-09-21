@@ -2,6 +2,7 @@ import React from 'react'
 import { Component } from 'react'
 import './css/App.css'
 import './css/bgMediaQueries.css'
+import './css/header.css'
 import Columns from './components/containers/columns'
 import MainMenu from './components/mainMenu'
 //import EndOfContent from './components/items/endOfContentItem'
@@ -18,6 +19,8 @@ import WindowCloseButton from './components/windowCloseButton'
 import Router from './router'
 import BackButton from './components/buttons/backButton'
 import ContentWidthFollower from './components/containers/contentWidthFollower'
+import NavigationMap from './components/navigationMap'
+import BrandLogo from './components/brandLogo'
 
 class App extends Component {
 
@@ -51,7 +54,9 @@ class App extends Component {
         showIframeContent: false,
         iframeData: null,
         // Tags
-        webTags: []
+        webTags: [],
+        // About Info
+        showAboutInfo: false
     }
 
     _DEBUG_updateRange = (event, target) => {
@@ -120,7 +125,7 @@ class App extends Component {
         document.querySelector('body').classList.add(themeName);
     }
 
-    chooseDataSource(fileName) {
+    chooseDataSource(fileName, item) {
         if ( !fileName ) return
         console.log("PresetsMenu -> click, fileName: ", fileName ); 
         var that = this;
@@ -128,12 +133,39 @@ class App extends Component {
         .then(response => response.json())
         .then(data => {
             console.log("response: ",data);
+
+            if ( item != null ){
+                Router.navigationTree.add({
+                    title: data.galleryConfig.title || "Untitled Gallery",
+                    galleryFile: item.target.galleryFile,
+                    selectedItemID: item.id
+                })
+            } else {
+                if( Router.navigationTree.line.length === 0){
+                    Router.navigationTree.add({
+                        title: data.galleryConfig.title || "Home",
+                        galleryFile: fileName,
+                        selectedItemID: null
+                    })
+                }
+            }
+
             that.setState({ 
                 imagesData: data,
                 webTags: data.galleryConfig.tags || []
             });
         })
-        .catch(console.error);
+        .catch( error => {
+            console.log("!");
+            window.ajsrnotify({
+                title: "Error!",
+                msg: "<b>ERROR!</b> Gallery file not found!",
+                type: "error", // null, "error", "info", "alert", "success"
+                position: "center", // null, "right", "left"
+                timeout: 2000,
+                theme: null // null, "windows-98"
+            })
+        })
     }
 
     filterImagesByTag = (tagName) => {
@@ -143,16 +175,12 @@ class App extends Component {
     }
 
     choseMenuOption = (item) => {
-
         console.log(item);
-
         switch ( item.type ){
-
             case 'TAG_FILTER':
                 if (this.state.showIframeContent) this.openCloseIframe();
                 this.filterImagesByTag( item.tagName );
                 break;
-
             case 'LINK':
                 if (item.target="blank") {
                     window.open(item.url, '_blank');
@@ -160,10 +188,8 @@ class App extends Component {
                     window.open(item.url);
                 }
                 break;
-
             case 'IFRAME_CONTENT':
                 this.openCloseIframe( item );
-
             case 'ROUTE':
                 // root/gallery:GALLERY_ID/item:ITEM_ID?
         }
@@ -211,11 +237,7 @@ class App extends Component {
                 }}
                 clickOnGalleryItem={(item) => {
                     if ( item.target && item.target.galleryFile ) {
-                        Router.navigationTree.add({
-                            galleryFile: item.target.galleryFile,
-                            selectedItemID: null
-                        })
-                        this.chooseDataSource( item.target.galleryFile );
+                        this.chooseDataSource( item.target.galleryFile, item );
                     } else {
                         this.setState({
                             showMediaViewer: true, 
@@ -226,19 +248,27 @@ class App extends Component {
                 imagesData={this.state.imagesData }
             />}
 
-            <MainMenu onClickFunction={(item)=>this.choseMenuOption(item)} />
-
-            <ContentWidthFollower
-                browserWidth={browser_width}
-                minColumWidth={minColumWidth}
-                maxContainerWidth={maxContainerWidth}
-                sideMargin={sideMargin}
-            >
-                <BackButton clickFunc={()=>{
-                    this.chooseDataSource(Router.navigationTree.down());
-                }} ></BackButton>                
+            <ContentWidthFollower top={0} browserWidth={browser_width} minColumWidth={minColumWidth} maxContainerWidth={maxContainerWidth} sideMargin={sideMargin}>
+                <BrandLogo 
+                    text={window.WEB_CONFIG.brandLogo.brandText} 
+                    brandLogoSrc={ window.WEB_CONFIG.brandLogo.src } 
+                    clickFunc={()=>{ this.setState({showAboutInfo: true })}}>    
+                </BrandLogo>
+                <MainMenu clickFunc={(item)=>this.choseMenuOption(item)} />
+                <>
+                    {Router.navigationTree.line.length > 1 &&<BackButton clickFunc={()=>{ this.chooseDataSource(Router.navigationTree.down()); }} ></BackButton>}
+                    {Router.navigationTree.line.length > 1 &&<NavigationMap 
+                        data={Router.navigationTree.line}
+                        clickFunc={(index)=>{
+                            console.log("Click on NavigationMap Item ", index, "!")
+                            this.chooseDataSource(Router.navigationTree.goToIndex(index));
+                        }} ></NavigationMap>}
+                </>
+                {this.state.imagesData && <>
+                    <div className="header title">{this.state.imagesData.galleryConfig.title}</div>
+                    <div className="header description">{this.state.imagesData.galleryConfig.description}</div>
+                </>}          
             </ContentWidthFollower>
-
 
             {window.WEB_DEBUG.columnsDesigner && <div className="designer">
                 <WindowCloseButton clickFunc={()=>{window.WEB_DEBUG.columnsDesigner=false;this.setState({})}}></WindowCloseButton>
@@ -250,7 +280,7 @@ class App extends Component {
                 <Range label={'Side margins'} min="0" max="200" step="10" defaultValue={sideMargin} value={sideMargin} onChange={(event)=> this._DEBUG_updateRange(event ,'sideMargin')} />
                 <br/>
                 <b>Gallery Items</b>
-                <Range label={'Gallery top'} min="0" max="200" step="10" defaultValue={galleryTop} value={galleryTop} onChange={(event)=> this._DEBUG_updateRange(event ,'galleryTop')} />
+                <Range label={'Gallery top'} min="0" max="300" step="10" defaultValue={galleryTop} value={galleryTop} onChange={(event)=> this._DEBUG_updateRange(event ,'galleryTop')} />
                 <Range label={'Items v. margin'} min="0" max="100" step="5" defaultValue={vMargin} value={vMargin} onChange={(event)=> this._DEBUG_updateRange(event ,'vMargin')} />
                 <AndresCheckBox label="Overlap header" callback={this.headerOverlap} checked={this.state.headerOverlap}></AndresCheckBox>
                 <AndresCheckBox label="Overlap details" callback={this.footerOverlap} checked={this.state.footerOverlap}></AndresCheckBox>
@@ -258,7 +288,7 @@ class App extends Component {
                 <AndresCheckBox label="Show children items" callback={this.swichChildren} checked={this.state.showChildrenItems}></AndresCheckBox>
             </div>}
 
-            <AboutInfo/>
+            {this.state.showAboutInfo && <AboutInfo clickFunc={()=>{ this.setState({showAboutInfo: false })}}/>}
 
             {window.WEB_DEBUG.tagsList && <ListOfTags 
                 clickFunc={()=>{window.WEB_DEBUG.tagsList=false;this.setState({})}}
@@ -293,7 +323,7 @@ class App extends Component {
                     clickFunction={ (i) => { this._DEBUG_chooseStylesData(i.themeName) }} />
 
                 <PresetsMenu  mnuData={ window.WEB_DEBUG_DATA.sourcesMenu }
-                    clickFunction={ (i) => { this.chooseDataSource(i.fileName) }}
+                    clickFunction={ (i) => {  Router.navigationTree.reset(); this.chooseDataSource(i.fileName) }}
                     title={'Sources'}/>
             </div>}
 

@@ -1,0 +1,25 @@
+.brandLogo .imageItem {
+    position: relative;
+    cursor: pointer;
+}
+
+.brandLogo .imageItem:hover {
+    background-color: rgb(251, 255, 0);
+}
+
+
+.brandLogo.brandText{
+    min-width: 75px;
+    min-height: 50px;
+    background-color: red;
+    width: auto;
+    line-height: 60px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    
+}

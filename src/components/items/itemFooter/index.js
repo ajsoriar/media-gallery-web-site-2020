@@ -1,7 +1,6 @@
 import React from 'react'
 import './index.css'
 import { Component } from 'react'
-//import FooterDataHandler from './footerDataHandler'
 
 class ItemFooter extends Component {
 
@@ -9,7 +8,7 @@ class ItemFooter extends Component {
         console.log("[ItemFooter] RENDER: ");
         var myObject = this.props.footerData;
         var frameData = this.props.frameData;
-        var footerH = this.props.footerH; //FooterDataHandler.getFooterHeight(footerData);
+        var footerH = this.props.footerH;
 
         const items = Object.keys(myObject).map(function(key, index) {
             var classNameString = "footerRow";
