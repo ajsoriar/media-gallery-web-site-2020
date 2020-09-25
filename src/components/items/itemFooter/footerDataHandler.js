@@ -2,7 +2,7 @@ var FooterDataHandler = {};
 
 FooterDataHandler.getFooterHeight = function( footerData ) {
 
-    console.log("[FooterDataHandler.getFooterHeight] footerData: ", footerData );
+    //console.log("[FooterDataHandler.getFooterHeight] footerData: ", footerData );
 
     if ( !footerData || footerData === false || footerData.length === 0 ) return 0;
 

@@ -60,7 +60,7 @@ class ImageItem extends Component { // includes crop functionality
 
             if (iw > ih ) { // Landscape // TODO: Compare aspect ratio of the frame and the video instead of this!
 
-                console.log("[ImageItem] [VideoBackGround]: -Landscape- !");
+                //console.log("[ImageItem]: -Landscape- !");
                 cw = iw * frameSize.h / ih;
                 ch = frameSize.h;
                 left = ( frameSize.w / 2 - cw / 2);
@@ -74,13 +74,13 @@ class ImageItem extends Component { // includes crop functionality
                 
             } else if ( ih > iw ){ // Portrait
     
-                console.log("[ImageItem] [VideoBackGround]: -Portrait- !");
+                //console.log("[ImageItem]: -Portrait- !");
                 cw = frameSize.w;
                 ch = ih * frameSize.w / iw;
     
             } else { // Squared
     
-                console.log("[ImageItem] [VideoBackGround]: -Squared- !");
+                //console.log("[ImageItem]: -Squared- !");
                 ch = frameSize.h;
                 cw = frameSize.w;
             }
@@ -94,7 +94,7 @@ class ImageItem extends Component { // includes crop functionality
 
             if (iw > ih ) { // Landscape
                 aspectRatio = "Landscape";
-                console.log("[ImageItem] [ImageItem] Landscape ");
+                //console.log("[ImageItem] [ImageItem] Landscape ");
                 if ( frm.h > ih && frm.w > iw ) {
                     ch = ih;
                     cw = iw;

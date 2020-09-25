@@ -2,44 +2,23 @@
     "galleryConfig": {
         "id": 7,
         "type": null,
-        
         "name": "LANDING-GALLERY",
         "title": "Demo gallery",
         "description": "If you don´t love my amazing gallery and my astonishing way of life many boring things will happen to you.",
         "background": {
             "color": "red",
-            "image": {
-                "disabled": true,
-                "type": null,
-                "description": null,
-                
-                "name": "background a pescar.bmp",
-                "title": "background a pescar.bmp",
-                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "background a pescar.bmp",
-                "size":{
-                    "w": 200,
-                    "h": 250
-                }
-            },
             "video":{
-                "disabled": true,
-                "type": null,
-                "description": null,
-                
-                "name": "video background",
-                "title": "video background",
-                "src": "http://www.riabop.com/demo/video/background.avi",
-                "filename": "background.avi",
+                "src": "https:/www.subidote.com/video/sources/demo2/mp4/robot-and-cloud-pink-to-cyan.mp4",
                 "size":{
                     "w": 1024,
                     "h": 740
                 }
             },
-            "audio": null
+            "placeholder": null
         },
         "tags": [
             { "id": null, "label": "All"},
+            { "id": null, "label": "data.3.root.json"},
             { "id": 2, "label": "Smart TV", "info": null, "atachToList": true },
             { "id": 3, "label": "WEB", "info": null, "atachToList": true },
             { "id": 4, "label": "Demo", "info": null, "atachToList": true },
@@ -67,7 +46,6 @@
         {
             "id": 20,
             "type": "PICTURE",
-            "dataFile": null,
             "description": null,
             "name": null,
             "title": null,
@@ -78,48 +56,45 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
             }
-        }, 
-        {
+        },{
             "id": 25,
             "type": "FOLDER",
-            "dataFile": null,
             "description": null,
             "name": null,
             "title": null,
             "tags": null,
             "target": {
-                "galleryFile": "data.4.folder1.json",
+                "file": {
+                    "src": "data.4.folder1.json"
+                },
                 "size":{
                     "w": 200,
                     "h": 250
                 },
                 "src": "http://www.riabop.com/demo/images/xxxcolumn_200x250.gif"
             }
-        }, 
-        {
+        },{
             "id": 26,
             "type": "FOLDER",
-            "dataFile": null,
             "description": "This folder is about red stuff",
             "name": "Red stuff",
             "title": null,
             "tags": ["EDITORIAL"],
             "target": {
-                "galleryFile": "error.json"
+                "file": {
+                    "src": "error.json"
+                }
             },
             "color": "#ff0000"
-        }, 
-        {
+        },{
             "id": 30,
             "type": "PICTURE",
-            "dataFile": null,
             "description": null,
             "name": null,
             "title": null,
@@ -130,7 +105,6 @@
                     "h": 1080
                 },
                 "src": "http://www.riabop.com/demo/images/girl-1920x1080.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
@@ -151,7 +125,6 @@
         },{
             "id": 31,
             "type": "FOLDER",
-            "dataFile": null,
             "description": "This folder is about blue stuff",
             "name": "Blue stuff",
             "title": null,
@@ -163,18 +136,16 @@
         },{
             "id": 40,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
             "name": null,
             "title": null,
             "tags": null,
             "target": {
                 "size":{
-                    "w": 600,
-                    "h": 450
+                    "w": 1920,
+                    "h": 1080
                 },
-                "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
+                "src": "http://subidote.com/gallery/demo/main_sequence.jpg",
                 "color": "red"
             },
             "header": {
@@ -193,9 +164,7 @@
         },{
             "id": 50,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": null,
             "title": null,
             "target": {
@@ -204,7 +173,6 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
@@ -222,8 +190,7 @@
             }
         },{
             "id": 60,
-            "type": "VIDEO",
-            "dataFile": null,
+            "type": "VIDEO", 
             "description": "Este es un video-item",
             "name": null,
             "title": null,
@@ -235,7 +202,6 @@
                     "h": 250
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -246,16 +212,16 @@
                     "h": 1080
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "color": "pink"
-            },
-            "targetVideo": {
-                "size":{
-                    "w": 1920,
-                    "h": 1080
-                },
-                "src": "https://managementartists.s3.amazonaws.com/fullhd_5e95c879-7bf8-4aaf-8be6-04b8ac110003.mp4",
-                "type": "VIDEO",
-                "color": "purple"
+                "color": "pink",
+                "video": {
+                    "size":{
+                        "w": 1920,
+                        "h": 1080
+                    },
+                    "src": "https://managementartists.s3.amazonaws.com/fullhd_5e95c879-7bf8-4aaf-8be6-04b8ac110003.mp4",
+                    "type": "VIDEO",
+                    "color": "purple"                    
+                }
             },
             "frame": {
                 "INFO": "Nos vale para pillar el aspect ratio y regla de 3 para adaptarlo a la columna",
@@ -264,7 +230,6 @@
                     "h": 240
                 }
             },
-            "development_info": "https://managementartists.s3.amazonaws.com/fullhd_5e95c879-7bf8-4aaf-8be6-04b8ac110003.mp4",
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
@@ -272,37 +237,50 @@
         },{
             "id": 65,
             "type": "VIDEO",
-            "dataFile": null,
             "description": "This is the description text of this VideoItem",
             "name": "Video item",
             "title": "Video item",
             "tags": ["LOL", "VIDEO"],
             "thumbnail": {
-                "development_info": "This image is the placeholder in the gallery",
-                "size":{ "w": 250, "h": 160 },
-                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "bg-chess_640x1024.png",
-                "development_info_2": "cropStrategies: FILL-THE-FRAME",
-                "cropStrategy": null,
-                "color": "blue"
+                "image":{
+                    "size":{ 
+                        "w": 250, 
+                        "h": 160
+                    },
+                    "src": "http://www.riabop.com/demo/images/column_200x250.gif"
+                },
+                "frame": {
+                    "__development_info_1": "Get the aspect ratio from here. Use a cropStrategy and the aspect ratio to crop and render the image in the column.",
+                    "size":{ 
+                        "w": 320, 
+                        "h": 240 
+                    }
+                },
+                "color": "blue",
+                "cropStrategy": null,                
+                "__development_info_2": "This image is the placeholder in the gallery",
+                "__development_info_3": "cropStrategies: FILL-THE-FRAME"
             },
             "target": {
+                "type": "VIDEO",
                 "development_info": "This image is the placeholder of the video",
                 "size":{ "w": 1920, "h": 1080 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "color": "pink"
+                "color": "pink",
+                "image":{
+                    "src": "http://www.riabop.com/demo/images/background-100x100.png",
+                    "size":{
+                        "w": 600,
+                        "h": 450
+                    }
+                },
+                "video":{
+                    "size":{"w": 1920,"h": 1080 },
+                    "src": "https:/www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
+                    "type": "VIDEO",
+                    "color": "purple"  
+                }
             },
-            "targetVideo": {
-                "size":{"w": 1920,"h": 1080 },
-                "src": "https:/www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
-                "type": "VIDEO",
-                "color": "purple"
-            },
-            "frame": {
-                "INFO": "Nos vale para pillar el aspect ratio y regla de 3 para adaptarlo a la columna",
-                "size":{ "w": 320, "h": 240 }
-            },
-            "development_info": "https://managementartists.s3.amazonaws.com/fullhd_5e95c879-7bf8-4aaf-8be6-04b8ac110003.mp4",
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
@@ -316,16 +294,12 @@
                 "shadow": false,
                 "overlayText": false
             }
-        }, 
-        {
+        },{
             "id": 70,
             "type": "PICTURE",
-            "dataFile": null,
-            
             "name": "Video-background item",
             "title": "Video-background item",
             "description": null,
-
             "tags": ["WORK","PROFESIONAL"],
             "target": {
                 "size":{
@@ -333,7 +307,6 @@
                     "h": 179
                 },
                 "src": "http://www.riabop.com/demo/images/new-york-skyline_800x179.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
@@ -357,8 +330,7 @@
                 "author": "José Soria",
                 "date": "2020"
             }
-        },
-        {
+        },{
             "id": 80,
             "type": "IMAGE",
             "dataFile": "null",
@@ -373,7 +345,6 @@
                     "h": 1227
                 },
                 "src": "http://www.riabop.com/demo/images/ficha-mel-2020-05-22-1641x1227.jpg",
-                "filename": "xxxx.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -383,7 +354,6 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
                 
             },
@@ -407,13 +377,10 @@
                 "author": "José Rodríguez",
                 "date": "2020"
             }
-        },
-        {
+        },{
             "id": 90,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": "Color background: cyan",
             "title": "Color background: cyan",
             "tags": ["WORK","PROFESIONAL"],
@@ -423,7 +390,6 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": null,
                 "color": "red",
                 "brandColor": null,
                 "textColor": null
@@ -438,9 +404,7 @@
         },{
             "id": 100,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": "Image error and red background (name)",
             "title": "Image error and red background (title)",
             "tags": ["WORK","PROFESIONAL"],
@@ -449,8 +413,7 @@
                     "w": 600,
                     "h": 450
                 },
-                "src": "http://www.riabop.com/demo/images/xxx-error-01-xxx.jpg",
-                "filename": "background a pescar.bmp"
+                "src": "http://www.riabop.com/demo/images/xxx-error-01-xxx.jpg"
             },
             "header": {
                 "title": "This is a header 2",
@@ -459,13 +422,10 @@
             "background": {
                 "color": "red"
             }
-        }, 
-        {
+        },{
             "id": 110,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": null,
             "title": null,
             "tags": ["WORK"],
@@ -475,20 +435,16 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/xxx-error-02-xxx.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
             }
-        },
-        {
+        },{
             "id": 120,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": "Default gradient background (name)",
             "title": "Default gradient background (title)",
             "tags": ["WORK"],
@@ -498,7 +454,6 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
@@ -509,13 +464,10 @@
                 "color": "red",
                 "gradient": true
             }
-        },
-        {
+        },{
             "id": 130,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": "mmm2",
             "title": "mmm2",
             "tags": ["WORK"],
@@ -525,7 +477,6 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
@@ -542,9 +493,7 @@
         },{
             "id": 140,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": null,
             "title": null,
             "tags": ["LIFE"],
@@ -554,20 +503,16 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
             }
-        }, 
-        {
+        },{
             "id": 150,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": null,
             "title": null,
             "tags": ["VACATION", "PERSONAL"],
@@ -577,43 +522,48 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
             }
-        },
-        {
+        },{
             "id": 160,
-            "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
+            "type": "VIDEO",
             "description": null,
-            
             "name": null,
             "title": null,
             "tags": ["VACATION", "PERSONAL","WORK", "HOME", "DIY"],
-            "target": {
+            "thumbnail": {
+                "development_info": "This image is the placeholder in the gallery",
                 "size":{
-                    "w": 600,
-                    "h": 450
+                    "w": 1920,
+                    "h": 1080
                 },
-                "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
-                "color": "red"
+                "src": "http://subidote.com/gallery/demo/main_sequence.jpg",
+                "cropStrategy": null,
+                "color": "blue"
+            },
+            "target": {
+                "video":{
+                    "size":{
+                        "w": 1920,
+                        "h": 1080
+                    },
+                    "src": "https:/www.subidote.com/video/sources/demo2/mp4/robot-and-cloud-green-to-cyan.mp4"                   
+                },
+                "type": "VIDEO",
+                "color": "purple"
             },
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
             }
-        },
-        {
+        },{
             "id": 170,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": null,
             "title": null,
             "tags": ["VACATION", "CLIENTS"],
@@ -623,30 +573,16 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
             }
-        },
-        
-        
-        
-        
-        
-        
-        
-        
-         
-        
-        {
+        },{
             "id": 2,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": null,
             "title": null,
             "tags": ["VACATION"],
@@ -656,23 +592,13 @@
                     "h": 450
                 },
                 "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             },
             "header": {
                 "title": "This is a header 2",
                 "date": "2020"
             }
-        },
-
-
-        { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
-        { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
-        { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
-
-        { "type": "INFO", "info": "hoverStyle: [BANNER|ZOOM|BORDER|TRANSLUCENT|OVERLAY]" },
-
-        {
+        },{ "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },{ "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },{ "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },{ "type": "INFO", "info": "hoverStyle: [BANNER|ZOOM|BORDER|TRANSLUCENT|OVERLAY]" },{
             "id": 3,
             "parent": null,
             "type": "GALLERY",
@@ -680,12 +606,10 @@
             "startOnChildren": 17,
             "action": "OPEN-VIEWER",
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["VACATION"],
             "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 200,
                 "h": 250
@@ -700,20 +624,16 @@
             },
             "hoverStyle":null
         },
-
                                 { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
-                  
                                 {
                                     "id": 17,
                                     "parent": 3,
                                     "type": null,
                                     "description": null,
-                                    
                                     "name": "bg-chess_640x1024.png",
                                     "title": "bg-chess_640x1024.png",
                                     "tags": ["VACATION"],
                                     "src": "http://www.riabop.com/demo/images/background-100x100.png",
-                                    "filename": "bg-chess_640x1024.png",
                                     "size":{
                                         "w": 100,
                                         "h": 100
@@ -725,12 +645,10 @@
                                     "parent": 3,
                                     "type": null,
                                     "description": null,
-                                    
                                     "name": "bg-chess_640x1024.png",
                                     "title": "bg-chess_640x1024.png",
                                     "tags": ["VACATION"],
                                     "src": "http://www.riabop.com/demo/images/bridge_800x1000.png",
-                                    "filename": "bg-chess_640x1024.png",
                                     "size":{
                                         "w": 800,
                                         "h": 1000
@@ -744,12 +662,10 @@
                                     "parent": 3,
                                     "type": null,
                                     "description": null,
-                                    
                                     "name": "bg-chess_640x1024.png",
                                     "title": "bg-chess_640x1024.png",
                                     "tags": ["VACATION"],
                                     "src": "http://www.riabop.com/demo/images/flipa_1498x1498.jpg",
-                                    "filename": "bg-chess_640x1024.png",
                                     "size":{
                                         "w": 1498,
                                         "h": 1498
@@ -757,22 +673,14 @@
                                     "color": "green",
                                     "footer": false
                                 },
-                                { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
-                                
-        { "type": "INFO", "info": "--- GALLERY 1 --- FIN --------------------------------------------------------------------" },
-        { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
-        { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
-
-        {
+                                { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },{ "type": "INFO", "info": "--- GALLERY 1 --- FIN --------------------------------------------------------------------" },{ "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },{ "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },{
             "id": 4,
             "type": null,
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["VACATION"],
             "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 600,
                 "h": 450
@@ -785,7 +693,6 @@
             "id": 5,
             "type": null,
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
@@ -795,7 +702,6 @@
                     "h": 250
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -804,8 +710,7 @@
                     "w": 200,
                     "h": 250
                 },
-                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif"   
             },
             "frame": {
                 "INFO": "Nos vale para pillar el aspect ratio y regla de 3 para adaptarlo a la columna",
@@ -814,32 +719,10 @@
                     "h": 240
                 }
             }
-        },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {
+        },{
             "id": 6,
             "type": null,
             "description": null,
-            
             "name": "background a pescar.bmp",
             "title": "background a pescar.bmp",
             "tags": ["LIFE"],
@@ -849,7 +732,6 @@
                     "h": 500
                 },
                 "src": "http://www.riabop.com/demo/images/rectangle-3_427x500.png",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": "FILL-THE-FRAME",
                 "color": "orange"
             },
@@ -858,8 +740,7 @@
                     "w": 427,
                     "h": 500
                 },
-                "src": "http://www.riabop.com/demo/images/rectangle-3_427x500.png",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/rectangle-3_427x500.png"   
             },
             "footer": {
                 "title": "Gallery about you and me",
@@ -868,9 +749,7 @@
         },{
             "id": 7,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": null,
             "title": null,
             "tags": ["LIFE"],
@@ -880,19 +759,16 @@
                     "h": 427
                 },
                 "src": "http://www.riabop.com/demo/images/rectangle-4_500x427.png",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             }
         },{
             "id": 8,
             "type": null,
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
             "src": "http://www.riabop.com/demo/images/river-water_600x532.jpg",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 600,
                 "h": 532
@@ -903,12 +779,10 @@
             "id": 9,
             "type": null,
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
             "src": "http://www.riabop.com/demo/images/small-box_50x50.jpg",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 50,
                 "h": 50
@@ -921,7 +795,6 @@
             "id": 10,
             "type": null,
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
@@ -931,7 +804,6 @@
                     "h": 179
                 },
                 "src": "http://www.riabop.com/demo/images/new-york-skyline_800x179.jpg",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -940,14 +812,12 @@
                     "w": 800,
                     "h": 179
                 },
-                "src": "http://www.riabop.com/demo/images/new-york-skyline_800x179.jpg",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/new-york-skyline_800x179.jpg"    
             }
         },{
             "id": 11,
             "type": null,
             "description": null,
-            
             "name": "background a pescar.bmp",
             "title": "background a pescar.bmp",
             "tags": ["LIFE"],
@@ -957,7 +827,6 @@
                     "h": 1440
                 },
                 "src": "http://www.riabop.com/demo/images/demo-image_4480x1440.png",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": "FILL-THE-FRAME",
                 "color": "orange"
             },
@@ -966,8 +835,7 @@
                     "w": 4480,
                     "h": 1440
                 },
-                "src": "http://www.riabop.com/demo/images/demo-image_4480x1440.png",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/demo-image_4480x1440.png"    
             },
             "footer": {
                 "title": "Gallery about you and me",
@@ -976,9 +844,7 @@
         },{
             "id": 12,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
-            
             "name": null,
             "title": null,
             "tags": ["LIFE"],
@@ -988,22 +854,22 @@
                     "h": 300
                 },
                 "src": "http://www.riabop.com/demo/images/diamond_240x300.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             }
         },{
             "id": 13,
             "type": null,
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
-            "src": "http://www.riabop.com/demo/images/diamond_300x240.jpg",
-            "filename": "bg-chess_640x1024.png",
-            "size":{
-                "w": 300,
-                "h": 240
+            "target": {
+                "src": "http://www.riabop.com/demo/images/diamond_300x240.jpg",
+                "size":{
+                    "w": 300,
+                    "h": 240
+                },
+                "color": "red"
             },
             "color": "green",
             "footer": false
@@ -1011,12 +877,10 @@
             "id": 14,
             "type": null,
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE"],
             "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 600,
                 "h": 450
@@ -1029,7 +893,6 @@
             "id": 15,
             "type": null,
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE", "COMERCIAL","PROFESIONAL"],
@@ -1039,7 +902,6 @@
                     "h": 350
                 },
                 "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -1048,8 +910,7 @@
                     "w": 115,
                     "h": 350
                 },
-                "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg"   
             },
             "footer": {
                 "title": "Gallery about you",
@@ -1059,7 +920,6 @@
             "id": 16,
             "type": null,
             "description": null,
-            
             "name": "bg-chess_640x1024.png",
             "title": "bg-chess_640x1024.png",
             "tags": ["LIFE", "COMERCIAL"],
@@ -1069,7 +929,6 @@
                     "h": 350
                 },
                 "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -1078,13 +937,8 @@
                     "w": 115,
                     "h": 350
                 },
-                "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg"   
             }
         }
-
-
-
-
     ]
 }

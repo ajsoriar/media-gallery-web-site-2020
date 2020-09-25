@@ -8,20 +8,56 @@ class VideoBackGround extends Component {
         super();
         this.state = {
             browser_width: window.innerWidth, 
-            screen_height: window.innerHeight
+            screen_height: window.innerHeight,
+            id: null
         }
     }
+
+    checkPlay = () => {
+
+        /*
+
+        var id = this.state.id;
+
+        var myCheck = function(){
+            console.log("[VideoBackGround]: myCheck()");
+
+            var media = document.getElementById( id );
+
+            if ( media.paused ) {
+
+                console.log("[VideoBackGround]: Media is paused! so ... play()");
+
+                media.pause();
+                media.play();
+            } else {
+
+                console.log("[VideoBackGround]:  media.paused: ", media.paused );
+            }
+        };
+
+        console.log("[VideoBackGround]: setTimeout()");
+        setTimeout( myCheck, 2000);
+
+        */
+    };
 
     updateVideoBackGroundDimensions = () => {
         //console.log("[VideoBackGround]: updateVideoBackGroundDimensions!");
         this.setState({ 
             browser_width: window.innerWidth, 
             screen_height: window.innerHeight
-        });
+        }, this.checkPlay);
     };
 
     componentDidMount() {
         window.addEventListener('resize', this.updateVideoBackGroundDimensions);
+        //console.log("[VideoBackGround]: componentDidMount!");
+
+        var id = "videoBg-" + Date.now();
+        this.setState({ 
+            id: id
+        }, this.checkPlay);
     }
     
     componentWillUnmount() {
@@ -29,6 +65,8 @@ class VideoBackGround extends Component {
     }
 
     render( props, state ) {
+
+        //console.log("[VideoBackGround]: props:", this.props );
 
         var frameSize = {
             w: window.innerWidth,
@@ -42,8 +80,8 @@ class VideoBackGround extends Component {
                                 top: 0,
                                 left: 0,
                                 overflow: "hidden",
-                                position: "absolute",
-                                backgroundColor: "chartreuse"
+                                position: "absolute"//,
+                                //backgroundColor: "chartreuse"
                             };
 
         var iw = 1280, //frameSize.w, // TODO: Use real video dimensions here!
@@ -93,10 +131,18 @@ class VideoBackGround extends Component {
                                 position: 'absolute'
                             };   
 
-        const {src} = this.props;
         return <div className="imageCropper" style={cssFrameString}>
-            <video style={cssContentString} loop autoPlay poster="./gray-green-bg.jpg">
-                <source src={src} />
+            <video 
+                key={this.props.src}
+                id={this.state.id}
+                style={cssContentString} 
+                loop={this.props.loop} 
+                autoPlay 
+                muted="muted"
+                onError={()=>{ console.log( "VIDEO ERROR! "); }}
+                onLoad={()=>{ console.log( "VIDEO LOADED! "); }} 
+            >
+                <source src={this.props.src} />
                 Your browser does not support the video tag.
             </video>
         </div>;

@@ -6,7 +6,7 @@ class PresetsMenu extends Component {
 
     render() {
 
-        console.log("[PresetsMenu] RENDER");
+        //console.log("[PresetsMenu] RENDER");
         var mnuData = this.props.mnuData;
 
         var menuItems = mnuData.map((item, index) => <li

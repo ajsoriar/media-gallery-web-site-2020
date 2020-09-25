@@ -1,6 +1,5 @@
-window.
-
 window.WEB_DEBUG = {
+    responsiveBackgroundColor: false,
     initialize: false,
     // Panels
     showDebugPalette: null,

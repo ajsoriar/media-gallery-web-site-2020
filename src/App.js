@@ -21,6 +21,7 @@ import BackButton from './components/buttons/backButton'
 import ContentWidthFollower from './components/containers/contentWidthFollower'
 import NavigationMap from './components/navigationMap'
 import BrandLogo from './components/brandLogo'
+import MultiBackGround from './components/backgrounds/multiBackGround'
 
 class App extends Component {
 
@@ -135,12 +136,14 @@ class App extends Component {
             console.log("response: ",data);
 
             if ( item != null ){
+                console.log("!1");
                 Router.navigationTree.add({
                     title: data.galleryConfig.title || "Untitled Gallery",
-                    galleryFile: item.target.galleryFile,
+                    galleryFile: item.target.file.src,
                     selectedItemID: item.id
                 })
             } else {
+                console.log("!2");
                 if( Router.navigationTree.line.length === 0){
                     Router.navigationTree.add({
                         title: data.galleryConfig.title || "Home",
@@ -216,7 +219,13 @@ class App extends Component {
 
     render () {
         var { maxContainerWidth, maxNumOfColumns, minColumWidth, vMargin, sideMargin, hmargin, browser_width, browser_height, galleryTop} = this.state;
+
+        console.log("[App] render()");
+
         return  <>
+
+            { this.state.imagesData && <MultiBackGround gi={this.state.imagesData.galleryConfig}></MultiBackGround> }
+
             { this.state.imagesData && <Columns 
                 browserWidth={browser_width}
                 browserHeight={browser_height}
@@ -236,8 +245,9 @@ class App extends Component {
                     "showChildrenItems": this.state.showChildrenItems
                 }}
                 clickOnGalleryItem={(item) => {
-                    if ( item.target && item.target.galleryFile ) {
-                        this.chooseDataSource( item.target.galleryFile, item );
+                    console.log("item:", item );
+                    if ( item.target && item.target.file ) {
+                        this.chooseDataSource( item.target.file.src, item );
                     } else {
                         this.setState({
                             showMediaViewer: true, 

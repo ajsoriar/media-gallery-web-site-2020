@@ -6,7 +6,7 @@ class ForeverBrandBanner extends Component {
 
     render() {
 
-        console.log("[foreverBrandBanner] RENDER!");
+        //console.log("[foreverBrandBanner] RENDER!");
 
         const frameStyleString = {
             width: this.props.paneSize.w,

@@ -11,34 +11,34 @@
 /* Larger than mobile */
 @media (min-width: 400px) {
     body {
-        background-color: red;
+        _background-color: red;
     }
 }
 
 /* Larger than phablet */
 @media (min-width: 550px) {
     body {
-        background-color: cyan;
+        _background-color: cyan;
     }
 }
 
 /* Larger than tablet */
 @media (min-width: 750px) {
     body {
-        background-color: green;
+        _background-color: green;
     }
 }
 
 /* Larger than desktop */
 @media (min-width: 1000px) {
     body {
-        background-color: blue;
+        _background-color: blue;
     }
 }
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {
     body {
-        background-color: yellow;
+        _background-color: yellow;
     }
 }

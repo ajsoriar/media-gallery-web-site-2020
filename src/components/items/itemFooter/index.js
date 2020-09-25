@@ -5,7 +5,7 @@ import { Component } from 'react'
 class ItemFooter extends Component {
 
     render() {
-        console.log("[ItemFooter] RENDER: ");
+        //console.log("[ItemFooter] RENDER: ");
         var myObject = this.props.footerData;
         var frameData = this.props.frameData;
         var footerH = this.props.footerH;

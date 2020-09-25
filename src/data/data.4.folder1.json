@@ -1,42 +1,17 @@
 {
     "galleryConfig": {
-        "id": 7,
+        "id": 2,
         "type": null,
         "zoom": null,
         "name": null,
         "title": null,
         "description": "If you don´t love my amazing gallery and my astonishing way of life many boring things will happen to you.",
         "background": {
-            "color": "red",
-            "image": {
-                "disabled": true,
-                "type": null,
-                "description": null,
-                "zoom": null,
-                "name": "background a pescar.bmp",
-                "title": "background a pescar.bmp",
-                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "background a pescar.bmp",
-                "size":{
-                    "w": 200,
-                    "h": 250
-                }
-            },
-            "video":{
-                "disabled": true,
-                "type": null,
-                "description": null,
-                "zoom": null,
-                "name": "video background",
-                "title": "video background",
-                "src": "http://www.riabop.com/demo/video/background.avi",
-                "filename": "background.avi",
-                "size":{
-                    "w": 1024,
-                    "h": 740
-                }
-            },
-            "audio": null
+            "gradient": {
+                "color1": "blue",
+                "color2": "red",
+                "angle": null
+            }
         },
         "tags": [
             { "id": null, "label": "All"},
@@ -51,8 +26,7 @@
             { "id": 10, "label": "Ionic", "info": null, "atachToList": true },
             { "id": 11, "label": "Plugin", "info": null, "atachToList": true }
         ],
-        "itemTypes": ["IMAGE", "VIDEO", "AUDIO", "FOLDER", "GALLERY", "GALLERY-PREVIEW"],
-        "debug": true
+        "debug": false
     },
     "items": [
         {
@@ -61,8 +35,8 @@
             "type": "IMAGE",
             "description": null,
             "zoom": null,
-            "name": "background a pescar.bmp",
-            "title": "background a pescar.bmp",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "thumbnail": {
                 "size":{
@@ -70,7 +44,6 @@
                     "h": 250
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": "FILL-THE-FRAME",
                 "color": "orange"
             },
@@ -79,8 +52,7 @@
                     "w": 200,
                     "h": 250
                 },
-                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif"   
             },
             "header": {
                 "title": "This is a header 1",
@@ -93,7 +65,6 @@
         },{
             "id": 2,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
             "zoom": null,
             "name": "mmm",
@@ -101,11 +72,10 @@
             "tags": ["WORK","LIFE", "VACATION"],
             "target": {
                 "size":{
-                    "w": 600,
-                    "h": 450
+                    "w": 1920,
+                    "h": 1080
                 },
-                "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-                "filename": "background a pescar.bmp",
+                "src": "http://subidote.com/gallery/demo/main_sequence.jpg",
                 "color": "red"
             },
             "header": {
@@ -116,34 +86,35 @@
         {
             "id": 25,
             "type": "FOLDER",
-            "dataFile": null,
             "description": null,
             "name": null,
             "title": null,
             "tags": null,
             "target": {
-                "galleryFile": "data.5.folder2.json",
+                "file": {
+                    "src": "data.5.folder2.json"
+                },
+                "video": null,
                 "size":{
                     "w": 200,
                     "h": 250
                 },
-                "src": "http://www.riabop.com/demo/images/xxxcolumn_200x250.gif"
+                "src": "http://www.riabop.com/demo/images/xxxcolumn_200x250.gif"                    
             }
-        }, 
-        {
+        },{
             "id": 31,
             "type": "FOLDER",
-            "dataFile": null,
             "description": "This folder is about blue stuff",
             "name": "Error folder",
             "title": null,
             "tags": ["EDITORIAL"],
             "target": {
-                "galleryFile": "error.json"
+                "file": {
+                    "src": "error.json"
+                }
             },
             "color": "#0000ff"
-        }, 
-        {
+        },{
             "id": 100,
             "parent": null,
             "type": "GALLERY",
@@ -152,11 +123,10 @@
             "action": "OPEN-VIEWER",
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 200,
                 "h": 250
@@ -171,18 +141,16 @@
             }
         },
         { "type": "INFO", "info": "--- GALLERY 1 --- INI --------------------------------------------------------------------" },
-                  
                                 {
                                     "id": 17,
                                     "parent": 3,
                                     "type": null,
                                     "description": null,
                                     "zoom": null,
-                                    "name": "bg-chess_640x1024.png",
-                                    "title": "bg-chess_640x1024.png",
+                                    "name": null,
+                                    "title": null,
                                     "tags": ["WORK","LIFE", "VACATION"],
                                     "src": "http://www.riabop.com/demo/images/background-100x100.png",
-                                    "filename": "bg-chess_640x1024.png",
                                     "size":{
                                         "w": 100,
                                         "h": 100
@@ -195,11 +163,10 @@
                                     "type": null,
                                     "description": null,
                                     "zoom": null,
-                                    "name": "bg-chess_640x1024.png",
-                                    "title": "bg-chess_640x1024.png",
+                                    "name": null,
+                                    "title": null,
                                     "tags": ["WORK","LIFE", "VACATION"],
                                     "src": "http://www.riabop.com/demo/images/bridge_800x1000.png",
-                                    "filename": "bg-chess_640x1024.png",
                                     "size":{
                                         "w": 800,
                                         "h": 1000
@@ -214,11 +181,10 @@
                                     "type": null,
                                     "description": null,
                                     "zoom": null,
-                                    "name": "bg-chess_640x1024.png",
-                                    "title": "bg-chess_640x1024.png",
+                                    "name": null,
+                                    "title": null,
                                     "tags": ["WORK","LIFE", "VACATION"],
                                     "src": "http://www.riabop.com/demo/images/flipa_1498x1498.jpg",
-                                    "filename": "bg-chess_640x1024.png",
                                     "size":{
                                         "w": 1498,
                                         "h": 1498
@@ -226,18 +192,15 @@
                                     "color": "green",
                                     "footer": false
                                 },
-                                
                                 { "type": "INFO", "info": "--- GALLERY 1 --- FIN --------------------------------------------------------------------" },
-
         {
             "id": 4,
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 600,
                 "h": 450
@@ -251,8 +214,8 @@
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "thumbnail": {
                 "size":{
@@ -260,7 +223,6 @@
                     "h": 250
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -269,8 +231,7 @@
                     "w": 200,
                     "h": 250
                 },
-                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif"   
             },
             "frame": {
                 "INFO": "Nos vale para pillar el aspect ratio y regla de 3 para adaptarlo a la columna",
@@ -279,34 +240,13 @@
                     "h": 240
                 }
             }
-        },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {
+        },{
             "id": 6,
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "background a pescar.bmp",
-            "title": "background a pescar.bmp",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "thumbnail": {
                 "size":{
@@ -314,7 +254,6 @@
                     "h": 500
                 },
                 "src": "http://www.riabop.com/demo/images/rectangle-3_427x500.png",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": "FILL-THE-FRAME",
                 "color": "orange"
             },
@@ -323,8 +262,7 @@
                     "w": 427,
                     "h": 500
                 },
-                "src": "http://www.riabop.com/demo/images/rectangle-3_427x500.png",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/rectangle-3_427x500.png"   
             },
             "footer": {
                 "title": "Gallery about you and me",
@@ -333,7 +271,6 @@
         },{
             "id": 7,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
             "zoom": null,
             "name": "mmm",
@@ -345,7 +282,6 @@
                     "h": 427
                 },
                 "src": "http://www.riabop.com/demo/images/rectangle-4_500x427.png",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             }
         },{
@@ -353,11 +289,10 @@
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "src": "http://www.riabop.com/demo/images/river-water_600x532.jpg",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 600,
                 "h": 532
@@ -369,11 +304,10 @@
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "src": "http://www.riabop.com/demo/images/small-box_50x50.jpg",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 50,
                 "h": 50
@@ -387,8 +321,8 @@
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "thumbnail": {
                 "size":{
@@ -396,7 +330,6 @@
                     "h": 179
                 },
                 "src": "http://www.riabop.com/demo/images/new-york-skyline_800x179.jpg",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -405,16 +338,15 @@
                     "w": 800,
                     "h": 179
                 },
-                "src": "http://www.riabop.com/demo/images/new-york-skyline_800x179.jpg",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/new-york-skyline_800x179.jpg"   
             }
         },{
             "id": 11,
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "background a pescar.bmp",
-            "title": "background a pescar.bmp",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "thumbnail": {
                 "size":{
@@ -422,7 +354,6 @@
                     "h": 1440
                 },
                 "src": "http://www.riabop.com/demo/images/demo-image_4480x1440.png",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": "FILL-THE-FRAME",
                 "color": "orange"
             },
@@ -431,8 +362,7 @@
                     "w": 4480,
                     "h": 1440
                 },
-                "src": "http://www.riabop.com/demo/images/demo-image_4480x1440.png",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/demo-image_4480x1440.png"   
             },
             "footer": {
                 "title": "Gallery about you and me",
@@ -441,7 +371,6 @@
         },{
             "id": 12,
             "type": "GALLERY",
-            "dataFile": "gallery-data.v3.json",
             "description": null,
             "zoom": null,
             "name": "mmm",
@@ -453,7 +382,6 @@
                     "h": 300
                 },
                 "src": "http://www.riabop.com/demo/images/diamond_240x300.jpg",
-                "filename": "background a pescar.bmp",
                 "color": "red"
             }
         },{
@@ -461,11 +389,10 @@
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "src": "http://www.riabop.com/demo/images/diamond_300x240.jpg",
-            "filename": "bg-chess_640x1024.png",
             "size":{
                 "w": 300,
                 "h": 240
@@ -477,11 +404,10 @@
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
-            "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",
-            "filename": "bg-chess_640x1024.png",
+            "src": "http://www.riabop.com/demo/images/garaje-cesped_600x450.jpg",            
             "size":{
                 "w": 600,
                 "h": 450
@@ -495,8 +421,8 @@
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "thumbnail": {
                 "size":{
@@ -504,7 +430,6 @@
                     "h": 350
                 },
                 "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -513,8 +438,7 @@
                     "w": 115,
                     "h": 350
                 },
-                "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg"   
             },
             "footer": {
                 "title": "Gallery about you",
@@ -525,8 +449,8 @@
             "type": null,
             "description": null,
             "zoom": null,
-            "name": "bg-chess_640x1024.png",
-            "title": "bg-chess_640x1024.png",
+            "name": null,
+            "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
             "thumbnail": {
                 "size":{
@@ -534,7 +458,6 @@
                     "h": 350
                 },
                 "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg",
-                "filename": "bg-chess_640x1024.png",
                 "cropStrategy": null,
                 "color": "blue"
             },
@@ -543,13 +466,8 @@
                     "w": 115,
                     "h": 350
                 },
-                "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg",
-                "filename": "background a pescar.bmp"    
+                "src": "http://www.riabop.com/demo/images/empire-state-building_115x350.jpg"    
             }
         }
-
-
-
-
     ]
 }

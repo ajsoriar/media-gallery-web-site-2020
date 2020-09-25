@@ -8,7 +8,7 @@ import TagsDataHandler from './../tagsList/tagsDataHandler'
 
 const GetItemByType = function( itemData, clickFunc, i, debug ) {
 
-    console.log("[GetItemByType] itemData: ", itemData );
+    //console.log("[GetItemByType] itemData: ", itemData );
     switch (itemData.type) {
         case "FOLDER":
             return <FolderItem
