@@ -29,7 +29,7 @@ class WideItem extends Component {
                 imageSize={{ w: itemCal.imgW, h: itemCal.imgH }}
                 imageSource={GridDataHandler.getImageData(imgDat, "SOURCE")}
                 antialiasing={true}
-                debug={window.WEB_DEBUG.gridImages}
+                debug={window.WEB_DEBUG._GUIDES.gridImagesCalculations}
                 cropStrategy={GridDataHandler.getImageData(imgDat, "cropStrategy") || 'DEFAULT'}>
             </ImageItem>
 

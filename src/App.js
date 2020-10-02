@@ -22,6 +22,7 @@ import ContentWidthFollower from './components/containers/contentWidthFollower'
 import NavigationMap from './components/navigationMap'
 import BrandLogo from './components/brandLogo'
 import MultiBackGround from './components/backgrounds/multiBackGround'
+import DebugMenu from './components/debug/debugMenu'
 
 class App extends Component {
 
@@ -30,6 +31,26 @@ class App extends Component {
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
+    /*
+    window.WEB_DEBUG = {
+        _showDebugPalette: true,
+        _PANELS: {
+            panel_gallery: true,
+            panel_themes: true,
+            panel_tags: true,
+            panel_algorithm: true
+        },
+        _GUIDES:{
+            responsiveBgColor: false,
+            columns: true,
+            gridImages: true,
+            gridImagesTags: true,
+            imageIndexes: true,
+            viewerImgCalculations: true, // rename to ids
+        }
+    };
+    */
+    
     state = {
         imagesData: null,
         // Configuration of the columns
@@ -42,6 +63,8 @@ class App extends Component {
         hmargin: window.WEB_CONFIG.columnsGrid.hmargin,
         // Configuration of the gallery
         showChildrenItems: window.WEB_CONFIG.columnsGrid.showChildrenItems,
+        showGalleriesHeader: window.WEB_CONFIG.showGalleriesHeader,
+        showGalleriesBg: window.WEB_CONFIG.showGalleriesBg,
         galleryTop: window.WEB_CONFIG.columnsGrid.galleryTop,
         vMargin: window.WEB_CONFIG.columnsGrid.vMargin,
         // Configuration of gallery items
@@ -100,6 +123,8 @@ class App extends Component {
     footerOverlap = () => { this.setState({footerOverlap: !this.state.footerOverlap}); }
     swichFooter = () => { this.setState({showFooter: !this.state.showFooter}); }
     swichChildren = () => { this.setState({showChildrenItems: !this.state.showChildrenItems}); }
+    swichGalleriesHeader = () => { this.setState({showGalleriesHeader: !this.state.showGalleriesHeader}); }
+    swichGalleriesBg = () => { this.setState({showGalleriesBg: !this.state.showGalleriesBg}); }
 
     _DEBUG_chooseColumnsData(id) {
         var newConfig = window.WEB_DEBUG_DATA.columnsGrid[ id ];
@@ -209,8 +234,8 @@ class App extends Component {
         window.addEventListener('resize', this.updateDimensions);
         this.updateDimensions();
         this.chooseDataSource( window.WEB_CONFIG.rootDataFile );
-        if ( window.WEB_DEBUG.initialize ) this._DEBUG_chooseStylesData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[0]);
-        if ( window.WEB_DEBUG.initialize ) this._DEBUG_chooseColumnsData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[1]);
+        if ( window.WEB_DEBUG._GUIDES.initialize ) this._DEBUG_chooseStylesData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[0]);
+        if ( window.WEB_DEBUG._GUIDES.initialize ) this._DEBUG_chooseColumnsData(window.WEB_DEBUG_DATA.mixMenu[2].paramArr[1]);
     }
     
     componentWillUnmount() {
@@ -224,7 +249,9 @@ class App extends Component {
 
         return  <>
 
-            { this.state.imagesData && <MultiBackGround gi={this.state.imagesData.galleryConfig}></MultiBackGround> }
+            { window.WEB_DEBUG._GUIDES.responsiveBgColor && <div className="body-gradient"></div>}
+
+            { this.state.showGalleriesBg && this.state.imagesData && <MultiBackGround gi={this.state.imagesData.galleryConfig}></MultiBackGround> }
 
             { this.state.imagesData && <Columns 
                 browserWidth={browser_width}
@@ -274,14 +301,14 @@ class App extends Component {
                             this.chooseDataSource(Router.navigationTree.goToIndex(index));
                         }} ></NavigationMap>}
                 </>
-                {this.state.imagesData && <>
+                {(this.state.showGalleriesHeader && this.state.imagesData) && <>
                     <div className="header title">{this.state.imagesData.galleryConfig.title}</div>
                     <div className="header description">{this.state.imagesData.galleryConfig.description}</div>
                 </>}          
             </ContentWidthFollower>
 
-            {window.WEB_DEBUG.columnsDesigner && <div className="designer">
-                <WindowCloseButton clickFunc={()=>{window.WEB_DEBUG.columnsDesigner=false;this.setState({})}}></WindowCloseButton>
+            {window.WEB_DEBUG._PANELS.panel_gallery && <div className="designer">
+                <WindowCloseButton clickFunc={()=>{window.WEB_DEBUG._PANELS.panel_gallery=false;this.setState({})}}></WindowCloseButton>
                 <b>Gallery Columns</b>
                 <Range label={'Max container width'} min="550" max="2600" step="50" defaultValue={maxContainerWidth} value={maxContainerWidth} onChange={(event)=> this._DEBUG_updateRange(event ,'maxContainerWidth')} />
                 <Range label={'Max num. of columns'} min="1" max="20" step="1" defaultValue={maxNumOfColumns} value={maxNumOfColumns} onChange={(event)=> this._DEBUG_updateRange(event ,'maxNumOfColumns')} />
@@ -296,12 +323,14 @@ class App extends Component {
                 <AndresCheckBox label="Overlap details" callback={this.footerOverlap} checked={this.state.footerOverlap}></AndresCheckBox>
                 <AndresCheckBox label="Show footer" callback={this.swichFooter} checked={this.state.showFooter}></AndresCheckBox>
                 <AndresCheckBox label="Show children items" callback={this.swichChildren} checked={this.state.showChildrenItems}></AndresCheckBox>
+                <AndresCheckBox label="Show Galleries Header" callback={this.swichGalleriesHeader} checked={this.state.showGalleriesHeader}></AndresCheckBox>
+                <AndresCheckBox label="Show Galleries Background" callback={this.swichGalleriesBg} checked={this.state.showGalleriesBg}></AndresCheckBox>
             </div>}
 
             {this.state.showAboutInfo && <AboutInfo clickFunc={()=>{ this.setState({showAboutInfo: false })}}/>}
 
-            {window.WEB_DEBUG.tagsList && <ListOfTags 
-                clickFunc={()=>{window.WEB_DEBUG.tagsList=false;this.setState({})}}
+            {window.WEB_DEBUG._PANELS.panel_tags && <ListOfTags 
+                clickFunc={()=>{window.WEB_DEBUG._PANELS.panel_tags=false;this.setState({})}}
                 listOfTags={this.state.webTags} 
                 onClickFunction={(param)=>this.filterImagesByTag(param)}/>}
             
@@ -317,8 +346,8 @@ class App extends Component {
                 showCloseButton={false}
             />}
 
-            { window.WEB_DEBUG.themesDesigner && <div className="controls-presets">
-                <WindowCloseButton clickFunc={()=>{window.WEB_DEBUG.themesDesigner=false;this.setState({})}}></WindowCloseButton>
+            { window.WEB_DEBUG._PANELS.panel_themes && <div className="controls-presets">
+                <WindowCloseButton clickFunc={()=>{window.WEB_DEBUG._PANELS.panel_themes=false;this.setState({})}}></WindowCloseButton>
                 <PresetsMenu title={'Columns & Style'} mnuData={ window.WEB_DEBUG_DATA.mixMenu }
                     clickFunction={ (i) => { 
                         console.log("i:", i );
@@ -336,6 +365,13 @@ class App extends Component {
                     clickFunction={ (i) => {  Router.navigationTree.reset(); this.chooseDataSource(i.fileName) }}
                     title={'Sources'}/>
             </div>}
+
+            <DebugMenu 
+                source={this.state} 
+                clickFunc={(prperty)=>{
+                    console.log("m-1!");
+                    this.setState({})
+            }}/>
 
             <GoToTop />
         </>

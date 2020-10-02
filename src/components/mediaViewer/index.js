@@ -106,7 +106,7 @@ class MediaViewer extends Component {
                     antialiasing={gi.antialiasing}
                     cropStrategy={cs || 'DEFAULT'}
                     loadingLayer={true}
-                    debug={window.WEB_DEBUG.viewerImages}
+                    debug={window.WEB_DEBUG._GUIDES.viewerImgCalculations}
                 />}
 
                 { (ITEM_TYPE === 'VIDEO' && this.state.currentItem != null) && <div className="viewer-container" style={{

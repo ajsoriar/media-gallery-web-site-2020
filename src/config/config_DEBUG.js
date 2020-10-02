@@ -1,18 +1,19 @@
 window.WEB_DEBUG = {
-    responsiveBackgroundColor: false,
-    initialize: false,
-    // Panels
-    showDebugPalette: null,
-    columnsDesigner: true,
-    themesDesigner: true,
-    tagsList: true,
-    // Other
-    columnsAlgorithm: false,
-    columns: false,
-    gridImages: false,
-    gridImagesTags: false,
-    imageIndexes: true,
-    viewerImages: true, // rename to ids
+    _showDebugPalette: true,
+    _PANELS: {
+        panel_themes: true,
+        panel_gallery: true,
+        panel_tags: true,
+        panel_algorithm: true
+    },
+    _GUIDES:{
+        responsiveBgColor: false,
+        columns: true,
+        gridImagesCalculations: true,
+        gridImagesTags: true,
+        imageIndexes: true,
+        viewerImgCalculations: true, // rename to ids
+    }
 };
 
 window.WEB_DEBUG_DATA = {

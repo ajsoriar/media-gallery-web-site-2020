@@ -8,7 +8,7 @@
         "background": {
             "color": "red",
             "video":{
-                "src": "https:/www.subidote.com/video/sources/demo2/mp4/robot-and-cloud-pink-to-cyan.mp4",
+                "src": "https://www.subidote.com/video/sources/demo2/mp4/robot-and-cloud-pink-to-cyan.mp4",
                 "size":{
                     "w": 1024,
                     "h": 740
@@ -276,7 +276,7 @@
                 },
                 "video":{
                     "size":{"w": 1920,"h": 1080 },
-                    "src": "https:/www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
+                    "src": "https://www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
                     "type": "VIDEO",
                     "color": "purple"  
                 }
@@ -316,7 +316,7 @@
             "background": {
                 "color": null,
                 "video":{
-                    "src": "https:/www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
+                    "src": "https://www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
                     "size":{
                         "w": 1024,
                         "h": 740
@@ -551,7 +551,7 @@
                         "w": 1920,
                         "h": 1080
                     },
-                    "src": "https:/www.subidote.com/video/sources/demo2/mp4/robot-and-cloud-green-to-cyan.mp4"                   
+                    "src": "https://www.subidote.com/video/sources/demo2/mp4/robot-and-cloud-green-to-cyan.mp4"                   
                 },
                 "type": "VIDEO",
                 "color": "purple"

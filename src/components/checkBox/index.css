@@ -1,10 +1,10 @@
 .styledCheckBox {
     background-color: transparent;
     border: 0;
-    padding: 3px 0px 0 3px;
+    padding: 0px 0px 0 3px;
     font-size: 17px;
 }
 
 .styledCheckBox input{
-    margin-left: 10px;
+    margin-left: 1px;
 }

@@ -1,0 +1,38 @@
+.debugMenu {
+    color: chartreuse;
+    z-index: 2000;
+    min-width: 100px;
+    height: auto;
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    right: 20%;
+    border: 1px solid #FFEB3B;
+    background-color: #000000a6;
+    padding: 0 6px 0 1px;
+}
+
+.debugMenu.minimized .controls {
+    visibility: hidden;
+    display: none;
+}
+
+.debugMenu-btnMin{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.debugMenu h1{
+    color: darkorange;
+    margin: 0;
+    padding: 0 3px;
+    font-size: 16px;
+}
+
+.debugMenu h2{
+    color: darkorange;
+    margin: 0;
+    padding: 0 3px;
+    font-size: 16px;
+}

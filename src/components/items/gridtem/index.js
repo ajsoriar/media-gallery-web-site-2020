@@ -67,7 +67,7 @@ class GridItem extends Component {
                 imageSize={{ w: itemCal.imgW, h: itemCal.imgH }}
                 imageSource={imageSrc}
                 antialiasing={true}
-                debug={window.WEB_DEBUG.gridImages}
+                debug={window.WEB_DEBUG._GUIDES.gridImagesCalculations}
                 cropStrategy={GridDataHandler.getImageData(imgDat, "cropStrategy") || 'DEFAULT'}>
             </ImageItem>}
 
@@ -116,10 +116,10 @@ class GridItem extends Component {
             </div>} 
             */}
 
-            { window.WEB_DEBUG.imageIndexes && <><div className={"arrIndex"}>{imgDat.index}</div><div className={"debug " + (imgDat.parent?' is-children':'')}>{imgDat.id}<br/>
+            { window.WEB_DEBUG._GUIDES.imageIndexes && <><div className={"arrIndex"}>{imgDat.index}</div><div className={"debug " + (imgDat.parent?' is-children':'')}>{imgDat.id}<br/>
                 {imgDat.type}{imgDat.children && <><br/><div className="debug children">{imgDat.children.map((id) => <div key={id} className="id">{id}</div>)}</div></>}</div></>}
-            { (window.WEB_DEBUG.gridImagesTags && imgDat.tags) && <div className="tagsDebug">{imgDat.tags.map( (label) => <>{label}<br/></> )}</div>}
-            { (window.WEB_DEBUG.gridImagesTags && (!imgDat.tags || imgDat.tags.length == 0)) && <div className="tagsDebug noTags">No tags!</div>}
+            { (window.WEB_DEBUG._GUIDES.gridImagesTags && imgDat.tags) && <div className="tagsDebug">{imgDat.tags.map( (label) => <>{label}<br/></> )}</div>}
+            { (window.WEB_DEBUG._GUIDES.gridImagesTags && (!imgDat.tags || imgDat.tags.length == 0)) && <div className="tagsDebug noTags">No tags!</div>}
             { (itemCal.headerOverlap && imgDat.header) && <ItemOverlapDetail position={'TOP'} itemData={imgDat.header} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} />}
             { (itemCal.footerOverlap && imgDat.footer) && <ItemOverlapDetail position={'BOTTOM'} itemData={imgDat.footer} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} />}
 

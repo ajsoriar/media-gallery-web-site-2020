@@ -13,7 +13,6 @@ import App from './App'
 
 ReactDOM.render(
     <React.StrictMode>
-        { window.WEB_DEBUG.responsiveBackgroundColor && <div id="gradient" className="gradient"></div>}
         <App />
     </React.StrictMode>,
     document.getElementById('root')
