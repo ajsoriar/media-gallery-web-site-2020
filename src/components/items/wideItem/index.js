@@ -12,8 +12,11 @@ class WideItem extends Component {
         console.log("[WideItem] RENDER: ");
         var imgDat = this.props.imgDat;
         var itemCal = imgDat.calculated;
+        var classNameString = 'gridItem';
 
         return <div 
+            key={imgDat.name}
+            className={ classNameString } 
             onClick={ this.props.clickFunc? () => this.props.clickFunc(imgDat) : (()=>{ console.log("CLICK ON ELEMENT!")})}
             style={{
                 "width": itemCal.frmW + 0 + "px", 
@@ -34,6 +37,11 @@ class WideItem extends Component {
                 cropStrategy={GridDataHandler.getImageData(imgDat, "cropStrategy") || 'DEFAULT'}>
             </ImageItem>
 
+            { window.WEB_DEBUG._GUIDES.imageIndexes && <><div className={"arrIndex"}>{imgDat.index}</div><div className={"debug " + (imgDat.parent?' is-children':'')}>{imgDat.id}<br/>
+                {imgDat.type}{imgDat.children && <><br/><div className="debug children">{imgDat.children.map((id) => <div key={id} className="id">{id}</div>)}</div></>}</div></>}
+            { (window.WEB_DEBUG._GUIDES.gridImagesTags && imgDat.tags) && <div className="tagsDebug">{imgDat.tags.map( (label) => <>{label}<br/></> )}</div>}
+            { (window.WEB_DEBUG._GUIDES.gridImagesTags && (!imgDat.tags || imgDat.tags.length == 0)) && <div className="tagsDebug noTags">No tags!</div>}
+            
         </div>;
     }
 }

@@ -83,9 +83,8 @@ GridDataHandler.getFooterHeight = function( footerData ) { // this.getFooterHeig
 
 GridDataHandler.utils = {
     arrOfTops : null,
-    
-    /*
-    allTopsToMaximum: function (){
+/*
+   allTopsToMaximum: function (){
         var temp = GridDataHandler.utils.arrOfTops;
 
         // Get max top
@@ -100,8 +99,33 @@ GridDataHandler.utils = {
         for (var i = 0; i < temp.length; i++) {
             temp[i] = max
         }  
+
+        console.log("GridDataHandler.utils.arrOfTops: ", GridDataHandler.utils.arrOfTops );
     },
-    */
+*/
+    allTopsToMaximum: function (){
+        var temp = GridDataHandler.utils.arrOfTops;
+
+        // Get max top
+        var max = temp[0];
+        for (var i = 1; i < temp.length; i++) {
+            if (temp[i] > max) {
+                max = temp[i];
+            }
+        }  
+        
+        // All tops equal
+        this.setAllTops(max);
+
+        console.log("GridDataHandler.utils.arrOfTops: ", GridDataHandler.utils.arrOfTops );
+    },
+
+    setAllTops: function( top ) {
+        var temp = GridDataHandler.utils.arrOfTops;
+        for (var i = 0; i < temp.length; i++) {
+            temp[i] = top
+        }  
+    },
    
     getTargetColum : function () { // Smallest number in array and its position
         var temp = GridDataHandler.utils.arrOfTops;
@@ -120,6 +144,26 @@ GridDataHandler.utils = {
         var currentTop = temp[colNum];
         var newTop = currentTop + newItemHeight + ITEM_TOP_MARGIN;
         temp[colNum] = newTop;
+        return currentTop;
+    },
+    getMaxTopFromColumnsRegistry : function (colNum, newItemHeight, ITEM_TOP_MARGIN) {
+        var temp = GridDataHandler.utils.arrOfTops;
+
+        var max = temp[0];
+        for (var i = 1; i < temp.length; i++) {
+            if (temp[i] > max) {
+                max = temp[i];
+            }
+        }  
+
+        var currentTop = max; //temp[colNum];
+        var newTop = currentTop + newItemHeight + ITEM_TOP_MARGIN;
+
+        //temp[colNum] = newTop;
+
+        this.setAllTops(newTop);
+
+
         return currentTop;
     }
 };
@@ -218,11 +262,11 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             }
         }
 
-        arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
-        arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
-        var targetColum = GridDataHandler.utils.getTargetColum();
-        arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
-        arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
+        // arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
+        // arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
+        // var targetColum = GridDataHandler.utils.getTargetColum();
+        // arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
+        // arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
 
         /*
 
@@ -244,6 +288,23 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
         }
 
         */
+
+        if ( img.type === "WIDE_ITEM") {
+            arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
+            arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
+            var targetColum = 0;
+            arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
+            //arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
+            arr[i].calculated.top = GridDataHandler.utils.getMaxTopFromColumnsRegistry(null, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
+            GridDataHandler.utils.allTopsToMaximum();
+        } else {
+            arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
+            arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
+            var targetColum = GridDataHandler.utils.getTargetColum();
+            arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
+            arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
+        }
+
     }
 
     // ---------------------------------------------------

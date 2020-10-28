@@ -12,7 +12,7 @@ window.WEB_DEBUG = {
         columns: false,
         gridImagesCalculations: false,
         gridImagesTags: false,
-        imageIndexes: false,
+        imageIndexes: true,
         viewerImgCalculations: false
     }
 };

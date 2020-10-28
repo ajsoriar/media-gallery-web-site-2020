@@ -46,22 +46,6 @@
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif"
             }
         },{
-            "id": 1001,
-            "parent": null,
-            "type": "WIDE_ITEM",
-            "description": null,
-            "zoom": null,
-            "name": null,
-            "title": null,
-            "tags": ["WORK","LIFE", "VACATION"],
-            "target": {
-                "size":{
-                    "w": 200,
-                    "h": 250
-                },
-                "src": "http://www.riabop.com/demo/images/column_200x250.gif"
-            }
-        },{
             "id": 100,
             "parent": null,
             "type": "IMAGE",
@@ -94,7 +78,27 @@
                 "title": "Gallery about you and me",
                 "date": "2020"
             }
-        },{
+        },
+        
+        {
+            "id": 1001,
+            "parent": null,
+            "type": "WIDE_ITEM",
+            "description": null,
+            "zoom": null,
+            "name": null,
+            "title": null,
+            "tags": ["WORK","LIFE", "VACATION"],
+            "target": {
+                "size":{
+                    "w": 200,
+                    "h": 250
+                },
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif"
+            }
+        },
+        
+        {
             "id": 2,
             "type": "GALLERY",
             "description": null,
