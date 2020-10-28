@@ -5,7 +5,6 @@ import './css/bgMediaQueries.css'
 import './css/header.css'
 import Columns from './components/containers/columns'
 import MainMenu from './components/mainMenu'
-//import EndOfContent from './components/items/endOfContentItem'
 import Range from './components/range'
 import AboutInfo from './components/aboutInfo'
 import AndresCheckBox from './components/checkBox'
@@ -31,26 +30,6 @@ class App extends Component {
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
-    /*
-    window.WEB_DEBUG = {
-        _showDebugPalette: true,
-        _PANELS: {
-            panel_gallery: true,
-            panel_themes: true,
-            panel_tags: true,
-            panel_algorithm: true
-        },
-        _GUIDES:{
-            responsiveBgColor: false,
-            columns: true,
-            gridImages: true,
-            gridImagesTags: true,
-            imageIndexes: true,
-            viewerImgCalculations: true, // rename to ids
-        }
-    };
-    */
-    
     state = {
         imagesData: null,
         // Configuration of the columns
@@ -247,6 +226,8 @@ class App extends Component {
 
         console.log("[App] render()");
 
+        window.WEB_DEBUG._GUIDES.outlines? document.body.classList.add("outlines"): document.body.classList.remove("outlines");
+
         return  <>
 
             { window.WEB_DEBUG._GUIDES.responsiveBgColor && <div className="body-gradient"></div>}
@@ -366,12 +347,7 @@ class App extends Component {
                     title={'Sources'}/>
             </div>}
 
-            <DebugMenu 
-                source={this.state} 
-                clickFunc={(prperty)=>{
-                    console.log("m-1!");
-                    this.setState({})
-            }}/>
+            { window.WEB_DEBUG._showDebugPalette && <DebugMenu source={this.state} clickFunc={()=>{ this.setState({}) }}/> }
 
             <GoToTop />
         </>

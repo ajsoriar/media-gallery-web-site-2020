@@ -4,6 +4,7 @@ import GridDataHandler from './gridDataHandler.js'
 import './index.css'
 import GridItem from './../items/gridtem'
 import FolderItem from './../items/folderItem'
+import WideItem from './../items/wideItem'
 import TagsDataHandler from './../tagsList/tagsDataHandler'
 
 const GetItemByType = function( itemData, clickFunc, i, debug ) {
@@ -19,6 +20,18 @@ const GetItemByType = function( itemData, clickFunc, i, debug ) {
                 debug = { debug }
             />
 
+        case "WIDE_ITEM":
+            return <WideItem
+                key={ i }
+                index = { i }
+                imgDat = { itemData }
+                clickFunc = { clickFunc }
+                debug = { debug }
+            />
+        
+        case "TITLE":
+        case "END_OF_GALLERY":
+            
         default:
             return <GridItem
                 key={ i }
@@ -48,7 +61,7 @@ class LandingGrid extends Component {
         
         if ( !this.props.showChildrenItems ) data = GridDataHandler.removeChildrenItems( data ); // Clear children items
 
-        data = GridDataHandler.calculateGrid(
+        data = GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS(
             data, 
             this.props.columnsNum, 
             this.props.columnWidth, 

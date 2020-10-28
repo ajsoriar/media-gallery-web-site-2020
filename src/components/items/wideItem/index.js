@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import './debug.css';
 import { Component } from 'react';
 import GridDataHandler from '../../landingGrid/gridDataHandler';
 import ImageItem from './../../mediaViewer/imageItem';

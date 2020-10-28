@@ -1,0 +1,68 @@
+.gridItem .debug {
+    font-size: 14px;
+    color: #F1F8E9;
+    line-height: 15px;
+    top: 0;
+    position: absolute;
+    margin: 5px;
+    background-color: rgb(12 0 107 / 73%);
+    padding: 4px 4px 1px 4px;
+    right: 0;
+    z-index: 1000;
+}
+
+.gridItem .image-debug {
+    color: yellow;
+    background-color: #031160;
+    font-size: 11px;
+    padding: 0px 5px;
+    text-align: right;
+    width: fit-content;
+    float: right;
+    position: absolute;
+    line-height: 12px;
+    bottom: 0;
+    margin: 0;
+}
+
+.gridItem .debug.is-children {
+    background-color: #E91E63;
+}
+
+.gridItem .debug .children {
+    position: relative;
+    margin-top: 3px;
+    background-color: #FFEB3B;
+    padding: 0;
+    margin: 0 0 3px 0;
+    outline: 0;
+}
+
+.gridItem .debug .children .id {
+    position: relative;
+    margin-right: 2px;
+    background-color: #F44336;
+    display: inline-block;
+    border-radius: 100px;
+    padding: 0px 3px;
+    outline: 0;
+    font-size: 8px;
+    line-height: 16px;
+    color: white;
+}
+
+.tagsDebug{
+    color: #FFEB3B;
+    line-height: 11px;
+    bottom: 0;
+    position: absolute;
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 3px 3px 0 3px;
+    right: 0;
+    font-size: 11px;
+}
+
+.tagsDebug.noTags{
+    background-color: rgb(255 3 3 / 70%);
+}

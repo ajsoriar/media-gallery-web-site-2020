@@ -1,0 +1,50 @@
+.wideItem .debug {
+    font-size: 14px;
+    color: #8BC34A;
+    line-height: 20px;
+    top: 0;
+    position: absolute;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    right: 0;
+}
+
+.wideItem .image-debug {
+    color: yellow;
+    background-color: #031160;
+    font-size: 11px;
+    padding: 0px 5px;
+    text-align: right;
+    width: fit-content;
+    float: right;
+    position: absolute;
+    line-height: 12px;
+    bottom: 0;
+    margin: 0;
+}
+
+.wideItem .debug.is-children {
+    background-color: #E91E63;
+}
+
+.wideItem .debug .children {
+    position: relative;
+    margin-top: 3px;
+    background-color: #FFEB3B;
+    padding: 0;
+    margin: 0 0 3px 0;
+    outline: 0;
+}
+
+.wideItem .debug .children .id {
+    position: relative;
+    margin-right: 2px;
+    background-color: #F44336;
+    display: inline-block;
+    border-radius: 100px;
+    padding: 0px 3px;
+    outline: 0;
+    font-size: 8px;
+    line-height: 16px;
+}

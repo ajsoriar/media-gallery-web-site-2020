@@ -83,8 +83,28 @@ GridDataHandler.getFooterHeight = function( footerData ) { // this.getFooterHeig
 
 GridDataHandler.utils = {
     arrOfTops : null,
-    getTargetColum : function (temp) { // Smallest number in array and its position
-        temp = GridDataHandler.utils.arrOfTops;
+    
+    /*
+    allTopsToMaximum: function (){
+        var temp = GridDataHandler.utils.arrOfTops;
+
+        // Get max top
+        var max = temp[0];
+        for (var i = 1; i < temp.length; i++) {
+            if (temp[i] > max) {
+                max = temp[i];
+            }
+        }  
+        
+        // All tops equal
+        for (var i = 0; i < temp.length; i++) {
+            temp[i] = max
+        }  
+    },
+    */
+   
+    getTargetColum : function () { // Smallest number in array and its position
+        var temp = GridDataHandler.utils.arrOfTops;
         var index = 0;
         var value = temp[0];
         for (var i = 1; i < temp.length; i++) {
@@ -104,58 +124,96 @@ GridDataHandler.utils = {
     }
 };
 
-GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth, columnMargin, vMargin, showFooter, footerOverlap, headerOverlap) {
+GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfColumns, columnWidth, columnMargin, vMargin, showFooter, footerOverlap, headerOverlap) {
 
     var ITEM_TOP_MARGIN = vMargin; //columnMargin;
     var COLUMS_MARGIN = columnMargin;
 
-    //console.log("[GridDataHandler.calculateGrid] imagesData: ", imagesData );
-    //console.log("[GridDataHandler.calculateGrid] numOfColumns: ", numOfColumns );
-    //console.log("[GridDataHandler.calculateGrid] columnWidth: ", columnWidth );
+    //console.log("[GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS] imagesData: ", imagesData );
+    //console.log("[GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS] numOfColumns: ", numOfColumns );
+    //console.log("[GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS] columnWidth: ", columnWidth );
 
     GridDataHandler.utils.arrOfTops = Array(numOfColumns).fill(0); //[0,0,0,0];
+
+    var containerWidth = numOfColumns * (columnWidth + columnMargin) - columnMargin;
 
     var lon = imagesData.length;
     if (lon === 0) return [];
     var arr = [];
 
+    // ---------------------------------------------------
+
     for (var i = 0; i < lon; i++) {
-        var imgDat = imagesData[i];
-        arr.push(imgDat);
 
-        var imgW = 256;
-        var imgH = 256;
+        var img = imagesData[i];
+        arr.push(img);
+        
+        // TODO: Use in the future contentType and containerType as properties of the picture json object.
 
-        if (imgDat.type != "FOLDER") {
-            imgW = GridDataHandler.getImageData(imgDat, "WIDTH");
-            imgH = GridDataHandler.getImageData(imgDat, "HEIGHT");
+        // -----------------------
+        // [1] WIDTH OF THE IMAGE
+        // -----------------------
+
+        var img_w = 256, 
+            img_h = 256;
+
+        if (img.type === "FOLDER") { //if (img.type === "IMAGE" || img.type === "VIDEO") { 
+            img_w = 256; 
+            img_h = 256; 
         }
 
-        // Footer
-        var footerH = 0;
-        var footerTopMargin = 0;
+        if (img.type != "FOLDER") { 
+            img_w = GridDataHandler.getImageData(img, "WIDTH"); 
+            img_h = GridDataHandler.getImageData(img, "HEIGHT"); 
+        }
+
+        if (img.type === "WIDE_ITEM") { 
+            img_w = containerWidth; 
+            img_h = GridDataHandler.getImageData(img, "HEIGHT"); 
+        }
+
+        // -----------------------
+        // [2] FOOTER
+        // -----------------------
+
+        var footerH = 0,
+            footerTopMargin = 0;
+
         if (showFooter === true) {
-            footerH = FooterGridDataHandler.getFooterHeight(imgDat.footer);
+            footerH = FooterGridDataHandler.getFooterHeight(img.footer);
             footerTopMargin = footerH > 0 ? window.DEFAULTS.FOOTER_TOP_MARGIN : 0;
         }
 
-        var frmH = this.getFrameHeightFromWidth(imgW, imgH, columnWidth);
+        // ----------------------------------
+        // [3] WIDTH AND HEIGHT OF THE FRAME
+        // ----------------------------------
 
-        //console.log("[GridDataHandler.calculateGrid] columnWidth, frmH: ", columnWidth, ", ",frmH );
+        var frmW = 0,
+            frmH = 0;
+
+        if ( img.type != "WIDE_ITEM") {
+            frmW = columnWidth;
+            frmH = this.getFrameHeightFromWidth(img_w, img_h, columnWidth);
+        } else {
+            frmW = containerWidth;
+            frmH = 100;
+        }
+
+        //console.log("[GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS] columnWidth, frmH: ", columnWidth, ", ",frmH );
 
         arr[i].calculated = {
-            imgW: imgW,
-            imgH: imgH,
-            frmW: columnWidth,
+            imgW: img_w,
+            imgH: img_h,
+            frmW: frmW,
             frmH: frmH,
-            imgBgColor: imgDat.type != "FOLDER"? this.getImageData(imgDat, "COLOR"): 'transparent',
+            imgBgColor: img.type != "FOLDER"? this.getImageData(img, "COLOR"): 'transparent',
             footerH: footerH,
             footerTopMargin: footerTopMargin,
             showFooter: showFooter,
             footerOverlap: footerOverlap,
             headerOverlap: headerOverlap,
             imageCenter: {
-                x: columnWidth/2,
+                x: frmW/2,
                 y: frmH/2
             }
         }
@@ -165,9 +223,32 @@ GridDataHandler.calculateGrid = function (imagesData, numOfColumns, columnWidth,
         var targetColum = GridDataHandler.utils.getTargetColum();
         arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
         arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
+
+        /*
+
+        var targetColum = null;
+        
+        if ( img.type != "WIDE_ITEM") {
+            arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
+            arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
+            targetColum = GridDataHandler.utils.getTargetColum();
+            arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
+            arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
+        } else {
+            arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
+            arr[i].calculated.totalComponetH = 100;
+            GridDataHandler.utils.allTopsToMaximum();
+            targetColum = 1;
+            arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
+            arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
+        }
+
+        */
     }
 
-    console.log("[GridDataHandler.calculateGrid] arr: ", arr );
+    // ---------------------------------------------------
+
+    console.log("[GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS] arr: ", arr );
 
     return arr
 };

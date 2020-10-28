@@ -1,11 +1,11 @@
 import React from 'react';
 import './index.css';
+import './debug.css';
 import { Component } from 'react';
 import GridDataHandler from '../../landingGrid/gridDataHandler';
 import ImageItem from './../../mediaViewer/imageItem';
 import ItemFooter from './../itemFooter';
 import ItemOverlapDetail from './../itemOverlapDetail';
-//import FooterDataHandler from './../itemFooter/dataHandler';
 import ForeverBrandBanner from './../../banners/foreverBrandBanner';
 import Icon from './../../icon'
 
@@ -41,7 +41,7 @@ class GridItem extends Component {
         var overlayBrandText = '';
         if ( SHOW_OVERLAY_TEXT ) {
             classNameString += ' _show_overlay_text';
-            var overlayBrandText = window.WEB_CONFIG.ITEMS_HOVER.overlayText.brandText || '';
+            overlayBrandText = window.WEB_CONFIG.ITEMS_HOVER.overlayText.brandText || '';
         }
 
         var imageSrc = GridDataHandler.getImageData(imgDat, "SOURCE");
@@ -62,7 +62,6 @@ class GridItem extends Component {
             
             {(imgDat.type != 'FOLDER') && <ImageItem 
                 loadingLayer={true}
-                // smallLoadingLayer={true}
                 frameSize={{ w: itemCal.frmW, h: itemCal.frmH }}
                 imageSize={{ w: itemCal.imgW, h: itemCal.imgH }}
                 imageSource={imageSrc}
@@ -98,23 +97,11 @@ class GridItem extends Component {
                     "width": itemCal.frmW + "px",
                     "height": itemCal.frmH +"px",
                     "lineHeight": itemCal.frmH +"px",
-                }}>
-                    {/* {overlayBrandText}<br/> */}
-                    <span></span>view<span></span></div>}
+                }}><span></span>view<span></span></div>}
             
-            {imgDat.type === 'VIDEO' && <div className="center">
-                <Icon center={true} width={60} name={'video-item'}></Icon>
-            </div>}
+            {imgDat.type === 'VIDEO' && <div className="center"><Icon center={true} width={60} name={'video-item'}></Icon></div>}
 
-            {imgDat.type === 'FOLDER' && <div className="center">
-                <Icon center={true} width={itemCal.frmW} name={'folder-item'}></Icon>
-            </div>}
-
-            {/* 
-            {thumbnailError && <div className="center">
-                <Icon center={true} width={60} name={'no-picture'}></Icon>
-            </div>} 
-            */}
+            {imgDat.type === 'FOLDER' && <div className="center"><Icon center={true} width={itemCal.frmW} name={'folder-item'}></Icon></div>}
 
             { window.WEB_DEBUG._GUIDES.imageIndexes && <><div className={"arrIndex"}>{imgDat.index}</div><div className={"debug " + (imgDat.parent?' is-children':'')}>{imgDat.id}<br/>
                 {imgDat.type}{imgDat.children && <><br/><div className="debug children">{imgDat.children.map((id) => <div key={id} className="id">{id}</div>)}</div></>}</div></>}
@@ -122,12 +109,7 @@ class GridItem extends Component {
             { (window.WEB_DEBUG._GUIDES.gridImagesTags && (!imgDat.tags || imgDat.tags.length == 0)) && <div className="tagsDebug noTags">No tags!</div>}
             { (itemCal.headerOverlap && imgDat.header) && <ItemOverlapDetail position={'TOP'} itemData={imgDat.header} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} />}
             { (itemCal.footerOverlap && imgDat.footer) && <ItemOverlapDetail position={'BOTTOM'} itemData={imgDat.footer} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} />}
-
-            { (itemCal.showFooter && imgDat.footer) && <ItemFooter 
-                footerData={imgDat.footer} 
-                frameData={{ w: itemCal.frmW, h: itemCal.frmH }} 
-                footerH={itemCal.myFooterHeight}
-            /> }
+            { (itemCal.showFooter && imgDat.footer) && <ItemFooter footerData={imgDat.footer} frameData={{ w: itemCal.frmW, h: itemCal.frmH }} footerH={itemCal.myFooterHeight} /> }
         </div>;
     }
 }

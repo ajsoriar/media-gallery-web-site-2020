@@ -25,3 +25,10 @@ body.overflow-y-hidden{
     left: 0;
     top: 0;
 }
+
+/* debug */
+
+body.outlines *{
+    outline: 1px solid red !important;
+    transition: 0s !important;
+}
