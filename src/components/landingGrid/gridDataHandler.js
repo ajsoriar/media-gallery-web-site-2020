@@ -151,7 +151,17 @@ GridDataHandler.utils = {
         temp[colNum] = newTop;
         return currentTop;
     },
-    getMaxTopFromColumnsRegistry : function (colNum, newItemHeight, ITEM_TOP_MARGIN) {
+    getMaxTopFromColumnsRegistry : function () {
+        var temp = GridDataHandler.utils.arrOfTops;
+        var max = temp[0];
+        for (var i = 1; i < temp.length; i++) {
+            if (temp[i] > max) {
+                max = temp[i];
+            }
+        }
+        return max;
+    },
+    getMaxTopFromColumnsRegistryAndUpdate : function (colNum, newItemHeight, ITEM_TOP_MARGIN) {
         var temp = GridDataHandler.utils.arrOfTops;
 
         var max = temp[0];
@@ -267,7 +277,7 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
             var targetColum = 0;
             arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
-            arr[i].calculated.top = GridDataHandler.utils.getMaxTopFromColumnsRegistry(null, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
+            arr[i].calculated.top = GridDataHandler.utils.getMaxTopFromColumnsRegistryAndUpdate(null, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
             GridDataHandler.utils.allTopsToMaximum();
         } else {
             arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
@@ -278,11 +288,15 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
         }
     }
 
-    // ---------------------------------------------------
-
     console.log("[GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS] arr: ", arr );
 
-    return arr
+    return {
+        arr: arr,
+        w: containerWidth,
+        h: GridDataHandler.utils.getMaxTopFromColumnsRegistry()
+    }
+    
+
 };
 
 GridDataHandler.removeChildrenItems = function (itemsArr) {

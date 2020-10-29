@@ -61,7 +61,7 @@ class LandingGrid extends Component {
         
         if ( !this.props.showChildrenItems ) data = GridDataHandler.removeChildrenItems( data ); // Clear children items
 
-        data = GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS(
+        var jsonData = GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS(
             data, 
             this.props.columnsNum, 
             this.props.columnWidth, 
@@ -72,7 +72,11 @@ class LandingGrid extends Component {
             this.props.headerOverlap  
         );
 
-        return <div className='galleryGrid' style={{"top": this.props.top +'px', "left": this.props.left }}>
+        var gallery_w = jsonData.w;
+        var gallery_h = jsonData.h;
+        data = jsonData.arr;
+
+        return <div className='galleryGrid' style={{"top": this.props.top +'px', "left": this.props.left, width: gallery_w, height: gallery_h }}>
             { data && data.map((imgDat, i) => GetItemByType( imgDat, this.props.clickFunc, i, LandingData.galleryConfig.debug )) }
         </div>
     }
