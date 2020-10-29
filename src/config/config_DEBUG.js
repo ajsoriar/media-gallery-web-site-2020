@@ -1,19 +1,19 @@
 window.WEB_DEBUG = {
     _showDebugPalette: true,
     _PANELS: {
-        panel_themes: false,
-        panel_gallery: false,
-        panel_tags: false,
-        panel_algorithm: false
+        panel_themes: true,
+        panel_gallery: true,
+        panel_tags: true,
+        panel_algorithm: true
     },
     _GUIDES:{
-        outlines: false,
-        responsiveBgColor: false,
-        columns: false,
-        gridImagesCalculations: false,
-        gridImagesTags: false,
+        outlines: true,
+        responsiveBgColor: true,
+        columns: true,
+        gridImagesCalculations: true,
+        gridImagesTags: true,
         imageIndexes: true,
-        viewerImgCalculations: false
+        viewerImgCalculations: true
     }
 };
 

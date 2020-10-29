@@ -8,13 +8,13 @@ window.WEB_CONFIG = {
         hmargin:15,
         galleryTop: 250,
         vMargin:15,
-        headerOverlap: false,
-        footerOverlap: false,
-        showFooter: false,
+        headerOverlap: true,
+        footerOverlap: true,
+        showFooter: true,
         showChildrenItems: true
     },
-    showGalleriesHeader: false,
-    showGalleriesBg: false,
+    showGalleriesHeader: true,
+    showGalleriesBg: true,
     tags:{
         curretSelectedTag: null //"COMERCIAL"
     },
