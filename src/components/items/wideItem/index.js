@@ -13,6 +13,8 @@ class WideItem extends Component {
         var imgDat = this.props.imgDat;
         var itemCal = imgDat.calculated;
         var classNameString = 'gridItem';
+        var iw = GridDataHandler.getImageData( imgDat, "WIDTH", true );
+        var ih = GridDataHandler.getImageData( imgDat, "HEIGHT", true );
 
         return <div 
             key={imgDat.name}
@@ -29,8 +31,9 @@ class WideItem extends Component {
         >
 
             <ImageItem 
+                align={GridDataHandler.getImageData( imgDat, "ALIGN")}
                 frameSize={{ w: itemCal.frmW, h: itemCal.frmH }}
-                imageSize={{ w: itemCal.imgW, h: itemCal.imgH }}
+                imageSize={{w: iw, h: ih}}
                 imageSource={GridDataHandler.getImageData(imgDat, "SOURCE")}
                 antialiasing={true}
                 debug={window.WEB_DEBUG._GUIDES.gridImagesCalculations}

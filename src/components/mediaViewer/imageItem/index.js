@@ -35,32 +35,25 @@ class ImageItem extends Component { // includes crop functionality
         var props = this.props;
         var { frameSize, imageSize } = props;
         var frm =  frameSize;
-
         var cssFrameString = {
-                                "display": 'inline-block',
-                                "width": frm.w +'px',
-                                "height": frm.h +'px',
-                                "top": 0,
-                                "left": 0,
-                                "overflow": 'hidden',
-                                "position": 'absolute'
-                            }
-
+            "display": 'inline-block',
+            "width": frm.w +'px',
+            "height": frm.h +'px',
+            "top": 0,
+            "left": 0,
+            "overflow": 'hidden',
+            "position": 'absolute'
+        };
         var iw = imageSize.w,
             ih = imageSize.h,
             cw = null,
             ch = null,
             left = 0,
-            top = 0,
-            aspectRatio = null;
+            top = 0;
 
         if (props.cropStrategy === 'FILL-THE-FRAME' ) { // FILL like a background
 
-            // --------------------------------------------------
-
-            if (iw > ih ) { // Landscape // TODO: Compare aspect ratio of the frame and the video instead of this!
-
-                //console.log("[ImageItem]: -Landscape- !");
+            if (iw > ih ) { // Landscape // TODO: Compare aspect ratio of the frame and the video instead of this?
                 cw = iw * frameSize.h / ih;
                 ch = frameSize.h;
                 left = ( frameSize.w / 2 - cw / 2);
@@ -71,30 +64,14 @@ class ImageItem extends Component { // includes crop functionality
                     left = 0;
                     top = ( frameSize.h / 2 - ch / 2);;
                 }
-                
-            } else if ( ih > iw ){ // Portrait
-    
-                //console.log("[ImageItem]: -Portrait- !");
+            } else { // Portrait or squared
                 cw = frameSize.w;
                 ch = ih * frameSize.w / iw;
-    
-            } else { // Squared
-    
-                //console.log("[ImageItem]: -Squared- !");
-                ch = frameSize.h;
-                cw = frameSize.w;
             }
-
-            // --------------------------------------------------
-
-            left = ( frm.w / 2 - cw / 2);
-            top = ( frm.h / 2 - ch / 2);
 
         } else { // Strategy = FIT to w or h
 
             if (iw > ih ) { // Landscape
-                aspectRatio = "Landscape";
-                //console.log("[ImageItem] [ImageItem] Landscape ");
                 if ( frm.h > ih && frm.w > iw ) {
                     ch = ih;
                     cw = iw;
@@ -107,8 +84,7 @@ class ImageItem extends Component { // includes crop functionality
                         ch = ih * frm.w / iw;
                     }
                 }  
-            } else if ( ih > iw ){ // Portrait
-                aspectRatio = "Portrait";
+            } else { // Portrait or squared
                 if ( frm.h > ih && frm.w > iw ) {
                     ch = ih;
                     cw = iw;
@@ -121,22 +97,14 @@ class ImageItem extends Component { // includes crop functionality
                         cw = frm.h * iw / ih;
                     }
                 }
-            } else { // squared
-                aspectRatio = "Squared";
-                if ( frm.h > ih && frm.w > iw ) {
-                    ch = ih;
-                    cw = iw;
-                } else {
-                    if (frm.w > frm.h) {
-                        ch = frm.h;
-                        cw = frm.h
-                    } else {
-                        ch = frm.w;
-                        cw = frm.w
-                    }
-                }
-            }
+            }      
+        }
 
+        if (props.align === "left"){
+            left = 0;
+        } else if (props.align === "right") {
+            left = frm.w - cw;
+        } else {
             left = ( frm.w / 2 - cw / 2);
             top = ( frm.h / 2 - ch / 2);
         }
@@ -180,9 +148,9 @@ class ImageItem extends Component { // includes crop functionality
                 onError={ () => this.setError() } />
 
             { props.debug && <div className="image-debug">
+                align: { props.align }<br/>
                 antialiasing: { (props.antialiasing === false) ? "NO": "YES" }<br/>
                 cropStrategy: { props.cropStrategy }<br/>
-                aspectRatio: { aspectRatio}<br/>
                 <b>Original image</b><br/>
                 imageSize.w: { iw +'px' }<br/>
                 imageSize.h: { ih +'px' }<br/>

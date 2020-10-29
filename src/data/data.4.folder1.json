@@ -5,7 +5,7 @@
         "zoom": null,
         "name": null,
         "title": null,
-        "description": "If you don´t love my amazing gallery and my astonishing way of life many boring things will happen to you.",
+        "description": "This text is a description that can be configured on each gallery. I hope you enjoy this demo site a lot.",
         "background": {
             "gradient": {
                 "color1": "blue",
@@ -89,12 +89,19 @@
             "name": null,
             "title": null,
             "tags": ["WORK","LIFE", "VACATION"],
+            "height": 300,
             "target": {
                 "size":{
                     "w": 200,
                     "h": 250
                 },
-                "src": "http://www.riabop.com/demo/images/column_200x250.gif"
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif",
+                
+                "cropStrategy": "FILL-THE-FRAME",
+                "cropStrategy": "DEFAULT"
+            },
+            "thumbnail": {
+                "cropStrategy": "FILL-THE-FRAME"
             }
         },
         
@@ -519,6 +526,9 @@
                     "h": 250
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif"
+            },
+            "thumbnail": {
+                "align": "right"
             }
         },{
             "id": 1003,
@@ -535,6 +545,28 @@
                     "h": 250
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif"
+            },
+            "thumbnail": {
+                "align": "center"
+            }
+        },{
+            "id": 1002,
+            "parent": null,
+            "type": "WIDE_ITEM",
+            "description": null,
+            "zoom": null,
+            "name": null,
+            "title": null,
+            "tags": ["WORK","LIFE", "VACATION"],
+            "target": {
+                "size":{
+                    "w": 200,
+                    "h": 250
+                },
+                "src": "http://www.riabop.com/demo/images/column_200x250.gif"
+            },
+            "thumbnail": {
+                "align": "left"
             }
         }
     ]

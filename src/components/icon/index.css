@@ -58,3 +58,8 @@
     background-image: url(./../../assets/images/folders/blue-folder-icon-256x256.svg);
     cursor: pointer;   
 }
+
+.folder-icon{
+    background-image: url(./../../assets/images/folders/folder-icon_black-border_256x256.svg);
+    cursor: pointer;  
+}

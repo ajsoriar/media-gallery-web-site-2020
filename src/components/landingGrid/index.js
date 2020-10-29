@@ -50,7 +50,7 @@ class LandingGrid extends Component {
         var LandingData = this.props.imagesData || null;
         if (LandingData === null ) return <div>NO ITEMS</div>;
         
-        var data = GridDataHandler.removeInfoItems( LandingData.items ); // Clear visual guides / INFO
+        var data = GridDataHandler.removeItemsByType(LandingData.items, "INFO");
 
         data = GridDataHandler.getTags( data, TagsDataHandler.getSelectedTagID() );
 

@@ -25,6 +25,10 @@
     margin: 0;
 }
 
+.gridItem .image-debug b{
+    color: white;
+}
+
 .gridItem .debug.is-children {
     background-color: #E91E63;
 }

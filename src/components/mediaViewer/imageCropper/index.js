@@ -48,39 +48,22 @@ class ImageCropper extends Component {
 
         if (props.cropStrategy === 'FILL-THE-FRAME' ) { // FILL like a background
 
-            // --------------------------------------------------
-
-            if (iw > ih ) { // Landscape // TODO: Compare aspect ratio of the frame and the video instead of this!
-
+            if (iw > ih ) { // Landscape // TODO: Compare aspect ratio of the frame and the video instead of this?
                 console.log("[VideoBackGround]: -Landscape- !");
                 cw = iw * frameSize.h / ih;
                 ch = frameSize.h;
                 left = ( frameSize.w / 2 - cw / 2);
-    
-                if ( frameSize.w / frameSize.h > iw / ih ) { // Fix needed!!! Compare aspect ratio of the frame and the video!
+                if ( frameSize.w / frameSize.h > iw / ih ) { // Fix needed!!! Compare aspect ratio of the frame and the video?
                     cw = frameSize.w;
                     ch = ih * frameSize.w / iw; 
                     left = 0;
                     top = ( frameSize.h / 2 - ch / 2);;
                 }
-                
-            } else if ( ih > iw ){ // Portrait
-    
+            } else { // Portrait and Squared
                 console.log("[VideoBackGround]: -Portrait- !");
                 cw = frameSize.w;
                 ch = ih * frameSize.w / iw;
-    
-            } else { // Squared
-    
-                console.log("[VideoBackGround]: -Squared- !");
-                ch = frameSize.h;
-                cw = frameSize.w;
-            }
-
-            // --------------------------------------------------
-
-            left = ( frm.w / 2 - cw / 2);
-            top = ( frm.h / 2 - ch / 2);
+            } 
 
         } else { // Strategy = FIT to w or h
 
@@ -99,7 +82,7 @@ class ImageCropper extends Component {
                         ch = ih * frm.w / iw;
                     }
                 }  
-            } else if ( ih > iw ){ // Portrait
+            } else { // Portrait and Squared
                 aspectRatio = "Portrait";
                 if ( frm.h > ih && frm.w > iw ) {
                     ch = ih;
@@ -113,36 +96,22 @@ class ImageCropper extends Component {
                         cw = frm.h * iw / ih;
                     }
                 }
-            } else { // squared
-                aspectRatio = "Squared";
-                if ( frm.h > ih && frm.w > iw ) {
-                    ch = ih;
-                    cw = iw;
-                } else {
-                    if (frm.w > frm.h) {
-                        ch = frm.h;
-                        cw = frm.h
-                    } else {
-                        ch = frm.w;
-                        cw = frm.w
-                    }
-                }
-            }
-
-            left = ( frm.w / 2 - cw / 2);
-            top = ( frm.h / 2 - ch / 2);
+            } 
         }
 
+        left = ( frm.w / 2 - cw / 2);
+        top = ( frm.h / 2 - ch / 2);   
+
         var cssContentString = {
-                                "display": 'inline-block',
-                                "width": + cw +'px',
-                                "height": + ch +'px',
-                                "top": top +'px',
-                                "left": + left +'px',
-                                "overflow": 'hidden',
-                                "position": 'absolute',
-                                "visibility": (!this.state.loaded) ? 'hidden' : ''
-                            }
+            "display": 'inline-block',
+            "width": + cw +'px',
+            "height": + ch +'px',
+            "top": top +'px',
+            "left": + left +'px',
+            "overflow": 'hidden',
+            "position": 'absolute',
+            "visibility": (!this.state.loaded) ? 'hidden' : ''
+        }
 
         var classNameString = (props.antialiasing === false) ? "pixelated": "";
 

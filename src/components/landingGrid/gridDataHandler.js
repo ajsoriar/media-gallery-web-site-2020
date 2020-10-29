@@ -56,7 +56,33 @@ GridDataHandler.getImageData = function (imageData, parameter, reversed) {
             return null
 
         case 'cropStrategy':
+
+            // Low resolution source will be returned when available. 
+            // That is OK in the landing gallery where we want thumbnails but in the pictures viewer 
+            // we will need full resolution 1st
+
+            if (reversed) {
+                if (imageData.target && imageData.target.cropStrategy) return imageData.target.cropStrategy;
+                if (imageData.thumbnail && imageData.thumbnail.cropStrategy) return imageData.thumbnail.cropStrategy;
+                if (imageData.cropStrategy) return imageData.cropStrategy;
+            }
+
+            if (imageData.cropStrategy) return imageData.cropStrategy;
             if (imageData.thumbnail && imageData.thumbnail.cropStrategy) return imageData.thumbnail.cropStrategy;
+            if (imageData.target && imageData.target.cropStrategy) return imageData.target.cropStrategy;
+            return null
+
+        case 'ALIGN':
+
+            if (reversed) {
+                if (imageData.target && imageData.target.align) return imageData.target.align;
+                if (imageData.thumbnail && imageData.thumbnail.align) return imageData.thumbnail.align;
+                if (imageData.align) return imageData.align;
+            }
+
+            if (imageData.align) return imageData.align;
+            if (imageData.thumbnail && imageData.thumbnail.align) return imageData.thumbnail.align;
+            if (imageData.target && imageData.target.align) return imageData.target.align;
             return null
 
         default:
@@ -71,7 +97,7 @@ GridDataHandler.getFrameHeightFromWidth = function (imgW, imgH, columnWidth) {
     return calculatedHeigh
 };
 
-GridDataHandler.getFooterHeight = function( footerData ) { // this.getFooterHeight
+GridDataHandler.getFooterHeight = function( footerData ) {
     //console.log("[FooterDataHandler.getFooterHeight] footerData: ", footerData );
     if ( !footerData || footerData === false || footerData.length === 0 ) return 0;
     var calculatedHeigh = null;
@@ -83,26 +109,7 @@ GridDataHandler.getFooterHeight = function( footerData ) { // this.getFooterHeig
 
 GridDataHandler.utils = {
     arrOfTops : null,
-/*
-   allTopsToMaximum: function (){
-        var temp = GridDataHandler.utils.arrOfTops;
 
-        // Get max top
-        var max = temp[0];
-        for (var i = 1; i < temp.length; i++) {
-            if (temp[i] > max) {
-                max = temp[i];
-            }
-        }  
-        
-        // All tops equal
-        for (var i = 0; i < temp.length; i++) {
-            temp[i] = max
-        }  
-
-        console.log("GridDataHandler.utils.arrOfTops: ", GridDataHandler.utils.arrOfTops );
-    },
-*/
     allTopsToMaximum: function (){
         var temp = GridDataHandler.utils.arrOfTops;
 
@@ -119,14 +126,12 @@ GridDataHandler.utils = {
 
         console.log("GridDataHandler.utils.arrOfTops: ", GridDataHandler.utils.arrOfTops );
     },
-
     setAllTops: function( top ) {
         var temp = GridDataHandler.utils.arrOfTops;
         for (var i = 0; i < temp.length; i++) {
             temp[i] = top
         }  
     },
-   
     getTargetColum : function () { // Smallest number in array and its position
         var temp = GridDataHandler.utils.arrOfTops;
         var index = 0;
@@ -156,14 +161,9 @@ GridDataHandler.utils = {
             }
         }  
 
-        var currentTop = max; //temp[colNum];
+        var currentTop = max;
         var newTop = currentTop + newItemHeight + ITEM_TOP_MARGIN;
-
-        //temp[colNum] = newTop;
-
         this.setAllTops(newTop);
-
-
         return currentTop;
     }
 };
@@ -235,12 +235,12 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
         var frmW = 0,
             frmH = 0;
 
-        if ( img.type != "WIDE_ITEM") {
+        if ( img.type === "WIDE_ITEM") {
+            frmW = containerWidth;
+            frmH = img.height || 100;
+        } else {
             frmW = columnWidth;
             frmH = this.getFrameHeightFromWidth(img_w, img_h, columnWidth);
-        } else {
-            frmW = containerWidth;
-            frmH = 100;
         }
 
         //console.log("[GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS] columnWidth, frmH: ", columnWidth, ", ",frmH );
@@ -262,39 +262,11 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             }
         }
 
-        // arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
-        // arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
-        // var targetColum = GridDataHandler.utils.getTargetColum();
-        // arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
-        // arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
-
-        /*
-
-        var targetColum = null;
-        
-        if ( img.type != "WIDE_ITEM") {
-            arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
-            arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
-            targetColum = GridDataHandler.utils.getTargetColum();
-            arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
-            arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
-        } else {
-            arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
-            arr[i].calculated.totalComponetH = 100;
-            GridDataHandler.utils.allTopsToMaximum();
-            targetColum = 1;
-            arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
-            arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
-        }
-
-        */
-
         if ( img.type === "WIDE_ITEM") {
             arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
             arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
             var targetColum = 0;
             arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
-            //arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
             arr[i].calculated.top = GridDataHandler.utils.getMaxTopFromColumnsRegistry(null, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
             GridDataHandler.utils.allTopsToMaximum();
         } else {
@@ -304,7 +276,6 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             arr[i].calculated.left = targetColum * (columnWidth + COLUMS_MARGIN);
             arr[i].calculated.top = GridDataHandler.utils.getCurrentTopAndCalculateANewOneUpdatingColumnsRegistry(targetColum, arr[i].calculated.totalComponetH, ITEM_TOP_MARGIN);
         }
-
     }
 
     // ---------------------------------------------------
@@ -328,31 +299,6 @@ GridDataHandler.removeChildrenItems = function (itemsArr) {
     return arr
 };
 
-// imgDat.type
-// removeItemsWithNoGalleryPicture
-
-GridDataHandler.removeInfoItems = function (itemsArr) {
-
-    /*
-    var lon = itemsArr.length;
-    if (lon === 0) return [];
-    var arr = [];
-    var cont = 0;
-    for (var i = 0; i < lon; i++) {
-        var imgDat = itemsArr[i];
-        if (imgDat.type === "INFO") { // || imgDat.type === "FOLDER") {
-            continue;
-        } else {
-            imgDat.index = cont++;
-            arr.push(imgDat);
-        }
-    }
-    return arr
-    */
-
-    return this.removeItemsByType(itemsArr, "INFO");
-};
-
 GridDataHandler.removeItemsByType = function (itemsArr, itemType) { // itemType: INFO, FOLDER, ...
     var lon = itemsArr.length;
     if (lon === 0) return [];
@@ -371,7 +317,7 @@ GridDataHandler.removeItemsByType = function (itemsArr, itemType) { // itemType:
 };
 
 GridDataHandler.generateMediaViewerData = function (itemsArr) {
-    itemsArr = this.removeInfoItems(itemsArr);
+    GridDataHandler.removeItemsByType(itemsArr, "INFO");
     itemsArr = this.removeItemsByType(itemsArr, "FOLDER");
     return itemsArr
 };
