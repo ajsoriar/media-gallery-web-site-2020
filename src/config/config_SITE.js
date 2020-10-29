@@ -28,7 +28,8 @@ window.WEB_CONFIG = {
             w: 513,
             h: 53
         }
-    }
+    },
+    fixedTopBrandAndMenu: true
 };
 
 window.DEFAULTS = {

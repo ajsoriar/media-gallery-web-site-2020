@@ -266,7 +266,13 @@ class App extends Component {
                 imagesData={this.state.imagesData }
             />}
 
-            <ContentWidthFollower top={0} browserWidth={browser_width} minColumWidth={minColumWidth} maxContainerWidth={maxContainerWidth} sideMargin={sideMargin}>
+            <ContentWidthFollower 
+                top={0} 
+                browserWidth={browser_width} 
+                minColumWidth={minColumWidth} 
+                maxContainerWidth={maxContainerWidth} 
+                sideMargin={sideMargin}
+            >
                 <BrandLogo 
                     text={window.WEB_CONFIG.brandLogo.brandText} 
                     brandLogoSrc={ window.WEB_CONFIG.brandLogo.src } 

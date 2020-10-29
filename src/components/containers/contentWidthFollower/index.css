@@ -1,5 +1,5 @@
 .contentWidthFollower {
-    position: absolute;
+    _position: absolute;
     top: 10px;
     left: 10px;
     background-color: #ffeb3b4f;

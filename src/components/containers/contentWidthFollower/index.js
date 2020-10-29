@@ -51,7 +51,8 @@ class ContentWidthFollower extends Component {
         var styleObj = {
             width: calc.container_width,
             left: calc.container_side_margin,
-            top: this.props.top || 0
+            top: this.props.top || 0,
+            position: window.WEB_CONFIG.fixedTopBrandAndMenu ? 'fixed' : 'absolute'
         };
 
         return <>
