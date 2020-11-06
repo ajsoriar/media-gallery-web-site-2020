@@ -45,6 +45,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: './src/data/', to: 'data' },
+        { from: './galleries/', to: 'galleries' },
         { from: './src/static/empty.html', to: 'static' },
         { from: './src/config/config_DEBUG.js', to: '' },
         { from: './src/config/config_SITE.js', to: '' },

@@ -280,8 +280,8 @@ class App extends Component {
                 </BrandLogo>
                 <MainMenu clickFunc={(item)=>this.choseMenuOption(item)} />
                 <>
-                    {Router.navigationTree.line.length > 1 &&<BackButton clickFunc={()=>{ this.chooseDataSource(Router.navigationTree.down()); }} ></BackButton>}
-                    {Router.navigationTree.line.length > 1 &&<NavigationMap 
+                    {window.WEB_CONFIG.showGoBack && Router.navigationTree.line.length > 1 &&<BackButton clickFunc={()=>{ this.chooseDataSource(Router.navigationTree.down()); }} ></BackButton>}
+                    {window.WEB_CONFIG.showNavigationMap && Router.navigationTree.line.length > 1 &&<NavigationMap 
                         data={Router.navigationTree.line}
                         clickFunc={(index)=>{
                             console.log("Click on NavigationMap Item ", index, "!")

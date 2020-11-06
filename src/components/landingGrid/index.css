@@ -17,6 +17,6 @@
 .galleryGrid{
     display: block;
     position: relative;
-    background-color: crimson;
-    outline: 2px solid green;
+    _background-color: crimson;
+    _outline: 2px solid green;
 }

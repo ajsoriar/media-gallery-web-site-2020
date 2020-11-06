@@ -2,9 +2,9 @@
     _position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #ffeb3b4f;
+    _background-color: #ffeb3b4f;
     display: block;
-    outline: 1px solid cyan;
+    _outline: 1px solid cyan;
     _height: 100px;
     width: 50%;
 }

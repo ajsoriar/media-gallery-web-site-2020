@@ -5,7 +5,8 @@ import Icon from './../icon'
 import ImageItem from './imageItem'
 import GridDataHandler from './../landingGrid/gridDataHandler'
 import MultiBackGround from './../backgrounds/multiBackGround'
-import Avatar from 'react-string-avatar';
+import Avatar from 'react-string-avatar'
+import BrandLogo from './../brandLogo'
 
 class MediaViewer extends Component {
 
@@ -140,8 +141,14 @@ class MediaViewer extends Component {
                 <div className="btn close" onClick={closeFunction}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
                 <div className="title"></div>
                 {/* {gallery.galleryConfig.id} | {gallery.galleryConfig.name} - {gallery.galleryConfig.title} ({gallery.items.length} items)<br/> */}
-                <div className="info"><Avatar initials={arrPos +1} /> / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>
+                { window.WEB_CONFIG.viewer.showImageCounters && <div className="info"><Avatar initials={arrPos +1} /> / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>}
                 {/* <SideInformationPane/> */}
+
+                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo 
+                    text={ window.WEB_CONFIG.brandLogo.brandText } 
+                    brandLogoSrc={ window.WEB_CONFIG.brandLogo.src } 
+                    clickFunc={()=>{ }}>    
+                </BrandLogo>}
         </div>;
     }
 }

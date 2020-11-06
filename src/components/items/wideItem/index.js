@@ -23,7 +23,7 @@ class WideItem extends Component {
             style={{
                 "width": itemCal.frmW + 0 + "px", 
                 "height": itemCal.totalComponetH +"px", 
-                "backgroundColor": itemCal.imgBgColor || "gray", 
+                "backgroundColor": itemCal.imgBgColor || "transparent", 
                 "position": "absolute",
                 "top": itemCal.top +"px",
                 "left": itemCal.left +"px"

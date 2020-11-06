@@ -17,6 +17,9 @@ GridDataHandler.getImageData = function (imageData, parameter, reversed) {
             if (imageData.size) return imageData.size.w;
             if (imageData.thumbnail && imageData.thumbnail.size) return imageData.thumbnail.size.w;
             if (imageData.target && imageData.target.size) return imageData.target.size.w;
+
+            return 640
+
             return null;
 
         case 'HEIGHT':
@@ -30,6 +33,9 @@ GridDataHandler.getImageData = function (imageData, parameter, reversed) {
             if (imageData.size) return imageData.size.h;
             if (imageData.thumbnail && imageData.thumbnail.size) return imageData.thumbnail.size.h;
             if (imageData.target && imageData.target.size) return imageData.target.size.h;
+
+            return 480
+
             return null;
 
         case 'SOURCE':
@@ -49,9 +55,9 @@ GridDataHandler.getImageData = function (imageData, parameter, reversed) {
             if (imageData.target && imageData.target.src) return imageData.target.src;
             return null
 
-        case 'COLOR':
+        case 'PLACEHOLDER-COLOR':
             if (imageData.color) return imageData.color;
-            if (imageData.thumbnail && imageData.thumbnail.color) return imageData.thumbnail.color;
+            if (imageData.thumbnail && imageData.thumbnail.placeholderColor) return imageData.thumbnail.placeholderColor;
             if (imageData.target && imageData.target.color) return imageData.target.color;
             return null
 
@@ -260,7 +266,7 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             imgH: img_h,
             frmW: frmW,
             frmH: frmH,
-            imgBgColor: img.type != "FOLDER"? this.getImageData(img, "COLOR"): 'transparent',
+            imgBgColor: img.type != "FOLDER"? this.getImageData(img, "PLACEHOLDER-COLOR"): 'transparent',
             footerH: footerH,
             footerTopMargin: footerTopMargin,
             showFooter: showFooter,

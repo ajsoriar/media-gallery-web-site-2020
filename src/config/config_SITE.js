@@ -3,23 +3,25 @@ window.WEB_CONFIG = {
     columnsGrid: {
         maxContainerWidth:2600,
         maxNumOfColumns:13,
-        minColumWidth:150,
+        minColumWidth:200,
         sideMargin:40,
         hmargin:15,
-        galleryTop: 250,
+        galleryTop: 130,
         vMargin:15,
-        headerOverlap: true,
-        footerOverlap: true,
-        showFooter: true,
-        showChildrenItems: true
+        headerOverlap: false,
+        footerOverlap: false,
+        showFooter: false,
+        showChildrenItems: false
     },
-    showGalleriesHeader: true,
+    showGalleriesHeader: false,
     showGalleriesBg: true,
+    showGoBack: false,
+    showNavigationMap: false,
     tags:{
         curretSelectedTag: null //"COMERCIAL"
     },
-    dataPath: './data/',
-    rootDataFile: 'data.4.folder1.json', //'my-home-data_root.json',
+    dataPath: "./galleries/", //'./data/',
+    rootDataFile: "golang-generated-gallery/golang-generated-gallery.json", //'photography.root.json', //'my-home-data_root.json',
     aboutInfoVideoSrc: 'https://www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4',
     brandLogo: {
         src: './images/brand/brand-logo.svg',
@@ -29,7 +31,11 @@ window.WEB_CONFIG = {
             h: 53
         }
     },
-    fixedTopBrandAndMenu: true
+    fixedTopBrandAndMenu: true,
+    viewer: {
+        showImageCounters: false,
+        showBrandLogo: true //window.WEB_CONFIG.viewer.showBrandLogo
+    }  
 };
 
 window.DEFAULTS = {

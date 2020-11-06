@@ -1,19 +1,20 @@
 window.WEB_DEBUG = {
     _showDebugPalette: true,
     _PANELS: {
-        panel_themes: true,
-        panel_gallery: true,
-        panel_tags: true,
-        panel_algorithm: true
+        panel_themes: false,
+        panel_gallery: false,
+        panel_tags: false,
+        panel_algorithm: false
     },
     _GUIDES:{
-        outlines: true,
-        responsiveBgColor: true,
-        columns: true,
-        gridImagesCalculations: true,
-        gridImagesTags: true,
-        imageIndexes: true,
-        viewerImgCalculations: true
+        initialize: false,
+        outlines: false,
+        responsiveBgColor: false,
+        columns: false,
+        gridImagesCalculations: false,
+        gridImagesTags: false,
+        imageIndexes: false,
+        viewerImgCalculations: false 
     }
 };
 
@@ -78,7 +79,8 @@ window.WEB_DEBUG_DATA.mixMenu = [
 window.WEB_DEBUG_DATA.stylesMenu = [
     {id: 0, title: 'default', themeName: 'default-theme'},
     {id: 1, title: 'dark', themeName: 'dark-theme'},
-    {id: 2, title: 'light', themeName: 'light-theme' }
+    {id: 2, title: 'light', themeName: 'light-theme' },
+    {id: 3, title: 'photography', themeName: 'photography-theme'}
 ]
 
 window.WEB_DEBUG_DATA.columnsMenu = [
