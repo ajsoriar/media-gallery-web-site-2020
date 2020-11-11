@@ -58,13 +58,13 @@ class MainMenu extends Component {
                 </div>}
 
                 <div className="hamburger-icon">
-                    <Icon width={70} name={'btn-hamburger'} clickFunc={
+                    <Icon width={70} name={'btn-hamburger'} margin={'5px 0 0 0'} clickFunc={
                         ()=>{ 
                             console.log("mnu!");
                             this.openCloseMenu();
                         }
                     }/>
-                    <div className="hamburger-text">Menu</div>
+                    {/* <div className="hamburger-text">Menu</div> */}
                 </div>
 
             </ul>

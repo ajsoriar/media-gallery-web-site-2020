@@ -13,7 +13,8 @@ class BrandLogo extends Component {
         const frameStyleString = {
             position: 'relative',
             width: window.WEB_CONFIG.brandLogo.size.w,
-            height: window.WEB_CONFIG.brandLogo.size.h
+            height: window.WEB_CONFIG.brandLogo.size.h,
+            top: window.WEB_CONFIG.brandLogo.top
         };
 
         if ( logoSrc != null ) return (

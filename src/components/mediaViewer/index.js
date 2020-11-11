@@ -6,10 +6,8 @@ import ImageItem from './imageItem'
 import GridDataHandler from './../landingGrid/gridDataHandler'
 import MultiBackGround from './../backgrounds/multiBackGround'
 import Avatar from 'react-string-avatar'
-import BrandLogo from './../brandLogo'
-
+//import BrandLogo from './../brandLogo'
 import BrandLogo2 from './../../assets/images/brand/brand-logo.svg'
-//import { ReactComponent as BrandLogo2 } from './../../assets/images/brand/brand-logo.svg'
 
 class MediaViewer extends Component {
 
@@ -20,8 +18,6 @@ class MediaViewer extends Component {
         loaded: false,
         currentItem: null
     }
-
-    //BrandIcon = () => <BrandLogo2/>;
 
     updateDimensions = () => {
         this.setState({
@@ -173,7 +169,7 @@ class MediaViewer extends Component {
                     clickFunc={()=>{ }}>    
                 </BrandLogo>} */}
 
-                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo2 id="viewer-brand-logo" className="brandLogo" style={{fill: "#00f"}}></BrandLogo2>}
+                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo2 id="viewer-brand-logo" className="brandLogo" style={{fill: "#00f", top: window.WEB_CONFIG.brandLogo.top, left: "15px"}}></BrandLogo2>}
         </div>;
     }
 }

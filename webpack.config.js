@@ -64,7 +64,8 @@ module.exports = {
         { from: './src/config/config_DEBUG.js', to: '' },
         { from: './src/config/config_SITE.js', to: '' },
         { from: './src/custom.css', to: '' },
-        { from: './src/assets/images/brand/', to: 'images/brand/' }
+        //{ from: './src/assets/images/brand/', to: 'images/brand/' }
+        { from: './src/assets/images', to: 'images' }
       ],
       options: {
         concurrency: 100,

@@ -4,7 +4,7 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="513.878px" height="53.858px" viewBox="0 0 513.878 53.858" enable-background="new 0 0 513.878 53.858"
 	 xml:space="preserve">
-<g id="Layer-rodriguez">
+<!-- <g id="Layer-rodriguez">
 	<path fill="none" stroke="#39B54A" stroke-width="1.5" stroke-miterlimit="10" d="M253.693,12.95
 		c2.276-0.559,5.715-0.863,9.104-0.863c3.236,0,6.575,0.457,8.952,1.979c2.225,1.319,3.793,3.502,3.793,6.648
 		c0,5.075-3.338,8.272-7.739,9.693v0.152c2.023,0.914,2.934,3.146,3.237,6.242c0.455,3.857,0.708,8.323,1.315,9.744h-7.485
@@ -42,7 +42,7 @@
 		l-1.162,6.242h-20.939l6.473-34.206h20.181l-1.213,6.242h-12.846l-1.418,7.309h12.188L479.496,32.032z"/>
 	<path fill="none" stroke="#39B54A" stroke-width="1.5" stroke-miterlimit="10" d="M482.022,42.335l19.775-23.549v-0.152H487.94
 		l1.264-6.293h23.618l-0.859,4.518l-19.42,23.243v0.152h15.272l-1.214,6.293h-25.336L482.022,42.335z"/>
-</g>
+</g> -->
 <g id="Layer-soria">
 	<path fill="none" stroke="#EC008C" stroke-width="1.5" stroke-miterlimit="10" d="M113.054,38.63
 		c2.023,1.218,4.906,2.183,8.042,2.183c2.833,0,5.411-1.319,5.411-3.959c0-1.979-1.466-3.197-4.602-4.872
