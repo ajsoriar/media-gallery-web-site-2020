@@ -69,7 +69,7 @@ class MultiBackGround extends PureComponent {
         //console.log("[MultiBackGround] SHOW_VIDEO_BG:", SHOW_VIDEO_BG);
 
         return <div className={'multiBackGround'}>
-            { SHOW_COLOR_BG && <div id="multiBackGroundBgColor" className="multiBackGroundBgColor" style={{ backgroundColor: gi.background.color}}></div> } 
+            { SHOW_COLOR_BG && <div id="multiBackGroundBgColor" className="multiBackGroundBgColor" style={{ backgroundColor: Utils.invertColor( gi.background.color ) } }></div> } 
 
             { SHOW_GRADIENT_BG && <div id="multiBackGroundGradientBg" className="multiBackGroundGradientBg" style={multiBackGroundGradientBgStyleObj}></div> } 
 

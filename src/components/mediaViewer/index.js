@@ -8,6 +8,9 @@ import MultiBackGround from './../backgrounds/multiBackGround'
 import Avatar from 'react-string-avatar'
 import BrandLogo from './../brandLogo'
 
+import BrandLogo2 from './../../assets/images/brand/brand-logo.svg'
+//import { ReactComponent as BrandLogo2 } from './../../assets/images/brand/brand-logo.svg'
+
 class MediaViewer extends Component {
 
     state = {
@@ -17,6 +20,8 @@ class MediaViewer extends Component {
         loaded: false,
         currentItem: null
     }
+
+    //BrandIcon = () => <BrandLogo2/>;
 
     updateDimensions = () => {
         this.setState({
@@ -38,6 +43,22 @@ class MediaViewer extends Component {
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions);
+    }
+
+    componentDidUpdate(){
+        setTimeout(() => {
+            //console.log("[MediaViewer] componentDidUpdate() UPDATED!")
+            var logo = document.getElementById("viewer-brand-logo")
+            //console.log("logo: ", logo );
+            var elmnts = logo.getElementsByTagName("g");
+            //console.log("elmnts: ", elmnts );
+            //console.log("this.state.currentItem:", this.state.currentItem );
+            for (let item of elmnts) {
+                //console.log(item);
+                item.setAttribute("fill", this.state.currentItem.mainColors[2] );
+                item.setAttribute("stroke", "");
+            }
+         }, 0);
     }
 
     getNextPictureNum = (num) => {
@@ -96,6 +117,8 @@ class MediaViewer extends Component {
         var src = GridDataHandler.getImageData( gi, "SOURCE", true );
         var cs = GridDataHandler.getImageData( gi, "cropStrategy", true );
 
+        //console.log("[MediaViewer] RENDER!")
+
         return <div className="mediaViewer bg">
 
                 <MultiBackGround gi={gi}></MultiBackGround>
@@ -144,11 +167,13 @@ class MediaViewer extends Component {
                 { window.WEB_CONFIG.viewer.showImageCounters && <div className="info"><Avatar initials={arrPos +1} /> / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>}
                 {/* <SideInformationPane/> */}
 
-                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo 
+                {/* { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo 
                     text={ window.WEB_CONFIG.brandLogo.brandText } 
                     brandLogoSrc={ window.WEB_CONFIG.brandLogo.src } 
                     clickFunc={()=>{ }}>    
-                </BrandLogo>}
+                </BrandLogo>} */}
+
+                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo2 id="viewer-brand-logo" className="brandLogo" style={{fill: "#00f"}}></BrandLogo2>}
         </div>;
     }
 }

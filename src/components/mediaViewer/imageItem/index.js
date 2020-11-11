@@ -3,6 +3,7 @@ import { Component } from 'react'
 import LoadingLayer from '../../loadingLayer';
 import Icon from './../../icon';
 import './spinner.css';
+import './index.css';
 
 class ImageItem extends Component { // includes crop functionality
 
@@ -25,12 +26,17 @@ class ImageItem extends Component { // includes crop functionality
     }
 
     componentDidUpdate(prevProps) {
+        //console.log("[ImageItem] componentDidUpdate()")
         if (prevProps.imageSource !== this.props.imageSource) {
-            this.setState({"loaded": false });  
+            this.setState({"loaded": false },() =>{
+                //console.log("[ImageItem] componentDidUpdate() UPDATED!")
+            });  
         }
     }
 
     render () {
+        var op = this.state.loaded? 1:0;
+        //console.log("[ImageItem] RENDER! opacity: ", op );
 
         var props = this.props;
         var { frameSize, imageSize } = props;
@@ -42,7 +48,8 @@ class ImageItem extends Component { // includes crop functionality
             "top": 0,
             "left": 0,
             "overflow": 'hidden',
-            "position": 'absolute'
+            "position": 'absolute',
+            "opacity": op
         };
         var iw = imageSize.w,
             ih = imageSize.h,
@@ -109,6 +116,7 @@ class ImageItem extends Component { // includes crop functionality
             top = ( frm.h / 2 - ch / 2);
         }
 
+
         var cssContentString = {
                                 "display": 'inline-block',
                                 "width": + cw +'px',
@@ -117,54 +125,53 @@ class ImageItem extends Component { // includes crop functionality
                                 "left": + left +'px',
                                 "overflow": 'hidden',
                                 "position": 'absolute',
-                                "visibility": (!this.state.loaded || this.state.imgError) ? 'hidden' : ''
+                                "visibility": (!this.state.loaded || this.state.imgError) ? 'hidden' : '',
+                                "opacity": op
                             }  
 
         var classNameString = (props.antialiasing === false) ? "pixelated": "";
+        classNameString += " opacityTransition";
 
-        return <div className="imageItem" style={cssFrameString}>
-
-            {/* { !this.state.loaded && <div class="pictureLoading">Loading ...</div> } */}
-
-            {/* { (props.loadingLayer && !this.state.loaded) && <LoadingLayer/> } */}
-
-            {/* <LoadingLayer/> */}
-
+        return <>
             { (props.loadingLayer && !this.state.loaded) && <div className="mLL-frame">
                 <div className="mLL-container">
                     <div className="mLL-spinner"></div>
                 </div>    
-            </div> }
+            </div> }       
 
-            <img 
-                id={props.id} 
-                style={cssContentString} 
-                className={classNameString} 
-                src={props.imageSource} 
-                alt={props.id} 
-                width={cw} 
-                height={ch} 
-                onLoad={ () => this.setLoaded() } 
-                onError={ () => this.setError() } />
+            <div className="imageItem opacityTransition" style={cssFrameString}>
 
-            { props.debug && <div className="image-debug">
-                align: { props.align }<br/>
-                antialiasing: { (props.antialiasing === false) ? "NO": "YES" }<br/>
-                cropStrategy: { props.cropStrategy }<br/>
-                <b>Original image</b><br/>
-                imageSize.w: { iw +'px' }<br/>
-                imageSize.h: { ih +'px' }<br/>
-                <b>Available space</b><br/>
-                frm.w: { frm.w +'px' }<br/>
-                frm.h: { frm.h +'px' }<br/>
-                <b>New image size</b><br/>
-                width: { cw +'px' }<br/>
-                height: { ch +'px' }<br/>
-            </div>} 
+                <img 
+                    id={props.id} 
+                    style={cssContentString} 
+                    className={classNameString} 
+                    src={props.imageSource} 
+                    alt={props.id} 
+                    width={cw} 
+                    height={ch} 
+                    onLoad={ () => this.setLoaded() } 
+                    onError={ () => this.setError() } />
 
-            {this.state.imgError && <div className="center"><Icon center={true} width={60} name={'no-picture'}></Icon></div>}
+                { props.debug && <div className="image-debug">
+                    align: { props.align }<br/>
+                    antialiasing: { (props.antialiasing === false) ? "NO": "YES" }<br/>
+                    cropStrategy: { props.cropStrategy }<br/>
+                    <b>Original image</b><br/>
+                    imageSize.w: { iw +'px' }<br/>
+                    imageSize.h: { ih +'px' }<br/>
+                    <b>Available space</b><br/>
+                    frm.w: { frm.w +'px' }<br/>
+                    frm.h: { frm.h +'px' }<br/>
+                    <b>New image size</b><br/>
+                    width: { cw +'px' }<br/>
+                    height: { ch +'px' }<br/>
+                </div>} 
 
-        </div>
+                {this.state.imgError && <div className="center"><Icon center={true} width={60} name={'no-picture'}></Icon></div>}
+
+            </div>
+
+        </>
     }
 }
 
