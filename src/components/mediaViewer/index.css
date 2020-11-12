@@ -29,7 +29,7 @@
 }
 
 .mediaViewer .btn:hover {
-    background-color: cyan;
+    _background-color: cyan;
 }
 
 .mediaViewer .btn.next {

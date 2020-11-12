@@ -12,6 +12,7 @@
 
 .ui-ico:hover {
     _background-color: aqua;
+    cursor: pointer;
 }
 
 /*
@@ -19,29 +20,28 @@
     background-image: url(./../../assets/images/eye.svg);
     cursor: pointer;
 }
+*/
 
 .arrow-right{
-    background-image: url(./../../assets/images/arrow-right.svg);
-    cursor: pointer;
+    transform: scale(0.8);
 }
 
 .arrow-left{
-    background-image: url(./../../assets/images/arrow-left.svg);
-    cursor: pointer;
+    transform: scale(0.8);
 }
 
 .btn-close{
-    background-image: url(./../../assets/images/btn-close.svg);
-    cursor: pointer;
+    transform: scale(0.8);
 }
 
+/*
 .btn-hamburger{
     background-image: url(./../../assets/images/hamburger.svg);
     cursor: pointer;
 }
 
 .closeWindow{
-    background-image: url(./../../assets/images/btn-close-black.svg);
+    background-image: url(./../../assets/images/btn-close-debug-black.svg);
     cursor: pointer; 
 }
 

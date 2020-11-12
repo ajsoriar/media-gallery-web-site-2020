@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import './index.css';
 import Icon from './../icon';
+import BrandLogo2 from './../../assets/images/brand/brand-logo.svg'
 
 class MainMenu extends Component {
 
@@ -44,17 +45,20 @@ class MainMenu extends Component {
             <ul className="app-horizontal-menu bottom-menu">
                 {bottomItems}
             </ul>
-            <ul className="app-hamburger-menu top-menu">
+            <div className="app-hamburger-menu top-menu">
 
                 { this.state.showMenu && <div className="hamburger-content">
+
+                    <BrandLogo2 id="viewer-brand-logo" className="brandLogo" style={{fill: "#00f", top: window.WEB_CONFIG.brandLogo.top, left: "15px"}}></BrandLogo2>
                     <div className="btn close" onClick={
                         ()=>{ 
                             console.log("close!");
                             this.openCloseMenu();
                         }
-                    }><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
+                    }><Icon width={70} name={'btn-close-black'} clickFunc={()=>{}}/></div>
+                    <ul className="clear-ul">
                     {topLiItems}
-                    {bottomItems}
+                    {bottomItems}</ul>
                 </div>}
 
                 <div className="hamburger-icon">
@@ -67,7 +71,7 @@ class MainMenu extends Component {
                     {/* <div className="hamburger-text">Menu</div> */}
                 </div>
 
-            </ul>
+            </div>
         </div>
     }
 }

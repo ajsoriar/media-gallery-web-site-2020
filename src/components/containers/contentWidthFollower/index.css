@@ -7,4 +7,5 @@
     _outline: 1px solid cyan;
     _height: 100px;
     width: 50%;
+    z-index: 1001;
 }

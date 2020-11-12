@@ -9,6 +9,7 @@ import './css/nav.css'
 import './css/fonts.css'
 import './css/themes/dark.css'
 import './css/themes/light.css'
+import './css/themes/photography.css'
 import App from './App'
 
 ReactDOM.render(
