@@ -301,8 +301,6 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
         w: containerWidth,
         h: GridDataHandler.utils.getMaxTopFromColumnsRegistry()
     }
-    
-
 };
 
 GridDataHandler.removeChildrenItems = function (itemsArr) {

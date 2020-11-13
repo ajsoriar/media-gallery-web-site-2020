@@ -9,7 +9,7 @@ import Range from './components/range'
 import AboutInfo from './components/aboutInfo'
 import AndresCheckBox from './components/checkBox'
 import MediaViewer from './components/mediaViewer'
-import GoToTop from './components/scroll/goToTop'
+//import GoToTop from './components/scroll/goToTop'
 import PresetsMenu from './components/presetsMenu'
 import ListOfTags from './components/tagsList'
 import IframeContent from './components/iframeContent'
@@ -354,8 +354,6 @@ class App extends Component {
             </div>}
 
             { window.WEB_DEBUG._showDebugPalette && <DebugMenu source={this.state} clickFunc={()=>{ this.setState({}) }}/> }
-
-            <GoToTop />
         </>
     }
 }

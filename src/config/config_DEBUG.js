@@ -91,8 +91,9 @@ window.WEB_DEBUG_DATA.columnsMenu = [
 ]
 
 window.WEB_DEBUG_DATA.sourcesMenu = [
-    {id: 0, title: 'Source 1', fileName: 'data.1.json'},
-    {id: 1, title: 'Source 2', fileName: 'data.2.json'},
-    {id: 0, title: 'Gallery Root', fileName: 'data.3.root.json'},
-    {id: 1, title: 'Gallery Folder. level 1', fileName: 'data.4.folder1.json'}
+    {id: 0, title: 'Source 1', fileName: './data/data.1.json'},
+    {id: 1, title: 'Source 2', fileName: './data/data.2.json'},
+    {id: 0, title: 'Gallery Root', fileName: './data/data.3.root.json'},
+    {id: 1, title: 'Gallery Folder. level 1', fileName: './data/data.4.folder1.json'},
+    {id: 0, title: 'debug', fileName: './galleries/golang-generated-gallery/golang-generated-gallery.json'}
 ]

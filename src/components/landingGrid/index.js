@@ -7,6 +7,7 @@ import FolderItem from './../items/folderItem'
 import WideItem from './../items/wideItem'
 import TagsDataHandler from './../tagsList/tagsDataHandler'
 import NoResultsMessage from './../noResultsMessage'
+import GoToTop from './../scroll/goToTop'
 
 const GetItemByType = function( itemData, clickFunc, i, debug ) {
 
@@ -55,9 +56,12 @@ class LandingGrid extends Component {
 
         data = GridDataHandler.getTags( data, TagsDataHandler.getSelectedTagID() );
         
-        //console.log("[LandingGrid] data.length:", data );
+        //console.log("[LandingGrid] data:", data );
 
-        if ( data.length === 0 ) return <NoResultsMessage></NoResultsMessage>
+        if ( data.length === 0 ) {
+            window.WEB_GLOBAL.gallery_w = 0;
+            return <NoResultsMessage></NoResultsMessage>
+        }
 
         window.MEDIA_VIEWER_DATA = {
             "galleryConfig": LandingData.galleryConfig,
@@ -77,15 +81,20 @@ class LandingGrid extends Component {
             this.props.headerOverlap  
         );
 
+        console.log("[LandingGrid] jsonData:", jsonData );
+
         var gallery_w = jsonData.w;
         var gallery_h = jsonData.h;
         data = jsonData.arr;
 
-        
+        window.WEB_GLOBAL.gallery_w = gallery_h;
 
-        return <div className='galleryGrid' style={{"top": this.props.top +'px', "left": this.props.left, width: gallery_w, height: gallery_h }}>
-            { data && data.map((imgDat, i) => GetItemByType( imgDat, this.props.clickFunc, i, LandingData.galleryConfig.debug )) }
-        </div>
+        return <>
+            <div className='galleryGrid' style={{"top": this.props.top +'px', "left": this.props.left, width: gallery_w, height: gallery_h }}>
+                { data && data.map((imgDat, i) => GetItemByType( imgDat, this.props.clickFunc, i, LandingData.galleryConfig.debug )) }
+            </div>
+            { window.WEB_GLOBAL && window.innerHeight < window.WEB_GLOBAL.gallery_w && <GoToTop /> }
+        </>
     }
 }
 

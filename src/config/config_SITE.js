@@ -20,8 +20,8 @@ window.WEB_CONFIG = {
     tags:{
         curretSelectedTag: null //"COMERCIAL"
     },
-    dataPath: "./galleries/", //'./data/',
-    rootDataFile: "golang-generated-gallery/golang-generated-gallery.json", //'photography.root.json', //'my-home-data_root.json',
+    dataPath: "./", //"./galleries/", //'./data/',
+    rootDataFile: "./galleries/golang-generated-gallery/golang-generated-gallery.json", //'my-home-data_root.json',
     aboutInfoVideoSrc: 'https://www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4',
     brandLogo: {
         src: './images/brand/brand-logo.svg',

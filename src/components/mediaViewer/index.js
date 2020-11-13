@@ -49,9 +49,12 @@ class MediaViewer extends Component {
             var elmnts = logo.getElementsByTagName("g");
             //console.log("elmnts: ", elmnts );
             //console.log("this.state.currentItem:", this.state.currentItem );
+
+            var fillCol = this.state.currentItem.mainColors?this.state.currentItem.mainColors[2]:"#00F";
             for (let item of elmnts) {
                 //console.log(item);
-                item.setAttribute("fill", this.state.currentItem.mainColors[2] );
+                //item.setAttribute("fill", ()=>this.state.currentItem.mainColors[2]  );
+                item.setAttribute("fill", fillCol );
                 item.setAttribute("stroke", "");
             }
          }, 0);
@@ -85,12 +88,16 @@ class MediaViewer extends Component {
 
         var getVideoTop = () => {
             var top = 0
-            if ( this.state.browser_width > this.state.currentItem.target.video.size.w ) {
-                top = (this.state.browser_height/2) - ( this.state.currentItem.target.video.size.h / 2 );
-            } else {
-                var vh = this.state.currentItem.target.video.size.h * this.state.browser_width / this.state.currentItem.target.video.size.w
-                top = (this.state.browser_height/2) - ( vh /2 );
-            }
+            //if ( this.state.currentItem.target.video ) {
+                if ( this.state.browser_width > this.state.currentItem.target.video.size.w ) {
+                    top = (this.state.browser_height/2) - ( this.state.currentItem.target.video.size.h / 2 );
+                } else {
+                    var vh = this.state.currentItem.target.video.size.h * this.state.browser_width / this.state.currentItem.target.video.size.w
+                    top = (this.state.browser_height/2) - ( vh /2 );
+                }
+            // } else {
+            //     console.error("ERROR: Trying to read 'this.state.currentItem.target.video'. this.state.currentItem: ", this.state.currentItem )
+            // }
             return top +"px"
         };
 
