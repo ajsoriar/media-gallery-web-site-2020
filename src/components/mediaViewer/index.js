@@ -6,8 +6,7 @@ import ImageItem from './imageItem'
 import GridDataHandler from './../landingGrid/gridDataHandler'
 import MultiBackGround from './../backgrounds/multiBackGround'
 import Avatar from 'react-string-avatar'
-//import BrandLogo from './../brandLogo'
-import BrandLogo2 from './../../assets/images/brand/brand-logo.svg'
+import BrandLogo from './../../assets/images/brand/brand-logo.svg'
 
 class MediaViewer extends Component {
 
@@ -41,23 +40,16 @@ class MediaViewer extends Component {
         window.removeEventListener('resize', this.updateDimensions);
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         setTimeout(() => {
-            //console.log("[MediaViewer] componentDidUpdate() UPDATED!")
             var logo = document.getElementById("viewer-brand-logo")
-            //console.log("logo: ", logo );
             var elmnts = logo.getElementsByTagName("g");
-            //console.log("elmnts: ", elmnts );
-            //console.log("this.state.currentItem:", this.state.currentItem );
-
             var fillCol = this.state.currentItem.mainColors?this.state.currentItem.mainColors[2]:"#00F";
             for (let item of elmnts) {
-                //console.log(item);
-                //item.setAttribute("fill", ()=>this.state.currentItem.mainColors[2]  );
                 item.setAttribute("fill", fillCol );
                 item.setAttribute("stroke", "");
             }
-         }, 0);
+        }, 0);
     }
 
     getNextPictureNum = (num) => {
@@ -84,30 +76,26 @@ class MediaViewer extends Component {
         this.setState({ currentItem: null, loading: true}, goNext );
     }
 
+    getVideoTop = () => {
+        var top = 0
+        if ( this.state.browser_width > this.state.currentItem.target.video.size.w ) {
+            top = (this.state.browser_height/2) - ( this.state.currentItem.target.video.size.h / 2 );
+        } else {
+            var vh = this.state.currentItem.target.video.size.h * this.state.browser_width / this.state.currentItem.target.video.size.w
+            top = (this.state.browser_height/2) - ( vh /2 );
+        }
+        return top +"px"
+    };
+
+    getVideoLeft = () => {
+        var lft = 0
+        if ( this.state.browser_width > this.state.currentItem.target.video.size.w ) {
+            lft = (this.state.browser_width/2) - ( this.state.currentItem.target.video.size.w / 2 );
+        }
+        return lft +"px"
+    };    
+
     render() {
-
-        var getVideoTop = () => {
-            var top = 0
-            //if ( this.state.currentItem.target.video ) {
-                if ( this.state.browser_width > this.state.currentItem.target.video.size.w ) {
-                    top = (this.state.browser_height/2) - ( this.state.currentItem.target.video.size.h / 2 );
-                } else {
-                    var vh = this.state.currentItem.target.video.size.h * this.state.browser_width / this.state.currentItem.target.video.size.w
-                    top = (this.state.browser_height/2) - ( vh /2 );
-                }
-            // } else {
-            //     console.error("ERROR: Trying to read 'this.state.currentItem.target.video'. this.state.currentItem: ", this.state.currentItem )
-            // }
-            return top +"px"
-        };
-
-        var getVideoLeft = () => {
-            var lft = 0
-            if ( this.state.browser_width > this.state.currentItem.target.video.size.w ) {
-                lft = (this.state.browser_width/2) - ( this.state.currentItem.target.video.size.w / 2 );
-            }
-            return lft +"px"
-        };
 
         const {closeFunction, gallery} = this.props;
         if (!gallery) return <div className="mediaViewer error">No items in this gallery!</div>
@@ -119,8 +107,6 @@ class MediaViewer extends Component {
         var ih = GridDataHandler.getImageData( gi, "HEIGHT", true );
         var src = GridDataHandler.getImageData( gi, "SOURCE", true );
         var cs = GridDataHandler.getImageData( gi, "cropStrategy", true );
-
-        //console.log("[MediaViewer] RENDER!")
 
         return <div className="mediaViewer bg">
 
@@ -144,39 +130,26 @@ class MediaViewer extends Component {
                     }}>
 
                     <video width="100%" height="auto" controls autoPlay loop={false} style={{
-                        top: getVideoTop(),
+                        top: this.getVideoTop(),
                         position: "relative",
                         margin: "auto",
                         maxWidth: this.state.currentItem.target.video.size.w +"px",
-                        left: getVideoLeft(),
+                        left: this.getVideoLeft(),
                         pointerEvents: "none"
                     }}>
                         <source src={this.state.currentItem.target.video.src} />
                         Your browser does not support the video tag.
                     </video>
-
                 </div> }
-
-                {/* { (props.loadingLayer && !this.state.loaded) && <LoadingLayer/> } */}
-                {/* { this.state.loading && <LoadingLayer/> } */}
 
                 <div className="layer-next" onClick={()=>{ this.getNextPictureNum(1); }}></div>
                 <div className="layer-previous" onClick={()=>{ this.getNextPictureNum(-1); }}></div>
                 <div className="btn-picture next"><Icon width={70} name={'arrow-right'} clickFunc={()=>{ this.getNextPictureNum(1); }}/></div>
                 <div className="btn-picture previous"><Icon width={70} name={'arrow-left'} clickFunc={()=>{ this.getNextPictureNum(-1); }}/></div>
-                <div className="btn close" onClick={closeFunction}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
-                <div className="title"></div>
-                {/* {gallery.galleryConfig.id} | {gallery.galleryConfig.name} - {gallery.galleryConfig.title} ({gallery.items.length} items)<br/> */}
+                
                 { window.WEB_CONFIG.viewer.showImageCounters && <div className="info"><Avatar initials={arrPos +1} /> / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>}
-                {/* <SideInformationPane/> */}
-
-                {/* { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo 
-                    text={ window.WEB_CONFIG.brandLogo.brandText } 
-                    brandLogoSrc={ window.WEB_CONFIG.brandLogo.src } 
-                    clickFunc={()=>{ }}>    
-                </BrandLogo>} */}
-
-                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo2 id="viewer-brand-logo" className="brandLogo" style={{fill: "#00f", top: window.WEB_CONFIG.brandLogo.top, left: "15px"}}></BrandLogo2>}
+                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo id="viewer-brand-logo" className="brandLogo" style={{fill: "#00f", top: window.WEB_CONFIG.brandLogo.top, left: "15px"}}></BrandLogo>}
+                <div className="btn close" onClick={closeFunction}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
         </div>;
     }
 }
