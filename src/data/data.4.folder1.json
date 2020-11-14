@@ -135,7 +135,7 @@
             "tags": null,
             "target": {
                 "file": {
-                    "src": "data.5.folder2.json"
+                    "src": "data/data.5.folder2.json"
                 },
                 "video": null,
                 "size":{

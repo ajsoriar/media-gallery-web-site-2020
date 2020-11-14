@@ -8,7 +8,7 @@ class DebugMenu extends Component {
         super();
         this.state = {
             value: null,
-            minimized: false,
+            minimized: !window.WEB_DEBUG._debugPaletteMaximized, //true,
             debugObjKeys_PANELS: null,
             debugObjKeys_GUIDES: null,
         };

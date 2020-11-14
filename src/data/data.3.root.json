@@ -71,7 +71,7 @@
             "tags": null,
             "target": {
                 "file": {
-                    "src": "data.4.folder1.json"
+                    "src": "data/data.4.folder1.json"
                 },
                 "size":{
                     "w": 200,

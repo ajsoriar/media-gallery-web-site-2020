@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "ajsr-notify": "^0.0.1",
+    "animation-stepper": "^1.0.0",
     "loading-layer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

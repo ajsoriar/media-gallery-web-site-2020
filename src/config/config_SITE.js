@@ -15,13 +15,13 @@ window.WEB_CONFIG = {
     },
     showGalleriesHeader: false,
     showGalleriesBg: true,
-    showGoBack: false,
-    showNavigationMap: false,
+    showGoBack: true,
+    showNavigationMap: true,
     tags:{
         curretSelectedTag: null //"COMERCIAL"
     },
-    dataPath: "./", //"./galleries/", //'./data/',
-    rootDataFile: "./galleries/golang-generated-gallery/golang-generated-gallery.json", //'my-home-data_root.json',
+    dataPath: "", //"./galleries/", //'./data/',
+    rootDataFile: "galleries/golang-generated-gallery/golang-generated-gallery.json", //'my-home-data_root.json',
     aboutInfoVideoSrc: 'https://www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4',
     brandLogo: {
         src: './images/brand/brand-logo.svg',
@@ -36,7 +36,9 @@ window.WEB_CONFIG = {
     viewer: {
         showImageCounters: false,
         showBrandLogo: true, //window.WEB_CONFIG.viewer.showBrandLogo:
-        reversedBgColor: false
+        reversedBgColor: false,
+        showNavigationArrows: true,
+        hideMouse:true
     }  
 };
 

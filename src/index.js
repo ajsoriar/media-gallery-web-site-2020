@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'loading-layer/dist/loading-layer.min.css'
 import 'loading-layer'
+import 'animation-stepper'
 import 'ajsr-notify'
 import 'ajsr-notify/dist/css/tmplt-default.css'
 import './css/index.css'
@@ -18,5 +19,3 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root')
 );
-
-window.WEB_GLOBAL = {};

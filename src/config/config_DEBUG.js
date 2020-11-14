@@ -1,5 +1,6 @@
 window.WEB_DEBUG = {
     _showDebugPalette: true,
+    _debugPaletteMaximized: false,
     _PANELS: {
         panel_themes: false,
         panel_gallery: false,
@@ -95,5 +96,5 @@ window.WEB_DEBUG_DATA.sourcesMenu = [
     {id: 1, title: 'Source 2', fileName: './data/data.2.json'},
     {id: 0, title: 'Gallery Root', fileName: './data/data.3.root.json'},
     {id: 1, title: 'Gallery Folder. level 1', fileName: './data/data.4.folder1.json'},
-    {id: 0, title: 'debug', fileName: './galleries/golang-generated-gallery/golang-generated-gallery.json'}
+    {id: 0, title: 'Photo', fileName: './galleries/golang-generated-gallery/golang-generated-gallery.json'}
 ]

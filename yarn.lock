@@ -1467,6 +1467,11 @@ ajv@^6.10.0:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+animation-stepper@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/animation-stepper/-/animation-stepper-1.0.0.tgz#a094195ee0c2fad0a1ce39e1c461b7d8c7fd1a57"
+  integrity sha512-VT52RqGLFyfnYs4m8GRabV6MicXdnPfogWaIgWm99Zx0o5tX4cfxvWGNeKynP2QH6QGAOxHb12pwCICD9rx11w==
+
 ansi-colors@^3.0.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"

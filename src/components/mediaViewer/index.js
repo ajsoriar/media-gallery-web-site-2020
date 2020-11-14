@@ -7,6 +7,7 @@ import GridDataHandler from './../landingGrid/gridDataHandler'
 import MultiBackGround from './../backgrounds/multiBackGround'
 import Avatar from 'react-string-avatar'
 import BrandLogo from './../../assets/images/brand/brand-logo.svg'
+import Cursor from './../cursor'
 
 class MediaViewer extends Component {
 
@@ -43,6 +44,7 @@ class MediaViewer extends Component {
     componentDidUpdate() {
         setTimeout(() => {
             var logo = document.getElementById("viewer-brand-logo")
+            if (!logo) return
             var elmnts = logo.getElementsByTagName("g");
             var fillCol = this.state.currentItem.mainColors?this.state.currentItem.mainColors[2]:"#00F";
             for (let item of elmnts) {
@@ -100,13 +102,28 @@ class MediaViewer extends Component {
         const {closeFunction, gallery} = this.props;
         if (!gallery) return <div className="mediaViewer error">No items in this gallery!</div>
         var arrPos = this.state.currentPicturePositionInArray;
-        if (arrPos === null) return <div className="mediaViewer error">Media viewer ERROR!</div>
+        if (arrPos === null) {
+
+            window.ajsrnotify({
+                title: "Error!",
+                msg: "<b>ERROR!</b> Media viewer ERROR!",
+                type: "error", // null, "error", "info", "alert", "success"
+                position: "center", // null, "right", "left"
+                timeout: 2000,
+                theme: null // null, "windows-98"
+            })
+
+            return null//<div className="mediaViewer error">Media viewer ERROR!</div>
+        }
         var gi = gallery.items[arrPos];
         var ITEM_TYPE = (gi.type != undefined && gi.type === 'VIDEO' ) ? 'VIDEO' : 'IMAGE';
         var iw = GridDataHandler.getImageData( gi, "WIDTH", true );
         var ih = GridDataHandler.getImageData( gi, "HEIGHT", true );
         var src = GridDataHandler.getImageData( gi, "SOURCE", true );
         var cs = GridDataHandler.getImageData( gi, "cropStrategy", true );
+
+        var cssStringNoCursor = {};
+        if ( window.WEB_CONFIG.viewer.hideMouse ) cssStringNoCursor = {"cursor": "none"};
 
         return <div className="mediaViewer bg">
 
@@ -142,11 +159,14 @@ class MediaViewer extends Component {
                     </video>
                 </div> }
 
-                <div className="layer-next" onClick={()=>{ this.getNextPictureNum(1); }}></div>
-                <div className="layer-previous" onClick={()=>{ this.getNextPictureNum(-1); }}></div>
-                <div className="btn-picture next"><Icon width={70} name={'arrow-right'} clickFunc={()=>{ this.getNextPictureNum(1); }}/></div>
-                <div className="btn-picture previous"><Icon width={70} name={'arrow-left'} clickFunc={()=>{ this.getNextPictureNum(-1); }}/></div>
-                
+                { window.WEB_CONFIG.viewer.hideMouse && <Cursor/>}
+
+                <div className="layer-next" style={cssStringNoCursor} onClick={()=>{ this.getNextPictureNum(1); }}></div>
+                <div className="layer-previous" style={cssStringNoCursor} onClick={()=>{ this.getNextPictureNum(-1); }}></div>
+                { window.WEB_CONFIG.viewer.showNavigationArrows && <>
+                    <div className="btn-picture next"><Icon width={70} name={'arrow-right'} clickFunc={()=>{ this.getNextPictureNum(1); }}/></div>
+                    <div className="btn-picture previous"><Icon width={70} name={'arrow-left'} clickFunc={()=>{ this.getNextPictureNum(-1); }}/></div>                
+                </>}
                 { window.WEB_CONFIG.viewer.showImageCounters && <div className="info"><Avatar initials={arrPos +1} /> / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>}
                 { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo id="viewer-brand-logo" className="brandLogo" style={{fill: "#00f", top: window.WEB_CONFIG.brandLogo.top, left: "15px"}}></BrandLogo>}
                 <div className="btn close" onClick={closeFunction}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>

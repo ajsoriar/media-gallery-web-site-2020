@@ -1,20 +1,10 @@
 import React from 'react'
 import './index.css'
 
-// import EYE from "./../../assets/images/eye.svg";
-// import ARROW_RIGHT from "./../../assets/images/arrow-right.svg";
-// import ARROW_LEFT from "./../../assets/images/arrow-left.svg";
-// import BTN_CLOSE from "./../../assets/images/btn-close.svg";
-// import BTN_HAMBURGER from "./../../assets/images/hamburger.svg";
-// import CLOSEWINDOW from "./../../assets/images/btn-close-debug-black.svg";
-// import VIDEO_ITEM from "./../../assets/video-item-play.svg";
-// import NO_PICTURE from "./../../assets/images/image.svg";
-// import FOLDER_ITEM from "./../../assets/images/folders/blue-folder-icon-256x256.svg";
-// import FOLDER_ICON from "./../../assets/images/folders/folder-icon_black-border_256x256.svg";
-
 const EYE = "./images/eye.svg";
 const ARROW_RIGHT = "./images/arrow-right.svg";
 const ARROW_LEFT = "./images/arrow-left.svg";
+const CURSOR_ARROW = "./images/cursor-arrow.svg";
 const BTN_CLOSE = "./images/btn-close.svg";
 const BTN_CLOSE_BLACK = "./images/btn-close-black.svg";
 const BTN_HAMBURGER = "./images/hamburger.svg";
@@ -34,6 +24,9 @@ const loadIcon2 = (name) => {
             break;
         case "arrow-left":
             return ARROW_LEFT;
+            break;
+        case "cursor-arrow":
+            return CURSOR_ARROW;
             break;
         case "btn-close":
             return BTN_CLOSE;
