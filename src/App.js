@@ -274,8 +274,7 @@ class App extends Component {
                 sideMargin={sideMargin}
             >
                 <BrandLogo 
-                    text={window.WEB_CONFIG.brandLogo.brandText} 
-                    brandLogoSrc={ window.WEB_CONFIG.brandLogo.src } 
+                    source={window.WEB_CONFIG.brandLogo}
                     clickFunc={()=>{ this.setState({showAboutInfo: true })}}>    
                 </BrandLogo>
                 <MainMenu clickFunc={(item)=>this.choseMenuOption(item)} />

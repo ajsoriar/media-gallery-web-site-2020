@@ -11,17 +11,7 @@ class Aboutinfo extends Component {
         showRight: true
     }
 
-    /*
-    aboutinfoOnClick = () => {
-        // this.setState( prev => ({
-        //     show: !prev.show
-        // }));
-        this.props.onClick();
-    }
-    */
-
     updateDimensions = () => {
-        //console.log("[Aboutinfo] updateDimensions!");
         var v = document.getElementById("aboutInfoVideo");
         var f = document.getElementById("pictureFrame");
         var b = document.getElementById("informationSection");
@@ -55,11 +45,7 @@ class Aboutinfo extends Component {
                 }}>
                 <div className="aboutInfoContainer">
 
-                    <BrandLogo 
-                        text={ window.WEB_CONFIG.brandLogo.brandText } 
-                        brandLogoSrc={ window.WEB_CONFIG.brandLogo.src } 
-                        clickFunc={()=>{ }}>    
-                    </BrandLogo>
+                    <BrandLogo source={window.WEB_CONFIG.brandLogo} clickFunc={()=>{ }} />  
 
                     <div id="pictureFrame" className="pictureFrame">
                         <video id="aboutInfoVideo" loop autoPlay onPlay={()=>{

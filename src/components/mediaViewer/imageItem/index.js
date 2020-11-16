@@ -116,7 +116,6 @@ class ImageItem extends Component { // includes crop functionality
             top = ( frm.h / 2 - ch / 2);
         }
 
-
         var cssContentString = {
                                 "display": 'inline-block',
                                 "width": + cw +'px',
@@ -133,7 +132,7 @@ class ImageItem extends Component { // includes crop functionality
         classNameString += " opacityTransition";
 
         return <>
-            { (props.loadingLayer && !this.state.loaded) && <div className="mLL-frame">
+            { (this.props.hideLoading && props.loadingLayer && !this.state.loaded) && <div className="mLL-frame">
                 <div className="mLL-container">
                     <div className="mLL-spinner"></div>
                 </div>    

@@ -45,12 +45,21 @@ class MediaViewer extends Component {
         setTimeout(() => {
             var logo = document.getElementById("viewer-brand-logo")
             if (!logo) return
+
+            // 1
             var elmnts = logo.getElementsByTagName("g");
             var fillCol = this.state.currentItem.mainColors?this.state.currentItem.mainColors[2]:"#00F";
             for (let item of elmnts) {
                 item.setAttribute("fill", fillCol );
                 item.setAttribute("stroke", "");
             }
+            // 2
+            var elmnts = logo.getElementsByTagName("path");
+            for (let item of elmnts) {
+                item.setAttribute("fill", fillCol );
+                item.setAttribute("stroke", "");
+            }
+
         }, 0);
     }
 
@@ -125,6 +134,12 @@ class MediaViewer extends Component {
         var cssStringNoCursor = {};
         if ( window.WEB_CONFIG.viewer.hideMouse ) cssStringNoCursor = {"cursor": "none"};
 
+        var brandLogoStyle = {
+            //fill: "#00f", 
+            top: window.WEB_CONFIG.brandLogo.top, 
+            left: "15px"
+        }
+
         return <div className="mediaViewer bg">
 
                 <MultiBackGround gi={gi}></MultiBackGround>
@@ -168,7 +183,7 @@ class MediaViewer extends Component {
                     <div className="btn-picture previous"><Icon width={70} name={'arrow-left'} clickFunc={()=>{ this.getNextPictureNum(-1); }}/></div>                
                 </>}
                 { window.WEB_CONFIG.viewer.showImageCounters && <div className="info"><Avatar initials={arrPos +1} /> / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>}
-                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo id="viewer-brand-logo" className="brandLogo" style={{fill: "#00f", top: window.WEB_CONFIG.brandLogo.top, left: "15px"}}></BrandLogo>}
+                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo id="viewer-brand-logo" className="brandLogo" style={brandLogoStyle}></BrandLogo>}
                 <div className="btn close" onClick={closeFunction}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
         </div>;
     }

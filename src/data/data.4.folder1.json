@@ -96,9 +96,7 @@
                     "h": 250
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                
-                "cropStrategy": "FILL-THE-FRAME",
-                "cropStrategy": "DEFAULT"
+                "cropStrategy": "FILL-THE-FRAME"
             },
             "thumbnail": {
                 "cropStrategy": "FILL-THE-FRAME"

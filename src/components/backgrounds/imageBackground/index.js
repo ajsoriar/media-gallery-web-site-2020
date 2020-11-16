@@ -15,6 +15,7 @@ class ImageBackground extends Component { // includes crop functionality
     setLoaded () {
         console.log("[ImageBackground] onImgLoad! to true");
         this.setState({"loaded": true });  
+        if ( this.props.onLoadCallback ) this.props.onLoadCallback();
     }
 
     // onImgLoad({target:img}) {
@@ -39,9 +40,6 @@ class ImageBackground extends Component { // includes crop functionality
     }
 
     render () {
-
-        //const {src} = this.props;
-        //const {width, height} = this.state.dimensions;
 
         var { frameSize, imageSize } = this.props;
         var frm = {

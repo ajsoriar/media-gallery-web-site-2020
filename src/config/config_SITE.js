@@ -25,7 +25,7 @@ window.WEB_CONFIG = {
     aboutInfoVideoSrc: 'https://www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4',
     brandLogo: {
         src: './images/brand/brand-logo.svg',
-        brandText: 'JOSÉ SORIA LOL',
+        brandText: 'JOSÉ SORIA',
         size:{
             w: 513,
             h: 53
@@ -39,7 +39,32 @@ window.WEB_CONFIG = {
         reversedBgColor: false,
         showNavigationArrows: true,
         hideMouse:true
-    }  
+    },
+    welcomeScreen: { // WEB_CONFIG.welcomeScreen.background.image
+        show: true,
+        background: {
+            color: "red",
+            image: {
+                "size":{
+                    "w": 3593,
+                    "h": 1217
+                },
+                "src": "./images/brand/welcome.png", //  "http://www.riabop.com/demo/images/column_200x250.gif",
+                "cropStrategy": "FILL-THE-FRAME",
+                "color": "orange"
+            },
+        },
+        brandLogo: {
+            src: './images/brand/brand-logo-white.svg',
+            size:{
+                w: 513,
+                h: 53
+            },
+            top: -32,
+            left: -124,
+            color: "white"
+        },
+    }
 };
 
 window.DEFAULTS = {

@@ -12,9 +12,11 @@ import './css/themes/dark.css'
 import './css/themes/light.css'
 import './css/themes/photography.css'
 import App from './App'
+import WelcomeScreen from './components/welcomeScreen'
 
 ReactDOM.render(
     <React.StrictMode>
+        <WelcomeScreen welcomeBackground={ WEB_CONFIG.welcomeScreen } />
         <App />
     </React.StrictMode>,
     document.getElementById('root')

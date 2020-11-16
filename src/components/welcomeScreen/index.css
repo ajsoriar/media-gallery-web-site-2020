@@ -1,0 +1,129 @@
+/*
+
+.blur {
+    -webkit-filter: blur(0.25vh) contrast(100%) brightness(150%);
+    filter: blur(0.25vh) contrast(100%) brightness(150%);
+}
+
+.aboutInfoSmall{
+    color: rgb(0, 0, 0);
+    top: 0;
+    width: 90%;
+    overflow: hidden;
+    height: 70px;
+    margin: auto;
+    display: block;
+    position: absolute;
+    left: 5%;
+}
+*/
+
+.welcomeScreen{
+    _background-color: rgb(255, 235, 59, 0.9);
+    background-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+    z-index: 3000;
+}
+
+.centerContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+/*
+.aboutInfoContainer{
+    position: relative;
+    display: block;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.authorName {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    display: block;
+    top: 0;
+    left: 0;
+    font-size: 24px !important;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.bigFont {
+    font-size: 57px;
+    letter-spacing: 11px;
+}
+
+.authorName .right {
+    width: auto;
+    display: block;
+    float: right;
+    position: relative;
+    padding: 10px 0 10px 20px;
+}
+
+.authorName .left {
+    width: auto;
+    display: block;
+    float: left;
+    position: relative;
+    padding: 10px 20px 10px 0;
+}
+
+.informationSection{
+    position: absolute;
+    z-index: 9999;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    _background-color: rgb(112, 255, 93);
+    padding-top: 10px;
+}
+
+.informationGroup{
+    margin: 0;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 30px;
+    vertical-align: top;
+}
+
+.informationSection .title{
+    margin-bottom: .75em;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.informationSection p {
+    margin: 0;
+}
+
+.aboutInfo .pictureFrame {
+    display: block;
+    top: 85px;
+    width: 100%;
+    _background-color: tomato;
+    height: 530px;
+    overflow: hidden;
+    _outline: 2px solid rgb(0, 153, 255) !important;
+}
+
+.aboutInfo .pictureFrame video {
+    width: 100%;
+    position: absolute;
+}
+
+*/
