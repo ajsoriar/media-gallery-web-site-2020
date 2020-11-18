@@ -71,8 +71,7 @@ class GridItem extends Component {
             </ImageItem>}
 
             {SHOW_ITEM_BANNER && <ForeverBrandBanner 
-                className="brandBanner" 
-                src={"josesoriarodriguez.svg"}
+                className="brandBanner"
                 paneSize={{ 
                     w: itemCal.frmW, 
                     h: itemCal.frmH - 10

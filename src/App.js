@@ -9,7 +9,6 @@ import Range from './components/range'
 import AboutInfo from './components/aboutInfo'
 import AndresCheckBox from './components/checkBox'
 import MediaViewer from './components/mediaViewer'
-//import GoToTop from './components/scroll/goToTop'
 import PresetsMenu from './components/presetsMenu'
 import ListOfTags from './components/tagsList'
 import IframeContent from './components/iframeContent'
@@ -22,6 +21,7 @@ import NavigationMap from './components/navigationMap'
 import BrandLogo from './components/brandLogo'
 import MultiBackGround from './components/backgrounds/multiBackGround'
 import DebugMenu from './components/debug/debugMenu'
+import Fade from './components/fadeInAndOut/index'
 
 class App extends Component {
 
@@ -197,6 +197,8 @@ class App extends Component {
                 break;
             case 'IFRAME_CONTENT':
                 this.openCloseIframe( item );
+            case 'OPEN_GALLERY':
+                this.chooseDataSource( item.targetFile );
             case 'ROUTE':
                 // root/gallery:GALLERY_ID/item:ITEM_ID?
         }
@@ -265,6 +267,8 @@ class App extends Component {
                 }}
                 imagesData={this.state.imagesData }
             />}
+
+            <Fade/>
 
             <ContentWidthFollower 
                 top={0} 

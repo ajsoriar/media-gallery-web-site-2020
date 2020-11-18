@@ -11,12 +11,23 @@ window.WEB_CONFIG = {
         headerOverlap: false,
         footerOverlap: false,
         showFooter: false,
-        showChildrenItems: false
+        showChildrenItems: false,
+    },
+    hoverEffects: {
+        bannerSrc: './images/brand/brand-logo-white.svg'
     },
     showGalleriesHeader: false,
     showGalleriesBg: true,
     showGoBack: true,
     showNavigationMap: true,
+    fadeInAndOut: {
+        showFadeIn: true,
+        showFadeOut: true,
+        fadeInColor: { r: 255, g: 255, b: 255},
+        fadeOutColor: { r: 255, g: 255, b: 255},
+        fadeInHeight: 100,
+        fadeOutHeight: 75
+    },
     tags:{
         curretSelectedTag: null //"COMERCIAL"
     },
@@ -30,7 +41,8 @@ window.WEB_CONFIG = {
             w: 513,
             h: 53
         },
-        top: 15
+        top: 15,
+        color: "red"
     },
     fixedTopBrandAndMenu: true,
     viewer: {
@@ -43,13 +55,13 @@ window.WEB_CONFIG = {
     welcomeScreen: { // WEB_CONFIG.welcomeScreen.background.image
         show: true,
         background: {
-            color: "red",
+            color: "#d1d219",
             image: {
                 "size":{
                     "w": 3593,
                     "h": 1217
                 },
-                "src": "./images/brand/welcome.png", //  "http://www.riabop.com/demo/images/column_200x250.gif",
+                "src": "./images/brand/welcome.png",
                 "cropStrategy": "FILL-THE-FRAME",
                 "color": "orange"
             },
@@ -78,7 +90,7 @@ window.WEB_CONFIG.MAIN_MENU = {
     topOptions: [
         {id: "MNU_ALL",         label: "All",         type: "TAG_FILTER",       tagName: null},
         {id: "MNU_EDITORIAL",   label: "Editorial",   type: "TAG_FILTER",       tagName: "EDITORIAL"},
-        {id: "MNU_1",           label: "Comercial",   type: "TAG_FILTER",       tagName: "COMERCIAL"},
+        {id: "MNU_1",           label: "Comercial",   type: "OPEN_GALLERY",     targetFile: './data/data.3.root.json' },
         {
             id: "MNU_2",
             label: "Film",

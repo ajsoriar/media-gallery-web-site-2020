@@ -19,6 +19,10 @@ class MediaViewer extends Component {
         currentItem: null
     }
 
+    setIsShown = (mouseIsOver) => {
+        this.setState({hideMouseArrow: mouseIsOver})
+    }
+
     updateDimensions = () => {
         this.setState({
             browser_width: window.innerWidth,
@@ -112,16 +116,14 @@ class MediaViewer extends Component {
         if (!gallery) return <div className="mediaViewer error">No items in this gallery!</div>
         var arrPos = this.state.currentPicturePositionInArray;
         if (arrPos === null) {
-
             window.ajsrnotify({
                 title: "Error!",
-                msg: "<b>ERROR!</b> Media viewer ERROR!",
+                msg: "<b>ERROR!</b> Media viewer ERROR. Cod. 101",
                 type: "error", // null, "error", "info", "alert", "success"
                 position: "center", // null, "right", "left"
                 timeout: 2000,
                 theme: null // null, "windows-98"
             })
-
             return null//<div className="mediaViewer error">Media viewer ERROR!</div>
         }
         var gi = gallery.items[arrPos];
@@ -174,17 +176,17 @@ class MediaViewer extends Component {
                     </video>
                 </div> }
 
-                { window.WEB_CONFIG.viewer.hideMouse && <Cursor/>}
+                { window.WEB_CONFIG.viewer.hideMouse && !this.state.hideMouseArrow && <Cursor/>}
 
                 <div className="layer-next" style={cssStringNoCursor} onClick={()=>{ this.getNextPictureNum(1); }}></div>
                 <div className="layer-previous" style={cssStringNoCursor} onClick={()=>{ this.getNextPictureNum(-1); }}></div>
                 { window.WEB_CONFIG.viewer.showNavigationArrows && <>
-                    <div className="btn-picture next"><Icon width={70} name={'arrow-right'} clickFunc={()=>{ this.getNextPictureNum(1); }}/></div>
-                    <div className="btn-picture previous"><Icon width={70} name={'arrow-left'} clickFunc={()=>{ this.getNextPictureNum(-1); }}/></div>                
+                    <div className="btn-picture next" onMouseEnter={() => this.setIsShown(true)} onMouseLeave={() => this.setIsShown(false)}><Icon width={70} name={'arrow-right'} clickFunc={()=>{ this.getNextPictureNum(1); }}/></div>
+                    <div className="btn-picture previous" onMouseEnter={() => this.setIsShown(true)} onMouseLeave={() => this.setIsShown(false)}><Icon width={70} name={'arrow-left'} clickFunc={()=>{ this.getNextPictureNum(-1); }}/></div>                
                 </>}
                 { window.WEB_CONFIG.viewer.showImageCounters && <div className="info"><Avatar initials={arrPos +1} /> / {gallery.items.length} - {gallery.items[ arrPos ].name}</div>}
-                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo id="viewer-brand-logo" className="brandLogo" style={brandLogoStyle}></BrandLogo>}
-                <div className="btn close" onClick={closeFunction}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
+                { window.WEB_CONFIG.viewer.showBrandLogo && <BrandLogo id="viewer-brand-logo" className="brandLogo" style={brandLogoStyle} onMouseEnter={() => this.setIsShown(true)} onMouseLeave={() => this.setIsShown(false)}></BrandLogo>}
+                <div className="btn close" onClick={closeFunction} onMouseEnter={() => this.setIsShown(true)} onMouseLeave={() => this.setIsShown(false)}><Icon width={70} name={'btn-close'} clickFunc={()=>{}}/></div>
         </div>;
     }
 }
