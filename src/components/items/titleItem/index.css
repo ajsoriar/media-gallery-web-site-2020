@@ -1,0 +1,62 @@
+.titleItem{
+    background-color: #03A9F4;
+    position: absolute;
+    transition: all 0.5s;
+    list-style: none;
+    line-height: 65px;
+    display: inline-block;
+    color: #000000;
+    font-size: 37px;
+    font-weight: 400;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.titleItem.size-1{
+    list-style: none;
+    line-height: 65px;
+    font-size: 37px;
+    font-weight: 400;
+    height: 40px;
+}
+.titleItem.size-2{
+    list-style: none;
+    line-height: 62px;
+    font-size: 34px;
+    font-weight: 400;
+    height: 37px;
+}
+.titleItem.size-3{
+    list-style: none;
+    line-height: 59px;
+    font-size: 31px;
+    font-weight: 400;
+    height: 34px;
+}
+.titleItem.size-4{
+    list-style: none;
+    line-height: 56px;
+    font-size: 28px;
+    font-weight: 400;
+    height: 31px;
+}
+.titleItem.size-5{
+    list-style: none;
+    line-height: 53px;
+    font-size: 25px;
+    font-weight: 400;
+    height: 28px;
+}
+.titleItem.size-6{
+    list-style: none;
+    line-height: 50px;
+    font-size: 22px;
+    font-weight: 400;
+    height: 25px;
+}

@@ -8,6 +8,7 @@ import WideItem from './../items/wideItem'
 import TagsDataHandler from './../tagsList/tagsDataHandler'
 import NoResultsMessage from './../noResultsMessage'
 import GoToTop from './../scroll/goToTop'
+import TitleItem from './../items/titleItem'
 
 const GetItemByType = function( itemData, clickFunc, i, debug ) {
 
@@ -32,6 +33,14 @@ const GetItemByType = function( itemData, clickFunc, i, debug ) {
             />
         
         case "TITLE":
+            return <TitleItem
+                key={ i }
+                index = { i }
+                imgDat = { itemData }
+                text = { itemData.title }
+                size = { itemData.size || 1 }
+            />
+
         case "END_OF_GALLERY":
             
         default:

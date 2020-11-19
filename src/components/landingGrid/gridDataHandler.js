@@ -227,7 +227,7 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             img_h = GridDataHandler.getImageData(img, "HEIGHT"); 
         }
 
-        if (img.type === "WIDE_ITEM") { 
+        if (img.type === "WIDE_ITEM" || img.type === "TITLE") { 
             img_w = containerWidth; 
             img_h = GridDataHandler.getImageData(img, "HEIGHT"); 
         }
@@ -251,9 +251,12 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
         var frmW = 0,
             frmH = 0;
 
-        if ( img.type === "WIDE_ITEM") {
+        if ( img.type === "WIDE_ITEM" ) {
             frmW = containerWidth;
             frmH = img.height || 100;
+        } else if (img.type === "TITLE" ) {
+            frmW = containerWidth;
+            frmH = img.height || 50;   
         } else {
             frmW = columnWidth;
             frmH = this.getFrameHeightFromWidth(img_w, img_h, columnWidth);
@@ -278,7 +281,7 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             }
         }
 
-        if ( img.type === "WIDE_ITEM") {
+        if ( img.type === "WIDE_ITEM" || img.type === "TITLE") {
             arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
             arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
             var targetColum = 0;
@@ -337,6 +340,7 @@ GridDataHandler.removeItemsByType = function (itemsArr, itemType) { // itemType:
 GridDataHandler.generateMediaViewerData = function (itemsArr) {
     GridDataHandler.removeItemsByType(itemsArr, "INFO");
     itemsArr = this.removeItemsByType(itemsArr, "FOLDER");
+    itemsArr = this.removeItemsByType(itemsArr, "TITLE");
     return itemsArr
 };
 
