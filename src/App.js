@@ -22,6 +22,7 @@ import BrandLogo from './components/brandLogo'
 import MultiBackGround from './components/backgrounds/multiBackGround'
 import DebugMenu from './components/debug/debugMenu'
 import Fade from './components/fadeInAndOut/index'
+import SafeFrame from './components/safeFrame'
 
 class App extends Component {
 
@@ -357,6 +358,8 @@ class App extends Component {
             </div>}
 
             { window.WEB_DEBUG._showDebugPalette && <DebugMenu source={this.state} clickFunc={()=>{ this.setState({}) }}/> }
+
+            { window.WEB_DEBUG._GUIDES.tvSafeFrame && <SafeFrame frameWidth="27" opacity={0.7}></SafeFrame> }
         </>
     }
 }

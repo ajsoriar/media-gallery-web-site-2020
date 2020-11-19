@@ -15,7 +15,8 @@ window.WEB_DEBUG = {
         gridImagesCalculations: false,
         gridImagesTags: false,
         imageIndexes: false,
-        viewerImgCalculations: false 
+        viewerImgCalculations: false,
+        tvSafeFrame: false 
     }
 };
 
