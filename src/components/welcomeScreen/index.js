@@ -18,7 +18,7 @@ class WelcomeScreen extends Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
-        //setTimeout(this.closeSmoothly, 1500);
+        //setTimeout(this.closeSmoothly, window.WEB_CONFIG.welcomeScreen.miliseconds);
     }
     
     componentWillUnmount() {
@@ -42,7 +42,7 @@ class WelcomeScreen extends Component {
     }
 
     onLoadCallback = () => { 
-        setTimeout(this.closeSmoothly, 1500) 
+        setTimeout(this.closeSmoothly, window.WEB_CONFIG.welcomeScreen.miliseconds) 
     };
 
     render () {

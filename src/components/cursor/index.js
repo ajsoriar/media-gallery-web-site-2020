@@ -16,8 +16,9 @@ const Cursor = () => {
   }, []);
 
   var cssString = {
-    top: window.WEB_GLOBAL.cursor.y,
-    left: window.WEB_GLOBAL.cursor.x,
+    top: window.WEB_GLOBAL.cursor.y -22,
+    //left: window.WEB_GLOBAL.cursor.x,
+    left: window.WEB_GLOBAL.cursor.x < window.innerWidth/2?window.WEB_GLOBAL.cursor.x: window.WEB_GLOBAL.cursor.x - 45,
     position: "fixed",
     transform: window.WEB_GLOBAL.cursor.x < window.innerWidth/2?"rotate(0deg)": "rotate(180deg)"
 };

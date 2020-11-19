@@ -54,8 +54,9 @@ window.WEB_CONFIG = {
     },
     welcomeScreen: { // WEB_CONFIG.welcomeScreen.background.image
         show: true,
+        miliseconds: 1500, 
         background: {
-            color: "#d1d219",
+            color: "#d1d219",    
             image: {
                 "size":{
                     "w": 3593,
