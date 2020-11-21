@@ -303,7 +303,7 @@ class App extends Component {
                 <b>Gallery Columns</b>
                 <Range label={'Max container width'} min="550" max="2600" step="50" defaultValue={maxContainerWidth} value={maxContainerWidth} onChange={(event)=> this._DEBUG_updateRange(event ,'maxContainerWidth')} />
                 <Range label={'Max num. of columns'} min="1" max="20" step="1" defaultValue={maxNumOfColumns} value={maxNumOfColumns} onChange={(event)=> this._DEBUG_updateRange(event ,'maxNumOfColumns')} />
-                <Range label={'Min column width'} min="120" max="300" step="10" defaultValue={minColumWidth} value={minColumWidth} onChange={(event)=> this._DEBUG_updateRange(event ,'minColumWidth')} />
+                <Range label={'Min column width'} min="120" max="350" step="10" defaultValue={minColumWidth} value={minColumWidth} onChange={(event)=> this._DEBUG_updateRange(event ,'minColumWidth')} />
                 <Range label={'Columns margin'} min="0" max="100" step="5" defaultValue={hmargin} value={hmargin} onChange={(event)=> this._DEBUG_updateRange(event ,'hmargin')} />
                 <Range label={'Side margins'} min="0" max="200" step="10" defaultValue={sideMargin} value={sideMargin} onChange={(event)=> this._DEBUG_updateRange(event ,'sideMargin')} />
                 <br/>

@@ -9,6 +9,7 @@ import TagsDataHandler from './../tagsList/tagsDataHandler'
 import NoResultsMessage from './../noResultsMessage'
 import GoToTop from './../scroll/goToTop'
 import TitleItem from './../items/titleItem'
+import LabelItem from './../items/labelItem'
 
 const GetItemByType = function( itemData, clickFunc, i, debug ) {
 
@@ -42,6 +43,14 @@ const GetItemByType = function( itemData, clickFunc, i, debug ) {
             />
 
         case "END_OF_GALLERY":
+        case "LABEL":
+            return <LabelItem
+                key={ i }
+                index = { i }
+                imgDat = { itemData }
+                text = { itemData.text }
+                size = { itemData.size || 1 }
+            />
             
         default:
             return <GridItem

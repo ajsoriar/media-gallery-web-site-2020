@@ -58,6 +58,8 @@ class ImageItem extends Component { // includes crop functionality
             left = 0,
             top = 0;
 
+            //debugger
+
         if (props.cropStrategy === 'FILL-THE-FRAME' ) { // FILL like a background
 
             if (iw > ih ) { // Landscape // TODO: Compare aspect ratio of the frame and the video instead of this?
