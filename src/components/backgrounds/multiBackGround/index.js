@@ -8,14 +8,6 @@ import Utils from '../../../utils';
 class MultiBackGround extends PureComponent {
 //class MultiBackGround extends Component {
 
-    componentDidMount() {
-        //console.log("[MultiBackGround] componentDidMount()");
-    }
-
-    componentWillUnmount() {
-        //console.log("[MultiBackGround] componentWillUnmount()");
-    }
-
     render() {
 
         var gi = this.props.gi;
@@ -68,8 +60,24 @@ class MultiBackGround extends PureComponent {
         //console.log("[MultiBackGround] SHOW_IMAGE_BG:", SHOW_IMAGE_BG);
         //console.log("[MultiBackGround] SHOW_VIDEO_BG:", SHOW_VIDEO_BG);
 
+        // var BG_color_jsonStyles = { 
+        //     backgroundColor: window.WEB_CONFIG.viewer.reversedBgColor?Utils.invertColor( gi.background.color ):gi.background.color 
+        // }
+
+        var getPicBgCol = () => {
+            var col = "#000";
+            if ( gi.background && gi.background.color) {
+                col = gi.background.color;
+                if ( window.WEB_CONFIG.viewer.reversedBgColor ) {
+                    col = tils.invertColor( gi.background.color )
+                }                
+            }
+            return col
+        };
+        var BG_color_jsonStyles = { backgroundColor: getPicBgCol() }
+
         return <div className={'multiBackGround'}>
-            { SHOW_COLOR_BG && <div id="multiBackGroundBgColor" className="multiBackGroundBgColor" style={{ backgroundColor: gi.background.color}}></div> } 
+            { SHOW_COLOR_BG && <div id="multiBackGroundBgColor" className="multiBackGroundBgColor" style={ BG_color_jsonStyles }></div> } 
 
             { SHOW_GRADIENT_BG && <div id="multiBackGroundGradientBg" className="multiBackGroundGradientBg" style={multiBackGroundGradientBgStyleObj}></div> } 
 

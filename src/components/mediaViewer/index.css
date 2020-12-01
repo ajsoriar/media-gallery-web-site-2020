@@ -29,7 +29,7 @@
 }
 
 .mediaViewer .btn:hover {
-    background-color: cyan;
+    _background-color: cyan;
 }
 
 .mediaViewer .btn.next {
@@ -134,4 +134,21 @@
     top: calc(50% - 100px);
     left: calc(50% - 150px);
     border: 2px solid white;
+}
+
+.brandLogo{
+    position: absolute;
+}
+
+.brandLogo path, .brandLogo g {
+    transition: fill 0.3s ease-in-out;
+    -moz-transition: fill 0.3s ease-in-out;
+    -webkit-transition: fill 0.3s ease-in-out;
+}
+
+.brandLogo.hoverTransition :hover {
+    transition: fill 0s ease-in-out;
+    -moz-transition: fill 0s ease-in-out;
+    -webkit-transition: fill 0s ease-in-out;
+    fill: black;
 }

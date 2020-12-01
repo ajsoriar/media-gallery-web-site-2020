@@ -53,7 +53,7 @@ class GridItem extends Component {
             style={{
                 "width": itemCal.frmW + 0 + "px", 
                 "height": itemCal.totalComponetH +"px", 
-                "backgroundColor": itemCal.imgBgColor || "gray", 
+                "backgroundColor": itemCal.imgBgColor || "transparent", 
                 "position": "absolute",
                 "top": itemCal.top +"px",
                 "left": itemCal.left +"px"
@@ -71,8 +71,7 @@ class GridItem extends Component {
             </ImageItem>}
 
             {SHOW_ITEM_BANNER && <ForeverBrandBanner 
-                className="brandBanner" 
-                src={"josesoriarodriguez.svg"}
+                className="brandBanner"
                 paneSize={{ 
                     w: itemCal.frmW, 
                     h: itemCal.frmH - 10

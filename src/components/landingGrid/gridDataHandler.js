@@ -17,6 +17,9 @@ GridDataHandler.getImageData = function (imageData, parameter, reversed) {
             if (imageData.size) return imageData.size.w;
             if (imageData.thumbnail && imageData.thumbnail.size) return imageData.thumbnail.size.w;
             if (imageData.target && imageData.target.size) return imageData.target.size.w;
+
+            return 640
+
             return null;
 
         case 'HEIGHT':
@@ -30,6 +33,9 @@ GridDataHandler.getImageData = function (imageData, parameter, reversed) {
             if (imageData.size) return imageData.size.h;
             if (imageData.thumbnail && imageData.thumbnail.size) return imageData.thumbnail.size.h;
             if (imageData.target && imageData.target.size) return imageData.target.size.h;
+
+            return 480
+
             return null;
 
         case 'SOURCE':
@@ -49,9 +55,9 @@ GridDataHandler.getImageData = function (imageData, parameter, reversed) {
             if (imageData.target && imageData.target.src) return imageData.target.src;
             return null
 
-        case 'COLOR':
+        case 'PLACEHOLDER-COLOR':
             if (imageData.color) return imageData.color;
-            if (imageData.thumbnail && imageData.thumbnail.color) return imageData.thumbnail.color;
+            if (imageData.thumbnail && imageData.thumbnail.placeholderColor) return imageData.thumbnail.placeholderColor;
             if (imageData.target && imageData.target.color) return imageData.target.color;
             return null
 
@@ -124,7 +130,7 @@ GridDataHandler.utils = {
         // All tops equal
         this.setAllTops(max);
 
-        console.log("GridDataHandler.utils.arrOfTops: ", GridDataHandler.utils.arrOfTops );
+        //console.log("GridDataHandler.utils.arrOfTops: ", GridDataHandler.utils.arrOfTops );
     },
     setAllTops: function( top ) {
         var temp = GridDataHandler.utils.arrOfTops;
@@ -221,9 +227,14 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             img_h = GridDataHandler.getImageData(img, "HEIGHT"); 
         }
 
-        if (img.type === "WIDE_ITEM") { 
+        if (img.type === "WIDE_ITEM" || img.type === "TITLE" ) { 
             img_w = containerWidth; 
             img_h = GridDataHandler.getImageData(img, "HEIGHT"); 
+        }
+
+        if (img.type === "LABEL" ) { 
+            img_w = containerWidth; 
+            img_h = 60
         }
 
         // -----------------------
@@ -245,9 +256,15 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
         var frmW = 0,
             frmH = 0;
 
-        if ( img.type === "WIDE_ITEM") {
+        if ( img.type === "WIDE_ITEM" ) {
             frmW = containerWidth;
             frmH = img.height || 100;
+        } else if (img.type === "TITLE" ) {
+            frmW = containerWidth;
+            frmH = img.height || 50;   
+        } else if (img.type === "LABEL" ) {
+            frmW = containerWidth;
+            frmH = 60;   
         } else {
             frmW = columnWidth;
             frmH = this.getFrameHeightFromWidth(img_w, img_h, columnWidth);
@@ -260,7 +277,7 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             imgH: img_h,
             frmW: frmW,
             frmH: frmH,
-            imgBgColor: img.type != "FOLDER"? this.getImageData(img, "COLOR"): 'transparent',
+            imgBgColor: img.type != "FOLDER"? this.getImageData(img, "PLACEHOLDER-COLOR"): 'transparent',
             footerH: footerH,
             footerTopMargin: footerTopMargin,
             showFooter: showFooter,
@@ -272,7 +289,7 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
             }
         }
 
-        if ( img.type === "WIDE_ITEM") {
+        if ( img.type === "WIDE_ITEM" || img.type === "TITLE" || img.type === "LABEL" ) {
             arr[i].calculated.footerTopMargin = arr[i].calculated.footerH > 0 ? 10 : 0;
             arr[i].calculated.totalComponetH = arr[i].calculated.frmH + arr[i].calculated.footerTopMargin + arr[i].calculated.footerH;
             var targetColum = 0;
@@ -288,15 +305,13 @@ GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS = function (imagesData, numOfCol
         }
     }
 
-    console.log("[GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS] arr: ", arr );
+    //console.log("[GridDataHandler.CALCULATE_ALL_GALLERY_POSITIONS] arr: ", arr );
 
     return {
         arr: arr,
         w: containerWidth,
         h: GridDataHandler.utils.getMaxTopFromColumnsRegistry()
     }
-    
-
 };
 
 GridDataHandler.removeChildrenItems = function (itemsArr) {
@@ -333,12 +348,14 @@ GridDataHandler.removeItemsByType = function (itemsArr, itemType) { // itemType:
 GridDataHandler.generateMediaViewerData = function (itemsArr) {
     GridDataHandler.removeItemsByType(itemsArr, "INFO");
     itemsArr = this.removeItemsByType(itemsArr, "FOLDER");
+    itemsArr = this.removeItemsByType(itemsArr, "TITLE");
+    itemsArr = this.removeItemsByType(itemsArr, "LABEL");
     return itemsArr
 };
 
 GridDataHandler.getPositionInArrOfGalleryItemsById = function (itemsArr, shearchId) {
-    console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] itemsArr: ", itemsArr);
-    console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] shearchId: ", shearchId);
+    //console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] itemsArr: ", itemsArr);
+    //console.log("[GridDataHandler.getPositionInArrOfGalleryItemsById] shearchId: ", shearchId);
     var lon = itemsArr.length;
     if (lon === 0) return [];
     for (var i = 0; i < lon; i++) {

@@ -31,6 +31,7 @@
 }
 
 .gridItem._show_overlay:hover .overlay{
+    background-color: black;
     opacity: 0.5;
 }
 

@@ -29,7 +29,7 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -38,6 +38,20 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "babel-loader"
+          },
+          {
+            loader: "react-svg-loader",
+            options: {
+              jsx: true // true outputs JSX tags
+            }
+          }
+        ]
       }
     ]
   },
@@ -45,11 +59,13 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: './src/data/', to: 'data' },
+        { from: './galleries/', to: 'galleries' },
         { from: './src/static/empty.html', to: 'static' },
         { from: './src/config/config_DEBUG.js', to: '' },
         { from: './src/config/config_SITE.js', to: '' },
         { from: './src/custom.css', to: '' },
-        { from: './src/assets/images/brand/', to: 'images/brand/' }
+        //{ from: './src/assets/images/brand/', to: 'images/brand/' }
+        { from: './src/assets/images', to: 'images' }
       ],
       options: {
         concurrency: 100,

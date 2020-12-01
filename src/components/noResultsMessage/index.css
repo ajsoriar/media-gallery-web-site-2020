@@ -1,0 +1,21 @@
+.noResultsMessage{
+  color: black;
+  display: inline-block;
+  top: 20%;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.noResultsMessage .welcome {
+  font-size: 60px;
+}
+
+.noResultsMessage .noResultsMessage {
+  max-width: 730px;
+  margin-right: auto;
+  margin-left: auto;
+  margin: 60px 15px;
+  font-size: 30px;
+  font-weight: 300;
+} 

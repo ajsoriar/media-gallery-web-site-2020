@@ -1,5 +1,17 @@
 # media-gallery-web-site
 
-Project playground:
+## Last version demo page
 
-https://www.subidote.com/media-gallery-web-site-2020-playground/index.html
+<https://mediagallery.subidote.com/>
+
+## Project playground
+
+<https://www.subidote.com/media-gallery-web-site-2020-playground/index.html>
+
+## Development
+
+> yarn start
+
+## Build
+
+> yarn build

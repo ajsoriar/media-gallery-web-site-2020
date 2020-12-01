@@ -9,7 +9,6 @@ import Range from './components/range'
 import AboutInfo from './components/aboutInfo'
 import AndresCheckBox from './components/checkBox'
 import MediaViewer from './components/mediaViewer'
-import GoToTop from './components/scroll/goToTop'
 import PresetsMenu from './components/presetsMenu'
 import ListOfTags from './components/tagsList'
 import IframeContent from './components/iframeContent'
@@ -22,6 +21,8 @@ import NavigationMap from './components/navigationMap'
 import BrandLogo from './components/brandLogo'
 import MultiBackGround from './components/backgrounds/multiBackGround'
 import DebugMenu from './components/debug/debugMenu'
+import Fade from './components/fadeInAndOut/index'
+import SafeFrame from './components/safeFrame'
 
 class App extends Component {
 
@@ -197,6 +198,8 @@ class App extends Component {
                 break;
             case 'IFRAME_CONTENT':
                 this.openCloseIframe( item );
+            case 'OPEN_GALLERY':
+                this.chooseDataSource( item.targetFile );
             case 'ROUTE':
                 // root/gallery:GALLERY_ID/item:ITEM_ID?
         }
@@ -266,6 +269,8 @@ class App extends Component {
                 imagesData={this.state.imagesData }
             />}
 
+            <Fade/>
+
             <ContentWidthFollower 
                 top={0} 
                 browserWidth={browser_width} 
@@ -274,14 +279,13 @@ class App extends Component {
                 sideMargin={sideMargin}
             >
                 <BrandLogo 
-                    text={window.WEB_CONFIG.brandLogo.brandText} 
-                    brandLogoSrc={ window.WEB_CONFIG.brandLogo.src } 
+                    source={window.WEB_CONFIG.brandLogo}
                     clickFunc={()=>{ this.setState({showAboutInfo: true })}}>    
                 </BrandLogo>
                 <MainMenu clickFunc={(item)=>this.choseMenuOption(item)} />
                 <>
-                    {Router.navigationTree.line.length > 1 &&<BackButton clickFunc={()=>{ this.chooseDataSource(Router.navigationTree.down()); }} ></BackButton>}
-                    {Router.navigationTree.line.length > 1 &&<NavigationMap 
+                    {window.WEB_CONFIG.showGoBack && Router.navigationTree.line.length > 1 &&<BackButton clickFunc={()=>{ this.chooseDataSource(Router.navigationTree.down()); }} ></BackButton>}
+                    {window.WEB_CONFIG.showNavigationMap && Router.navigationTree.line.length > 1 &&<NavigationMap 
                         data={Router.navigationTree.line}
                         clickFunc={(index)=>{
                             console.log("Click on NavigationMap Item ", index, "!")
@@ -299,7 +303,7 @@ class App extends Component {
                 <b>Gallery Columns</b>
                 <Range label={'Max container width'} min="550" max="2600" step="50" defaultValue={maxContainerWidth} value={maxContainerWidth} onChange={(event)=> this._DEBUG_updateRange(event ,'maxContainerWidth')} />
                 <Range label={'Max num. of columns'} min="1" max="20" step="1" defaultValue={maxNumOfColumns} value={maxNumOfColumns} onChange={(event)=> this._DEBUG_updateRange(event ,'maxNumOfColumns')} />
-                <Range label={'Min column width'} min="120" max="300" step="10" defaultValue={minColumWidth} value={minColumWidth} onChange={(event)=> this._DEBUG_updateRange(event ,'minColumWidth')} />
+                <Range label={'Min column width'} min="120" max="350" step="10" defaultValue={minColumWidth} value={minColumWidth} onChange={(event)=> this._DEBUG_updateRange(event ,'minColumWidth')} />
                 <Range label={'Columns margin'} min="0" max="100" step="5" defaultValue={hmargin} value={hmargin} onChange={(event)=> this._DEBUG_updateRange(event ,'hmargin')} />
                 <Range label={'Side margins'} min="0" max="200" step="10" defaultValue={sideMargin} value={sideMargin} onChange={(event)=> this._DEBUG_updateRange(event ,'sideMargin')} />
                 <br/>
@@ -355,7 +359,7 @@ class App extends Component {
 
             { window.WEB_DEBUG._showDebugPalette && <DebugMenu source={this.state} clickFunc={()=>{ this.setState({}) }}/> }
 
-            <GoToTop />
+            { window.WEB_DEBUG._GUIDES.tvSafeFrame && <SafeFrame frameWidth="27" opacity={0.7}></SafeFrame> }
         </>
     }
 }

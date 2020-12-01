@@ -16,8 +16,8 @@
 }
 
 .aboutInfo{
-    background-color: rgba(255, 255, 255, 0.9);
-    background-color: rgb(255, 235, 59, 0.9);
+    _background-color: rgb(255, 235, 59, 0.9);
+    background-color: rgb(225, 225, 225);
     color: rgb(0, 0, 0);
     top: 0;
     width: 100%;
@@ -76,7 +76,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgb(112, 255, 93);
+    _background-color: rgb(112, 255, 93);
     padding-top: 10px;
 }
 
@@ -105,10 +105,10 @@
     display: block;
     top: 85px;
     width: 100%;
-    background-color: tomato;
+    _background-color: tomato;
     height: 530px;
     overflow: hidden;
-    outline: 2px solid rgb(0, 153, 255) !important;
+    _outline: 2px solid rgb(0, 153, 255) !important;
 }
 
 .aboutInfo .pictureFrame video {

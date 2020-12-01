@@ -1,19 +1,22 @@
 window.WEB_DEBUG = {
     _showDebugPalette: true,
+    _debugPaletteMaximized: false,
     _PANELS: {
-        panel_themes: true,
-        panel_gallery: true,
-        panel_tags: true,
-        panel_algorithm: true
+        panel_themes: false,
+        panel_gallery: false,
+        panel_tags: false,
+        panel_algorithm: false
     },
     _GUIDES:{
-        outlines: true,
-        responsiveBgColor: true,
-        columns: true,
-        gridImagesCalculations: true,
-        gridImagesTags: true,
-        imageIndexes: true,
-        viewerImgCalculations: true
+        initialize: false,
+        outlines: false,
+        responsiveBgColor: false,
+        columns: false,
+        gridImagesCalculations: false,
+        gridImagesTags: false,
+        imageIndexes: false,
+        viewerImgCalculations: false,
+        tvSafeFrame: false 
     }
 };
 
@@ -78,7 +81,8 @@ window.WEB_DEBUG_DATA.mixMenu = [
 window.WEB_DEBUG_DATA.stylesMenu = [
     {id: 0, title: 'default', themeName: 'default-theme'},
     {id: 1, title: 'dark', themeName: 'dark-theme'},
-    {id: 2, title: 'light', themeName: 'light-theme' }
+    {id: 2, title: 'light', themeName: 'light-theme' },
+    {id: 3, title: 'photography', themeName: 'photography-theme'}
 ]
 
 window.WEB_DEBUG_DATA.columnsMenu = [
@@ -89,8 +93,9 @@ window.WEB_DEBUG_DATA.columnsMenu = [
 ]
 
 window.WEB_DEBUG_DATA.sourcesMenu = [
-    {id: 0, title: 'Source 1', fileName: 'data.1.json'},
-    {id: 1, title: 'Source 2', fileName: 'data.2.json'},
-    {id: 0, title: 'Gallery Root', fileName: 'data.3.root.json'},
-    {id: 1, title: 'Gallery Folder. level 1', fileName: 'data.4.folder1.json'}
+    {id: 0, title: 'Source 1', fileName: './data/data.1.json'},
+    {id: 1, title: 'Source 2', fileName: './data/data.2.json'},
+    {id: 0, title: 'Gallery Root', fileName: './data/data.3.root.json'},
+    {id: 1, title: 'Gallery Folder. level 1', fileName: './data/data.4.folder1.json'},
+    {id: 0, title: 'Photo', fileName: './galleries/golang-generated-gallery/golang-generated-gallery.json'}
 ]

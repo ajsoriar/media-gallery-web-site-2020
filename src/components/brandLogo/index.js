@@ -7,25 +7,30 @@ class BrandLogo extends Component {
 
     render() {
 
-        var logoSrc =  this.props.brandLogoSrc;
+        var logoSrc =  this.props.source.src;
         var brandText = this.props.text || "VOID";
+        var source = this.props.source;
 
         const frameStyleString = {
             position: 'relative',
-            width: window.WEB_CONFIG.brandLogo.size.w,
-            height: window.WEB_CONFIG.brandLogo.size.h
+            width: source.size.w,
+            height: source.size.h,
+            top: source.top + "px",
+            left: source.left + "px",
+            fill: "#00f"
         };
 
         if ( logoSrc != null ) return (
             <div className="brandLogo" style={frameStyleString} onClick={() => { this.props.clickFunc(); } }>
                 <ImageItem
-                    frameSize={{w: window.WEB_CONFIG.brandLogo.size.w, h: window.WEB_CONFIG.brandLogo.size.h}}
-                    imageSize={{w: window.WEB_CONFIG.brandLogo.size.w, h: window.WEB_CONFIG.brandLogo.size.h}}
+                    frameSize={{w: source.size.w, h: source.size.h}}
+                    imageSize={{w: source.size.w, h: source.size.h}}
                     imageSource={ logoSrc }
                     antialiasing={true}
                     cropStrategy={'DEFAULT'}
                     loadingLayer={false}
                     debug={window.false}
+                    hideLoading={true}
                 />
             </div>
         );

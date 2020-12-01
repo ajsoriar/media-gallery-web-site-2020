@@ -1,11 +1,11 @@
 .landingGridStyle {
   margin-top: 300px;
-  background-color: thistle;
+  _background-color: thistle;
   position: relative;
 }
 
 .pictureFrame {
-    background-color: black;
+    _background-color: black;
     width: 200px;
     height: 100px;
     display: inline-block;
@@ -17,6 +17,7 @@
 .galleryGrid{
     display: block;
     position: relative;
-    background-color: crimson;
-    outline: 2px solid green;
+    _background-color: crimson;
+    _outline: 2px solid green;
+    padding-bottom: 40px;
 }

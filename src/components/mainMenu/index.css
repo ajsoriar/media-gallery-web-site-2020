@@ -3,7 +3,7 @@
 }
 
 .app-horizontal-menu{
-    background: linear-gradient(rgb(115 0 255 / 55%), rgb(0 255 44 / 73%));
+    _background: linear-gradient(rgb(115 0 255 / 55%), rgb(0 255 44 / 73%));
 }
 
 .app-hamburger-menu{
@@ -16,7 +16,7 @@
     z-index: 2000;
     position: absolute;
     right: 0;
-    top: 30px;
+    top: 40px;
     text-align: right;
 }
 
@@ -32,23 +32,34 @@
 }
 
 .menu-item{
-    border: 1px solid yellow;
+    _border: 1px solid yellow;
+    transition: all 0.5s;
     list-style: none;
     height: 30px;
     line-height: 30px;
     display: inline-block;
-    color: #ffe500;
+    color: #000000;
     padding: 0 14px;
     margin: 3px;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 700;
     cursor: pointer;
-    text-shadow: 0 2px 3px black;
-    background: linear-gradient(rgb(115, 0, 255), rgb(0, 255, 44));
+    font-family: "Yantramanav", Helvetica, Arial, sans-serif;
+    border-bottom: 2px solid transparent;
+    text-transform: uppercase;
+    _background: linear-gradient(rgb(115, 0, 255), rgb(0, 255, 44));
 }
 
 .menu-item:hover{
-    background: linear-gradient(rgb(255, 0, 191), rgb(255, 217, 0));
+    _background: linear-gradient(rgb(255, 0, 191), rgb(255, 217, 0));
+}
+
+.menu-item:hover {
+    color: #000000;
+    border-bottom: 2px solid black;
+    font-weight: 700;
+    position: relative;
+    
 }
 
 /* Larger than Desktop HD */
@@ -66,15 +77,21 @@
         _background: linear-gradient( rgb(229, 255, 0), rgb(0, 81, 255));
         width: 100%;
         text-align: center;
-        font-size: 54px;
+        font-size: 34px;
         height: auto;
-        line-height: unset;
+        line-height: 70px;
         margin: 0;
         padding: 0;
         border: 0;
-        background: transparent;
+        _background: transparent;
         letter-spacing: 0em;
         text-transform: uppercase;
+    }
+    .menu-item:hover {
+        border-bottom: unset;
+        background-color: #000000;
+        color: white;
+        text-shadow: 0 0 2px black;
     }
     .top-menu {
         width: 100%;
@@ -98,6 +115,7 @@
     top: 10px;
     right: 1px;
     position: absolute;
+    margin: 14px 0px 0px !important;
 }
 
 .hamburger-content{
@@ -113,7 +131,7 @@
     box-sizing: border-box;
     z-index: 1000;
     padding: 0;
-    background-color: rgba(17,17,17,.92);
+    background-color: rgba(255,255,255,1);
     overflow: scroll;
     z-index: 3000;
 }
@@ -121,4 +139,21 @@
 .hamburger-content .btn-close{
     float: right;
     margin: 15px;
+}
+
+.clear-ul{
+    margin: 0;
+    padding: 0;
+    margin-top: 130px;
+}
+
+.hamburger-content g {
+    fill: black;
+    stroke: transparent;
+}
+
+.hamburger-content .btn-close-black {
+    transform: scale(0.8);
+    top: 9px !important;
+    left: -4px !important;
 }

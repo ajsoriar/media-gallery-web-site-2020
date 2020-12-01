@@ -276,16 +276,16 @@
                     "h": 1080
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "color": "pink"
-            },
-            "targetVideo": {
-                "size": {
-                    "w": 1920,
-                    "h": 1080
-                },
-                "src": "https://managementartists.s3.amazonaws.com/fullhd_5e95c879-7bf8-4aaf-8be6-04b8ac110003.mp4",
-                "type": "VIDEO",
-                "color": "purple"
+                "color": "pink",
+                "video": {
+                    "size": {
+                        "w": 1920,
+                        "h": 1080
+                    },
+                    "src": "https://managementartists.s3.amazonaws.com/fullhd_5e95c879-7bf8-4aaf-8be6-04b8ac110003.mp4",
+                    "type": "VIDEO",
+                    "color": "purple"
+                }
             },
             "frame": {
                 "INFO": "Nos vale para pillar el aspect ratio y regla de 3 para adaptarlo a la columna",
@@ -326,16 +326,16 @@
                     "h": 1080
                 },
                 "src": "http://www.riabop.com/demo/images/column_200x250.gif",
-                "color": "pink"
-            },
-            "targetVideo": {
-                "size": {
-                    "w": 1920,
-                    "h": 1080
-                },
-                "src": "https://www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
-                "type": "VIDEO",
-                "color": "purple"
+                "color": "pink",
+                "video": {
+                    "size": {
+                        "w": 1920,
+                        "h": 1080
+                    },
+                    "src": "https://www.subidote.com/video/sources/demo2/mp4/videobg-1280x720.mp4",
+                    "type": "VIDEO",
+                    "color": "purple"
+                }
             },
             "frame": {
                 "INFO": "Nos vale para pillar el aspect ratio y regla de 3 para adaptarlo a la columna",

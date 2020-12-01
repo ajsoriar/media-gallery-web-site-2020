@@ -23,6 +23,7 @@
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
+    "react-svg-loader": "^3.0.3",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
@@ -30,6 +31,7 @@
   },
   "dependencies": {
     "ajsr-notify": "^0.0.1",
+    "animation-stepper": "^1.0.0",
     "loading-layer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
